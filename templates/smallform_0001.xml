@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" type="dseas-smallform" xml:id="smallform_0001">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Abenteuer von Klaus Mann</title>
+            <author>Annemarie Schwarzenbach</author>
+         </titleStmt>
+         <publicationStmt>
+            <p><!--Information about publication or distribution--></p>
+         </publicationStmt>
+         <sourceDesc>
+            <p><!--Information about the source--></p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+          <div>
+            <head type="h1">Abenteuer von Klaus Mann.</head>
+            <p>A. Schw. Diese stürmischen, von Abenteuer und<lb/>
+            Exzentrizität getriebenen Novellen, scheinen dazu<lb/> 
+            angetan, das Publikum zu erschrecken und ihm die<lb/> 
+            Loslösung heutiger Jugend in krassester Form vor<lb/>
+            Augen zu führen. Klaus Mann schreibt unzwei<pc type="hyphenation">-</pc><lb break="no"/>
+            deutig und glänzend zugleich, seine Aufrichtigkeit<lb/>
+            macht das Abstoßende erträglich, sein bezaubern<pc type="hyphenation">-</pc><lb break="no"/>
+            der Stil reißt die Widerstrebendsten mit in die<lb/> 
+            Buntheit und in die Tragik seiner Schicksale. Da<pc type="hyphenation">-</pc><lb break="no"/>
+            zwischen sind zarte Stellen von großer Schönheit,<lb/>
+            die tief und schmerzlich an die unsagbaren Kon<pc type="hyphenation">-</pc><lb break="no"/>
+            fliklte auch des freiesten Lebens rühren, und über<lb/>
+            den drei Novellen steht die Schwermut des Unab<pc type="hyphenation">-</pc><lb break="no"/>
+            wendbaren. Man kann dieses Buch lieben oder es<lb/>
+            ablehnen, aber unleugbar trägt es das Zeichen<lb/>
+            des Talents.</p>
+          </div>
+      </body>
+   </text>
+</TEI>

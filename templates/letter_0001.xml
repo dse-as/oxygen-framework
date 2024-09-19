@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" type="dseas-letter" xml:id="letter_0001">
+    <teiHeader>
+        <fileDesc>
+        <titleStmt>
+                <title>Annemarie Schwarzenbach an Carson McCullers, 10. April 1941</title>
+            </titleStmt>
+        <publicationStmt>
+            <p><!--Information about publication or distribution--></p>
+        </publicationStmt>
+        <sourceDesc>
+            <p><!--Information about the source--></p>
+        </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <correspDesc>
+                <correspAction type="sent">
+                    <persName key="addReferenceHere">Schwarzenbach, Annemarie</persName>
+                    <date when="1941-04-10"/>
+                    <placeName key="addReferenceHere">Zürich</placeName>
+                </correspAction>
+                <correspAction type="received">
+                    <persName key="addReferenceHere">McCullers, Carson</persName>
+                    <placeName key="addReferenceHere"/>
+                </correspAction>
+             </correspDesc>
+        </profileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div>
+                <pb/>
+                <opener>
+                    <dateline>Zurich, Switzerland<lb/>April 10th, at night</dateline>
+                    <salute>Carson, child my beloved,</salute>
+                </opener>
+                <p>you know that, leaving the day after tomorrow,<lb/>
+                    feeling half-afraid and proud, leaving behind<lb/>
+                    me all I care for, once again, + a wave of love, --<lb/>
+                    yesterday, talking to a really good friend about<lb/>
+                    America, -- explaining why I wrote a most critical<lb/>
+                    + terribly serious article on Chaplin's "Great Dictator",<lb/>
+                    -- explaining, painting the entire profound horror of<lb/>
+                    Disney's Fantasia, -- I was quite desperate, but found<lb/>
+                    myself in the end breaking out in one enthousiastic feeling<lb/>
+                    + belief in the U. S. being not better [...]</p>
+                <p>I remembered you manuscript, + felt bitter [...]</p>
+                <pb/>
+                <p>This was like a symbol [...]</p>
+                <closer>
+                    <salute></salute>
+                    <signed></signed>
+                    <dateline></dateline>
+                </closer>
+                <postscript>
+                    <p/>
+                </postscript>
+                <closer>
+                  <address>
+                     <addrLine/>
+                     <addrLine/>
+                  </address>
+               </closer>
+            </div>
+        </body>
+    </text>
+</TEI>

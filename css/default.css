@@ -1,0 +1,727 @@
+/* Default CSS */
+
+@namespace xml "http://www.w3.org/XML/1998/namespace";
+
+@font-face{
+    font-family: "Roboto";
+    src:url("../fonts/Roboto/Roboto-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Roboto-italic";
+    src:url("../fonts/Roboto/Roboto-Italic.ttf");
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "NunitoSans";
+    src:url("../fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf");
+    font-weight: normal;
+}
+
+TEI {
+    padding: 1em;
+    font-family: Roboto;
+}
+
+/* Foldable Sections */
+
+TEI,
+teiHeader,
+text,
+front,
+body,
+back {
+    display:block;
+    padding-bottom:0.5em;
+    -oxy-foldable:true;
+}
+
+/* Section labels */
+
+TEI:before,
+teiHeader:before,
+text:before,
+front:before,
+body:before,
+back:before {
+    display:block;
+    color:steelblue;
+    font-weight:bold;
+    width:100%;
+    margin:2px;
+    padding-left: 6px;
+    padding-bottom: 0.5em;
+    content: oxy_name();
+}
+
+/* @xml:id */
+
+TEI[xml|id]:before {
+    -oxy-append-content: 
+        oxy_label(
+            text, "ID: "
+            width, 75px
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_label(
+            text, attr(xml|id, string, "")
+            styles, "@import 'labels_sub.css';"
+        )
+    ;
+    vertical-align: middle;
+}
+
+/* Paragraph and Line Break */
+
+p:before{
+    content: "¶ ";
+    color: steelblue;
+}
+
+p {
+    display:block;
+    padding:2px;
+    margin:2px;
+    margin-bottom: 10px;
+}
+
+lb {
+    display: inline;
+    padding: 0px;
+    vertical-align: middle;
+    visibility: -oxy-collapse-text;
+    -oxy-display-tags: none;
+    content: "↵\A";
+}
+
+lb[break="no"] {
+    color: fuchsia;
+    font-weight: bold;  
+    content: "→\A";
+}
+
+lb:focus {
+    content:
+        "↵"
+        oxy_label(
+            text, "@break: "
+            width, 60px
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@break"
+            values, "yes, no"
+        )
+        "\A"
+    ;
+}
+
+pc {
+    color:purple;
+}
+
+/* Page Break */
+
+pb {
+    content: url('../images/page_break-20.png');
+    display:block;
+    border-style:solid none;
+    border-width:1px 0px 0px 0px;
+    vertical-align:middle;
+    padding: 0 0.5em 0 0;
+    line-height:1.5;
+    visibility:-oxy-collapse-text;
+}
+
+pb:focus:after {
+    padding: 0px;
+    vertical-align: middle;
+    content:
+        " "
+        oxy_label(
+            text, "@n: "
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_textfield(
+            edit, "@n"
+            columns, 4
+        )
+        " "
+        oxy_label(
+            text, "@break: "
+            width, 60px
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@break"
+            values, "yes, no"
+        )
+    ;
+}
+
+/* Correspondence Description */
+
+correspAction {
+    display: block;
+    font-size: 0.8em;
+    visibility: -oxy-collapse-text;
+}
+
+correspAction[type='sent'] {
+    margin-bottom: 0.5em;
+}
+
+correspAction persName,
+correspAction placeName,
+correspAction orgName {
+    display: block;
+    visibility: visible;
+    -oxy-editable: false;
+    -oxy-display-tags: none;
+}
+
+correspAction date {
+	content: 
+        oxy_datePicker(columns, 20, edit , "@when", format, "yyyy-MM-dd", validateInput, false);
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+correspAction[type='sent'] persName:before {
+    content: "Absender: ";
+}
+
+correspAction[type='received'] persName:before {
+    content: "Empfänger: ";
+}
+
+correspAction[type='sent'] placeName:before {
+    content: "Schreibort: ";
+}
+
+correspAction[type='received'] placeName:before {
+    content: "Empfangsort: ";
+}
+
+correspAction[type='sent'] date:before {
+    content: "Schreibdatum: ";
+}
+
+correspAction[type='received'] date:before {
+    content: "Empfangsdatum: ";
+}
+
+/* Correspondence */
+
+opener:focus-within:before,
+closer:focus-within:before {
+    -oxy-append-content: 
+        oxy_label(
+            text, oxy_name()
+            color, steelblue
+            styles, "@import 'labels_sub.css';"
+        )
+    ;
+    margin-left: 12px;
+    padding-bottom: 0.5em;
+}
+
+opener,
+closer {
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+opener:focus-within,
+closer:focus-within {
+    border-left: 2px solid steelblue;
+}
+
+dateline,
+salute,
+signed {
+    display: block;
+    margin-left: 12px;
+    visibility: visible;
+}
+
+dateline {
+    -oxy-placeholder-content: "[Datumszeile]";
+}
+
+opener salute {
+    -oxy-placeholder-content: "[Anrede]";
+}
+
+closer salute {
+    -oxy-placeholder-content: "[Grussformel]";
+}
+
+signed {
+    -oxy-placeholder-content: "[Unterschrift]";
+}
+
+address {
+    margin-left: 6px;
+    visibility: -oxy-collapse-text;
+}
+
+address:focus-within:before {
+    -oxy-append-content: 
+        oxy_label(
+            text, oxy_name()
+            color, steelblue
+            width, 75px
+            styles, "@import 'labels_sub.css';"
+        )
+    ;
+    margin-left: 6px;
+    padding-bottom: 0.5em;
+}
+
+addrLine {
+    display: block;
+    margin-left: 6px;
+    visibility: visible;
+    -oxy-placeholder-content: "[Adresszeile]";
+}
+
+/* Referencing strings */
+
+rs[type='person'],
+rs[type='org'],
+rs[type='place'],
+rs[type='bibl'],
+rs[type='term'] {
+    -oxy-display-tags: none;
+} 
+
+rs[type='person']:before {
+    -oxy-prepend-content: url('../images/person-20.png');
+}
+rs[type='place']:before {
+    -oxy-prepend-content: url('../images/place-20.png');
+}
+
+rs[type='person'],
+rs[type='place'] {
+    /*background-color: #efd9bd;*/
+    border-bottom: 3px solid Tomato;
+    color: #000000;
+    -oxy-display-tags: none;
+} 
+
+rs[type='person']:focus-within:after {
+    padding-left: 2px;
+}
+
+rs[type='person']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action(
+                        id, 'open_geovistory'
+                  ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
+/* teiHeader */
+
+teiHeader {
+    padding: 0 0 0.5em 0;
+    margin: 0 0 0.5em 0;
+    border-bottom: 1px #000000 solid;
+    font-family: "Roboto-italic";
+
+}
+
+titleStmt {
+    display: block;
+    margin: 0 0 1em 0;
+    visibility: visible;
+}
+
+titleStmt title {
+    -oxy-placeholder-content: "Titel";
+    -oxy-display-tags: none;
+    font-size: 1.5em;
+} 
+
+titleStmt author,
+titleStmt editor,
+titleStmt respStmt {
+    display: block;
+    font-size: 0.8em;
+}
+
+editionStmt {
+    display: none;
+}
+
+publicationStmt {
+    display: none;
+}
+
+sourceDesc {
+    display: none;
+}
+
+fileDesc,
+profileDesc {
+    visibility: -oxy-collapse-text;
+}
+
+physDesc,
+creation,
+correspDesc,
+profileDesc abstract,
+correspDesc note,
+profileDesc textClass {
+    display: block;
+    margin: 0.5em 0 0 0;
+    padding: 0.5em 0 0 0;
+}
+
+profileDesc abstract:before {
+    display: block;
+    content: "Regest: ";
+    font-weight: bold;
+}
+
+profileDesc abstract p {
+    display: block;
+    -oxy-placeholder-content: "[Regest hier eingeben]"
+}
+
+/* Anmerkungen */
+
+notesStmt note:before {
+    content: "Anmerkungen zum Text";
+    font-weight: bold;
+}
+
+notesStmt note p {
+    display: block;
+    -oxy-placeholder-content: "[Text hier eingeben]";
+}
+
+notesStmt {
+    display: block;
+    margin: 1em 0 1em 0;
+    padding: 1em 0 1em 0;
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;   
+}
+
+/* text */
+
+text body {
+    position: relative;
+    display: block;
+}
+
+text head {
+    display: block;
+    margin: 0.5em 0 1em 0;
+}
+
+text head[type="h1"] {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+text head[type="h2"] {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+text head[type="h3"] {
+    font-size: 1.2em;
+}
+
+text p, 
+text lg[type="verse"] {
+    display: block;
+    margin: 0 0 1em 0;
+}
+
+text p[rendition="#c"]{
+    text-align: center;
+}
+
+text lg lg,
+text lg lg l {
+    display: block;
+}
+
+text list,
+text list item {
+    display: block;
+    -oxy-display-tags: none;
+}
+
+text list {
+    margin: 1em 0 0 1em;    
+}
+
+text note {
+    background-color: #e0e0e0;
+    -oxy-display-tags: none;
+    -oxy-placeholder-content: "[Anmerkung eingeben]";
+    -oxy-show-placeholder: always;
+}
+
+text note:has(p) {
+    display: block;
+    margin-left: 1em;
+}
+
+text note p { 
+    display: block;
+}
+
+/* Tables  */
+
+text table {
+  display: table;
+  margin: 1em 0 1em 0;
+}
+text table > head{
+    display: table-caption;
+    font-family: "Roboto-italic";
+    margin-bottom: 6pt;
+}
+
+text row {
+  display: table-row;
+}
+text row[role='label'] {
+   color: inherit;
+   background-color: #aaa;
+   font-weight: bold;
+}
+
+text cell {
+  display: table-cell;
+  border: 1px dashed silver;
+  padding: 3px;
+  color: inherit;
+  background-color:inherit;
+}
+
+text cell[rendition='#right'] {
+    text-align: right;
+}
+
+text cell[rendition='#c'] {
+    text-align: center;
+}
+
+text cell[role='label'] {
+   color: inherit;
+   background-color: #bbb;
+}
+
+/* Authors editing */
+
+text subst {
+    -oxy-display-tags: none;
+}
+
+text del {
+    color: red;
+    background-color: white;
+    text-decoration: line-through;
+    -oxy-display-tags: none;
+}
+
+text add {
+    color: green;
+    -oxy-display-tags: none;
+    -oxy-placeholder-content: "[Hinzufügung]"
+}
+
+/* Renditions */
+
+text hi[rendition="#b"] {
+    font-weight: bold;
+    -oxy-display-tags: none;
+}
+
+text hi[rendition="#u"] {
+    text-decoration: underline;
+    -oxy-display-tags: none;
+}
+
+text hi[rendition="#sup"] {
+    position: relative; 
+    top: -0.5em;
+    font-size: 0.7em;
+    -oxy-display-tags: none;
+}
+
+text hi[rendition="#i"] {
+    font-style: italic;
+    -oxy-display-tags: none;
+}
+
+text hi[rendition="#g"] {
+    letter-spacing:0.125em;
+    -oxy-display-tags: none;
+}
+
+head[rendition='#c'] {
+    text-align: center;
+}
+
+/* Publishers editing */
+
+quote supplied,
+text supplied {
+    font-family: "Roboto-italic";
+    background-color: #e0e0e0;
+    -oxy-display-tags: none;    
+}
+
+quote supplied:before,
+text supplied:before  {
+    content: "[";
+    font-style: normal;
+}
+
+quote supplied:after,
+text supplied:after {
+    content: "]";
+    font-style: normal;
+}
+
+
+text supplied[cert="low"]:before {
+    content: "zu ergänzen wohl [";
+    font-family: "Roboto-italic";
+    color: gray;
+}
+
+quote surplus,
+text surplus {
+    text-decoration: line-through;
+    color: #395B8C;
+}
+
+quote choice,
+text choice {
+    -oxy-display-tags: none;
+}
+
+quote choice sic,
+quote choice orig,
+text choice sic,
+text choice orig,
+quote choice abbr,
+text choice abbr {
+    background-color: #FFDDDD;
+    -oxy-display-tags: none;
+}
+
+quote choice corr,
+quote choice reg,
+text choice corr,
+text choice reg,
+quote choice expan,
+text choice expan {
+    font-style: italic;
+    background-color: #E8FFDD;
+    -oxy-display-tags: none;
+    -oxy-placeholder-content: "[Normalisierte Schreibung]";
+}
+
+quote choice corr,
+text choice corr {
+    -oxy-placeholder-content: "[Korrigierte Schreibung]";
+}
+
+quote corr[type="deleted"],
+text corr[type="deleted"] {
+    content: "[gelöscht]";
+    font-style: italic;
+    color: green;
+}
+
+quote choice abbr,
+text choice abbr {
+    background-color: #e0e0e0;
+}
+
+
+quote choice expan,
+text choice expan {
+    background-color: #E8FFDD;
+    -oxy-placeholder-content: "[Aufgelöste Schreibung]";
+}
+
+quote gap,
+quote unclear,
+text gap,
+text unclear {
+    background-color: #FFA100;
+    -oxy-display-tags: none;
+}
+
+quote gap:after,
+quote unclear:after,
+text gap:after,
+text unclear:after {
+    background-color: #FFA100;
+}
+
+quote gap,
+text gap {
+    content: "   ";
+}
+
+text damage {
+    -oxy-display-tags: none;
+    font-style: italic;
+}
+
+text damage:empty {
+    -oxy-display-tags: none;
+    content: "Schadhafte Stelle";
+}
+
+text damage:before {
+    content: "[";
+}
+
+text damage:after {
+    content: "]";
+}
+
+/* Dates */
+
+date {
+    -oxy-display-tags: none;
+}
+
+/* Facsimile */
+
+facsimile {
+    display: block;
+    border-top: 1px solid silver;
+    padding: 1em 0 1em 0;
+}
+facsimile:before {
+    display: block;
+    content: "Digitalisate";
+    font-weight: bold;
+}
