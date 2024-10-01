@@ -563,6 +563,12 @@ text hi[rendition="#u"] {
     -oxy-display-tags: none;
 }
 
+text hi[rendition="#sub"] {
+    font-size:small;
+    vertical-align:sub;
+    -oxy-display-tags: none;
+}
+
 text hi[rendition="#sup"] {
     position: relative; 
     top: -0.5em;

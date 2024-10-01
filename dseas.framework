@@ -175,7 +175,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi")</String>
+														<String>oxy:allows-child-element("hi") and ancestor::text</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -221,13 +221,63 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi")</String>
+														<String>oxy:allows-child-element("hi") and ancestor::text</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
 																<String>fragment</String>
 																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="#i"/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>hi[subscript]</String>
+										</field>
+										<field name="name">
+											<String>Tiefstellen</String>
+										</field>
+										<field name="description">
+											<String>Tiefstellen</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/subscript-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/subscript-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;hi rendition="#sub" xmlns="http://www.tei-c.org/ns/1.0"/></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -267,7 +317,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi")</String>
+														<String>oxy:allows-child-element("hi") and ancestor::text</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -317,7 +367,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi")</String>
+														<String>oxy:allows-child-element("hi") and ancestor::text</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -529,7 +579,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String></String>
+														<String>oxy:allows-child-element("pb") and ancestor::text</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -823,6 +873,11 @@
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
+													<String>hi[subscript]</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
 													<String>hi[superscript]</String>
 												</field>
 											</menuItem>
@@ -889,6 +944,11 @@
 											<toolbarItem>
 												<field name="actionID">
 													<String>hi[underline]</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>hi[subscript]</String>
 												</field>
 											</toolbarItem>
 											<toolbarItem>
