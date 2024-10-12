@@ -15,12 +15,6 @@
     font-weight: normal;
 }
 
-@font-face{
-    font-family: "NunitoSans";
-    src:url("../fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf");
-    font-weight: normal;
-}
-
 TEI {
     padding: 1em;
     font-family: Roboto;
