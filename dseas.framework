@@ -739,6 +739,98 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>add</String>
+										</field>
+										<field name="name">
+											<String>Hinzufügung</String>
+										</field>
+										<field name="description">
+											<String>Hinzufügung im Text durch Autor/in</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/addition-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/addition-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("add") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;add xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>del</String>
+										</field>
+										<field name="name">
+											<String>Streichung</String>
+										</field>
+										<field name="description">
+											<String>Streichung im Text durch Autor/in</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/deletion-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/deletion-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("del") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;del xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>open_geovistory</String>
 										</field>
 										<field name="name">
@@ -788,10 +880,10 @@
 											<String>open_manual</String>
 										</field>
 										<field name="name">
-											<String>Handbuch</String>
+											<String>Dokumentation</String>
 										</field>
 										<field name="description">
-											<String>Handbuch online aufrufen</String>
+											<String>Dokumentation im Webbrowser öffnen</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -1044,6 +1136,17 @@
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
+													<String>add</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>del</String>
+												</field>
+											</menuItem>
+											<menuSeparator/>
+											<menuItem>
+												<field name="actionID">
 													<String>rs_person_generate</String>
 												</field>
 											</menuItem>
@@ -1120,6 +1223,28 @@
 											<toolbarItem>
 												<field name="actionID">
 													<String>unclear</String>
+												</field>
+											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>add</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>del</String>
+												</field>
+											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>rs_person_generate</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>rs_place_generate</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
