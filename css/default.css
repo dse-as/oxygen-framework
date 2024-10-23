@@ -586,20 +586,17 @@ head[rendition='#c'] {
 
 /* Publishers editing */
 
-quote supplied,
 text supplied {
     font-family: "Roboto-italic";
     background-color: #e0e0e0;
     -oxy-display-tags: none;    
 }
 
-quote supplied:before,
 text supplied:before  {
     content: "[";
     font-style: normal;
 }
 
-quote supplied:after,
 text supplied:after {
     content: "]";
     font-style: normal;
@@ -612,32 +609,24 @@ text supplied[cert="low"]:before {
     color: gray;
 }
 
-quote surplus,
 text surplus {
     text-decoration: line-through;
     color: #395B8C;
 }
 
-quote choice,
 text choice {
     -oxy-display-tags: none;
 }
 
-quote choice sic,
-quote choice orig,
 text choice sic,
 text choice orig,
-quote choice abbr,
 text choice abbr {
     background-color: #FFDDDD;
     -oxy-display-tags: none;
 }
 
-quote choice corr,
-quote choice reg,
 text choice corr,
 text choice reg,
-quote choice expan,
 text choice expan {
     font-style: italic;
     background-color: #E8FFDD;
@@ -645,48 +634,46 @@ text choice expan {
     -oxy-placeholder-content: "[Normalisierte Schreibung]";
 }
 
-quote choice corr,
 text choice corr {
     -oxy-placeholder-content: "[Korrigierte Schreibung]";
 }
 
-quote corr[type="deleted"],
 text corr[type="deleted"] {
     content: "[gelöscht]";
     font-style: italic;
     color: green;
 }
 
-quote choice abbr,
 text choice abbr {
     background-color: #e0e0e0;
 }
 
 
-quote choice expan,
 text choice expan {
     background-color: #E8FFDD;
     -oxy-placeholder-content: "[Aufgelöste Schreibung]";
 }
 
-quote gap,
-quote unclear,
-text gap,
-text unclear {
-    background-color: #FFA100;
+text gap {
+    background-color: #FFC458;
+    margin-left: 2px;
+    margin-right: 2px;
     -oxy-display-tags: none;
 }
 
-quote gap:after,
-quote unclear:after,
-text gap:after,
-text unclear:after {
-    background-color: #FFA100;
+text gap {
+    content: " … ";
 }
 
-quote gap,
-text gap {
-    content: "   ";
+text unclear {
+    background-color: #C39595;
+    margin-left: 2px;
+    margin-right: 2px;
+    -oxy-display-tags: none;
+}
+
+text unclear {
+    content: " ? ";
 }
 
 text damage {

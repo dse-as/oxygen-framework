@@ -197,6 +197,52 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>hi[g]</String>
+										</field>
+										<field name="name">
+											<String>Sperrdruck</String>
+										</field>
+										<field name="description">
+											<String>Gesperrter Text</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/spaced-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/spaced-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String>U</String>
+										</field>
+										<field name="accelerator">
+											<String>ctrl shift B</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="#g"/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>hi[italic]</String>
 										</field>
 										<field name="name">
@@ -601,6 +647,98 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>gap</String>
+										</field>
+										<field name="name">
+											<String>Lücke/Unleserlicher Text</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/gap-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/gap-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("gap") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;gap xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>unclear</String>
+										</field>
+										<field name="name">
+											<String>Unsichere Lesung</String>
+										</field>
+										<field name="description">
+											<String></String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/unclear-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/unclear-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("unclear") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;unclear xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>open_geovistory</String>
 										</field>
 										<field name="name">
@@ -881,6 +1019,11 @@
 													<String>hi[superscript]</String>
 												</field>
 											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>hi[g]</String>
+												</field>
+											</menuItem>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
@@ -890,14 +1033,15 @@
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
-													<String>generate_lookup_person</String>
+													<String>gap</String>
 												</field>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
-													<String>generate_lookup_place</String>
+													<String>unclear</String>
 												</field>
 											</menuItem>
+											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
 													<String>rs_person_generate</String>
@@ -956,10 +1100,26 @@
 													<String>hi[superscript]</String>
 												</field>
 											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>hi[g]</String>
+												</field>
+											</toolbarItem>
 											<toolbarSeparator/>
 											<toolbarItem>
 												<field name="actionID">
 													<String>pb</String>
+												</field>
+											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>gap</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>unclear</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
