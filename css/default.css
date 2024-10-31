@@ -586,34 +586,6 @@ head[rendition='#c'] {
 
 /* Publishers editing */
 
-text supplied {
-    font-family: "Roboto-italic";
-    background-color: #e0e0e0;
-    -oxy-display-tags: none;    
-}
-
-text supplied:before  {
-    content: "[";
-    font-style: normal;
-}
-
-text supplied:after {
-    content: "]";
-    font-style: normal;
-}
-
-
-text supplied[cert="low"]:before {
-    content: "zu ergänzen wohl [";
-    font-family: "Roboto-italic";
-    color: gray;
-}
-
-text surplus {
-    text-decoration: line-through;
-    color: #395B8C;
-}
-
 text choice {
     -oxy-display-tags: none;
 }
@@ -654,6 +626,11 @@ text choice expan {
     -oxy-placeholder-content: "[Aufgelöste Schreibung]";
 }
 
+text abbr {
+    border-bottom: 3px solid #333;
+    -oxy-display-tags: none;
+}
+
 text gap {
     background-color: #FFC458;
     margin-left: 2px;
@@ -676,22 +653,20 @@ text unclear {
     content: " ? ";
 }
 
-text damage {
+/* Quotes */
+
+text quote {
     -oxy-display-tags: none;
-    font-style: italic;
 }
 
-text damage:empty {
-    -oxy-display-tags: none;
-    content: "Schadhafte Stelle";
+text quote:before  {
+    color: #333;
+    content: "\"";
 }
 
-text damage:before {
-    content: "[";
-}
-
-text damage:after {
-    content: "]";
+text quote:after {
+    color: #333;
+    content: "\"";
 }
 
 /* Dates */

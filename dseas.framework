@@ -774,7 +774,7 @@
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -820,7 +820,99 @@
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>abbr</String>
+										</field>
+										<field name="name">
+											<String>Abkürzung</String>
+										</field>
+										<field name="description">
+											<String>Abkürzung im Text</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/abbreviation-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/abbreviation-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("abbr") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;abbr xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>quote</String>
+										</field>
+										<field name="name">
+											<String>Zitat im Text</String>
+										</field>
+										<field name="description">
+											<String>Zitat</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/quote-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/quote-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("quote") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;quote xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -1147,6 +1239,17 @@
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
+													<String>abbr</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>quote</String>
+												</field>
+											</menuItem>
+											<menuSeparator/>
+											<menuItem>
+												<field name="actionID">
 													<String>rs_person_generate</String>
 												</field>
 											</menuItem>
@@ -1234,6 +1337,16 @@
 											<toolbarItem>
 												<field name="actionID">
 													<String>del</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>abbr</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>quote</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
