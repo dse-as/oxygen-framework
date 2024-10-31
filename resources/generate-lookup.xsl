@@ -25,7 +25,9 @@
                 <xsl:result-document href="../resources/lookup-person.xml" method="xml" indent="no">
                     <ul type="persons">
                         <xsl:for-each select="$result//*:result">
-                            <li id="{*:binding[@name='c21_1']/*:uri => replace('http://geovistory.org/resource/','')}" val="{*:binding[@name='label_38']/*:literal}"/>  
+                            <xsl:variable name="id" select="*:binding[@name='c21_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
+                            <xsl:variable name="label" select="*:binding[@name='label_38']/*:literal"/>
+                            <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
                         </xsl:for-each>
                     </ul>
                 </xsl:result-document>
@@ -46,7 +48,9 @@
                 <xsl:result-document href="../resources/lookup-place.xml" method="xml" indent="no">
                     <ul type="places">
                         <xsl:for-each select="$result//*:result">
-                            <li id="{*:binding[@name='c363_1']/*:uri => replace('http://geovistory.org/resource/','')}" val="{*:binding[@name='label_68']/*:literal}"/>  
+                            <xsl:variable name="id" select="*:binding[@name='c363_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
+                            <xsl:variable name="label" select="*:binding[@name='label_68']/*:literal"/>
+                            <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
                         </xsl:for-each>
                     </ul>
                 </xsl:result-document>

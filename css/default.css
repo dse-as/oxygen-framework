@@ -308,11 +308,13 @@ rs[type='place'] {
     -oxy-display-tags: none;
 } 
 
-rs[type='person']:focus-within:after {
+rs[type='person']:focus-within:after,
+rs[type='place']:focus-within:after{
     padding-left: 2px;
 }
 
-rs[type='person']:focus-within:after {
+rs[type='person']:focus-within:after,
+rs[type='place']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',

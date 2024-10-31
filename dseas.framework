@@ -521,30 +521,15 @@
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
-															<entry>
-																<String>fifth action</String>
-																<String>.</String>
-															</entry>
-															<entry>
-																<String>first action</String>
-																<String>generate_lookup_person</String>
-															</entry>
-															<entry>
-																<String>fourth action</String>
-																<String>.</String>
-															</entry>
-															<entry>
-																<String>second action</String>
-																<String>rs_person</String>
-															</entry>
-															<entry>
-																<String>third action</String>
-																<String>.</String>
+                                                            <entry>
+																<String>actionIDs</String>
+																<String>generate_lookup_person
+rs_person</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.MultipleActionsOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -1102,29 +1087,14 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>fifth action</String>
-																<String>.</String>
-															</entry>
-															<entry>
-																<String>first action</String>
-																<String>generate_lookup_place</String>
-															</entry>
-															<entry>
-																<String>fourth action</String>
-																<String>.</String>
-															</entry>
-															<entry>
-																<String>second action</String>
-																<String>rs_place</String>
-															</entry>
-															<entry>
-																<String>third action</String>
-																<String>.</String>
+																<String>actionIDs</String>
+																<String>generate_lookup_place
+rs_place</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.MultipleActionsOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
