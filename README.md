@@ -43,4 +43,4 @@ This framework is made possible thanks to the inspirations from this projects:
 
 ## License
 
-TBD
+* [dse-as/workflow_IIIF-ATR-TEI](https://github.com/dse-as/oxygen-framework): See [LICENSE](LICENSE)
