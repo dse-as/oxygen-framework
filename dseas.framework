@@ -481,6 +481,52 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>note</String>
+										</field>
+										<field name="name">
+											<String>Anmerkung einfügen</String>
+										</field>
+										<field name="description">
+											<String>Anmerkung einfügen</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/note-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/note-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("note")</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;note xmlns="http://www.tei-c.org/ns/1.0" xml:id="n${id}">${caret}&lt;/note></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>rs_person</String>
 										</field>
 										<field name="name">
@@ -1437,6 +1483,12 @@ rs_place</String>
 													<String>rs_org_generate</String>
 												</field>
 											</menuItem>
+											<menuSeparator/>
+											<menuItem>
+												<field name="actionID">
+													<String>note</String>
+												</field>
+											</menuItem>
 										</menuEntry-array>
 									</field>
 									<field name="context">
@@ -1542,6 +1594,12 @@ rs_place</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>rs_org_generate</String>
+												</field>
+											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>note</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>

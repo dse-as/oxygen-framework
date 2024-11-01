@@ -478,6 +478,7 @@ text list {
 
 text note {
     background-color: #e0e0e0;
+    padding: 0 4px 0 4px;
     -oxy-display-tags: none;
     -oxy-placeholder-content: "[Anmerkung eingeben]";
     -oxy-show-placeholder: always;
