@@ -55,6 +55,29 @@
                     </ul>
                 </xsl:result-document>
             </xsl:when>
+            
+            <xsl:when test="$type = 'org'">
+                <xsl:variable name="sparql">
+                    PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+                    PREFIX n1: &lt;https://ontome.net/ontology/>
+                    SELECT DISTINCT ?c68_1 ?label_38
+                    WHERE { ?c68_1 a n1:c68 .
+                            ?c68_1 rdfs:label ?label_38 . }
+                    ORDER BY ASC(UCASE(str(?label_38)))
+                    LIMIT 9999
+                </xsl:variable>
+                <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$project||'?query='||encode-for-uri($sparql))"/>
+                
+                <xsl:result-document href="../resources/lookup-org.xml" method="xml" indent="no">
+                    <ul type="org">
+                        <xsl:for-each select="$result//*:result">
+                            <xsl:variable name="id" select="*:binding[@name='c68_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
+                            <xsl:variable name="label" select="*:binding[@name='label_38']/*:literal"/>
+                            <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
+                        </xsl:for-each>
+                    </ul>
+                </xsl:result-document>
+            </xsl:when>
         </xsl:choose>
         
     </xsl:template>

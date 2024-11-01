@@ -296,11 +296,15 @@ rs[type='term'] {
 rs[type='person']:before {
     -oxy-prepend-content: url('../images/person-20.png');
 }
+rs[type='org']:before {
+    -oxy-prepend-content: url('../images/org-20.png');
+}
 rs[type='place']:before {
     -oxy-prepend-content: url('../images/place-20.png');
 }
 
 rs[type='person'],
+rs[type='org'],
 rs[type='place'] {
     /*background-color: #efd9bd;*/
     border-bottom: 3px solid Tomato;
@@ -309,11 +313,13 @@ rs[type='place'] {
 } 
 
 rs[type='person']:focus-within:after,
-rs[type='place']:focus-within:after{
+rs[type='org']:focus-within:after,
+rs[type='place']:focus-within:after {
     padding-left: 2px;
 }
 
 rs[type='person']:focus-within:after,
+rs[type='org']:focus-within:after,
 rs[type='place']:focus-within:after {
     content: 
         oxy_buttonGroup(
