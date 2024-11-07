@@ -197,6 +197,52 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>generate_lookup_bibl</String>
+										</field>
+										<field name="name">
+											<String>Lookup (Bibliographie) generieren</String>
+										</field>
+										<field name="description">
+											<String>Führt ein Transformationsszenario aus, das Daten von der Zotero-API abfragt und daraus eine statische Lookup-Datei als Register generiert</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>scenarioNames</String>
+																<String>bibl_lookup</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteTransformationScenariosOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>hi[bold]</String>
 										</field>
 										<field name="name">
@@ -564,16 +610,16 @@
 																<String>$ITEMS</String>
 															</entry>
 															<entry>
-																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='person' key='$XPATH{@id}' /></String>
-															</entry>
-                                                            <entry>
 																<String>item rendering</String>
 																<String>$XPATH{@val}</String>
 															</entry>
-                                                            <entry>
+															<entry>
 																<String>item separator</String>
 																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='person' key='$XPATH{@id}' /></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
@@ -685,16 +731,16 @@ rs_person</String>
 																<String>$ITEMS</String>
 															</entry>
 															<entry>
-																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='org' key='$XPATH{@id}' /></String>
-															</entry>
-                                                            <entry>
 																<String>item rendering</String>
 																<String>$XPATH{@val}</String>
 															</entry>
-                                                            <entry>
+															<entry>
 																<String>item separator</String>
 																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='org' key='$XPATH{@id}' /></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
@@ -1183,6 +1229,52 @@ rs_org</String>
 									</action>
 									<action>
 										<field name="id">
+											<String>open_zotero</String>
+										</field>
+										<field name="name">
+											<String>In Zotero öffnen</String>
+										</field>
+										<field name="description">
+											<String>Öffnet die referenzierte Entität in Zotero</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>https://www.zotero.org/groups/5746334/dse_as_bibl-id/items/${xpath_eval(@key)}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>open_manual</String>
 										</field>
 										<field name="name">
@@ -1266,16 +1358,16 @@ rs_org</String>
 																<String>$ITEMS</String>
 															</entry>
 															<entry>
-																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='place' key='$XPATH{@id}' /></String>
-															</entry>
-                                                            <entry>
 																<String>item rendering</String>
 																<String>$XPATH{@val}</String>
 															</entry>
-                                                            <entry>
+															<entry>
 																<String>item separator</String>
 																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='place' key='$XPATH{@id}' /></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
@@ -1348,6 +1440,127 @@ rs_place</String>
 											<Boolean>false</Boolean>
 										</field>
 									</action>
+									<action>
+										<field name="id">
+											<String>rs_bibl</String>
+										</field>
+										<field name="name">
+											<String>Bibliographiereferenz (ohne Neugenerierung)</String>
+										</field>
+										<field name="description">
+											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bibliographieregister</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>ctrl alt P</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("rs")</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-bibl.xml</String>
+															</entry>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='bibl' key='$XPATH{@id}' /></String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>rs_bibl_generate</String>
+										</field>
+										<field name="name">
+											<String>Bibliographiereferenz (mit Neugenerierung)</String>
+										</field>
+										<field name="description">
+											<String>Generiert eine aktuelle Registerdatei und verknüpft den ausgewählten Textabschnitt mit dem ausgewählten Eintrag.</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/bibl-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/bibl-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>ctrl alt shift P</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("rs")</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>generate_lookup_bibl
+rs_bibl</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
 								</action-array>
 							</field>
 							<field name="menubarDescriptor">
@@ -1376,6 +1589,11 @@ rs_place</String>
 											<menuItem>
 												<field name="actionID">
 													<String>generate_lookup_org</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>generate_lookup_bibl</String>
 												</field>
 											</menuItem>
 										</menuEntry-array>
@@ -1481,6 +1699,11 @@ rs_place</String>
 											<menuItem>
 												<field name="actionID">
 													<String>rs_org_generate</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>rs_bibl</String>
 												</field>
 											</menuItem>
 											<menuSeparator/>
@@ -1594,6 +1817,11 @@ rs_place</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>rs_org_generate</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>rs_bibl_generate</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
@@ -1891,6 +2119,114 @@ rs_place</String>
 											</field>
 											<field name="value">
 												<String>place</String>
+											</field>
+											<field name="hasXPathValue">
+												<Boolean>false</Boolean>
+											</field>
+											<field name="isStatic">
+												<Boolean>false</Boolean>
+											</field>
+										</transformationParameter>
+									</list>
+								</field>
+								<field name="cascadingStylesheets">
+									<String-array/>
+								</field>
+								<field name="xslTransformer">
+									<String>Saxon-HE</String>
+								</field>
+								<field name="extensionURLs">
+									<String-array/>
+								</field>
+							</scenario>
+							<scenario>
+								<field name="advancedOptionsMap">
+									<null/>
+								</field>
+								<field name="name">
+									<String>bibl_lookup</String>
+								</field>
+								<field name="baseURL">
+									<String></String>
+								</field>
+								<field name="footerURL">
+									<String></String>
+								</field>
+								<field name="fOPMethod">
+									<String>pdf</String>
+								</field>
+								<field name="fOProcessorName">
+									<String>Apache FOP</String>
+								</field>
+								<field name="headerURL">
+									<String></String>
+								</field>
+								<field name="inputXSLURL">
+									<String>${framework}/resources/generate-lookup.xsl</String>
+								</field>
+								<field name="inputXMLURL">
+									<String>${framework}/resources/generate-lookup.xsl</String>
+								</field>
+								<field name="defaultScenario">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="isFOPPerforming">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="type">
+									<String>XML</String>
+								</field>
+								<field name="saveAs">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="openInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="outputResource">
+									<null/>
+								</field>
+								<field name="openOtherLocationInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="locationToOpenInBrowserURL">
+									<null/>
+								</field>
+								<field name="openInEditor">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInHTMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInXMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInSVGPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInResultSetPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="useXSLTInput">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="xsltParams">
+									<list>
+										<transformationParameter>
+											<field name="paramDescription">
+												<paramDescriptor>
+													<field name="localName">
+														<String>type</String>
+													</field>
+													<field name="prefix">
+														<null/>
+													</field>
+													<field name="namespace">
+														<null/>
+													</field>
+												</paramDescriptor>
+											</field>
+											<field name="value">
+												<String>bibl</String>
 											</field>
 											<field name="hasXPathValue">
 												<Boolean>false</Boolean>

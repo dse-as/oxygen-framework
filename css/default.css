@@ -294,18 +294,22 @@ rs[type='term'] {
 } 
 
 rs[type='person']:before {
-    -oxy-prepend-content: url('../images/person-20.png');
+    -oxy-prepend-content: url('../images/person-16.png');
 }
 rs[type='org']:before {
-    -oxy-prepend-content: url('../images/org-20.png');
+    -oxy-prepend-content: url('../images/org-16.png');
 }
 rs[type='place']:before {
-    -oxy-prepend-content: url('../images/place-20.png');
+    -oxy-prepend-content: url('../images/place-16.png');
+}
+rs[type='bibl']:before {
+    -oxy-prepend-content: url('../images/bibl-16.png');
 }
 
 rs[type='person'],
 rs[type='org'],
-rs[type='place'] {
+rs[type='place'],
+rs[type='bibl']{
     /*background-color: #efd9bd;*/
     border-bottom: 3px solid Tomato;
     color: #000000;
@@ -314,7 +318,8 @@ rs[type='place'] {
 
 rs[type='person']:focus-within:after,
 rs[type='org']:focus-within:after,
-rs[type='place']:focus-within:after {
+rs[type='place']:focus-within:after,
+rs[type='bibl']:focus-within:after {
     padding-left: 2px;
 }
 
@@ -328,6 +333,23 @@ rs[type='place']:focus-within:after {
               oxy_action_list(
                   oxy_action(
                         id, 'open_geovistory'
+                  ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
+rs[type='bibl']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action(
+                        id, 'open_zotero'
                   ),
                   oxy_action( 
                         id, 'rs_unwrap'
