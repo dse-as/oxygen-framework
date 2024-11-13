@@ -15,7 +15,7 @@ jobs:
           color: "2105893"
           username: "Release Changelog (oXygen framework)"
           avatar_url: "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png"
-          content: echo "New version available -- " && echo $(git tag -l ${latest_tag} --format='%(contents:body)')
+          content: echo "New version available -- check https://github.com/dse-as/oxygen-framework/releases for more info."
           footer_title: "Changelog"
           footer_icon_url: "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png"
           footer_timestamp: true
