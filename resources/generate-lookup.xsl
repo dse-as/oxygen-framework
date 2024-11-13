@@ -7,7 +7,8 @@
     <xsl:param name="type"/>
     
     <xsl:variable name="geovistory_project" select="'api_v1_project_153'"/>
-  
+    <xsl:variable name="zotero_project" select="'5746334'"/>
+    
     <xsl:template match="/">
         <xsl:choose>
             <xsl:when test="$type = 'person'">
@@ -80,15 +81,21 @@
             </xsl:when>
             
             <xsl:when test="$type = 'bibl'">
-                <xsl:variable name="zotero_project" select="'5746334'"/>
                 <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero_project||'/items') => parse-json()"/>
                 
                 <xsl:result-document href="../resources/lookup-bibl.xml" method="xml" indent="no">
                     <ul type="bibl">
                         <xsl:for-each select="$result?*?('data')">
+                            <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
+                            <xsl:sort select="?('date')"/>
+                            <xsl:sort select="?('title')"/>
                             <xsl:variable name="id" select="?('key')"/>
                             <xsl:variable name="label" select="?('title')"/>
-                            <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
+                            <xsl:variable name="creators" select="?('creators')[1]?*?('lastName')[1] || (if (?('creators')[1]?*?('lastName')[2][normalize-space()]) then ' et al.' else '')"/>
+                            <xsl:variable name="date" select="?('date')"/>
+                            <li id="{$id}" val="{(if ($creators) then $creators else 'NN') ||
+                                (if ($date) then ' (' || $date || '): ' else ': ') ||
+                                $label || ' [' || $id || ']'}"/>  
                         </xsl:for-each>
                     </ul>
                 </xsl:result-document>
