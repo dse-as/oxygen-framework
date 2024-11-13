@@ -17,11 +17,22 @@ This repository contains an oXygen XML Editor framework to customize the editing
 
 ### Add-on
 
-TBD
+This is the preferred installation method for editors:
+
+1. Open `Options > Preferences > Add-ons` on Windows or `Oxygen XML Editor > Preferences > Add-ons` (on other platforms) from the menu.
+2. `Add` a new add-on by entering this URL: https://docs.annemarie-schwarzenbach.ch/dseas.xml
+3. `"Enable automatic updates checking"` should be activated. This will automatically prompt you to update the framework when an update was deployed.
+4. Confirm with `OK`. 
+5. Open `Help > Install new add-ons...` from the menu. Select the dse-as URL from the dropdown menu ("Show add-ons from").
+6. The latest version of the add-on should be displayed. Select it, choose `Next` and confirm all upcoming prompts (including possible certificate warnings).
+7. Restart the application. Note: The framework/add-on should keep itself up to date. Updates will be offered during the start of oXygen.
+8. Open `Options > Preferences > Document Type Associations` on Windows or `Oxygen XML Editor > Preferences > Document Type Associations` (on other platforms) from the menu and make sure the framework is activated.
+
+See https://www.oxygenxml.com/doc/versions/23.0/ug-editor/topics/packing-and-deploying-addons.html#packing-and-deploying-addons
 
 ### Project file and Git
 
-As described in the [official documentation](https://www.oxygenxml.com/doc/versions/23.0/ug-editor/topics/author-document-type-extension-sharing.html):
+This is the preferred method for developers:
 
 1. Clone this repository.
 2. Open project file (`dseas-framework.xpr`) with Oxygen XML Editor.
@@ -31,6 +42,8 @@ As described in the [official documentation](https://www.oxygenxml.com/doc/versi
 6. Go back to **Document Type Association** and select the framework.
 
 > 👉 To update, do `git pull`.
+
+See also the [official documentation](https://www.oxygenxml.com/doc/versions/23.0/ug-editor/topics/author-document-type-extension-sharing.html).
 
 ## Acknowledgement
 
