@@ -10,7 +10,7 @@ This repository contains an oXygen XML Editor framework to customize the editing
 
 * Simple graphical display of the project's markup based on [TEI-XML](https://tei-c.org/guidelines/) and the [DTA-Basisformat](https://www.deutschestextarchiv.de/doku/basisformat/index.html).
 * Referencing of [Geovistory](https://www.geovistory.org/) entites via [SPARQL API](https://www.geovistory.org/sparql).
-* Uses [ediarum.JAR](https://github.com/ediarum/ediarum.JAR) for index operations in [Oxygen Author Mode](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/editing-xml-documents-author.html).
+* Uses [ediarum.JAR](https://github.com/ediarum/ediarum.JAR) for index operations in [Oxygen Author Mode](https://www.oxygenxml.com/doc/versions/26.1/ug-editor/topics/editing-xml-documents-author.html).
 * Insert actions for frequently used tags.
 
 ## Installation
@@ -28,7 +28,7 @@ This is the preferred installation method for editors:
 7. Restart the application. Note: The framework/add-on should keep itself up to date. Updates will be offered during the start of oXygen.
 8. Open `Options > Preferences > Document Type Associations` on Windows or `Oxygen XML Editor > Preferences > Document Type Associations` (on other platforms) from the menu and make sure the framework is activated.
 
-See https://www.oxygenxml.com/doc/versions/23.0/ug-editor/topics/packing-and-deploying-addons.html#packing-and-deploying-addons
+See https://www.oxygenxml.com/doc/versions/26.1/ug-editor/topics/packing-and-deploying-addons.html#packing-and-deploying-addons
 
 ### Project file and Git
 
