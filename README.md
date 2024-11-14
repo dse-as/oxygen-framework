@@ -43,7 +43,7 @@ This is the preferred method for developers:
 
 > 👉 To update, do `git pull`.
 
-See also the [official documentation](https://www.oxygenxml.com/doc/versions/23.0/ug-editor/topics/author-document-type-extension-sharing.html).
+See also the [official documentation](https://www.oxygenxml.com/doc/versions/26.1/ug-editor/topics/author-document-type-extension-sharing.html).
 
 ## Acknowledgement
 
