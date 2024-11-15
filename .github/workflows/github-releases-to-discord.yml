@@ -6,7 +6,8 @@ jobs:
   github-releases-to-discord:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -L \
+      - run: | 
+          curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
           -u "${{ secrets.DISPATCH_TO_DOCS_PAT_USER}}:${{secrets.DISPATCH_TO_DOCS_PAT}}" \      # alternatively: -H "Authorization: Bearer <YOUR-TOKEN>" \
