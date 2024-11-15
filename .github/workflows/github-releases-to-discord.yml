@@ -14,7 +14,7 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_TO_DOCS_PAT }}
           repository: dse-as/docs
-          event-type: vitepress.yaml
+          event-type: repository_dispatch
           client-payload: '{"ref":"main"}'
       - name: Checkout
         uses: actions/checkout@v4
