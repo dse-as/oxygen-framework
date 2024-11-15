@@ -68,11 +68,12 @@ TEI[xml|id]:before {
     vertical-align: middle;
 }
 
-/* Paragraph and Line Break */
+/* Paragraph */
 
-p:before{
-    content: "¶ ";
+p:after{
+    content: "¶";
     color: steelblue;
+    padding-left: 4px;
 }
 
 p {
@@ -82,24 +83,41 @@ p {
     margin-bottom: 10px;
 }
 
+
+ab {
+    background-color: Cornsilk;
+    display:block;
+    padding:2px;
+    margin:2px;
+    margin-bottom: 10px;
+}
+
+/* Page, Line, and Column Beginning */
+
+lb:first-of-type:before {
+    content: "↪";
+}
+
+lb:not(:first-of-type):before {
+    content: "\A↪";
+}
+
 lb {
+    color: steelblue;
     display: inline;
-    padding: 0px;
+    padding-right: 6px;
     vertical-align: middle;
     visibility: -oxy-collapse-text;
     -oxy-display-tags: none;
-    content: "↵\A";
 }
 
 lb[break="no"] {
     color: fuchsia;
     font-weight: bold;  
-    content: "→\A";
 }
 
 lb:focus {
     content:
-        "↵"
         oxy_label(
             text, "@break: "
             width, 60px
@@ -109,7 +127,6 @@ lb:focus {
             edit, "@break"
             values, "yes, no"
         )
-        "\A"
     ;
 }
 
@@ -126,7 +143,6 @@ pb {
     border-width:1px 0px 0px 0px;
     vertical-align:middle;
     padding: 0 0.5em 0 0;
-    line-height:1.5;
     visibility:-oxy-collapse-text;
 }
 
@@ -154,6 +170,16 @@ pb:focus:after {
             values, "yes, no"
         )
     ;
+}
+
+cb {
+    content: "\A⣿";
+    display:inline;
+    padding-right: 6px;
+    padding-bottom: 0.5em;
+    color: black;
+    -oxy-display-tags: none;
+    visibility:-oxy-collapse-text;
 }
 
 /* Correspondence Description */
@@ -455,6 +481,7 @@ text body {
 }
 
 text head {
+    font-weight: bold;
     display: block;
     margin: 0.5em 0 1em 0;
 }
@@ -709,12 +736,17 @@ date {
 /* Facsimile */
 
 facsimile {
+    font-size: smaller;
     display: block;
-    border-top: 1px solid silver;
-    padding: 1em 0 1em 0;
+    padding: 0.5em 0 0.5em 0;
 }
 facsimile:before {
     display: block;
-    content: "Digitalisate";
+    content: "Digitalisat"
+             oxy_label(text, oxy_xpath("' (Regionen: '||(count(descendant::*:zone[@rendition='TextRegion']))||' / '"))
+             oxy_label(text, oxy_xpath("' Zonen: '||(count(descendant::*:zone[not(@rendition='TextRegion')]))||')'"));
     font-weight: bold;
+}
+surface, graphic, zone {
+    display: none;
 }
