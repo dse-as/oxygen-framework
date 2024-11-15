@@ -13,9 +13,10 @@ jobs:
           curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
-          -u "\"${{ secrets.DISPATCH_TO_DOCS_PAT_USER}}\":\"${{secrets.DISPATCH_TO_DOCS_PAT}}\"" \ 
-          -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/dse-as/docs/actions/workflows/vitepress.yaml/dispatches \
-          -d '{"ref":"main"}'
+          -u "${{secrets.DISPATCH_TO_DOCS_PAT_USER}}:${{secrets.DISPATCH_TO_DOCS_PAT}}" \ 
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -d '{"ref":"main"}' \
+          https://api.github.com/repos/dse-as/docs/dispatches
       - name: Checkout
         uses: actions/checkout@v4
       - name: Github Releases To Discord
