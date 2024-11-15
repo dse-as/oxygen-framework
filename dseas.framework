@@ -241,6 +241,52 @@
 											<Boolean>false</Boolean>
 										</field>
 									</action>
+                                    <action>
+										<field name="id">
+											<String>generate_lookup_all</String>
+										</field>
+										<field name="name">
+											<String>Alle Lookups generieren</String>
+										</field>
+										<field name="description">
+											<String>Führt ein Transformationsszenario aus, das alle Register neu generiert</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>scenarioNames</String>
+																<String>all_lookup</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteTransformationScenariosOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
 									<action>
 										<field name="id">
 											<String>hi[bold]</String>
@@ -1596,6 +1642,11 @@ rs_bibl</String>
 													<String>generate_lookup_bibl</String>
 												</field>
 											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>generate_lookup_all</String>
+												</field>
+											</menuItem>
 										</menuEntry-array>
 									</field>
 									<field name="context">
@@ -1822,6 +1873,11 @@ rs_bibl</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>rs_bibl_generate</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>generate_lookup_all</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
@@ -2335,6 +2391,114 @@ rs_bibl</String>
 											</field>
 											<field name="value">
 												<String>org</String>
+											</field>
+											<field name="hasXPathValue">
+												<Boolean>false</Boolean>
+											</field>
+											<field name="isStatic">
+												<Boolean>false</Boolean>
+											</field>
+										</transformationParameter>
+									</list>
+								</field>
+								<field name="cascadingStylesheets">
+									<String-array/>
+								</field>
+								<field name="xslTransformer">
+									<String>Saxon-HE</String>
+								</field>
+								<field name="extensionURLs">
+									<String-array/>
+								</field>
+							</scenario>
+                            <scenario>
+								<field name="advancedOptionsMap">
+									<null/>
+								</field>
+								<field name="name">
+									<String>all_lookup</String>
+								</field>
+								<field name="baseURL">
+									<String></String>
+								</field>
+								<field name="footerURL">
+									<String></String>
+								</field>
+								<field name="fOPMethod">
+									<String>pdf</String>
+								</field>
+								<field name="fOProcessorName">
+									<String>Apache FOP</String>
+								</field>
+								<field name="headerURL">
+									<String></String>
+								</field>
+								<field name="inputXSLURL">
+									<String>${framework}/resources/generate-lookup.xsl</String>
+								</field>
+								<field name="inputXMLURL">
+									<String>${framework}/resources/generate-lookup.xsl</String>
+								</field>
+								<field name="defaultScenario">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="isFOPPerforming">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="type">
+									<String>XML</String>
+								</field>
+								<field name="saveAs">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="openInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="outputResource">
+									<null/>
+								</field>
+								<field name="openOtherLocationInBrowser">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="locationToOpenInBrowserURL">
+									<null/>
+								</field>
+								<field name="openInEditor">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInHTMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInXMLPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInSVGPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="showInResultSetPane">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="useXSLTInput">
+									<Boolean>false</Boolean>
+								</field>
+								<field name="xsltParams">
+									<list>
+										<transformationParameter>
+											<field name="paramDescription">
+												<paramDescriptor>
+													<field name="localName">
+														<String>type</String>
+													</field>
+													<field name="prefix">
+														<null/>
+													</field>
+													<field name="namespace">
+														<null/>
+													</field>
+												</paramDescriptor>
+											</field>
+											<field name="value">
+												<String>all</String>
 											</field>
 											<field name="hasXPathValue">
 												<Boolean>false</Boolean>
