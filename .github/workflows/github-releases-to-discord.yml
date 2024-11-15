@@ -14,7 +14,7 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_TO_DOCS_PAT }}
           repository: dse-as/docs
-          event-type: workflow_dispatch
+          event-type: build
           client-payload: '{"ref":"main"}'
       - name: Checkout
         uses: actions/checkout@v4
