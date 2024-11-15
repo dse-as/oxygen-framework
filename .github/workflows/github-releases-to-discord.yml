@@ -9,6 +9,7 @@ jobs:
   github-releases-to-discord:
     runs-on: ubuntu-latest
     steps:
+      # Initiate build workflow in docs repo to provide framework files
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
@@ -18,12 +19,13 @@ jobs:
           client-payload: '{"ref":"main"}'
       - name: Checkout
         uses: actions/checkout@v4
+      # Emit a bot post in the Discord framework channel to announce the new release 
       - name: Github Releases To Discord
         uses: SethCohen/github-releases-to-discord@v1.16.2
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           color: "2105893"
-          username: "Release Changelog (oXygen framework)"
+          username: "New release available (oXygen framework) ✨"
           avatar_url: "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png"
           content: "New version available -- check https://github.com/dse-as/oxygen-framework/releases for more info."
           footer_title: "Changelog"
