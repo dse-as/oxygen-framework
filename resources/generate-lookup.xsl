@@ -6,8 +6,9 @@
     
     <xsl:param name="type"/>
     
-    <xsl:variable name="geovistory_project" select="'api_v1_project_153'"/>
-    <xsl:variable name="zotero_project" select="'5746334'"/>
+    <xsl:variable name="geovistory-project" select="'api_v1_project_153'"/>
+    <xsl:variable name="zotero-project" select="'5746334'"/>
+    <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
        
@@ -21,9 +22,9 @@
                 ORDER BY ASC(UCASE(str(?label_38)))
                 LIMIT 9999
             </xsl:variable>
-            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory_project||'?query='||encode-for-uri($sparql))"/>
+            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory-project||'?query='||encode-for-uri($sparql))"/>
             
-            <xsl:result-document href="../resources/lookup-person.xml" method="xml" indent="no">
+            <xsl:result-document href="{$result-path||'lookup-person.xml'}" method="xml" indent="no">
                 <ul type="persons">
                     <xsl:for-each select="$result//*:result">
                         <xsl:variable name="id" select="*:binding[@name='c21_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
@@ -44,9 +45,9 @@
                 ORDER BY ASC(UCASE(str(?label_68)))
                 LIMIT 9999
             </xsl:variable>
-            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory_project||'?query='||encode-for-uri($sparql))"/>
+            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory-project||'?query='||encode-for-uri($sparql))"/>
             
-            <xsl:result-document href="../resources/lookup-place.xml" method="xml" indent="no">
+            <xsl:result-document href="{$result-path||'lookup-place.xml'}" method="xml" indent="no">
                 <ul type="places">
                     <xsl:for-each select="$result//*:result">
                         <xsl:variable name="id" select="*:binding[@name='c363_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
@@ -67,9 +68,9 @@
                 ORDER BY ASC(UCASE(str(?label_38)))
                 LIMIT 9999
             </xsl:variable>
-            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory_project||'?query='||encode-for-uri($sparql))"/>
+            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory-project||'?query='||encode-for-uri($sparql))"/>
             
-            <xsl:result-document href="../resources/lookup-org.xml" method="xml" indent="no">
+            <xsl:result-document href="{$result-path||'lookup-org.xml'}" method="xml" indent="no">
                 <ul type="org">
                     <xsl:for-each select="$result//*:result">
                         <xsl:variable name="id" select="*:binding[@name='c68_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
@@ -81,9 +82,9 @@
         </xsl:if>
         
         <xsl:if test="$type = 'bibl' or $type = 'all'">
-            <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero_project||'/items') => parse-json()"/>
+            <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero-project||'/items') => parse-json()"/>
             
-            <xsl:result-document href="../resources/lookup-bibl.xml" method="xml" indent="no">
+            <xsl:result-document href="{$result-path||'lookup-bibl.xml'}" method="xml" indent="no">
                 <ul type="bibl">
                     <xsl:for-each select="$result?*?('data')">
                         <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
