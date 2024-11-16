@@ -84,12 +84,23 @@ p {
 }
 
 
-ab {
-    background-color: Cornsilk;
+ab[type='redactional']:before {
+    -oxy-append-content: 
+        oxy_label(
+            text, "Redaktioneller Beitrag"
+            color, steelblue
+            styles, "@import 'labels_sub.css';"
+        )
+    ;
+    display:block;
+}
+
+ab[type='redactional'] {
     display:block;
     padding:2px;
     margin:2px;
-    margin-bottom: 10px;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 
 /* Page, Line, and Column Beginning */
@@ -177,9 +188,20 @@ cb {
     display:inline;
     padding-right: 6px;
     padding-bottom: 0.5em;
-    color: black;
+    color: steelblue;
     -oxy-display-tags: none;
     visibility:-oxy-collapse-text;
+}
+
+/* Byline */
+
+byline {
+    font-variant:small-caps;
+    padding:2px;
+    margin:2px;
+    margin-bottom: 5px;
+    -oxy-display-tags: none;
+    -oxy-placeholder-content: "[Verfasserinnenzeile]";
 }
 
 /* Correspondence Description */
@@ -320,7 +342,7 @@ rs[type='term'] {
 } 
 
 rs[type='person']:before {
-    -oxy-prepend-content: url('../images/person-16.png');
+    -oxy-prepend-content: url('../images/person-16.png');  
 }
 rs[type='org']:before {
     -oxy-prepend-content: url('../images/org-16.png');
@@ -332,12 +354,15 @@ rs[type='bibl']:before {
     -oxy-prepend-content: url('../images/bibl-16.png');
 }
 
+rs:before {
+    margin-right: 6px;
+}
+
 rs[type='person'],
 rs[type='org'],
 rs[type='place'],
 rs[type='bibl']{
-    /*background-color: #efd9bd;*/
-    border-bottom: 3px solid Tomato;
+    border-bottom: 3px solid Salmon;
     color: #000000;
     -oxy-display-tags: none;
 } 
@@ -484,6 +509,7 @@ text head {
     font-weight: bold;
     display: block;
     margin: 0.5em 0 1em 0;
+    -oxy-placeholder-content: "[Titel]";
 }
 
 text head[type="h1"] {
@@ -718,12 +744,12 @@ text quote {
 }
 
 text quote:before  {
-    color: #333;
+    color: fuchsia;
     content: "\"";
 }
 
 text quote:after {
-    color: #333;
+    color: fuchsia;
     content: "\"";
 }
 
@@ -744,7 +770,7 @@ facsimile:before {
     display: block;
     content: "Digitalisat"
              oxy_label(text, oxy_xpath("' (Regionen: '||(count(descendant::*:zone[@rendition='TextRegion']))||' / '"))
-             oxy_label(text, oxy_xpath("' Zonen: '||(count(descendant::*:zone[not(@rendition='TextRegion')]))||')'"));
+             oxy_label(text, oxy_xpath("' Zeilen: '||(count(descendant::*:zone[not(@rendition='TextRegion')]))||')'"));
     font-weight: bold;
 }
 surface, graphic, zone {

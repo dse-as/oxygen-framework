@@ -241,7 +241,7 @@
 											<Boolean>false</Boolean>
 										</field>
 									</action>
-                                    <action>
+									<action>
 										<field name="id">
 											<String>generate_lookup_all</String>
 										</field>
@@ -252,10 +252,10 @@
 											<String>Führt ein Transformationsszenario aus, das alle Register neu generiert</String>
 										</field>
 										<field name="largeIconPath">
-											<String></String>
+											<String>${framework}/images/refresh-20.png</String>
 										</field>
 										<field name="smallIconPath">
-											<String></String>
+											<String>${framework}/images/refresh-16.png</String>
 										</field>
 										<field name="accessKey">
 											<String></String>
@@ -1624,26 +1624,6 @@ rs_bibl</String>
 										<menuEntry-array>
 											<menuItem>
 												<field name="actionID">
-													<String>generate_lookup_place</String>
-												</field>
-											</menuItem>
-											<menuItem>
-												<field name="actionID">
-													<String>generate_lookup_person</String>
-												</field>
-											</menuItem>
-											<menuItem>
-												<field name="actionID">
-													<String>generate_lookup_org</String>
-												</field>
-											</menuItem>
-											<menuItem>
-												<field name="actionID">
-													<String>generate_lookup_bibl</String>
-												</field>
-											</menuItem>
-											<menuItem>
-												<field name="actionID">
 													<String>generate_lookup_all</String>
 												</field>
 											</menuItem>
@@ -1739,6 +1719,11 @@ rs_bibl</String>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
+													<String>generate_lookup_all</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
 													<String>rs_person_generate</String>
 												</field>
 											</menuItem>
@@ -1754,7 +1739,7 @@ rs_bibl</String>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
-													<String>rs_bibl</String>
+													<String>rs_bibl_generate</String>
 												</field>
 											</menuItem>
 											<menuSeparator/>
@@ -1857,6 +1842,11 @@ rs_bibl</String>
 											<toolbarSeparator/>
 											<toolbarItem>
 												<field name="actionID">
+													<String>generate_lookup_all</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
 													<String>rs_person_generate</String>
 												</field>
 											</toolbarItem>
@@ -1873,11 +1863,6 @@ rs_bibl</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>rs_bibl_generate</String>
-												</field>
-											</toolbarItem>
-											<toolbarItem>
-												<field name="actionID">
-													<String>generate_lookup_all</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
@@ -2411,7 +2396,7 @@ rs_bibl</String>
 									<String-array/>
 								</field>
 							</scenario>
-                            <scenario>
+							<scenario>
 								<field name="advancedOptionsMap">
 									<null/>
 								</field>
