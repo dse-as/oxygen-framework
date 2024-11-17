@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.0.2</xt:version>
+        <xt:version>0.0.3</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -20,6 +20,11 @@
             <h1>dse-as Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <p class="header">Version 0.0.3</p>
+                <p class="header">Release date: 17/11/2024</p>
+                <ul>
+                    <li>Fix: Pfad beim Speichern der Lookupdateien.</li>
+                </ul>
                 <p class="header">Version 0.0.2</p>
                 <p class="header">Release date: 15/11/2024</p>
                 <ul>
