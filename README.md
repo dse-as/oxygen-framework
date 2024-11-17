@@ -10,7 +10,8 @@ This repository contains an oXygen XML Editor framework to customize the editing
 
 * Simple graphical display of the project's markup based on [TEI-XML](https://tei-c.org/guidelines/) and the [DTA-Basisformat](https://www.deutschestextarchiv.de/doku/basisformat/index.html).
 * Referencing of [Geovistory](https://www.geovistory.org/) entites via [SPARQL API](https://www.geovistory.org/sparql).
-* Uses [ediarum.JAR](https://github.com/ediarum/ediarum.JAR) for index operations in [Oxygen Author Mode](https://www.oxygenxml.com/doc/versions/26.1/ug-editor/topics/editing-xml-documents-author.html).
+* Referencing of bibliographic entries in [Zotero Groups](https://www.zotero.org/groups). 
+* Uses [ediarum.JAR](https://github.com/ediarum/ediarum.JAR) for index operations in [Oxygen Author Mode](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/editing-xml-documents-author.html).
 * Insert actions for frequently used tags.
 
 ## Installation
@@ -28,15 +29,13 @@ This is the preferred installation method for editors:
 7. Restart the application. Note: The framework/add-on should keep itself up to date. Updates will be offered during the start of oXygen.
 8. Open `Options > Preferences > Document Type Associations` on Windows or `Oxygen XML Editor > Preferences > Document Type Associations` (on other platforms) from the menu and make sure the framework is activated.
 
-See https://www.oxygenxml.com/doc/versions/26.1/ug-editor/topics/packing-and-deploying-addons.html#packing-and-deploying-addons
-
 ### Project file and Git
 
 This is the preferred method for developers:
 
 1. Clone this repository.
 2. Open project file (`dseas-framework.xpr`) with Oxygen XML Editor.
-3. Go to **Options > Preferences > Network Connection Settings > Trusted Hosts** and add an entry for `sparql.geovistory.org`.
+3. Go to **Options > Preferences > Network Connection Settings > Trusted Hosts** and add an entry for `sparql.geovistory.org` and `https://api.zotero.org`.
 4. Go to **Options > Preferences > Document Type Association > Locations** and select **Project Options** at the bottom of the page.
 5. In the **Additional frameworks directories** list, add a new entry: **`${pd}`**.
 6. Go back to **Document Type Association** and select the framework.
@@ -56,4 +55,11 @@ This framework is made possible thanks to the inspirations from this projects:
 
 ## License
 
-* [dse-as/oxygen-framework](https://github.com/dse-as/oxygen-framework): See [LICENSE](LICENSE)
+* [dse-as/oxygen-framework](https://github.com/dse-as/oxygen-framework): ISC, see [LICENSE](LICENSE)
+
+### Third party licenses
+
+This framework contains software and icons from third parties:
+
+* [ediarum.jar](https://github.com/ediarum/ediarum.JAR) by Berlin-Brandenburg Academey of Sciences and Humanities: GNU Lesser General Public License, see [LGPL.txt](https://github.com/ediarum/ediarum.JAR/blob/main/LGPL.txt)
+* Icons from [HisTEI](https://github.com/odaata/HisTEI) by Mike Olson: MIT, see [LICENSE](https://github.com/odaata/HisTEI/blob/master/LICENSE)
