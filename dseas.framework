@@ -1321,6 +1321,52 @@ rs_org</String>
 									</action>
 									<action>
 										<field name="id">
+											<String>open_iiif_images</String>
+										</field>
+										<field name="name">
+											<String>In IIIF-Viewer öffnen</String>
+										</field>
+										<field name="description">
+											<String>Faksimile im Universal Viewer öffnen</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/uv-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/uv-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>https://uv-v4.netlify.app/#?manifest=https://iiif.annemarie-schwarzenbach.ch/presentation/${xpath_eval(ancestor::*:TEI[1]/@xml:id)}.json</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>open_manual</String>
 										</field>
 										<field name="name">
@@ -1871,6 +1917,12 @@ rs_bibl</String>
 													<String>note</String>
 												</field>
 											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>open_iiif_images</String>
+												</field>
+											</toolbarItem>											
 											<toolbarSeparator/>
 											<toolbarItem>
 												<field name="actionID">
