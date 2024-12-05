@@ -628,10 +628,10 @@
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Personenregister</String>
 										</field>
 										<field name="largeIconPath">
-											<String></String>
+											<String>${framework}/images/person-20.png</String>
 										</field>
 										<field name="smallIconPath">
-											<String></String>
+											<String>${framework}/images/person-16.png</String>
 										</field>
 										<field name="accessKey">
 											<String></String>
@@ -749,10 +749,10 @@ rs_person</String>
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Organisationenregister</String>
 										</field>
 										<field name="largeIconPath">
-											<String></String>
+											<String>${framework}/images/org-20.png</String>
 										</field>
 										<field name="smallIconPath">
-											<String></String>
+											<String>${framework}/images/org-16.png</String>
 										</field>
 										<field name="accessKey">
 											<String></String>
@@ -1376,10 +1376,10 @@ rs_org</String>
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Orteregister</String>
 										</field>
 										<field name="largeIconPath">
-											<String></String>
+											<String>${framework}/images/place-20.png</String>
 										</field>
 										<field name="smallIconPath">
-											<String></String>
+											<String>${framework}/images/place-16.png</String>
 										</field>
 										<field name="accessKey">
 											<String></String>
@@ -1497,10 +1497,10 @@ rs_place</String>
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bibliographieregister</String>
 										</field>
 										<field name="largeIconPath">
-											<String></String>
+											<String>${framework}/images/bibl-20.png</String>
 										</field>
 										<field name="smallIconPath">
-											<String></String>
+											<String>${framework}/images/bibl-16.png</String>
 										</field>
 										<field name="accessKey">
 											<String></String>
@@ -1724,22 +1724,22 @@ rs_bibl</String>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
-													<String>rs_person_generate</String>
+													<String>rs_person</String>
 												</field>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
-													<String>rs_place_generate</String>
+													<String>rs_place</String>
 												</field>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
-													<String>rs_org_generate</String>
+													<String>rs_org</String>
 												</field>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
-													<String>rs_bibl_generate</String>
+													<String>rs_bibl</String>
 												</field>
 											</menuItem>
 											<menuSeparator/>
@@ -1847,22 +1847,22 @@ rs_bibl</String>
 											</toolbarItem>
 											<toolbarItem>
 												<field name="actionID">
-													<String>rs_person_generate</String>
+													<String>rs_person</String>
 												</field>
 											</toolbarItem>
 											<toolbarItem>
 												<field name="actionID">
-													<String>rs_place_generate</String>
+													<String>rs_place</String>
 												</field>
 											</toolbarItem>
 											<toolbarItem>
 												<field name="actionID">
-													<String>rs_org_generate</String>
+													<String>rs_org</String>
 												</field>
 											</toolbarItem>
 											<toolbarItem>
 												<field name="actionID">
-													<String>rs_bibl_generate</String>
+													<String>rs_bibl</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
