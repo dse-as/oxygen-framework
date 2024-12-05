@@ -27,6 +27,7 @@
 					<field name="classpath">
 						<String-array>
 							<String>${framework}/ediarum-3.1.0.jar</String>
+							<String>${framework}/resources/</String>
 						</String-array>
 					</field>
 					<field name="parentClassLoaderID">
