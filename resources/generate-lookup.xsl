@@ -91,17 +91,17 @@
                         <xsl:sort select="?('date')"/>
                         <xsl:sort select="?('title')"/>
                         <xsl:variable name="id" select="?('key')"/>
+                        <xsl:variable name="itemType" select="?('itemType')"/>
                         <xsl:variable name="label" select="?('title')"/>
-                        <xsl:variable name="creators" select="?('creators')[1]?*?('lastName')[1] || (if (?('creators')[1]?*?('lastName')[2][normalize-space()]) then ' et al.' else '')"/>
+                        <xsl:variable name="creator" select="?('creators')[1]?*?('lastName')[1]"/>
                         <xsl:variable name="date" select="?('date')"/>
-                        <li id="{$id}" val="{(if ($creators) then $creators else 'NN') ||
+                        <li id="{$id}" val="{(if ($creator) then $creator else 'NN') ||
                             (if ($date) then ' (' || $date || '): ' else ': ') ||
-                            $label || ' [' || $id || ']'}"/>  
+                            $label || ' [' || $id || '], ' || $itemType}"/>  
                     </xsl:for-each>
                 </ul>
             </xsl:result-document>
         </xsl:if>            
-        
         
     </xsl:template>
     
