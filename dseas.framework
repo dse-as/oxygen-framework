@@ -354,7 +354,7 @@
 											<String>U</String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl shift B</String>
+											<String>ctrl shift G</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -385,10 +385,10 @@
 											<String>hi[italic]</String>
 										</field>
 										<field name="name">
-											<String>Kurisv</String>
+											<String>Kursiv</String>
 										</field>
 										<field name="description">
-											<String>Kurisver Text</String>
+											<String>Kursive Textstelle</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/italic-20.png</String>
@@ -431,10 +431,10 @@
 											<String>hi[subscript]</String>
 										</field>
 										<field name="name">
-											<String>Tiefstellen</String>
+											<String>Tiefgestellt</String>
 										</field>
 										<field name="description">
-											<String>Tiefstellen</String>
+											<String>Tiefgestellter Text</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/subscript-20.png</String>
@@ -481,10 +481,10 @@
 											<String>hi[superscript]</String>
 										</field>
 										<field name="name">
-											<String>Hochstellen</String>
+											<String>Hochgestellt</String>
 										</field>
 										<field name="description">
-											<String>Hochstellen</String>
+											<String>Hochgestellter Text</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/superscript-20.png</String>
@@ -759,7 +759,7 @@ rs_person</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt P</String>
+											<String>ctrl alt O</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -833,7 +833,7 @@ rs_person</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt shift P</String>
+											<String>ctrl alt shift O</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -911,10 +911,10 @@ rs_org</String>
 											<String>pb</String>
 										</field>
 										<field name="name">
-											<String>Seitenwechsel</String>
+											<String>Seitenanfang</String>
 										</field>
 										<field name="description">
-											<String></String>
+											<String>Seitenanfang im Text</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/page_break-20.png</String>
@@ -1432,7 +1432,7 @@ rs_org</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt P</String>
+											<String>ctrl alt L</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1506,7 +1506,7 @@ rs_org</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt shift P</String>
+											<String>ctrl alt shift L</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1553,7 +1553,7 @@ rs_place</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt P</String>
+											<String>ctrl alt B</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1627,7 +1627,7 @@ rs_place</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt shift P</String>
+											<String>ctrl alt shift B</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1733,6 +1733,11 @@ rs_bibl</String>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
+													<String>note</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
 													<String>gap</String>
 												</field>
 											</menuItem>
@@ -1787,12 +1792,6 @@ rs_bibl</String>
 											<menuItem>
 												<field name="actionID">
 													<String>rs_bibl</String>
-												</field>
-											</menuItem>
-											<menuSeparator/>
-											<menuItem>
-												<field name="actionID">
-													<String>note</String>
 												</field>
 											</menuItem>
 										</menuEntry-array>
@@ -1857,6 +1856,11 @@ rs_bibl</String>
 											<toolbarSeparator/>
 											<toolbarItem>
 												<field name="actionID">
+													<String>note</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
 													<String>gap</String>
 												</field>
 											</toolbarItem>
@@ -1910,12 +1914,6 @@ rs_bibl</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>rs_bibl</String>
-												</field>
-											</toolbarItem>
-											<toolbarSeparator/>
-											<toolbarItem>
-												<field name="actionID">
-													<String>note</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
