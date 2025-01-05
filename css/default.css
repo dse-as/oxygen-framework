@@ -83,8 +83,15 @@ p {
     margin-bottom: 10px;
 }
 
+ab[type='redactional'] {
+    display:block;
+    padding:2px;
+    margin:2px;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
 
-ab[type='redactional']:before {
+ab[type='redactional']:focus-within:before {
     -oxy-append-content: 
         oxy_label(
             text, "Redaktioneller Beitrag"
@@ -93,14 +100,12 @@ ab[type='redactional']:before {
         )
     ;
     display:block;
+    margin-left: 12px;
+    padding-bottom: 0.5em;
 }
 
-ab[type='redactional'] {
-    display:block;
-    padding:2px;
-    margin:2px;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+ab[type='redactional']:focus-within {
+    border-left: 2px solid steelblue;
 }
 
 /* Page, Line, and Column Beginning */
@@ -130,7 +135,7 @@ lb[break="no"] {
 lb:focus {
     content:
         oxy_label(
-            text, "@break: "
+            text, "break: "
             width, 60px
             styles, "@import 'labels_sub.css';"
         )
@@ -163,7 +168,7 @@ pb:focus:after {
     content:
         " "
         oxy_label(
-            text, "@n: "
+            text, "n: "
             styles, "@import 'labels_sub.css';"
         )
         oxy_textfield(
@@ -172,7 +177,7 @@ pb:focus:after {
         )
         " "
         oxy_label(
-            text, "@break: "
+            text, "break: "
             width, 60px
             styles, "@import 'labels_sub.css';"
         )
@@ -184,13 +189,30 @@ pb:focus:after {
 }
 
 cb {
-    content: "\A⣿";
+    content: "\A⣿ ";
     display:inline;
     padding-right: 6px;
     padding-bottom: 0.5em;
     color: steelblue;
     -oxy-display-tags: none;
     visibility:-oxy-collapse-text;
+}
+
+cb[type]:not(:focus) {
+    -oxy-append-content: "[" attr(type) "] ";
+}
+
+cb:focus {
+    -oxy-append-content:
+        oxy_label(
+            text, " type: "
+            width, 60px
+        )
+        oxy_combobox(
+            edit, "@type"
+            values, "start, end"
+        )
+    ;
 }
 
 /* Byline */
@@ -716,25 +738,36 @@ text abbr {
 }
 
 text gap {
+    content: " … ";
     background-color: #FFC458;
     margin-left: 2px;
     margin-right: 2px;
     -oxy-display-tags: none;
 }
 
-text gap {
-    content: " … ";
+text gap[reason]:not(:focus) {
+    -oxy-append-content: "[" attr(reason) "] ";
 }
 
-text unclear {
-    background-color: #C39595;
-    margin-left: 2px;
-    margin-right: 2px;
-    -oxy-display-tags: none;
+text gap:focus {
+    -oxy-append-content:
+        oxy_label(
+            text, " reason: "
+            width, 60px
+        )
+        oxy_combobox(
+            edit, "@reason"
+            values, "illegible, lost"
+        )
+    ;
 }
 
 text unclear {
     content: " ? ";
+    background-color: #C39595;
+    margin-left: 2px;
+    margin-right: 2px;
+    -oxy-display-tags: none;
 }
 
 /* Quotes */
