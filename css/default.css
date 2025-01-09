@@ -229,9 +229,20 @@ byline {
 /* Correspondence Description */
 
 correspAction {
+    background-color: #ffffff;
     display: block;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
     visibility: -oxy-collapse-text;
+}
+
+correspAction[type='sent']:before {
+    background-color: #e5f5f9;
+    display: block;
+    content: "Korrespondenzmetadaten";
+    font-weight: bold;
+    padding: 0 0 0.3em 0;
 }
 
 correspAction[type='sent'] {
@@ -255,27 +266,57 @@ correspAction date {
 }
 
 correspAction[type='sent'] persName:before {
-    content: "Absender: ";
+    content:
+        oxy_label(
+            text, "Absender: "
+            styles, "@import 'labels.css';"
+        )
+    ;
 }
 
 correspAction[type='received'] persName:before {
-    content: "Empfänger: ";
+    content:
+        oxy_label(
+            text, "Empfänger: "
+            styles, "@import 'labels.css';"
+        )
+    ; 
 }
 
 correspAction[type='sent'] placeName:before {
-    content: "Schreibort: ";
+    content:
+        oxy_label(
+            text, "Schreibort: "
+            styles, "@import 'labels.css';"
+        )
+    ;
 }
 
 correspAction[type='received'] placeName:before {
-    content: "Empfangsort: ";
+    content:
+        oxy_label(
+            text, "Empfangsort: "
+            styles, "@import 'labels.css';"
+        )
+    ;
 }
 
 correspAction[type='sent'] date:before {
-    content: "Schreibdatum: ";
+    content:
+        oxy_label(
+            text, "Schreibdatum: "
+            styles, "@import 'labels.css';"
+        )
+    ;
 }
 
 correspAction[type='received'] date:before {
-    content: "Empfangsdatum: ";
+    content:
+        oxy_label(
+            text, "Empfangsdatum: "
+            styles, "@import 'labels.css';"
+        )
+    ;
 }
 
 /* Correspondence */
@@ -454,11 +495,10 @@ rs[type='keyword']:focus-within:after {
 /* teiHeader */
 
 teiHeader {
-    padding: 0 0 0.5em 0;
+    padding: 0.5em 0.5em 0.5em 0;
     margin: 0 0 0.5em 0;
-    border-bottom: 1px #000000 solid;
-    font-family: "Roboto-italic";
-
+    border: 1px steelblue dashed;
+    background-color: #e5f5f9;
 }
 
 titleStmt {
@@ -508,35 +548,30 @@ profileDesc textClass {
     padding: 0.5em 0 0 0;
 }
 
-profileDesc abstract:before {
-    display: block;
-    content: "Regest: ";
-    font-weight: bold;
-}
-
-profileDesc abstract p {
-    display: block;
-    -oxy-placeholder-content: "[Regest hier eingeben]"
-}
-
 /* Anmerkungen */
-
-notesStmt note:before {
-    content: "Anmerkungen zum Text";
-    font-weight: bold;
-}
-
-notesStmt note p {
-    display: block;
-    -oxy-placeholder-content: "[Text hier eingeben]";
-}
 
 notesStmt {
     display: block;
-    margin: 1em 0 1em 0;
-    padding: 1em 0 1em 0;
-    border-top: 1px solid silver;
-    border-bottom: 1px solid silver;   
+    font-size: 0.9em;
+    visibility: -oxy-collapse-text;
+}
+
+notesStmt note[type='global_comment']:before {
+    background-color: #e5f5f9;
+    display: block;
+    content: "Übersichtskommentar";
+    font-weight: bold;
+    padding: 0 0 0.3em 0;
+}
+
+notesStmt note[type='global_comment'] {
+    background-color: #ffffff;
+    display: block;
+    visibility: visible;
+}
+
+notesStmt note[type='global_comment'] p {
+    display: block;
 }
 
 /* text */

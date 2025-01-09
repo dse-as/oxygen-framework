@@ -12,6 +12,11 @@
          <publicationStmt>
             <p><!--Information about publication or distribution--></p>
          </publicationStmt>
+         <notesStmt>
+            <note type="global_comment">
+               <p/>
+            </note>
+         </notesStmt>
          <sourceDesc>
             <p><!--Information about the source--></p>
          </sourceDesc>
