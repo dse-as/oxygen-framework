@@ -107,12 +107,23 @@ ab[type='redactional']:before {
 
 /* Page, Line, and Column Beginning */
 
-lb:first-of-type:before {
+lb {
+    content: "\A↪";
+}
+
+ab > lb:first-of-type,
+p > lb:first-of-type,
+head > lb:first-of-type,
+byline > lb:first-of-type,
+salute > lb:first-of-type,
+signed > lb:first-of-type,
+dateline > lb:first-of-type,
+p > lb:first-of-type {
     content: "↪";
 }
 
-lb:not(:first-of-type):before {
-    content: "\A↪";
+pb + lb {
+    content: "↪";
 }
 
 lb {
@@ -130,7 +141,7 @@ lb[break="no"] {
 }
 
 lb:focus {
-    content:
+    -oxy-append-content:
         oxy_label(
             text, "break: "
             width, 60px

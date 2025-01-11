@@ -908,6 +908,52 @@ rs_org</String>
 									</action>
 									<action>
 										<field name="id">
+											<String>lb</String>
+										</field>
+										<field name="name">
+											<String>Seitenanfang</String>
+										</field>
+										<field name="description">
+											<String>Seitenanfang im Text</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/line_break-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/line_break-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("lb") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;lb xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>pb</String>
 										</field>
 										<field name="name">
@@ -1804,6 +1850,11 @@ rs_bibl</String>
 													<String>pb</String>
 												</field>
 											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>lb</String>
+												</field>
+											</menuItem>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
@@ -1930,6 +1981,11 @@ rs_bibl</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>pb</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>lb</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
