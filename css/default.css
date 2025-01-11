@@ -84,6 +84,7 @@ p {
 }
 
 ab[type='redactional'] {
+    border-left: 2px solid steelblue;
     display:block;
     padding:2px;
     margin:2px;
@@ -91,7 +92,7 @@ ab[type='redactional'] {
     margin-bottom: 1em;
 }
 
-ab[type='redactional']:focus-within:before {
+ab[type='redactional']:before {
     -oxy-append-content: 
         oxy_label(
             text, "Redaktioneller Beitrag"
@@ -102,10 +103,6 @@ ab[type='redactional']:focus-within:before {
     display:block;
     margin-left: 12px;
     padding-bottom: 0.5em;
-}
-
-ab[type='redactional']:focus-within {
-    border-left: 2px solid steelblue;
 }
 
 /* Page, Line, and Column Beginning */
@@ -158,7 +155,7 @@ pb {
     border-style:solid none;
     border-width:1px 0px 0px 0px;
     vertical-align:middle;
-    padding: 0 0.5em 0 0;
+    padding: 0.5em 0.5em 0.5em 0;
     visibility:-oxy-collapse-text;
 }
 
@@ -175,17 +172,13 @@ pb:focus:after {
             edit, "@n"
             columns, 4
         )
-        " "
-        oxy_label(
-            text, "break: "
-            width, 60px
-            styles, "@import 'labels_sub.css';"
-        )
-        oxy_combobox(
-            edit, "@break"
-            values, "yes, no"
-        )
     ;
+}
+
+pb[n]:not(:focus) {
+    -oxy-append-content: " [" attr(n) "] ";
+    font-size: 0.9em;
+    color: steelblue;
 }
 
 cb {
@@ -321,8 +314,8 @@ correspAction[type='received'] date:before {
 
 /* Correspondence */
 
-opener:focus-within:before,
-closer:focus-within:before {
+opener:before,
+closer:before {
     -oxy-append-content: 
         oxy_label(
             text, oxy_name()
@@ -340,9 +333,10 @@ closer {
     visibility: -oxy-collapse-text;
 }
 
-opener:focus-within,
-closer:focus-within {
+opener,
+closer {
     border-left: 2px solid steelblue;
+    padding-bottom: 0.5em;
 }
 
 dateline,
@@ -374,7 +368,7 @@ address {
     visibility: -oxy-collapse-text;
 }
 
-address:focus-within:before {
+address:before {
     -oxy-append-content: 
         oxy_label(
             text, oxy_name()
@@ -504,13 +498,18 @@ teiHeader {
 titleStmt {
     display: block;
     margin: 0 0 1em 0;
-    visibility: visible;
+    visibility: -oxy-collapse-text;
 }
 
 titleStmt title {
     -oxy-placeholder-content: "Titel";
     -oxy-display-tags: none;
+    background-color: #ffffff;
+    display: block;
+    font-style: italic;
     font-size: 1.5em;
+    padding: 0 0 0 0.3em;
+    visibility: visible;
 } 
 
 titleStmt author,
@@ -705,6 +704,18 @@ text add {
     -oxy-placeholder-content: "[Hinzufügung]"
 }
 
+text add:focus:after {
+    -oxy-append-content:
+        oxy_label(
+            text, " place: "
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@place"
+        )
+    ;
+}
+
 /* Renditions */
 
 text hi[rendition="#b"] {
@@ -799,15 +810,11 @@ text gap {
     -oxy-display-tags: none;
 }
 
-text gap[reason]:not(:focus) {
-    -oxy-append-content: "[" attr(reason) "] ";
-}
-
 text gap:focus {
     -oxy-append-content:
         oxy_label(
             text, " reason: "
-            width, 60px
+            styles, "@import 'labels_sub.css';"
         )
         oxy_combobox(
             edit, "@reason"
@@ -817,7 +824,6 @@ text gap:focus {
 }
 
 text unclear {
-    content: " ? ";
     background-color: #C39595;
     margin-left: 2px;
     margin-right: 2px;
