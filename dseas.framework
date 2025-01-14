@@ -623,7 +623,7 @@
 											<String>rs_person</String>
 										</field>
 										<field name="name">
-											<String>Personenreferenz (ohne Neugenerierung)</String>
+											<String>Personenreferenz</String>
 										</field>
 										<field name="description">
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Personenregister</String>
@@ -744,7 +744,7 @@ rs_person</String>
 											<String>rs_org</String>
 										</field>
 										<field name="name">
-											<String>Organisationsreferenz (ohne Neugenerierung)</String>
+											<String>Organisationsreferenz</String>
 										</field>
 										<field name="description">
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Organisationenregister</String>
@@ -911,10 +911,10 @@ rs_org</String>
 											<String>lb</String>
 										</field>
 										<field name="name">
-											<String>Seitenanfang</String>
+											<String>Zeilenanfang</String>
 										</field>
 										<field name="description">
-											<String>Seitenanfang im Text</String>
+											<String>Zeilenanfang im Text</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/line_break-20.png</String>
@@ -1233,10 +1233,10 @@ rs_org</String>
 											<String>quote</String>
 										</field>
 										<field name="name">
-											<String>Zitat im Text</String>
+											<String>Zitat</String>
 										</field>
 										<field name="description">
-											<String>Zitat</String>
+											<String>Zitat im Text</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/quote-20.png</String>
@@ -1261,6 +1261,52 @@ rs_org</String>
 															<entry>
 																<String>fragment</String>
 																<String>&lt;quote xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>g</String>
+										</field>
+										<field name="name">
+											<String>Geminationsstrich</String>
+										</field>
+										<field name="description">
+											<String>Geminationsstrich im Text</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/mgem-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/mgem-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("g") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;g xmlns='http://www.tei-c.org/ns/1.0'/></String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1463,7 +1509,7 @@ rs_org</String>
 											<String>rs_place</String>
 										</field>
 										<field name="name">
-											<String>Ortereferenz (ohne Neugenerierung)</String>
+											<String>Ortereferenz</String>
 										</field>
 										<field name="description">
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Orteregister</String>
@@ -1584,7 +1630,7 @@ rs_place</String>
 											<String>rs_bibl</String>
 										</field>
 										<field name="name">
-											<String>Bibliographiereferenz (ohne Neugenerierung)</String>
+											<String>Bibliographiereferenz</String>
 										</field>
 										<field name="description">
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bibliographieregister</String>
@@ -1705,7 +1751,7 @@ rs_bibl</String>
 											<String>rs_keyword</String>
 										</field>
 										<field name="name">
-											<String>Schlagwortreferenz (ohne Neugenerierung)</String>
+											<String>Schlagwortreferenz</String>
 										</field>
 										<field name="description">
 											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Schlagwortregister</String>
@@ -1896,6 +1942,12 @@ rs_bibl</String>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
+													<String>g</String>
+												</field>
+											</menuItem>
+											<menuSeparator/>
+											<menuItem>
+												<field name="actionID">
 													<String>generate_lookup_all</String>
 												</field>
 											</menuItem>
@@ -2023,6 +2075,12 @@ rs_bibl</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>quote</String>
+												</field>
+											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>g</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>

@@ -244,13 +244,21 @@ correspAction {
 correspAction[type='sent']:before {
     background-color: #e5f5f9;
     display: block;
-    content: "Korrespondenzmetadaten";
+    content: "Absendeangaben";
     font-weight: bold;
     padding: 0 0 0.3em 0;
 }
 
 correspAction[type='sent'] {
     margin-bottom: 0.5em;
+}
+
+correspAction[type="received"]:before {
+    background-color: #e5f5f9;
+    display: block;
+    content: "Empfangsangaben";
+    font-weight: bold;
+    padding: 0 0 0.3em 0;
 }
 
 correspAction persName,
@@ -272,7 +280,7 @@ correspAction date {
 correspAction[type='sent'] persName:before {
     content:
         oxy_label(
-            text, "Absender: "
+            text, "Absender/in: "
             styles, "@import 'labels.css';"
         )
     ;
@@ -281,7 +289,7 @@ correspAction[type='sent'] persName:before {
 correspAction[type='received'] persName:before {
     content:
         oxy_label(
-            text, "Empfänger: "
+            text, "Empfänger/in: "
             styles, "@import 'labels.css';"
         )
     ; 
@@ -654,6 +662,23 @@ text note p {
     display: block;
 }
 
+text g {
+    text-decoration: overline fuchsia;
+    -oxy-display-tags: none;
+}
+
+text g:focus:after {
+    -oxy-append-content:
+        oxy_label(
+            text, " ref: "
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@ref"
+            values, "#ngem, #mgem"
+        )
+    ;
+}
 /* Tables  */
 
 text table {
