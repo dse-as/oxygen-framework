@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-14T13:43:33Z. .
+Schema generated from ODD source 2025-01-15T23:06:51Z. .
 TEI Edition: Version 4.6.0. Last updated on
         4th April 2023, revision f18deffba
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.6.0/
@@ -1345,28 +1345,40 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
    </define>
    <define name="tei_model.emphLike">
       <choice>
+         <ref name="tei_foreign"/>
          <ref name="tei_title"/>
       </choice>
    </define>
    <define name="tei_model.emphLike_alternation">
       <choice>
+         <ref name="tei_foreign"/>
          <ref name="tei_title"/>
       </choice>
    </define>
    <define name="tei_model.emphLike_sequence">
+      <ref name="tei_foreign"/>
       <ref name="tei_title"/>
    </define>
    <define name="tei_model.emphLike_sequenceOptional">
+      <optional>
+         <ref name="tei_foreign"/>
+      </optional>
       <optional>
          <ref name="tei_title"/>
       </optional>
    </define>
    <define name="tei_model.emphLike_sequenceOptionalRepeatable">
       <zeroOrMore>
+         <ref name="tei_foreign"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_title"/>
       </zeroOrMore>
    </define>
    <define name="tei_model.emphLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tei_foreign"/>
+      </oneOrMore>
       <oneOrMore>
          <ref name="tei_title"/>
       </oneOrMore>
@@ -2439,6 +2451,7 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          <ref name="tei_model.milestoneLike"/>
          <ref name="tei_model.noteLike"/>
          <ref name="tei_model.global.edit"/>
+         <ref name="tei_figure"/>
       </choice>
    </define>
    <define name="tei_model.biblPart">
@@ -2682,6 +2695,14 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          <ref name="tei_att.declaring.attributes"/>
          <ref name="tei_att.fragmentable.attributes"/>
          <ref name="tei_att.written.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_foreign">
+      <element name="foreign">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(foreign) identifies a word or phrase as belonging to some language other than that of the surrounding text. [3.3.2.1. Foreign Words or Expressions]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>
@@ -4934,6 +4955,25 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="tei_macro.specialPara"/>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.tableDecoration.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_figure">
+      <element name="figure">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(figure) groups elements representing or containing graphic information such as an illustration, formula, or figure. [14.4. Specific Elements for Graphic Images]</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <ref name="tei_model.headLike"/>
+               <ref name="tei_model.common"/>
+               <ref name="tei_model.graphicLike"/>
+               <ref name="tei_model.global"/>
+               <ref name="tei_model.divBottom"/>
+            </choice>
+         </zeroOrMore>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.placement.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <ref name="tei_att.written.attributes"/>
          <empty/>
       </element>
    </define>
