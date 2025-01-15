@@ -166,11 +166,12 @@ pb {
     border-style:solid none;
     border-width:1px 0px 0px 0px;
     vertical-align:middle;
+    margin-top: 0.5em;
     padding: 0.5em 0.5em 0.5em 0;
     visibility:-oxy-collapse-text;
 }
 
-pb:focus:after {
+pb:after {
     padding: 0px;
     vertical-align: middle;
     content:
@@ -184,12 +185,6 @@ pb:focus:after {
             columns, 4
         )
     ;
-}
-
-pb[n]:not(:focus) {
-    -oxy-append-content: " [" attr(n) "] ";
-    font-size: 0.9em;
-    color: steelblue;
 }
 
 cb {
@@ -662,6 +657,42 @@ text note p {
     display: block;
 }
 
+/* fw */
+
+fw {
+    font-style: italic;
+    color: gray;
+    -oxy-display-tags: none; 
+}
+
+/* figure */
+
+text figure {
+    display: block;
+    margin: 0 0 0 0.5em;
+    -oxy-display-tags: none;
+    -oxy-placeholder-content: "[Zeichnung o.ä.]";
+}
+
+text figure head {
+    -oxy-display-tags: none;
+    -oxy-placeholder-content: "[Überschrift der Abbildung]";
+}
+
+text figure p {
+    -oxy-placeholder-content: "[Bildunterschrift der Autorin]"
+}
+
+text figure graphic {
+    content: oxy_url(attr(url));
+    display: block;
+    margin-bottom: 0.5em;
+    width: 300px;
+    -oxy-display-tags: none;
+}
+
+/* glyph */
+
 text g {
     text-decoration: overline fuchsia;
     -oxy-display-tags: none;
@@ -679,6 +710,7 @@ text g:focus:after {
         )
     ;
 }
+
 /* Tables  */
 
 text table {
@@ -866,6 +898,23 @@ text unclear {
     -oxy-display-tags: none;
 }
 
+text foreign {
+    -oxy-display-tags: none;
+    background-color: #e0e0e0;
+}
+
+text foreign:focus:after {
+    -oxy-append-content:
+        oxy_label(
+            text, " xml:lang: "
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@xml:lang"
+        )
+    ;
+}
+
 /* Quotes */
 
 text quote {
@@ -890,18 +939,22 @@ date {
 
 /* Facsimile */
 
-facsimile {
+teiHeader facsimile {
     font-size: smaller;
     display: block;
     padding: 0.5em 0 0.5em 0;
 }
-facsimile:before {
+
+teiHeader facsimile:before {
     display: block;
     content: "Digitalisat"
              oxy_label(text, oxy_xpath("' (Regionen: '||(count(descendant::*:zone[@rendition='TextRegion']))||' / '"))
              oxy_label(text, oxy_xpath("' Zeilen: '||(count(descendant::*:zone[not(@rendition='TextRegion')]))||')'"));
     font-weight: bold;
 }
-surface, graphic, zone {
+
+teiHeader surface,
+teiHeader graphic,
+teiHeader zone {
     display: none;
 }
