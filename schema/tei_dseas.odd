@@ -42,7 +42,7 @@
         <p>Created from scratch by James Cummings, but looking at previous tei_minimal and tei_bare exemplars by SPQR and
           LR.</p>
       </sourceDesc>
-    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-13T23:05:17.921Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-14T13:43:08.740Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-15T23:05:17.893Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
+    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-13T23:05:17.921Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-14T13:43:08.740Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-15T23:05:17.893Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-18T14:36:20.519Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
   </teiHeader>
   <text>
     <body>
@@ -66,10 +66,10 @@
       <schemaSpec ident="tei_dseas" start="TEI" prefix="tei_" targetLang="en" docLang="en">
         
         <!-- required minimal header elements -->
-        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc correspDesc textClass notesStmt keywords profileDesc catRef correspAction idno"/>
+        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc correspDesc textClass notesStmt keywords profileDesc catRef correspAction idno edition editionStmt"/>
         
         <!-- required core elements (p and title for use in titleStmt) -->
-        <moduleRef key="core" include="p title rs note head pb lb lg l address addrLine cb listBibl bibl add del abbr quote unclear gap hi list item date publisher graphic author foreign"/>
+        <moduleRef key="core" include="p title rs note head pb lb lg l address addrLine cb listBibl bibl add del abbr quote unclear gap hi list item date publisher graphic author foreign editor ref"/>
         
         <!-- required textstructure elements (TEI, text, and body) -->
         <moduleRef key="textstructure" include="TEI text body opener closer front back div salute dateline signed postscript byline"/>
@@ -78,7 +78,7 @@
         <moduleRef key="tei"/>
         
         
-      <moduleRef key="msdescription" include="msDesc msIdentifier repository altIdentifier"/><moduleRef key="gaiji" include="g"/><moduleRef key="namesdates" include="orgName persName placeName"/><moduleRef key="transcr" include="facsimile surface zone fw"/><moduleRef key="linking" include="ab"/><moduleRef key="figures" include="table row cell figure"/><moduleRef key="analysis" include="pc"/><classRef key="att.global.analytic"/></schemaSpec>
+      <moduleRef key="msdescription" include="msDesc msIdentifier repository altIdentifier additional surrogates"/><moduleRef key="gaiji" include="g"/><moduleRef key="namesdates" include="orgName persName placeName"/><moduleRef key="transcr" include="facsimile surface zone fw"/><moduleRef key="linking" include="ab"/><moduleRef key="figures" include="table row cell figure"/><moduleRef key="analysis" include="pc"/><classRef key="att.global.analytic"/></schemaSpec>
     </body>
   </text>
 </TEI>

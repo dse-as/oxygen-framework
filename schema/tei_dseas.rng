@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-15T23:06:51Z. .
+Schema generated from ODD source 2025-01-18T14:37:39Z. .
 TEI Edition: Version 4.6.0. Last updated on
         4th April 2023, revision f18deffba
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.6.0/
@@ -290,6 +290,17 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
             <data type="token">
                <param name="pattern">[^\p{C}\p{Z}]+</param>
             </data>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.cReferencing.attributes">
+      <ref name="tei_att.cReferencing.attribute.cRef"/>
+   </define>
+   <define name="tei_att.cReferencing.attribute.cRef">
+      <optional>
+         <attribute name="cRef">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(canonical reference) specifies the destination of the pointer by supplying a canonical reference expressed using the scheme defined in a <code xmlns="http://www.w3.org/1999/xhtml">&lt;refsDecl&gt;</code> element in the TEI header</a:documentation>
+            <data type="string"/>
          </attribute>
       </optional>
    </define>
@@ -1682,22 +1693,32 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       </choice>
    </define>
    <define name="tei_model.ptrLike">
-      <notAllowed/>
+      <choice>
+         <ref name="tei_ref"/>
+      </choice>
    </define>
    <define name="tei_model.ptrLike_alternation">
-      <notAllowed/>
+      <choice>
+         <ref name="tei_ref"/>
+      </choice>
    </define>
    <define name="tei_model.ptrLike_sequence">
-      <empty/>
+      <ref name="tei_ref"/>
    </define>
    <define name="tei_model.ptrLike_sequenceOptional">
-      <empty/>
+      <optional>
+         <ref name="tei_ref"/>
+      </optional>
    </define>
    <define name="tei_model.ptrLike_sequenceOptionalRepeatable">
-      <empty/>
+      <zeroOrMore>
+         <ref name="tei_ref"/>
+      </zeroOrMore>
    </define>
    <define name="tei_model.ptrLike_sequenceRepeatable">
-      <notAllowed/>
+      <oneOrMore>
+         <ref name="tei_ref"/>
+      </oneOrMore>
    </define>
    <define name="tei_model.lPart">
       <notAllowed/>
@@ -2279,6 +2300,7 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
    <define name="tei_model.respLike">
       <choice>
          <ref name="tei_author"/>
+         <ref name="tei_editor"/>
       </choice>
    </define>
    <define name="tei_model.divWrapper">
@@ -2459,6 +2481,7 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          <ref name="tei_model.respLike"/>
          <ref name="tei_model.imprintPart"/>
          <ref name="tei_bibl"/>
+         <ref name="tei_edition"/>
          <ref name="tei_msIdentifier"/>
       </choice>
    </define>
@@ -2923,6 +2946,27 @@ Sample values include: 1] suspension (suspension); 2] contraction (contraction);
          <empty/>
       </element>
    </define>
+   <define name="tei_ref">
+      <element name="ref">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) defines a reference to another location, possibly modified by additional text or comment. [3.7. Simple Links and Cross-References 16.1. Links]</a:documentation>
+         <ref name="tei_macro.paraContent"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tei_dseas-ref-refAtts-constraint-report-7">
+            <rule context="tei:ref">
+               <report xmlns:rng="http://relaxng.org/ns/structure/1.0" test="@target and @cRef">Only one of the
+	attributes @target' and @cRef' may be supplied on <name/>
+               </report>
+            </rule>
+         </pattern>
+         <ref name="tei_att.cReferencing.attributes"/>
+         <ref name="tei_att.declaring.attributes"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.internetMedia.attributes"/>
+         <ref name="tei_att.pointing.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_list">
       <element name="list">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(list) contains any sequence of items organized as a list. [3.8. Lists]</a:documentation>
@@ -3107,6 +3151,16 @@ Elements]</a:documentation>
          <empty/>
       </element>
    </define>
+   <define name="tei_editor">
+      <element name="editor">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a secondary statement of responsibility for a bibliographic item, for example the name of an individual, institution or organization, (or of several such) acting as editor, compiler, translator, etc. [3.12.2.2. Titles, Authors, and Editors]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.naming.attributes"/>
+         <ref name="tei_att.datable.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_title">
       <element name="title">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(title) contains a title for any kind of work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement]</a:documentation>
@@ -3222,7 +3276,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei_dseas-l-abstractModel-structure-l-in-l-constraint-report-7">
+                  id="tei_dseas-l-abstractModel-structure-l-in-l-constraint-report-8">
             <rule context="tei:l">
                <sch:report xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3284,7 +3338,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei_dseas-lg-abstractModel-structure-lg-in-l-constraint-report-8">
+                  id="tei_dseas-lg-abstractModel-structure-lg-in-l-constraint-report-9">
             <rule context="tei:lg">
                <sch:report xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3320,6 +3374,9 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          <group>
             <group>
                <ref name="tei_titleStmt"/>
+               <optional>
+                  <ref name="tei_editionStmt"/>
+               </optional>
                <ref name="tei_publicationStmt"/>
                <optional>
                   <ref name="tei_notesStmt"/>
@@ -3344,6 +3401,32 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                <ref name="tei_model.respLike"/>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_editionStmt">
+      <element name="editionStmt">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(edition statement) groups information relating to one edition of a text. [2.2.2. The Edition Statement 2.2. The File Description]</a:documentation>
+         <choice>
+            <oneOrMore>
+               <ref name="tei_model.pLike"/>
+            </oneOrMore>
+            <group>
+               <ref name="tei_edition"/>
+               <zeroOrMore>
+                  <ref name="tei_model.respLike"/>
+               </zeroOrMore>
+            </group>
+         </choice>
+         <ref name="tei_att.global.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_edition">
+      <element name="edition">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(edition) describes the particularities of one edition of a text. [2.2.2. The Edition Statement]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
          <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
@@ -3814,7 +3897,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </optional>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei_dseas-div-abstractModel-structure-div-in-l-or-lg-constraint-report-9">
+                  id="tei_dseas-div-abstractModel-structure-div-in-l-or-lg-constraint-report-10">
             <rule context="tei:div">
                <sch:report xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3825,7 +3908,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei_dseas-div-abstractModel-structure-div-in-ab-or-p-constraint-report-10">
+                  id="tei_dseas-div-abstractModel-structure-div-in-ab-or-p-constraint-report-11">
             <rule context="tei:div">
                <sch:report xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4101,7 +4184,12 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
                <oneOrMore>
                   <ref name="tei_model.pLike"/>
                </oneOrMore>
-               <empty/>
+               <group>
+                  <optional>
+                     <ref name="tei_additional"/>
+                  </optional>
+                  <empty/>
+               </group>
             </choice>
          </group>
          <ref name="tei_att.global.attributes"/>
@@ -4134,7 +4222,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei_dseas-msIdentifier-msId_minimal-constraint-report-11">
+                  id="tei_dseas-msIdentifier-msId_minimal-constraint-report-12">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        test="not(parent::tei:msPart) and (local-name(*[1])='idno' or local-name(*[1])='altIdentifier' or normalize-space(.)='')">An msIdentifier must contain either a repository or location.</report>
@@ -4171,6 +4259,29 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.typed.attributes"/>
          <ref name="tei_att.datable.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_additional">
+      <element name="additional">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(additional) groups additional information, combining bibliographic information about a manuscript or other object, or surrogate copies of it, with curatorial or administrative information. [10.9. Additional Information]</a:documentation>
+         <group>
+            <optional>
+               <ref name="tei_surrogates"/>
+            </optional>
+            <optional>
+               <ref name="tei_listBibl"/>
+            </optional>
+         </group>
+         <ref name="tei_att.global.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_surrogates">
+      <element name="surrogates">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(surrogates) contains information about any representations of the manuscript or other object being described which may exist in the holding institution or elsewhere. [10.9. Additional Information]</a:documentation>
+         <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>
@@ -4821,7 +4932,7 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any component-level unit of text, acting as a container for phrase or inter level elements analogous to, but without the same constraints as, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="tei_macro.abContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei_dseas-ab-abstractModel-structure-ab-in-l-or-lg-constraint-report-13">
+                  id="tei_dseas-ab-abstractModel-structure-ab-in-l-or-lg-constraint-report-14">
             <rule context="tei:ab">
                <sch:report xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
