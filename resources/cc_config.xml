@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Allows contributing to the values presented on content completion for element and attribute values.
+    You can append to the values obtained from the schema or replace them all together.
+    These values could theoretically be given as literal values but it is better to obtain them
+    by executing an XSLT script.
+    
+    IMPORTANT: This file must be saved as cc_config.xml in a folder that is present in the Classpath
+    of the Document Type (or framework).
+-->
+<?xml-model href="http://www.oxygenxml.com/ns/ccfilter/config/ccConfigSchemaFilter.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.oxygenxml.com/ns/ccfilter/config http://www.oxygenxml.com/ns/ccfilter/config/ccConfigSchemaFilter.xsd"
+    xmlns="http://www.oxygenxml.com/ns/ccfilter/config">
+    
+    <valueProposals path="tei:foreign/@xml:lang" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="de"/>
+            <item value="en"/>
+            <item value="fr"/>
+            <item value="it"/>
+        </items>
+    </valueProposals>
+
+</config>
