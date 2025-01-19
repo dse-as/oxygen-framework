@@ -1883,7 +1883,17 @@ rs_bibl</String>
 										<menuEntry-array>
 											<menuItem>
 												<field name="actionID">
+													<String>open_iiif_images</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
 													<String>generate_lookup_all</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>open_manual</String>
 												</field>
 											</menuItem>
 										</menuEntry-array>
@@ -1999,11 +2009,6 @@ rs_bibl</String>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
-													<String>generate_lookup_all</String>
-												</field>
-											</menuItem>
-											<menuItem>
-												<field name="actionID">
 													<String>rs_person</String>
 												</field>
 											</menuItem>
@@ -2022,9 +2027,10 @@ rs_bibl</String>
 													<String>rs_bibl</String>
 												</field>
 											</menuItem>
+											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
-													<String>rs_keyword</String>
+													<String>generate_lookup_all</String>
 												</field>
 											</menuItem>
 										</menuEntry-array>
@@ -2142,11 +2148,6 @@ rs_bibl</String>
 											<toolbarSeparator/>
 											<toolbarItem>
 												<field name="actionID">
-													<String>generate_lookup_all</String>
-												</field>
-											</toolbarItem>
-											<toolbarItem>
-												<field name="actionID">
 													<String>rs_person</String>
 												</field>
 											</toolbarItem>
@@ -2165,21 +2166,10 @@ rs_bibl</String>
 													<String>rs_bibl</String>
 												</field>
 											</toolbarItem>
-											<toolbarItem>
-												<field name="actionID">
-													<String>rs_keyword</String>
-												</field>
-											</toolbarItem>
 											<toolbarSeparator/>
 											<toolbarItem>
 												<field name="actionID">
-													<String>open_iiif_images</String>
-												</field>
-											</toolbarItem>											
-											<toolbarSeparator/>
-											<toolbarItem>
-												<field name="actionID">
-													<String>open_manual</String>
+													<String>generate_lookup_all</String>
 												</field>
 											</toolbarItem>
 										</toolbarEntry-array>
