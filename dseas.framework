@@ -862,6 +862,52 @@ rs_org</String>
 									</action>
 									<action>
 										<field name="id">
+											<String>delete</String>
+										</field>
+										<field name="name">
+											<String>Element löschen</String>
+										</field>
+										<field name="description">
+											<String>Element komplett löschen</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::item</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocation</String>
+																<String>ancestor-or-self::item</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>rs_unwrap</String>
 										</field>
 										<field name="name">
@@ -1784,80 +1830,6 @@ rs_bibl</String>
 													</field>
 													<field name="operationID">
 														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
-													</field>
-												</actionMode>
-											</actionMode-array>
-										</field>
-										<field name="enabledInReadOnlyContext">
-											<Boolean>false</Boolean>
-										</field>
-									</action>
-<action>
-										<field name="id">
-											<String>rs_keyword</String>
-										</field>
-										<field name="name">
-											<String>Schlagwortreferenz</String>
-										</field>
-										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Schlagwortregister</String>
-										</field>
-										<field name="largeIconPath">
-											<String>${framework}/images/taxonomy-20.png</String>
-										</field>
-										<field name="smallIconPath">
-											<String>${framework}/images/taxonomy-16.png</String>
-										</field>
-										<field name="accessKey">
-											<String></String>
-										</field>
-										<field name="accelerator">
-											<String>ctrl alt K</String>
-										</field>
-										<field name="actionModes">
-											<actionMode-array>
-												<actionMode>
-													<field name="xpathCondition">
-														<String>oxy:allows-child-element("rs")</String>
-													</field>
-													<field name="argValues">
-														<serializableOrderedMap>
-															<entry>
-																<String>URL</String>
-																<String>${framework}/resources/lookup-keyword.xml</String>
-															</entry>
-															<entry>
-																<String>element</String>
-																<String>$ITEMS</String>
-															</entry>
-															<entry>
-																<String>item rendering</String>
-																<String>$XPATH{@val}</String>
-															</entry>
-															<entry>
-																<String>item separator</String>
-																<String> </String>
-															</entry>
-															<entry>
-																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='keyword' xml:id='$XPATH{@id}' /></String>
-															</entry>
-															<entry>
-																<String>multiple selection</String>
-																<String>false</String>
-															</entry>
-															<entry>
-																<String>namespaces</String>
-																<String>tei:http://www.tei-c.org/ns/1.0</String>
-															</entry>
-															<entry>
-																<String>node</String>
-																<String>//li</String>
-															</entry>
-														</serializableOrderedMap>
-													</field>
-													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>

@@ -32,6 +32,13 @@
                     <placeName key="addReferenceHere"/>
                 </correspAction>
              </correspDesc>
+             <textClass>
+                <keywords ana="keywords">
+                    <list>
+                        <item/>
+                    </list>
+                </keywords>
+             </textClass>
         </profileDesc>
     </teiHeader>
     <text>

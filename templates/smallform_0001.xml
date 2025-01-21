@@ -21,6 +21,15 @@
             <p><!--Information about the source--></p>
          </sourceDesc>
       </fileDesc>
+      <profileDesc>
+         <textClass>
+            <keywords ana="keywords">
+               <list>
+                  <item/>
+               </list>
+            </keywords>
+         </textClass>
+      </profileDesc>
    </teiHeader>
    <text>
       <body>
