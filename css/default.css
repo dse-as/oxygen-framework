@@ -129,7 +129,7 @@ pb + lb {
 lb {
     color: steelblue;
     display: inline;
-    padding-right: 6px;
+    padding-right: 2px;
     vertical-align: middle;
     visibility: -oxy-collapse-text;
     -oxy-display-tags: none;
@@ -696,6 +696,18 @@ text note p {
 
 text anchor { 
     content: url('../images/anchor-20.png');
+    padding: 0 4px 0 4px;
+    -oxy-display-tags: none;
+}
+
+text milestone { 
+    content: 
+        oxy_label(
+            text, attr(unit, string, "milestone")
+            styles, "@import 'labels_sub.css';"
+        )
+    ;
+    background-color: #cbdcec;
     padding: 0 4px 0 4px;
     -oxy-display-tags: none;
 }
