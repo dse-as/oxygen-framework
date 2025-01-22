@@ -604,7 +604,7 @@
 														<serializableOrderedMap>
 															<entry>
 																<String>fragment</String>
-																<String>&lt;note xmlns="http://www.tei-c.org/ns/1.0" xml:id="n${id}">${caret}&lt;/note></String>
+																<String>&lt;note type="annotation" xmlns="http://www.tei-c.org/ns/1.0">${caret}&lt;/note></String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -616,6 +616,60 @@
 										</field>
 										<field name="enabledInReadOnlyContext">
 											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>note_anchor</String>
+										</field>
+										<field name="name">
+											<String>Anmerkung und Verweisziel einfügen</String>
+										</field>
+										<field name="description">
+											<String>Fügt eine Anmerkung mit Verweisziel ein</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/note_anchor-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/note_anchor-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("anchor")</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>first element</String>
+																<String>&lt;anchor xmlns="http://www.tei-c.org/ns/1.0" xml:id="anchor_$ID"/></String>
+															</entry>
+															<entry>
+																<String>id</String>
+																<String>${id}</String>
+															</entry>
+															<entry>
+																<String>second element</String>
+																<String>&lt;note type="annotation" xmlns="http://www.tei-c.org/ns/1.0" targetEnd="#anchor_$ID" /></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.SurroundWithDifferentFragmentsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
 										</field>
 									</action>
 									<action>
@@ -1937,6 +1991,11 @@ rs_bibl</String>
 											</menuItem>
 											<menuItem>
 												<field name="actionID">
+													<String>note_anchor</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
 													<String>gap</String>
 												</field>
 											</menuItem>
@@ -2073,6 +2132,11 @@ rs_bibl</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>note</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>note_anchor</String>
 												</field>
 											</toolbarItem>
 											<toolbarItem>

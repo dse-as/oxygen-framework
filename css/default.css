@@ -694,6 +694,12 @@ text note p {
     display: block;
 }
 
+text anchor { 
+    content: url('../images/anchor-20.png');
+    padding: 0 4px 0 4px;
+    -oxy-display-tags: none;
+}
+
 /* fw */
 
 fw {
