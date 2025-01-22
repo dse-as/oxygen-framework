@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-18T14:37:39Z. .
+Schema generated from ODD source 2025-01-22T02:10:14Z. .
 TEI Edition: Version 4.6.0. Last updated on
         4th April 2023, revision f18deffba
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.6.0/
@@ -1758,27 +1758,36 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
    </define>
    <define name="tei_model.milestoneLike">
       <choice>
+         <ref name="tei_milestone"/>
          <ref name="tei_pb"/>
          <ref name="tei_lb"/>
          <ref name="tei_cb"/>
          <ref name="tei_fw"/>
+         <ref name="tei_anchor"/>
       </choice>
    </define>
    <define name="tei_model.milestoneLike_alternation">
       <choice>
+         <ref name="tei_milestone"/>
          <ref name="tei_pb"/>
          <ref name="tei_lb"/>
          <ref name="tei_cb"/>
          <ref name="tei_fw"/>
+         <ref name="tei_anchor"/>
       </choice>
    </define>
    <define name="tei_model.milestoneLike_sequence">
+      <ref name="tei_milestone"/>
       <ref name="tei_pb"/>
       <ref name="tei_lb"/>
       <ref name="tei_cb"/>
       <ref name="tei_fw"/>
+      <ref name="tei_anchor"/>
    </define>
    <define name="tei_model.milestoneLike_sequenceOptional">
+      <optional>
+         <ref name="tei_milestone"/>
+      </optional>
       <optional>
          <ref name="tei_pb"/>
       </optional>
@@ -1790,10 +1799,16 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       </optional>
       <optional>
          <ref name="tei_fw"/>
+      </optional>
+      <optional>
+         <ref name="tei_anchor"/>
       </optional>
    </define>
    <define name="tei_model.milestoneLike_sequenceOptionalRepeatable">
       <zeroOrMore>
+         <ref name="tei_milestone"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_pb"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -1804,10 +1819,16 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       </zeroOrMore>
       <zeroOrMore>
          <ref name="tei_fw"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_anchor"/>
       </zeroOrMore>
    </define>
    <define name="tei_model.milestoneLike_sequenceRepeatable">
       <oneOrMore>
+         <ref name="tei_milestone"/>
+      </oneOrMore>
+      <oneOrMore>
          <ref name="tei_pb"/>
       </oneOrMore>
       <oneOrMore>
@@ -1818,6 +1839,9 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_fw"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_anchor"/>
       </oneOrMore>
    </define>
    <define name="tei_model.gLike">
@@ -2688,6 +2712,46 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          </attribute>
       </optional>
    </define>
+   <define name="tei_att.milestoneUnit.attributes">
+      <ref name="tei_att.milestoneUnit.attribute.unit"/>
+   </define>
+   <define name="tei_att.milestoneUnit.attribute.unit">
+      <attribute name="unit">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a conventional name for the kind of section changing at this milestone.
+Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] canto; 7] speaker; 8] stanza; 9] act; 10] scene; 11] section; 12] absent; 13] unnumbered</a:documentation>
+         <choice>
+            <value>page</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">physical page breaks (synonymous with the <code xmlns="http://www.w3.org/1999/xhtml">&lt;pb&gt;</code> element).</a:documentation>
+            <value>column</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">column breaks.</a:documentation>
+            <value>line</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">line breaks (synonymous with the <code xmlns="http://www.w3.org/1999/xhtml">&lt;lb&gt;</code> element).</a:documentation>
+            <value>book</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">any units termed book, liber, etc.</a:documentation>
+            <value>poem</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">individual poems in a collection.</a:documentation>
+            <value>canto</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cantos or other major sections of a poem.</a:documentation>
+            <value>speaker</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">changes of speaker or narrator.</a:documentation>
+            <value>stanza</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">stanzas within a poem, book, or canto.</a:documentation>
+            <value>act</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">acts within a play.</a:documentation>
+            <value>scene</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">scenes within a play or act.</a:documentation>
+            <value>section</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">sections of any kind.</a:documentation>
+            <value>absent</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">passages not present in the reference edition.</a:documentation>
+            <value>unnumbered</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">passages present in the text, but not to be included as part of the reference.</a:documentation>
+            <data type="token">
+               <param name="pattern">[^\p{C}\p{Z}]+</param>
+            </data>
+         </choice>
+      </attribute>
+   </define>
    <define name="tei_p">
       <element name="p">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
@@ -3099,6 +3163,20 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <ref name="tei_att.resourced.attributes"/>
          <ref name="tei_att.declaring.attributes"/>
          <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_milestone">
+      <element name="milestone">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(milestone) marks a boundary point separating any kind of section of a text, typically but not necessarily indicating a point at which some part of a standard reference system changes, where the change is not represented by a structural element. [3.11.3. Milestone
+Elements]</a:documentation>
+         <empty/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.milestoneUnit.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <ref name="tei_att.edition.attributes"/>
+         <ref name="tei_att.spanning.attributes"/>
+         <ref name="tei_att.breaking.attributes"/>
          <empty/>
       </element>
    </define>
@@ -4948,6 +5026,15 @@ Sample values include: 1] header; 2] footer; 3] pageNum (page number); 4] lineNu
          <ref name="tei_att.declaring.attributes"/>
          <ref name="tei_att.fragmentable.attributes"/>
          <ref name="tei_att.written.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_anchor">
+      <element name="anchor">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anchor point) attaches an identifier to a point within a text, whether or not it corresponds with a textual element. [8.4.2. Synchronization and Overlap 16.5. Correspondence and Alignment]</a:documentation>
+         <empty/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
          <empty/>
       </element>
    </define>
