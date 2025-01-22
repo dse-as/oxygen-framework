@@ -188,10 +188,9 @@ pb:after {
 }
 
 cb {
-    content: "\A⣿ ";
+    content: "⣿ ";
     display:inline;
-    padding-right: 6px;
-    padding-bottom: 0.5em;
+    padding-right: 2px;
     color: steelblue;
     -oxy-display-tags: none;
     visibility:-oxy-collapse-text;
@@ -269,7 +268,7 @@ keywords[ana=keywords] list item {
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
-            columns, 16)
+            columns, 20)
             " "
         oxy_buttonGroup(
             label, '▼', 
@@ -286,7 +285,6 @@ keywords[ana=keywords] list item {
 /* Correspondence Description */
 
 correspAction {
-    background-color: #ffffff;
     display: block;
     font-size: 0.9em;
     margin-bottom: 1em;
@@ -317,15 +315,19 @@ correspAction[type="received"]:before {
 correspAction persName,
 correspAction placeName,
 correspAction orgName {
+    content: 
+        oxy_textfield(
+            edit, "#text",
+            fontInherit, true,
+            columns, 20);
     display: block;
-    visibility: visible;
     -oxy-editable: false;
     -oxy-display-tags: none;
 }
 
 correspAction date {
 	content: 
-        oxy_datePicker(columns, 20, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
+        oxy_datePicker(columns, 22, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
     display: block;
     visibility: -oxy-collapse-text;
 }
@@ -927,7 +929,7 @@ text gap:focus {
 }
 
 text unclear {
-    background-color: #C39595;
+    background-color: #dec3c3;
     margin-left: 2px;
     margin-right: 2px;
     -oxy-display-tags: none;
@@ -953,6 +955,7 @@ text foreign:focus:after {
 /* Quotes */
 
 text quote {
+    color: fuchsia;
     -oxy-display-tags: none;
 }
 
