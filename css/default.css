@@ -51,6 +51,12 @@ back:before {
     content: oxy_name();
 }
 
+/* Do not display tags (default) */
+
+TEI * {
+    -oxy-display-tags: none;
+}
+
 /* @xml:id */
 
 TEI[xml|id]:before {
@@ -132,7 +138,6 @@ lb {
     padding-right: 2px;
     vertical-align: middle;
     visibility: -oxy-collapse-text;
-    -oxy-display-tags: none;
 }
 
 lb[break="no"] {
@@ -192,7 +197,6 @@ cb {
     display:inline;
     padding-right: 2px;
     color: steelblue;
-    -oxy-display-tags: none;
     visibility:-oxy-collapse-text;
 }
 
@@ -220,7 +224,6 @@ byline {
     padding:2px;
     margin:2px;
     margin-bottom: 5px;
-    -oxy-display-tags: none;
     -oxy-placeholder-content: "[Verfasserinnenzeile]";
 }
 
@@ -322,7 +325,6 @@ correspAction orgName {
             columns, 20);
     display: block;
     -oxy-editable: false;
-    -oxy-display-tags: none;
 }
 
 correspAction date {
@@ -464,13 +466,6 @@ addrLine {
 
 /* Referencing strings */
 
-rs[type='person'],
-rs[type='org'],
-rs[type='place'],
-rs[type='bibl'] {
-    -oxy-display-tags: none;
-} 
-
 rs[type='person']:before {
     -oxy-prepend-content: url('../images/person-20.png');  
 }
@@ -494,7 +489,6 @@ rs[type='place'],
 rs[type='bibl'] {
     border-bottom: 3px solid Salmon;
     color: #000000;
-    -oxy-display-tags: none;
 } 
 
 rs[type='person']:focus-within:after,
@@ -557,7 +551,6 @@ titleStmt {
 
 titleStmt title {
     -oxy-placeholder-content: "Titel";
-    -oxy-display-tags: none;
     background-color: #ffffff;
     display: block;
     font-style: italic;
@@ -670,7 +663,6 @@ text lg lg l {
 text list,
 text list item {
     display: block;
-    -oxy-display-tags: none;
 }
 
 text list {
@@ -680,7 +672,6 @@ text list {
 text note {
     background-color: #e0e0e0;
     padding: 0 4px 0 4px;
-    -oxy-display-tags: none;
     -oxy-placeholder-content: "[Anmerkung eingeben]";
     -oxy-show-placeholder: always;
 }
@@ -697,7 +688,6 @@ text note p {
 text anchor { 
     content: url('../images/anchor-20.png');
     padding: 0 4px 0 4px;
-    -oxy-display-tags: none;
 }
 
 text milestone { 
@@ -709,7 +699,6 @@ text milestone {
     ;
     background-color: #cbdcec;
     padding: 0 4px 0 4px;
-    -oxy-display-tags: none;
 }
 
 /* fw */
@@ -717,7 +706,6 @@ text milestone {
 fw {
     font-style: italic;
     color: gray;
-    -oxy-display-tags: none; 
 }
 
 /* figure */
@@ -725,12 +713,10 @@ fw {
 text figure {
     display: block;
     margin: 0 0 0 0.5em;
-    -oxy-display-tags: none;
     -oxy-placeholder-content: "[Zeichnung o.ä.]";
 }
 
 text figure head {
-    -oxy-display-tags: none;
     -oxy-placeholder-content: "[Überschrift der Abbildung]";
 }
 
@@ -743,14 +729,12 @@ text figure graphic {
     display: block;
     margin-bottom: 0.5em;
     width: 300px;
-    -oxy-display-tags: none;
 }
 
 /* glyph */
 
 text g {
     text-decoration: overline fuchsia;
-    -oxy-display-tags: none;
 }
 
 text g:focus:after {
@@ -810,20 +794,14 @@ text cell[role='label'] {
 
 /* Authors editing */
 
-text subst {
-    -oxy-display-tags: none;
-}
-
 text del {
     color: red;
     background-color: white;
     text-decoration: line-through;
-    -oxy-display-tags: none;
 }
 
 text add {
     color: green;
-    -oxy-display-tags: none;
     -oxy-placeholder-content: "[Hinzufügung]"
 }
 
@@ -843,35 +821,29 @@ text add:focus:after {
 
 text hi[rendition="#b"] {
     font-weight: bold;
-    -oxy-display-tags: none;
 }
 
 text hi[rendition="#u"] {
     text-decoration: underline;
-    -oxy-display-tags: none;
 }
 
 text hi[rendition="#sub"] {
     font-size:small;
     vertical-align:sub;
-    -oxy-display-tags: none;
 }
 
 text hi[rendition="#sup"] {
     position: relative; 
     top: -0.5em;
     font-size: 0.7em;
-    -oxy-display-tags: none;
 }
 
 text hi[rendition="#i"] {
     font-style: italic;
-    -oxy-display-tags: none;
 }
 
 text hi[rendition="#g"] {
     letter-spacing:0.125em;
-    -oxy-display-tags: none;
 }
 
 head[rendition='#c'] {
@@ -880,15 +852,10 @@ head[rendition='#c'] {
 
 /* Publishers editing */
 
-text choice {
-    -oxy-display-tags: none;
-}
-
 text choice sic,
 text choice orig,
 text choice abbr {
     background-color: #FFDDDD;
-    -oxy-display-tags: none;
 }
 
 text choice corr,
@@ -896,7 +863,6 @@ text choice reg,
 text choice expan {
     font-style: italic;
     background-color: #E8FFDD;
-    -oxy-display-tags: none;
     -oxy-placeholder-content: "[Normalisierte Schreibung]";
 }
 
@@ -922,7 +888,6 @@ text choice expan {
 
 text abbr {
     border-bottom: 3px solid #333;
-    -oxy-display-tags: none;
 }
 
 text gap {
@@ -930,7 +895,6 @@ text gap {
     background-color: #FFC458;
     margin-left: 2px;
     margin-right: 2px;
-    -oxy-display-tags: none;
 }
 
 text gap:focus {
@@ -950,11 +914,9 @@ text unclear {
     background-color: #dec3c3;
     margin-left: 2px;
     margin-right: 2px;
-    -oxy-display-tags: none;
 }
 
 text foreign {
-    -oxy-display-tags: none;
     background-color: #e0e0e0;
 }
 
@@ -974,7 +936,6 @@ text foreign:focus:after {
 
 text quote {
     color: fuchsia;
-    -oxy-display-tags: none;
 }
 
 text quote:before  {
@@ -985,12 +946,6 @@ text quote:before  {
 text quote:after {
     color: fuchsia;
     content: "\"";
-}
-
-/* Dates */
-
-date {
-    -oxy-display-tags: none;
 }
 
 /* Facsimile */
