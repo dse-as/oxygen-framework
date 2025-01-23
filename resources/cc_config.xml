@@ -22,4 +22,11 @@
         </items>
     </valueProposals>
 
+    <valueProposals path="tei:lb/@break" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="yes" annotation="Line beginning does mark the start of a new word."/>
+            <item value="no" annotation="Line beginning does NOT mark the start of a new word."/>
+        </items>
+    </valueProposals>
+
 </config>

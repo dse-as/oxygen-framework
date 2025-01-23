@@ -156,7 +156,6 @@ lb:focus {
         )
         oxy_combobox(
             edit, "@break"
-            values, "yes, no"
         )
     ;
 }
