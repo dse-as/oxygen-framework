@@ -29,4 +29,11 @@
         </items>
     </valueProposals>
 
+    <valueProposals path="tei:cb/@type" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="start"/>
+            <item value="end"/>
+        </items>
+    </valueProposals>
+
 </config>

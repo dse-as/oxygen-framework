@@ -194,26 +194,32 @@ pb:after {
 }
 
 cb {
-    content: "⣿ ";
+    content: "⣿";
     display:inline;
     padding-right: 2px;
     color: steelblue;
     visibility:-oxy-collapse-text;
 }
 
-cb[type]:not(:focus) {
-    -oxy-append-content: "[" attr(type) "] ";
+cb[type]:not(:focus):after {
+    content: 
+        oxy_label(
+            text, oxy_xpath("' '||@type||''")
+            styles, "@import 'labels_sub.css';"
+            color, steelblue
+        )
+    ;
 }
 
-cb:focus {
-    -oxy-append-content:
+cb:focus:after {
+    content:
         oxy_label(
             text, " type: "
+            styles, "@import 'labels_sub.css';"
             width, 60px
         )
         oxy_combobox(
             edit, "@type"
-            values, "start, end"
         )
     ;
 }
