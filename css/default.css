@@ -560,6 +560,14 @@ titleStmt title {
     visibility: visible;
 } 
 
+TEI[type='dseas-letter'] titleStmt title {
+    -oxy-placeholder-content: "Titel des Briefs";
+} 
+
+TEI[type='dseas-smallform'] titleStmt title {
+    -oxy-placeholder-content: "Titel der kleinen Form";
+} 
+
 titleStmt author,
 titleStmt editor,
 titleStmt respStmt {
@@ -575,7 +583,10 @@ publicationStmt {
     display: none;
 }
 
-sourceDesc,
+sourceDesc {
+    display: none;
+}
+
 fileDesc,
 profileDesc {
     visibility: -oxy-collapse-text;
