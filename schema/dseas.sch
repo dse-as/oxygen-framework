@@ -70,7 +70,7 @@
         
         <!-- note -->
         <rule context="tei:note">
-            <let name="targetEnd" value="@targetEnd"/>
+            <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
             <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
         </rule>
         
