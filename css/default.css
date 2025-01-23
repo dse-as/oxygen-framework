@@ -709,14 +709,15 @@ text anchor {
 }
 
 text milestone { 
-    content: 
+    /*content: 
         oxy_label(
             text, attr(unit, string, "milestone")
             styles, "@import 'labels_sub.css';"
         )
     ;
     background-color: #cbdcec;
-    padding: 0 4px 0 4px;
+    padding: 0 4px 0 4px;*/
+    display:none;
 }
 
 /* fw */
