@@ -124,6 +124,8 @@ byline > lb:first-of-type,
 salute > lb:first-of-type,
 signed > lb:first-of-type,
 dateline > lb:first-of-type,
+addrLine > lb:first-of-type,
+l > lb:first-of-type,
 p > lb:first-of-type {
     content: "↪";
 }
@@ -645,19 +647,19 @@ text head[type="h3"] {
     font-size: 1.2em;
 }
 
-text p, 
-text lg[type="verse"] {
+text p {
     display: block;
     margin: 0 0 1em 0;
 }
 
-text p[rendition="#c"]{
-    text-align: center;
+text lg {
+    display: block;
+    margin: 0.5em 0 0.5em 0;
 }
 
-text lg lg,
-text lg lg l {
+text lg l {
     display: block;
+    -oxy-placeholder-content: "[Verszeile]";
 }
 
 text list,
