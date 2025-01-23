@@ -5,6 +5,18 @@
 
     <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
 
+    <!-- allowed elements -->
+    
+    <pattern>
+        
+        <rule context="tei:body/*">
+            <let name="allowedElements" value="'closer div lg milestone opener p pb postscript'"/>
+            
+            <assert test="local-name() = tokenize($allowedElements, ' ')">Unexpected element(s) found in element '&lt;<value-of select="parent::*/name()"/>&gt;'. A &lt;<value-of select="parent::*/name()"/>&gt; element may contain only the elements '<value-of select="$allowedElements"/>'. Offending element: &lt;<value-of select="local-name()[not(. = tokenize($allowedElements, ' '))]"/>&gt;.</assert>
+        </rule>
+        
+    </pattern>
+    
     <!-- mandatory elements -->
     
     <pattern>
@@ -86,7 +98,7 @@
         
         <!-- PIs -->
         <rule context="processing-instruction()">
-            <assert test="name(.) = 'xml-model'">&lt;<name/>&gt; not allowed. If you are using Oxygen processing instructions (e.g. Highlight Tool), consider using an ordinary XML comment.</assert>
+            <assert test="name(.) = 'xml-model'" role="warning">Try to clean up this Oxygen instruction.</assert>
         </rule>
 
     </pattern>
