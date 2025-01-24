@@ -10,18 +10,11 @@
         <xt:author>cforney</xt:author>
         <xt:name>dse-as</xt:name>
         <xt:description xmlns="http://www.w3.org/1999/xhtml">
-            <style type="text/css">
-                h1 { font-family:Verdana; }
-                h2 { font-family:Geneva; }
-                .header { font-weight:bold; }
-                code { font-size:large; }
-                p { margin:0px; padding:5px; }
-            </style>
             <h1>dse-as Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
-                <p class="header">Version 0.3.0</p>
-                <p class="header">Release date: 23/1/2025</p>
+                <h3>Version 0.3.0</h3>
+                <p>Release date: 23/1/2025</p>
                 <p>Neu:</p>
                 <ul>
                     <li>Anmerkung mit Verweisziel</li>
@@ -32,8 +25,8 @@
                 <ul>
                     <li>Schlagworte in Header verschoben</li>
                 </ul>
-                <p class="header">Version 0.2.0</p>
-                <p class="header">Release date: 20/1/2025</p>
+                <h3>Version 0.2.0</h3>
+                <p>Release date: 20/1/2025</p>
                 <p>Neu:</p>
                 <ul>
                     <li>foreign (language)</li>
@@ -41,27 +34,27 @@
                     <li>Button für lb</li>
                     <li>TEI Schema (ODD, RNG)</li>
                 </ul>
-                <p class="header">Version 0.1.0</p>
-                <p class="header">Release date: 9/1/2025</p>
+                <h3>Version 0.1.0</h3>
+                <p>Release date: 9/1/2025</p>
                 <p>Neu:</p>
                 <ul>
                     <li>Übersichtskommentare (global comment)</li>
                     <li>Schlagworte</li>
                     <li>IIIF in UV-Viewer öffnen</li>
                 </ul>
-                <p class="header">Version 0.0.3</p>
-                <p class="header">Release date: 17/11/2024</p>
+                <h3>Version 0.0.3</h3>
+                <p>Release date: 17/11/2024</p>
                 <ul>
                     <li>Fix: Pfad beim Speichern der Lookupdateien.</li>
                 </ul>
-                <p class="header">Version 0.0.2</p>
-                <p class="header">Release date: 15/11/2024</p>
+                <h3>Version 0.0.2</h3>
+                <p>Release date: 15/11/2024</p>
                 <ul>
                     <li>Modell von lb umgestellt (von line break zu line beginning).</li>
                     <li>cb hinzugefügt.</li>
                 </ul>
-                <p class="header">Version 0.0.1</p>
-                <p class="header">Release date: 13/11/2024</p>
+                <h3>Version 0.0.1</h3>
+                <p>Release date: 13/11/2024</p>
                 <ul>
                     <li>Erster Prototyp des Frameworks. Achtung: Noch nicht für den produktiven Gebrauch.</li>
                     <li>Bugreports und Vorschläge auf <a href="https://github.com/dse-as/oxygen-framework">https://github.com/dse-as/oxygen-framework</a></li>
