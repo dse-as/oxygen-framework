@@ -1,6 +1,7 @@
 /* Default CSS */
 
 @namespace xml "http://www.w3.org/XML/1998/namespace";
+@namespace oxy url('http://www.oxygenxml.com/extensions/author');
 
 @font-face{
     font-family: "Roboto";
@@ -987,4 +988,12 @@ teiHeader surface,
 teiHeader graphic,
 teiHeader zone {
     display: none;
+}
+
+/* XML comments */
+
+oxy|comment {
+    display:block !important;
+    color:green !important;
+    background-color:transparent !important;
 }
