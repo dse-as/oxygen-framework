@@ -66,8 +66,8 @@
         <!-- g -->
         <rule context="tei:g">
             <assert test="@ref">A &lt;<name/>&gt; element must contain a @ref attribute.</assert>
-            <report test="@ref='#ngem' and text()!='nn'">A &lt;<name/>&gt; element with a @ref to "#ngem" must enclose the text "nn".</report>
-            <report test="@ref='#mgem' and text()!='mm'">A &lt;<name/>&gt; element with a @ref to "#mgem" must enclose the text "mm".</report>
+            <report test="@ref='#ngem' and text()!='n'">A &lt;<name/>&gt; element with a @ref to "#ngem" must enclose exactly a letter "n".</report>
+            <report test="@ref='#mgem' and text()!='m'">A &lt;<name/>&gt; element with a @ref to "#mgem" must enclose exactly a letter "m".</report>
         </rule>
 
         <!-- gap -->
