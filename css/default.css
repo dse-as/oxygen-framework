@@ -723,9 +723,21 @@ text milestone {
 
 /* fw */
 
-fw {
+text fw {
     font-style: italic;
     color: gray;
+}
+
+text fw:focus:after {
+    -oxy-append-content:
+        oxy_label(
+            text, " place: "
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@place"
+        )
+    ;
 }
 
 /* figure */
