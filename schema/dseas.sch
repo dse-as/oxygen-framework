@@ -103,4 +103,15 @@
 
     </pattern>
 
+    <pattern>
+        
+        <!-- characters -->
+        <rule context="tei:text//text()[not(ancestor::tei:note)]">
+            <report test="contains(., '¬')" role="warning">Ungewöhnliches Vorkommen von Negationszeichen "¬". Möglicherweise eine unverarbeitete Silbentrennung?</report>
+            <report test="contains(., '[')" role="warning">Ungewöhnliches Vorkommen von eckiger Klammer "[". Möglicherweise ein unverarbeiteter Kommentar?</report>
+            <report test="contains(., ']')" role="warning">Ungewöhnliches Vorkommen von eckiger Klammer "]". Möglicherweise ein unverarbeiteter Kommentar?</report>
+        </rule>
+        
+    </pattern>
+    
 </schema>
