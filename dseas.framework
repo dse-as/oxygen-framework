@@ -1284,13 +1284,13 @@ rs_org</String>
 									</action>
 									<action>
 										<field name="id">
-											<String>abbr</String>
+											<String>abbr-expan</String>
 										</field>
 										<field name="name">
 											<String>Abkürzung</String>
 										</field>
 										<field name="description">
-											<String>Abkürzung im Text</String>
+											<String>Abkürzung im Text auflösen</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/abbreviation-20.png</String>
@@ -1308,13 +1308,59 @@ rs_org</String>
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("abbr") and ancestor::text</String>
+														<String>oxy:allows-child-element("choice") and ancestor::text</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
 																<String>fragment</String>
-																<String>&lt;abbr xmlns='http://www.tei-c.org/ns/1.0'/></String>
+																<String>&lt;choice xmlns="http://www.tei-c.org/ns/1.0">&lt;abbr>&lt;/abbr>&lt;expan>${caret}&lt;/expan>&lt;/choice></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>sic-corr</String>
+										</field>
+										<field name="name">
+											<String>Fehlerhafte Schreibweise</String>
+										</field>
+										<field name="description">
+											<String>Fehlerhafte Schreibweise im Text korrigieren</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/corr-sic.gif</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/corr-sic16.gif</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("choice") and ancestor::text</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;choice xmlns="http://www.tei-c.org/ns/1.0">&lt;sic>&lt;/sic>&lt;corr>${caret}&lt;/corr>&lt;/choice></String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -2018,7 +2064,12 @@ rs_bibl</String>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
-													<String>abbr</String>
+													<String>abbr-expan</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>sic-corr</String>
 												</field>
 											</menuItem>
 											<menuItem>
@@ -2162,7 +2213,12 @@ rs_bibl</String>
 											</toolbarItem>
 											<toolbarItem>
 												<field name="actionID">
-													<String>abbr</String>
+													<String>abbr-expan</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>sic-corr</String>
 												</field>
 											</toolbarItem>
 											<toolbarItem>

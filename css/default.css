@@ -898,14 +898,12 @@ text choice expan {
     -oxy-placeholder-content: "[Normalisierte Schreibung]";
 }
 
-text choice corr {
-    -oxy-placeholder-content: "[Korrigierte Schreibung]";
+text choice sic {
+    -oxy-placeholder-content: "[Fehlerhafte Form]";
 }
 
-text corr[type="deleted"] {
-    content: "[gelöscht]";
-    font-style: italic;
-    color: green;
+text choice corr {
+    -oxy-placeholder-content: "[Korrigierte Form]";
 }
 
 text choice abbr {
