@@ -79,6 +79,11 @@
         <rule context="tei:hi">
             <assert test="@rendition">A &lt;<name/>&gt; element needs to have @rendition attribute.</assert>
         </rule>
+
+        <rule context="tei:hi/@rendition">
+            <let name="allowedValues" value="'#b #i #u #sub #sup #g'"/>
+            <assert test=". = tokenize($allowedValues, ' ')">Unexpected value found in attribute @<name/>. A <name/> attribute may contain only the values <xsl:value-of select="tokenize($allowedValues,' ')[not(position()=last())]" separator=", "/> or <xsl:value-of select="tokenize($allowedValues,' ')[last()]"/>.</assert>
+        </rule>
         
         <!-- note -->
         <rule context="tei:note">

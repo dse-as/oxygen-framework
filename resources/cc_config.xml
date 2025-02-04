@@ -35,5 +35,16 @@
             <item value="end"/>
         </items>
     </valueProposals>
+    
+    <valueProposals path="tei:hi/@rendition" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="#b" annotation="bold"/>
+            <item value="#i" annotation="italics"/>
+            <item value="#u" annotation="underline"/>
+            <item value="#sub" annotation="subscript"/>
+            <item value="#sup" annotation="superscript"/>
+            <item value="#g" annotation="spaced (gesperrt)"/>
+        </items>
+    </valueProposals>
 
 </config>
