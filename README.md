@@ -28,6 +28,7 @@ This is the preferred installation method for editors:
 6. The latest version of the add-on should be displayed. Select it, choose `Next` and confirm all upcoming prompts (including possible certificate warnings).
 7. Restart the application. Note: The framework/add-on should keep itself up to date. Updates will be offered during the start of oXygen.
 8. Open `Options > Preferences > Document Type Associations` on Windows or `Oxygen XML Editor > Preferences > Document Type Associations` (on other platforms) from the menu and make sure the framework is activated.
+9. Add [trusted hosts](#trusted-hosts).
 
 ### Project file and Git
 
@@ -35,14 +36,24 @@ This is the preferred method for developers:
 
 1. Clone this repository.
 2. Open project file (`dseas-framework.xpr`) with Oxygen XML Editor.
-3. Go to **Options > Preferences > Network Connection Settings > Trusted Hosts** and add an entry for `sparql.geovistory.org` and `https://api.zotero.org`.
-4. Go to **Options > Preferences > Document Type Association > Locations** and select **Project Options** at the bottom of the page.
-5. In the **Additional frameworks directories** list, add a new entry: **`${pd}`**.
-6. Go back to **Document Type Association** and select the framework.
+3. Go to **Options > Preferences > Document Type Association > Locations** and select **Project Options** at the bottom of the page.
+4. In the **Additional frameworks directories** list, add a new entry: **`${pd}`**.
+5. Go back to **Document Type Association** and select the framework.
+6. Add [trusted hosts](#trusted-hosts).
 
 > 👉 To update, do `git pull`.
 
 See also the [official documentation](https://www.oxygenxml.com/doc/versions/26.1/ug-editor/topics/author-document-type-extension-sharing.html).
+
+### Trusted Hosts
+
+Go to **Options > Preferences > Network Connection Settings > Trusted Hosts** and add an entry for 
+
+* `sparql.geovistory.org`,
+* `api.zotero.org` and
+* `cdn.jsdelivr.net/gh/dse-as`.
+
+Alternatively, confirm and remember warnings regarding these hosts.
 
 ## Acknowledgement
 
