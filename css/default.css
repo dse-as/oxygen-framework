@@ -191,6 +191,16 @@ pb:after {
             edit, "@n"
             columns, 4
         )
+        " "
+        oxy_buttonGroup(
+            label, '▼', 
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'delete'
+                  )
+              )
+         )
     ;
 }
 
