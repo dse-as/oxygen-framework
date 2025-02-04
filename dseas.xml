@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.3.1</xt:version>
+        <xt:version>0.4.0</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -13,6 +13,21 @@
             <h1>dse-as Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.4.0</h3>
+                <p>Release date: 4/2/2025</p>
+                <p>Neu:</p>
+                <ul>
+                    <li>Referenzierung, Schwarzenbach-Projekt auf Geovistory verlinkt</li>
+                    <li>Button "neu referenzieren" bei rs</li>
+                    <li>Button "löschen" bei pb</li>
+                    <li>Dropdown bei fw/@place</li>
+                </ul>
+                <p>Update:</p>
+                <ul>
+                    <li>Abkürzung/Auflösung (abbr-expan)</li>
+                    <li>Fehlerhafte/korrigierte Form (sic-corr)</li>
+                    <li>Schema, kleinere Anpassungen</li>
+                </ul>
                 <h3>Version 0.3.1</h3>
                 <p>Release date: 24/1/2025</p>
                 <p>Update:</p>
