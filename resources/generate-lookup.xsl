@@ -6,7 +6,7 @@
     
     <xsl:param name="type"/>
     
-    <xsl:variable name="geovistory-project" select="'api_v1_project_153'"/>
+    <xsl:variable name="geovistory-project" select="'api_v1_project_15653112'"/>
     <xsl:variable name="zotero-project" select="'5746334'"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
