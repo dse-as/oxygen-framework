@@ -408,6 +408,7 @@ correspAction[type='received'] date:before {
 
 /* Correspondence */
 
+postscript:before,
 opener:before,
 closer:before {
     -oxy-append-content: 
