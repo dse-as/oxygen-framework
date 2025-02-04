@@ -518,6 +518,9 @@ rs[type='place']:focus-within:after {
                         id, 'open_geovistory'
                   ),
                   oxy_action( 
+                        id, 'rs_key'
+                  ),
+                  oxy_action( 
                         id, 'rs_unwrap'
                   )
               )
@@ -533,6 +536,9 @@ rs[type='bibl']:focus-within:after {
               oxy_action_list(
                   oxy_action(
                         id, 'open_zotero'
+                  ),
+                  oxy_action( 
+                        id, 'rs_key'
                   ),
                   oxy_action( 
                         id, 'rs_unwrap'
