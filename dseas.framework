@@ -604,7 +604,11 @@
 														<serializableOrderedMap>
 															<entry>
 																<String>fragment</String>
-																<String>&lt;note type="annotation" xmlns="http://www.tei-c.org/ns/1.0">${caret}&lt;/note></String>
+																<String>&lt;note type="annotation" xml:id="n${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:note/@xml:id[replace(.,"n","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:note/@xml:id[replace(.,"n","") castable as xs:integer]/replace(.,'n','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:note) + 1
+																	)}" xmlns="http://www.tei-c.org/ns/1.0">${caret}&lt;/note></String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -650,15 +654,27 @@
 														<serializableOrderedMap>
 															<entry>
 																<String>first element</String>
-																<String>&lt;anchor xmlns="http://www.tei-c.org/ns/1.0" xml:id="anchor_$ID"/></String>
+																<String>&lt;anchor xmlns="http://www.tei-c.org/ns/1.0" xml:id="a${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]/replace(.,'a','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:anchor) + 1
+																	)}"/></String>
 															</entry>
 															<entry>
 																<String>id</String>
 																<String>${id}</String>
-															</entry>
+														    </entry>
 															<entry>
 																<String>second element</String>
-																<String>&lt;note type="annotation" xmlns="http://www.tei-c.org/ns/1.0" targetEnd="#anchor_$ID" /></String>
+																<String>&lt;note type="annotation" xml:id="n${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:note/@xml:id[replace(.,"n","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:note/@xml:id[replace(.,"n","") castable as xs:integer]/replace(.,'n','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:note) + 1
+																	)}" xmlns="http://www.tei-c.org/ns/1.0" targetEnd="a${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]/replace(.,'a','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:anchor) + 1
+																	)}" /></String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
