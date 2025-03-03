@@ -517,12 +517,53 @@ rs[type='bibl']:focus-within:after {
     padding-left: 2px;
 }
 
-rs[type='person']:focus-within:after,
-rs[type='org']:focus-within:after,
+rs[type='person']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            tooltip, oxy_xpath("let $id := ./@key return doc('../resources/lookup-person.xml')//*[@id=$id]/@val"),
+            actions, 
+              oxy_action_list(
+                  oxy_action(
+                        id, 'open_geovistory'
+                  ),
+                  oxy_action( 
+                        id, 'rs_key'
+                  ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
+rs[type='org']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            tooltip, oxy_xpath("let $id := ./@key return doc('../resources/lookup-org.xml')//*[@id=$id]/@val"),
+            actions, 
+              oxy_action_list(
+                  oxy_action(
+                        id, 'open_geovistory'
+                  ),
+                  oxy_action( 
+                        id, 'rs_key'
+                  ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
 rs[type='place']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
+            tooltip, oxy_xpath("let $id := ./@key return doc('../resources/lookup-place.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
                   oxy_action(
@@ -543,6 +584,7 @@ rs[type='bibl']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
+            tooltip, oxy_xpath("let $id := ./@key return doc('../resources/lookup-bibl.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
                   oxy_action(
