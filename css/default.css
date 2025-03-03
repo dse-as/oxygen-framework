@@ -17,6 +17,7 @@
 }
 
 TEI {
+    max-width: 60em;
     padding: 1em;
     font-family: Roboto;
 }
