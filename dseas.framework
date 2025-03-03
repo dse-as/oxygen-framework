@@ -736,7 +736,11 @@
 															</entry>
 															<entry>
 																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='person' key='$XPATH{@id}' /></String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='person' key='$XPATH{@id}' xml:id="r${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:rs) + 1
+																	)}"/></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
@@ -1095,7 +1099,11 @@ rs_person</String>
 															</entry>
 															<entry>
 																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='org' key='$XPATH{@id}' /></String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='org' key='$XPATH{@id}' xml:id="r${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:rs) + 1
+																	)}"/></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
@@ -2014,7 +2022,11 @@ rs_org</String>
 															</entry>
 															<entry>
 																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='place' key='$XPATH{@id}' /></String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='place' key='$XPATH{@xml:id}' xml:id="r${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:rs) + 1
+																	)}"/></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
@@ -2135,7 +2147,11 @@ rs_place</String>
 															</entry>
 															<entry>
 																<String>item variable</String>
-																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='bibl' key='$XPATH{@id}' /></String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='bibl' key='$XPATH{@id}' xml:id="r${xpath_eval(
+																	if (ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
+																	then format-number(max(ancestor::*:TEI/*:text//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1,"0") 
+																	else count(ancestor::*:TEI/*:text//*:rs) + 1
+																	)}"/></String>
 															</entry>
 															<entry>
 																<String>multiple selection</String>
