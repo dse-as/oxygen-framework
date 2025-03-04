@@ -487,16 +487,20 @@ addrLine {
 /* Referencing strings */
 
 rs[type='person']:before {
-    -oxy-prepend-content: url('../images/person-20.png');  
+    -oxy-prepend-content: url('../images/person-20.png');
+    width: 1em;
 }
 rs[type='org']:before {
     -oxy-prepend-content: url('../images/org-20.png');
+    width: 1em;
 }
 rs[type='place']:before {
     -oxy-prepend-content: url('../images/place-20.png');
+    width: 1em;
 }
 rs[type='bibl']:before {
     -oxy-prepend-content: url('../images/bibl-20.png');
+    width: 1em;
 }
 
 rs:before {
@@ -697,6 +701,18 @@ notesStmt note[type='global_comment'] p {
 }
 
 /* text */
+
+teiHeader:after {
+    display: block;
+    content:
+            oxy_label(text, oxy_concat("Referenzen im Text (", oxy_xpath("count(ancestor::TEI//rs)"), ")"), styles, "@import 'labels_sub.css';")
+            oxy_htmlContent(
+            content, oxy_concat(oxy_xpath("if (//rs) then '' else 'keine'"), oxy_xpath("let $lookup := doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-bibl.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml') return concat('<ul> ', (for $x in //rs => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => string-join(),'</ul>')")),
+            width, 100%);
+    padding: 0.5em 0.5em 0.5em 0;
+    margin: 1em 0 0.5em 0;
+    border-top: 1px steelblue dashed;
+}
 
 text body {
     position: relative;
