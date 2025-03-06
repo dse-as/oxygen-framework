@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/tei_dseas.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/dseas.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" type="dseas-letter" subtype="telegram" xml:id="letter_0003">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Annemarie Schwarzenbach an Claude Bourdet, 4. Juli 1932</title>
+            </titleStmt>
+            <editionStmt>
+                <edition>Annemarie Schwarzenbach: Digitale Edition der Kleinen Formen und Briefe</edition>
+                <respStmt>
+                    <persName role="editor">Daniela Kohler</persName>
+                    <!--Bearbeiter/in, Editionsteam-->
+                    <!--Bearbeitungsstatus ?-->
+                </respStmt>
+            </editionStmt>
+            <publicationStmt>
+                <p><!--Publisher, Lizenzierung, Copyright--></p>
+            </publicationStmt>
+            <notesStmt>
+                <note type="global_comment">
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository>Bibliothèque cantonale et universitaire - Lausanne</repository>
+                        <idno>Collection des pièces isolées, IS 5502/3</idno>
+                        <altIdentifier>
+                            <idno>PTN-587678</idno>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+                <listBibl type="surrogates">
+                    <bibl>
+                        <idno type="patrinum">587678</idno>
+                        <ref target="https://patrinum.ch/record/587678"/>
+                        <figure type="iiif" facs="https://patrinum.ch/nanna/proxy/iiif/manifest/587678"/>
+                    </bibl>
+                </listBibl>
+                <listBibl type="editions">
+                    <bibl>
+                        <title key="addReferenceHere">Miermont (2008)</title>
+                        <biblScope>S. 16 und S. 131 (N. 3)</biblScope>
+                    </bibl>
+                </listBibl>
+                <listBibl type="translations">
+                    <bibl>
+                        <title/>
+                        <biblScope/>
+                    </bibl>
+                </listBibl>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <correspDesc>
+                <correspAction type="sent">
+                    <persName key="26135">Schwarzenbach, Annemarie (1908-1942)</persName>
+                    <date when="1932-07-04" type="original"/>
+                    <placeName key="208763" type="supplement">Potsdam</placeName>
+                </correspAction>
+                <correspAction type="received">
+                    <persName key="14844918">Bourdet, Claude (1909-1996)</persName>
+                    <placeName key="13088451">Zürich</placeName>
+                </correspAction>
+             </correspDesc>
+             <langUsage>
+                <language ident="de">Deutsch</language>
+                <language ident="fr">Französisch</language>
+             </langUsage>
+             <textClass>
+                <keywords ana="keywords">
+                    <list>
+                        <item/>
+                    </list>
+                </keywords>
+                 <keywords ana="travels">
+                     <list>
+                         <item/>
+                     </list>
+                 </keywords>
+             </textClass>
+        </profileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div>
+                <pb/>
+                <opener>
+                    <dateline><lb/>Juillet 32</dateline>
+                    <salute><lb/>Cher Claude</salute>
+                </opener>
+                <p><lb/>Je n’essaye même pas de vous écrire en
+                    <lb/>Français, den[n] ich möchte nicht dass
+                    <lb/>Fehler Sie beim Lesen stören, während
+                    <lb/>Ihre beiden Briefe für mich stilistisch
+                    <lb/>ein kleines Vergnügen waren.</p>
+                <p><lb/>Leider bin ich nicht so sehr "flüchtiges
+                    <lb/>Element“, sondern seit mehreren
+                    <lb/>Tagen krank. Heute habe ich weniger
+                    <lb/>Fieber, trotzdem ist die Lage nicht sehn
+                    <lb/>angenehm.</p>
+                <p><lb/>Sie tun gut daran, nach Deutschland,
+                    <lb/>zu reisen. Ich werde allerdings etwa
+                    <lb/>vom 15. Juli bis 7. Aug. in Schweden
+                    <lb/>sein. Sollten wir uns dann gerade
+                    <lb/>verfehlen? Ich würde Ihnen gerne
+                    <lb/>Berlin zeigen. Auch Dominique kommt
+                    <lb/>Anf. August hierher.</p>
+                <p><lb/>Die Odysee zu verfilmen ...</p>           
+                <pb/>
+                <closer>
+                    <salute></salute>
+                    <signed></signed>
+                    <dateline></dateline>
+                </closer>
+                <postscript>
+                    <p/>
+                </postscript>
+                <closer>
+                  <address>
+                     <addrLine/>
+                     <addrLine/>
+                  </address>
+               </closer>
+            </div>
+        </body>
+    </text>
+</TEI>
