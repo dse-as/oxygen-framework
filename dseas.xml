@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.4.0</xt:version>
+        <xt:version>0.5.0</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -13,6 +13,18 @@
             <h1>dse-as Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.5.0</h3>
+                <p>Release date: 7/3/2025</p>
+                <p>Neu:</p>
+                <ul>
+                    <li>Generierung rs/@xml:id und anchor/@xml:id</li>
+                    <li>Referenzen, Anzeige des Labels im Button-Tooltip</li>
+                    <li>Referenzen, Anzeige als Liste unterhalb des Headers</li>
+                </ul>
+                <p>Update:</p>
+                <ul>
+                    <li>Generierung note/@xml:id und anchor/@xml:id</li>
+                </ul>
                 <h3>Version 0.4.0</h3>
                 <p>Release date: 4/2/2025</p>
                 <p>Neu:</p>
