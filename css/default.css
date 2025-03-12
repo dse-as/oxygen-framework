@@ -246,6 +246,55 @@ byline {
     -oxy-placeholder-content: "[Verfasserinnenzeile]";
 }
 
+/* language */
+
+langUsage {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+langUsage:after {
+    content:
+        oxy_editor(
+            type, button, 
+            action, oxy_action(
+                name, 'Neue Sprache einfügen', 
+                description, 'Neue Sprache am Schluss der Liste einfügen', 
+                operation, 'InsertFragmentOperation', 
+                arg-fragment, '<language xmlns="http://www.tei-c.org/ns/1.0"/>',
+                arg-insertLocation, '.',
+                arg-insertPosition, 'Inside as last child'), 
+            color, black);
+    display:block;
+    padding-top: 0.125em;
+    padding-left: 180px;
+}
+
+langUsage language {
+    content:
+        oxy_label(text, "Sprache: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, combo,
+            edit, "@ident",
+            canRemoveValue,true,
+            editable, false,
+            fontInherit, true,
+            columns, 20)
+            " "
+        oxy_buttonGroup(
+            label, '▼', 
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'delete'
+                  )
+              )
+         );
+    display:block;
+}
+
 /* textClass (keywords) */
 
 keywords[ana=keywords] {
@@ -276,7 +325,8 @@ keywords[ana=keywords] list:after {
                 arg-insertPosition, 'Inside as last child'), 
             color, black);
     display:block;
-    margin-top: 0.125em;
+    padding-top: 0.125em;
+    padding-left: 180px;
 }
 
 keywords[ana=keywords] list item {
@@ -287,6 +337,65 @@ keywords[ana=keywords] list item {
             edit, "@sameAs",
             values, "7502947-9,4002963-3,4000626-8,4076001-7,4004973-5,4069722-8,4012402-2,4015972-3,4222126-2,4017102-4,4017604-6,4017672-1,4045895-7,7507676-7,4018480-8,4156741-9,4023222-0,4605581-2,4028779-8,4028859-6,4028871-7,4030550-8,4031011-5,4073624-6,4031892-8,4032187-3,4033114-3,4033131-3,4034402-2,4035646-2,4039792-0,4120755-5,4040222-8,4041358-5,1139293370,4045673-0,4046449-0,4048680-1,4177612-4,4049275-8,4049396-9,4050491-8,4116383-7,4054684-6,4056366-2,4058665-0,4059205-4,4323955-9,4060747-1,4186999-0,4042696-8",
             labels, "Moderne Architektur,Armut,Ästhetik,Auto,Baudenkmal,Bürgertum,Diplomatie,Existenzphilosophie,Feminismus,Film,Flüchtling,Flugzeug,Fotografie,Frauenrolle (Soziale Rolle),Freundschaft,Geopolitik,Handel,Intermedialität,Journalismus,Jugend,Jugendbewegung,Kindheit,Kleidung,Kolonialismus,Kommunismus,Konservatismus,Krieg,Kriegsgefangenschaft,Landwirtschaft,Liebe,Mode,Modernisierung,Moral,Natur,Orientalismus,Phantastik,Poetik,Realismus,Reiseliteratur,Reisen,Religion,Romantik,Schifffahrt,Sexualität,Sport,Surrealismus,Technik,Traditionale Kultur ,Traum,Unterhaltungsindustrie,Vergewaltigung",
+            canRemoveValue,true,
+            editable, false,
+            fontInherit, true,
+            columns, 20)
+            " "
+        oxy_buttonGroup(
+            label, '▼', 
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'delete'
+                  )
+              )
+         );
+    display:block;
+}
+
+/* textClass (travels) */
+
+keywords[ana=travels] {
+    content:
+            oxy_label(
+            text, oxy_xpath("'Reisen ('||count(descendant::item[@sameAs])||')'")
+            styles, "@import 'labels.css';"
+        );
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
+
+keywords[ana=travels] list {
+    margin-top: 0.125em;
+}
+
+keywords[ana=travels] list:after {
+    content:
+        oxy_editor(
+            type, button, 
+            action, oxy_action(
+                name, 'Neue Reise einfügen', 
+                description, 'Neue Reise am Schluss der Liste einfügen', 
+                operation, 'InsertFragmentOperation', 
+                arg-fragment, '<item xmlns="http://www.tei-c.org/ns/1.0"/>',
+                arg-insertLocation, '.',
+                arg-insertPosition, 'Inside as last child'), 
+            color, black);
+    display:block;
+    padding-top: 0.125em;
+    padding-left: 180px;
+}
+
+keywords[ana=travels] list item {
+    content:
+        oxy_label(text, "Reise: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, combo,
+            edit, "@sameAs",
+            values, "travel_0001,travel_0002",
+            labels, "Reise 1,Reise 2",
             canRemoveValue,true,
             editable, false,
             fontInherit, true,

@@ -12,13 +12,22 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.oxygenxml.com/ns/ccfilter/config http://www.oxygenxml.com/ns/ccfilter/config/ccConfigSchemaFilter.xsd"
     xmlns="http://www.oxygenxml.com/ns/ccfilter/config">
+
+    <valueProposals path="tei:language/@ident" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="de" annotation="Deutsch"/>
+            <item value="en" annotation="Englisch"/>
+            <item value="fr" annotation="Französisch"/>
+            <item value="it" annotation="Italienisch"/>
+        </items>
+    </valueProposals>
     
     <valueProposals path="tei:foreign/@xml:lang" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
         <items>
-            <item value="de"/>
-            <item value="en"/>
-            <item value="fr"/>
-            <item value="it"/>
+            <item value="de" annotation="Deutsch"/>
+            <item value="en" annotation="Englisch"/>
+            <item value="fr" annotation="Französisch"/>
+            <item value="it" annotation="Italienisch"/>
         </items>
     </valueProposals>
 
