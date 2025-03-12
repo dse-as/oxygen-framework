@@ -335,8 +335,8 @@ keywords[ana=keywords] list item {
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@sameAs",
-            values, "7502947-9,4002963-3,4000626-8,4076001-7,4004973-5,4069722-8,4012402-2,4015972-3,4222126-2,4017102-4,4017604-6,4017672-1,4045895-7,7507676-7,4018480-8,4156741-9,4023222-0,4605581-2,4028779-8,4028859-6,4028871-7,4030550-8,4031011-5,4073624-6,4031892-8,4032187-3,4033114-3,4033131-3,4034402-2,4035646-2,4039792-0,4120755-5,4040222-8,4041358-5,1139293370,4045673-0,4046449-0,4048680-1,4177612-4,4049275-8,4049396-9,4050491-8,4116383-7,4054684-6,4056366-2,4058665-0,4059205-4,4323955-9,4060747-1,4186999-0,4042696-8",
-            labels, "Moderne Architektur,Armut,Ästhetik,Auto,Baudenkmal,Bürgertum,Diplomatie,Existenzphilosophie,Feminismus,Film,Flüchtling,Flugzeug,Fotografie,Frauenrolle (Soziale Rolle),Freundschaft,Geopolitik,Handel,Intermedialität,Journalismus,Jugend,Jugendbewegung,Kindheit,Kleidung,Kolonialismus,Kommunismus,Konservatismus,Krieg,Kriegsgefangenschaft,Landwirtschaft,Liebe,Mode,Modernisierung,Moral,Natur,Orientalismus,Phantastik,Poetik,Realismus,Reiseliteratur,Reisen,Religion,Romantik,Schifffahrt,Sexualität,Sport,Surrealismus,Technik,Traditionale Kultur ,Traum,Unterhaltungsindustrie,Vergewaltigung",
+            values, oxy_xpath("if (doc-available('../_lookups/keywords.xml')) then (for $i in doc('../_lookups/keywords.xml')//*:li return $i/@id) => string-join(',') else ''"),
+            labels, oxy_xpath("if (doc-available('../_lookups/keywords.xml')) then (for $i in doc('../_lookups/keywords.xml')//*:li return $i/@val) => string-join(',') else ''"),
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
@@ -394,8 +394,8 @@ keywords[ana=travels] list item {
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@sameAs",
-            values, "travel_0001,travel_0002",
-            labels, "Reise 1,Reise 2",
+            values, oxy_xpath("if (doc-available('../_lookups/travels.xml')) then (for $i in doc('../_lookups/travels.xml')//*:li return $i/@id) => string-join(',') else ''"),
+            labels, oxy_xpath("if (doc-available('../_lookups/travels.xml')) then (for $i in doc('../_lookups/travels.xml')//*:li return $i/@val) => string-join(',') else ''"),
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
