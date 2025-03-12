@@ -27,7 +27,8 @@
                 <msDesc>
                     <msIdentifier>
                         <repository>Bibliothèque cantonale et universitaire - Lausanne</repository>
-                        <idno>Collection des pièces isolées, IS 5502/3</idno>
+                        <collection>Collection des pièces isolées</collection>
+                        <idno>IS 5502/3</idno>
                         <altIdentifier>
                             <idno>PTN-587678</idno>
                         </altIdentifier>
@@ -58,8 +59,8 @@
             <correspDesc>
                 <correspAction type="sent">
                     <persName key="26135">Schwarzenbach, Annemarie (1908-1942)</persName>
-                    <date when="1932-07-04" type="original"/>
-                    <placeName key="208763" type="supplement">Potsdam</placeName>
+                    <date when="1932-07-04" type="source"/>
+                    <placeName key="208763" type="conjecture">Potsdam</placeName>
                 </correspAction>
                 <correspAction type="received">
                     <persName key="14844918">Bourdet, Claude (1909-1996)</persName>
@@ -67,8 +68,8 @@
                 </correspAction>
              </correspDesc>
              <langUsage>
-                <language ident="de">Deutsch</language>
-                <language ident="fr">Französisch</language>
+                <language ident="de"/>
+                <language ident="fr"/>
              </langUsage>
              <textClass>
                 <keywords ana="keywords">

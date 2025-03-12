@@ -24,7 +24,7 @@
             </note>
          </notesStmt>
          <sourceDesc>
-            <bibl type="Zeitschriftenartikel">
+            <bibl type="magazine_article">
                <persName key="26135" type="author">Schwarzenbach, Annemarie (1908-1942)</persName>
                <persName type="photographer"/>
                <bibl type="monogr">
@@ -56,7 +56,7 @@
       </fileDesc>
       <profileDesc>
          <langUsage>
-            <language ident="fr">French</language>
+            <language ident="fr"/>
          </langUsage>
          <textClass>
             <keywords ana="keywords">

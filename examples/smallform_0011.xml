@@ -6,10 +6,17 @@
       <fileDesc>
          <titleStmt>
             <title>Abenteuer von Klaus Mann</title>
-            <author>Annemarie Schwarzenbach</author>
          </titleStmt>
+         <editionStmt>
+            <edition>Annemarie Schwarzenbach: Digitale Edition der Kleinen Formen und Briefe</edition>
+            <respStmt>
+               <persName role="editor">Elias Zimmermann</persName>
+               <!--Bearbeiter/in, Editionsteam-->
+               <!--Bearbeitungsstatus ?-->
+            </respStmt>
+         </editionStmt>
          <publicationStmt>
-            <p><!--Information about publication or distribution--></p>
+            <p><!--Publisher, Lizenzierung, Copyright--></p>
          </publicationStmt>
          <notesStmt>
             <note type="global_comment">
@@ -17,12 +24,48 @@
             </note>
          </notesStmt>
          <sourceDesc>
-            <p><!--Information about the source--></p>
+            <bibl type="review">
+               <persName key="26135" type="author">Schwarzenbach, Annemarie (1908-1942)</persName>
+               <persName type="photographer"/>
+               <bibl type="monogr">
+                  <title level="j">NZZ</title>,
+                  <date when="1929-11-10"/>
+                  <biblScope>Nr. 2168, Bl. 3</biblScope>
+               </bibl>
+            </bibl>
+            <listBibl type="surrogates">
+               <bibl>
+                  <idno/>
+                  <ref/>
+                  <figure/>
+               </bibl>
+            </listBibl>
+            <listBibl type="editions">
+               <bibl>
+                  <title/>
+                  <biblScope/>
+               </bibl>
+            </listBibl>
+            <listBibl type="translations">
+               <bibl>
+                  <title/>
+                  <biblScope/>
+               </bibl>
+            </listBibl>
          </sourceDesc>
       </fileDesc>
       <profileDesc>
+         <langUsage>
+            <language ident="de"/>
+         </langUsage>
          <textClass>
             <keywords ana="keywords">
+               <list>
+                  <item sameAs="4000626-8"/>
+                  <item sameAs="4028859-6"/>
+               </list>
+            </keywords>
+            <keywords ana="travels">
                <list>
                   <item/>
                </list>

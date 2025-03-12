@@ -1,43 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../schema/tei_dseas.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="../schema/dseas.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" type="dseas-letter" xml:id="letter_0137">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" type="dseas-letter" subtype="letter" xml:id="letter_0137">
     <teiHeader>
         <fileDesc>
-        <titleStmt>
+            <titleStmt>
                 <title>Annemarie Schwarzenbach an Carson McCullers, 10. April 1941</title>
             </titleStmt>
-        <publicationStmt>
-            <p><!--Information about publication or distribution--></p>
-        </publicationStmt>
-        <notesStmt>
-            <note type="global_comment">
-                <p/>
-            </note>
-        </notesStmt>
-        <sourceDesc>
-            <p><!--Information about the source--></p>
-        </sourceDesc>
+            <editionStmt>
+                <edition>Annemarie Schwarzenbach: Digitale Edition der Kleinen Formen und Briefe</edition>
+                <respStmt>
+                    <persName role="editor">Daniela Kohler</persName>
+                    <!--Bearbeiter/in, Editionsteam-->
+                    <!--Bearbeitungsstatus ?-->
+                </respStmt>
+            </editionStmt>
+            <publicationStmt>
+                <p><!--Publisher, Lizenzierung, Copyright--></p>
+            </publicationStmt>
+            <notesStmt>
+                <note type="global_comment">
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository>Harry Ransom Humanities Research Center, Austin Texas</repository>
+                        <collection>Carson McCullers Collection</collection>
+                        <idno>MS02758_McCullersC_29_4</idno>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+                <listBibl type="surrogates">
+                    <bibl>
+                        <idno/>
+                        <ref/>
+                        <figure/>
+                    </bibl>
+                </listBibl>
+                <listBibl type="editions">
+                    <bibl>
+                        <title/>
+                        <biblScope/>
+                    </bibl>
+                </listBibl>
+                <listBibl type="translations">
+                    <bibl>
+                        <title/>
+                        <biblScope/>
+                    </bibl>
+                </listBibl>
+            </sourceDesc>
         </fileDesc>
         <profileDesc>
             <correspDesc>
                 <correspAction type="sent">
-                    <persName key="addReferenceHere">Schwarzenbach, Annemarie</persName>
-                    <date when="1941-04-10"/>
-                    <placeName key="addReferenceHere">Zürich</placeName>
+                    <persName key="26135">Schwarzenbach, Annemarie (1908-1942)</persName>
+                    <date when="1941-04-10" type="conjecture"/>
+                    <placeName key="13088451" type="source">Zürich</placeName>
                 </correspAction>
                 <correspAction type="received">
-                    <persName key="addReferenceHere">McCullers, Carson</persName>
+                    <persName key="addReferenceHere">McCullers, Carson (1917-1967)</persName>
                     <placeName key="addReferenceHere"/>
                 </correspAction>
              </correspDesc>
-             <textClass>
+            <langUsage>
+                <language ident="en"/>
+            </langUsage>
+            <textClass>
                 <keywords ana="keywords">
                     <list>
                         <item/>
                     </list>
                 </keywords>
-             </textClass>
+                <keywords ana="travels">
+                    <list>
+                        <item/>
+                    </list>
+                </keywords>
+            </textClass>
         </profileDesc>
     </teiHeader>
     <text>
