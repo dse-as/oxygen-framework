@@ -250,7 +250,7 @@ byline {
 
 langUsage {
     display: block;
-    font-size: 0.9em;
+    font-size: 0.85em;
     margin-bottom: 0.5em;
     margin-top: 0.5em;
 }
@@ -298,14 +298,9 @@ langUsage language {
 /* textClass (keywords) */
 
 keywords[ana=keywords] {
-    content:
-            oxy_label(
-            text, oxy_xpath("'Schlagworte ('||count(descendant::item[@sameAs])||')'")
-            styles, "@import 'labels.css';"
-        );
     display: block;
-    font-size: 0.9em;
-    margin-bottom: 0.5em;
+    font-size: 0.85em;
+    margin-bottom: 1em;
 }
 
 keywords[ana=keywords] list {
@@ -357,13 +352,8 @@ keywords[ana=keywords] list item {
 /* textClass (travels) */
 
 keywords[ana=travels] {
-    content:
-            oxy_label(
-            text, oxy_xpath("'Reisen ('||count(descendant::item[@sameAs])||')'")
-            styles, "@import 'labels.css';"
-        );
     display: block;
-    font-size: 0.9em;
+    font-size: 0.85em;
     margin-bottom: 0.5em;
 }
 
@@ -417,30 +407,14 @@ keywords[ana=travels] list item {
 
 correspAction {
     display: block;
-    font-size: 0.9em;
+    font-size: 0.85em;
     margin-bottom: 1em;
     padding-bottom: 1em;
     visibility: -oxy-collapse-text;
 }
 
-correspAction[type='sent']:before {
-    background-color: #e5f5f9;
-    display: block;
-    content: "Absendeangaben";
-    font-weight: bold;
-    padding: 0 0 0.3em 0;
-}
-
 correspAction[type='sent'] {
     margin-bottom: 0.5em;
-}
-
-correspAction[type="received"]:before {
-    background-color: #e5f5f9;
-    display: block;
-    content: "Empfangsangaben";
-    font-weight: bold;
-    padding: 0 0 0.3em 0;
 }
 
 correspAction persName,
@@ -450,7 +424,7 @@ correspAction orgName {
         oxy_textfield(
             edit, "#text",
             fontInherit, true,
-            columns, 20);
+            columns, 25);
     display: block;
     -oxy-editable: false;
 }
