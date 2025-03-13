@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listEvent type="travels">
+    <event xml:id="travel_0001">
+        <label>Reise 1</label>
+        <date from="1933" to="1934"/>
+    </event>
+    <event xml:id="travel_0002">
+        <label>Reise 2</label>
+        <date from="1934-12-01" to="1935-05-09"/>
+    </event>
+</listEvent>

@@ -335,8 +335,8 @@ keywords[ana=keywords] list item {
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@sameAs",
-            values, oxy_xpath("if (doc-available('../_lookups/keywords.xml')) then (for $i in doc('../_lookups/keywords.xml')//*:li return $i/@id) => string-join(',') else ''"),
-            labels, oxy_xpath("if (doc-available('../_lookups/keywords.xml')) then (for $i in doc('../_lookups/keywords.xml')//*:li return $i/@val) => string-join(',') else ''"),
+            values, oxy_xpath("if (doc-available('../../../../meta/lists/keywords.xml')) then (for $i in doc('../../../../meta/lists/keywords.xml')//*:item return $i/@source) => string-join(',') else ''"),
+            labels, oxy_xpath("if (doc-available('../../../../meta/lists/keywords.xml')) then (for $i in doc('../../../../meta/lists/keywords.xml')//*:item return $i => normalize-space()) => string-join(',') else ''"),
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
@@ -394,8 +394,8 @@ keywords[ana=travels] list item {
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@sameAs",
-            values, oxy_xpath("if (doc-available('../_lookups/travels.xml')) then (for $i in doc('../_lookups/travels.xml')//*:li return $i/@id) => string-join(',') else ''"),
-            labels, oxy_xpath("if (doc-available('../_lookups/travels.xml')) then (for $i in doc('../_lookups/travels.xml')//*:li return $i/@val) => string-join(',') else ''"),
+            values, oxy_xpath("if (doc-available('../../../../meta/lists/events.xml')) then (for $i in doc('../../../../meta/lists/events.xml')//*:event return $i/@xml:id) => string-join(',') else ''"),
+            labels, oxy_xpath("if (doc-available('../../../../meta/lists/events.xml')) then (for $i in doc('../../../../meta/lists/events.xml')//*:event return $i/*:label => normalize-space()) => string-join(',') else ''"),
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
