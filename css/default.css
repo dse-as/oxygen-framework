@@ -1121,6 +1121,21 @@ text foreign:focus:after {
     ;
 }
 
+space,
+space[dim='horizontal'] {
+    content: url('../images/space_horizontal-20.png');
+    padding: 0 0.5em 0 0.5em;
+    width: 1em;
+    -oxy-editable: false;
+}
+
+space[dim='vertical'] {
+    content: url('../images/space_vertical-20.png');
+    padding: 0.5em 0 0.5em 0;
+    width: 1em;
+    -oxy-editable: false;
+}
+
 /* Quotes */
 
 text quote {

@@ -75,6 +75,11 @@
             <assert test="@reason">A &lt;<name/>&gt; element must contain a @reason attribute.</assert>
         </rule>
         
+        <!-- space -->
+        <rule context="tei:space">
+            <assert test="@dim">A &lt;<name/>&gt; element must contain a @dim attribute.</assert>
+        </rule>
+        
         <!-- hi -->
         <rule context="tei:hi">
             <assert test="@rendition">A &lt;<name/>&gt; element needs to have @rendition attribute.</assert>
