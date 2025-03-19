@@ -9,7 +9,7 @@ This repository contains an oXygen XML Editor framework to customize the editing
 ## Features
 
 * Simple graphical display of the project's markup based on [TEI-XML](https://tei-c.org/guidelines/) and the [DTA-Basisformat](https://www.deutschestextarchiv.de/doku/basisformat/index.html).
-* Referencing of [Geovistory](https://www.geovistory.org/) entites via [SPARQL API](https://www.geovistory.org/sparql).
+* Referencing of entries in [Google Sheets](https://docs.google.com/spreadsheets).
 * Referencing of bibliographic entries in [Zotero Groups](https://www.zotero.org/groups). 
 * Uses [ediarum.JAR](https://github.com/ediarum/ediarum.JAR) for index operations in [Oxygen Author Mode](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/editing-xml-documents-author.html).
 * Insert actions for frequently used tags.
@@ -49,7 +49,7 @@ See also the [official documentation](https://www.oxygenxml.com/doc/versions/26.
 
 Go to **Options > Preferences > Network Connection Settings > Trusted Hosts** and add an entry for 
 
-* `sparql.geovistory.org`,
+* `docs.google.com/spreadsheets`,
 * `api.zotero.org` and
 * `cdn.jsdelivr.net/gh/dse-as`.
 

@@ -612,9 +612,6 @@ rs[type='person']:focus-within:after {
             tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
-                  oxy_action(
-                        id, 'open_geovistory'
-                  ),
                   oxy_action( 
                         id, 'rs_key'
                   ),
@@ -633,9 +630,6 @@ rs[type='org']:focus-within:after {
             tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
-                  oxy_action(
-                        id, 'open_geovistory'
-                  ),
                   oxy_action( 
                         id, 'rs_key'
                   ),
@@ -654,9 +648,6 @@ rs[type='place']:focus-within:after {
             tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
-                  oxy_action(
-                        id, 'open_geovistory'
-                  ),
                   oxy_action( 
                         id, 'rs_key'
                   ),

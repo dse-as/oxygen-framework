@@ -6,85 +6,78 @@
     
     <xsl:param name="type"/>
     
-    <xsl:variable name="geovistory-project" select="'api_v1_project_15653112'"/>
+    <xsl:variable name="sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
     <xsl:variable name="zotero-project" select="'5746334'"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
        
         <xsl:if test="$type = 'person' or $type = 'all'">
-            <xsl:variable name="sparql">
-                PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
-                PREFIX n1: &lt;https://ontome.net/ontology/>
-                SELECT DISTINCT ?c21_1 ?label_38
-                WHERE { ?c21_1 a n1:c21 .
-                        ?c21_1 rdfs:label ?label_38 . }
-                ORDER BY ASC(UCASE(str(?label_38)))
-                LIMIT 9999
-            </xsl:variable>
-            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory-project||'?query='||encode-for-uri($sparql))"/>
-            
-            <xsl:result-document href="{$result-path||'lookup-person.xml'}" method="xml" indent="no">
-                <ul type="persons">
-                    <xsl:for-each select="$result//*:result">
-                        <xsl:variable name="id" select="*:binding[@name='c21_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
-                        <xsl:variable name="label" select="*:binding[@name='label_38']/*:literal"/>
-                        <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
+            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/spreadsheets/d/'||$sheetID||'/export?format=tsv&amp;gid=846284184')"/>
+            <xsl:variable name="list">
+                <ul type="org">
+                    <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:variable name="id" select=". => substring-before('&#x9;')"/>
+                        <xsl:variable name="label" select=". => substring-after('&#x9;') => substring-before('&#x9;')"/>
+                        <xsl:if test="matches($id,'\d\d\d') and $label!=''">
+                            <li id="{$id}" val="{$label}"/> 
+                        </xsl:if>
                     </xsl:for-each>
                 </ul>
+            </xsl:variable>
+            
+            <xsl:result-document href="{$result-path||'lookup-person.xml'}" method="xml" indent="no">
+                <xsl:copy-of select="$list"/>
             </xsl:result-document>
+            
+            <xsl:message expand-text="yes">✅ Saved {count($list//*:li)} person entries in {$result-path||'lookup-person.xml'}</xsl:message>
         </xsl:if>
         
         <xsl:if test="$type = 'place' or $type = 'all'">
-            <xsl:variable name="sparql">
-                PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
-                PREFIX n1: &lt;https://ontome.net/ontology/>
-                SELECT DISTINCT ?c363_1 ?label_68
-                WHERE { ?c363_1 a n1:c363 .
-                        ?c363_1 rdfs:label ?label_68 . }
-                ORDER BY ASC(UCASE(str(?label_68)))
-                LIMIT 9999
-            </xsl:variable>
-            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory-project||'?query='||encode-for-uri($sparql))"/>
-            
-            <xsl:result-document href="{$result-path||'lookup-place.xml'}" method="xml" indent="no">
-                <ul type="places">
-                    <xsl:for-each select="$result//*:result">
-                        <xsl:variable name="id" select="*:binding[@name='c363_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
-                        <xsl:variable name="label" select="*:binding[@name='label_68']/*:literal"/>
-                        <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
+            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/spreadsheets/d/'||$sheetID||'/export?format=tsv&amp;gid=811311071')"/>
+            <xsl:variable name="list">
+                <ul type="org">
+                    <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:variable name="id" select=". => substring-before('&#x9;')"/>
+                        <xsl:variable name="label" select=". => substring-after('&#x9;') => substring-before('&#x9;')"/>
+                        <xsl:if test="matches($id,'\d\d\d') and $label!=''">
+                            <li id="{$id}" val="{$label}"/> 
+                        </xsl:if>
                     </xsl:for-each>
                 </ul>
+            </xsl:variable>
+            
+            <xsl:result-document href="{$result-path||'lookup-place.xml'}" method="xml" indent="no">
+                <xsl:copy-of select="$list"/>
             </xsl:result-document>
+            
+            <xsl:message expand-text="yes">✅ Saved {count($list//*:li)} place entries in {$result-path||'lookup-place.xml'}</xsl:message>
         </xsl:if>
         
         <xsl:if test="$type = 'org' or $type = 'all'">
-            <xsl:variable name="sparql">
-                PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
-                PREFIX n1: &lt;https://ontome.net/ontology/>
-                SELECT DISTINCT ?c68_1 ?label_38
-                WHERE { ?c68_1 a n1:c68 .
-                        ?c68_1 rdfs:label ?label_38 . }
-                ORDER BY ASC(UCASE(str(?label_38)))
-                LIMIT 9999
-            </xsl:variable>
-            <xsl:variable name="result" select="doc('https://sparql.geovistory.org/'||$geovistory-project||'?query='||encode-for-uri($sparql))"/>
-            
-            <xsl:result-document href="{$result-path||'lookup-org.xml'}" method="xml" indent="no">
+            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/spreadsheets/d/'||$sheetID||'/export?format=tsv&amp;gid=1709662033')"/>
+            <xsl:variable name="list">
                 <ul type="org">
-                    <xsl:for-each select="$result//*:result">
-                        <xsl:variable name="id" select="*:binding[@name='c68_1']/*:uri => replace('http://geovistory.org/resource/','')"/>
-                        <xsl:variable name="label" select="*:binding[@name='label_38']/*:literal"/>
-                        <li id="{$id}" val="{$label||' ('||$id||')'}"/>  
+                    <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:variable name="id" select=". => substring-before('&#x9;')"/>
+                        <xsl:variable name="label" select=". => substring-after('&#x9;') => substring-before('&#x9;')"/>
+                        <xsl:if test="matches($id,'\d\d\d') and $label!=''">
+                            <li id="{$id}" val="{$label}"/> 
+                        </xsl:if>
                     </xsl:for-each>
                 </ul>
+            </xsl:variable>
+            
+            <xsl:result-document href="{$result-path||'lookup-org.xml'}" method="xml" indent="no">
+                <xsl:copy-of select="$list"/>
             </xsl:result-document>
+            
+            <xsl:message expand-text="yes">✅ Saved {count($list//*:li)} organisation entries in {$result-path||'lookup-org.xml'}</xsl:message>
         </xsl:if>
         
         <xsl:if test="$type = 'bibl' or $type = 'all'">
             <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero-project||'/items') => parse-json()"/>
-            
-            <xsl:result-document href="{$result-path||'lookup-bibl.xml'}" method="xml" indent="no">
+            <xsl:variable name="list">
                 <ul type="bibl">
                     <xsl:for-each select="$result?*?('data')">
                         <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
@@ -100,7 +93,13 @@
                             $label || ' [' || $id || '], ' || $itemType}"/>  
                     </xsl:for-each>
                 </ul>
+            </xsl:variable>
+            
+            <xsl:result-document href="{$result-path||'lookup-bibl.xml'}" method="xml" indent="no">
+                <xsl:copy-of select="$list"/>
             </xsl:result-document>
+            
+            <xsl:message expand-text="yes">✅ Saved {count($list//*:li)} bibliographic entries in {$result-path||'lookup-bibl.xml'}</xsl:message>
         </xsl:if>            
         
     </xsl:template>
