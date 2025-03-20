@@ -2,10 +2,6 @@
 
 This repository contains an oXygen XML Editor framework to customize the editing environment of the _Digital Scholarly Edition Annermarie Schwarzenbach_ (dse-as).
 
-## Status
-
-🔬Experimental, do not use in production!
-
 ## Features
 
 * Simple graphical display of the project's markup based on [TEI-XML](https://tei-c.org/guidelines/) and the [DTA-Basisformat](https://www.deutschestextarchiv.de/doku/basisformat/index.html).
