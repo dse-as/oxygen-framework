@@ -22,6 +22,90 @@ TEI {
     font-family: Roboto;
 }
 
+/* Tabs */
+
+/* 19999 */
+TEI:before(19999) {
+  position: relative;
+  display: inline-block;
+  right: 1px;
+  bottom: 1px;
+  content: " " oxy_button(transparent, true, action, oxy_action(name, ' teiHeader+text ', description, 'teiHeader und text anzeigen', operation, 'ro.sync.ecss.extensions.commons.operations.ChangePseudoClassesOperation', arg-removePseudoClassNames, '-oxy-visible-2 -oxy-visible-3 ', arg-setPseudoClassNames, '-oxy-visible -oxy-visible-1')) " ";
+  border: 1px solid #add8e6;
+  height: 26px;
+}
+TEI:-oxy-visible-1:before(19999) {
+  background-color: #add8e6;
+  border-bottom: 1px solid #add8e6;
+}
+TEI:-oxy-visible-1 > teiHeader {
+  display: block;
+}
+TEI:-oxy-visible-1 > text {
+  display: block;
+}
+
+TEI:not(:-oxy-visible-3):not(:-oxy-visible-2):before(19999) {
+  background-color: #add8e6;
+  border-bottom: 1px solid #add8e6;
+}
+
+/* 19998 */
+TEI:before(19998) {
+  position: relative;
+  display: inline-block;
+  right: 1px;
+  bottom: 1px;
+  content: " " oxy_button(transparent, true, action, oxy_action(name, ' teiHeader ', description, 'Ansicht auf teiHeader reduzieren', operation, 'ro.sync.ecss.extensions.commons.operations.ChangePseudoClassesOperation', arg-removePseudoClassNames, '-oxy-visible-1 -oxy-visible-2 ', arg-setPseudoClassNames, '-oxy-visible -oxy-visible-3')) " ";
+  border: 1px solid #add8e6;
+  height: 26px;
+}
+TEI:-oxy-visible-3:before(19998) {
+  background-color: #add8e6;
+  border-bottom: 1px solid #add8e6;
+}
+TEI:-oxy-visible-3 > * {
+  display: none;
+}
+TEI:-oxy-visible-3 > teiHeader {
+  display: block;
+}
+TEI:not(:-oxy-visible-3) > * {
+  display: none;
+}
+
+/* 19997 */
+TEI:before(19997) {
+  position: relative;
+  display: inline-block;
+  right: 1px;
+  bottom: 1px;
+  content: " " oxy_button(transparent, true, action, oxy_action(name, ' text ', description, 'Ansicht auf text reduzieren', operation, 'ro.sync.ecss.extensions.commons.operations.ChangePseudoClassesOperation', arg-removePseudoClassNames, '-oxy-visible-1  -oxy-visible-3 ', arg-setPseudoClassNames, '-oxy-visible -oxy-visible-2')) " ";
+  border: 1px solid #add8e6;
+  height: 26px;
+}
+TEI:-oxy-visible-2:before(19997) {
+  background-color: #add8e6;
+  border-bottom: 1px solid #add8e6;
+}
+TEI:-oxy-visible-2 > * {
+  display: none;
+}
+TEI:-oxy-visible-2 > text {
+  display: block;
+}
+TEI:not(:-oxy-visible-2) > * {
+  display: none;
+}
+
+TEI:not(:-oxy-visible) > * {
+  display: none;
+}
+TEI:not(:-oxy-visible) > teiHeader,
+TEI:not(:-oxy-visible) > text {
+  display: block;
+}
+
 /* Foldable Sections */
 
 teiHeader,
