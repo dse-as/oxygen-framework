@@ -697,7 +697,14 @@ correspAction orgName {
 
 correspAction date {
 	content: 
-        oxy_datePicker(columns, 22, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
+        oxy_datePicker(columns, 25, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+        oxy_editor(type, combo,
+                edit, "@type"
+                editable, false,
+                values, "source, conjecture",
+                fontInherit, true,
+                columns, 10
+            );
     display: block;
     visibility: -oxy-collapse-text;
 }
