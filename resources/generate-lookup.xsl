@@ -2,23 +2,24 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all"
+    expand-text="true"
     version="3.0">
     
-    <xsl:param name="type"/>
+    <xsl:param name="type" select="'all'"/>
     
     <xsl:variable name="sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
     <xsl:variable name="zotero-project" select="'5746334'"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
-       
+        
         <xsl:if test="$type = 'person' or $type = 'all'">
-            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/spreadsheets/d/'||$sheetID||'/export?format=tsv&amp;gid=846284184')"/>
+            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet=Personen')"/>
             <xsl:variable name="list">
                 <ul type="org">
                     <xsl:for-each select="$result[position() gt 1]">
-                        <xsl:variable name="id" select=". => substring-before('&#x9;')"/>
-                        <xsl:variable name="label" select=". => substring-after('&#x9;') => substring-before('&#x9;')"/>
+                        <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
+                        <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
                         <xsl:if test="matches($id,'\d\d\d') and $label!=''">
                             <li id="{$id}" val="{$label}"/> 
                         </xsl:if>
@@ -34,12 +35,12 @@
         </xsl:if>
         
         <xsl:if test="$type = 'place' or $type = 'all'">
-            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/spreadsheets/d/'||$sheetID||'/export?format=tsv&amp;gid=811311071')"/>
+            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet=Orte')"/>
             <xsl:variable name="list">
                 <ul type="org">
                     <xsl:for-each select="$result[position() gt 1]">
-                        <xsl:variable name="id" select=". => substring-before('&#x9;')"/>
-                        <xsl:variable name="label" select=". => substring-after('&#x9;') => substring-before('&#x9;')"/>
+                        <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
+                        <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
                         <xsl:if test="matches($id,'\d\d\d') and $label!=''">
                             <li id="{$id}" val="{$label}"/> 
                         </xsl:if>
@@ -55,12 +56,12 @@
         </xsl:if>
         
         <xsl:if test="$type = 'org' or $type = 'all'">
-            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/spreadsheets/d/'||$sheetID||'/export?format=tsv&amp;gid=1709662033')"/>
+            <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet=Organisationen')"/>
             <xsl:variable name="list">
                 <ul type="org">
                     <xsl:for-each select="$result[position() gt 1]">
-                        <xsl:variable name="id" select=". => substring-before('&#x9;')"/>
-                        <xsl:variable name="label" select=". => substring-after('&#x9;') => substring-before('&#x9;')"/>
+                        <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
+                        <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
                         <xsl:if test="matches($id,'\d\d\d') and $label!=''">
                             <li id="{$id}" val="{$label}"/> 
                         </xsl:if>
