@@ -24,7 +24,6 @@ TEI {
 
 /* Foldable Sections */
 
-TEI,
 teiHeader,
 text,
 front,
@@ -73,6 +72,7 @@ TEI[xml|id]:before {
             styles, "@import 'labels_sub.css';"
         )
     ;
+    margin-top: 0.5em;
     vertical-align: middle;
 }
 
@@ -244,6 +244,182 @@ byline {
     margin:2px;
     margin-bottom: 5px;
     -oxy-placeholder-content: "[Verfasserinnenzeile]";
+}
+
+/* msIdentifier */
+
+sourceDesc > bibl {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+sourceDesc > bibl > * {
+    display:block;
+}
+
+sourceDesc > bibl persName {
+    content:
+        oxy_label(text, "Person: ", 
+            styles, "@import 'labels.css';")
+        oxy_textfield(
+            edit, "#text",
+            fontInherit, true,
+            columns, 25)
+        oxy_editor(type, combo,
+            edit, "@type"
+            editable, false,
+            values, "author, photographer",
+            labels, "Autor/in, Fotograf/in",
+            fontInherit, true,
+            columns, 10
+        );
+}
+
+sourceDesc > bibl persName:after {
+    -oxy-append-content: 
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'persName_reg'
+                  )
+              )
+         );
+}
+
+sourceDesc > bibl > bibl:before {
+    content:
+        oxy_editor(
+            type, button, 
+            action, oxy_action(
+                name, 'Person einfügen', 
+                description, 'Weitere Person einfügen', 
+                operation, 'InsertFragmentOperation', 
+                arg-fragment, '<persName xmlns="http://www.tei-c.org/ns/1.0"/>',
+                arg-insertLocation, '.',
+                arg-insertPosition, 'Before',
+                arg-schemaAware,'false'),
+            color, black, 
+            width, 20em);
+    display:block;
+    padding-bottom: 0.5em;
+    padding-left: 180px;
+}
+
+sourceDesc > bibl > bibl {
+    margin-top: 1em;
+}
+
+sourceDesc > bibl > bibl > title {
+    content:
+        oxy_label(text, "Zeitschrift: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            editable, false,
+            fontInherit, true,
+            columns, 25);
+}
+
+sourceDesc > bibl > bibl > date {
+	content: 
+        oxy_label(text, "Datum: ", 
+            styles, "@import 'labels.css';")
+        oxy_datePicker(columns, 22, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+
+sourceDesc > bibl > bibl > biblScope {
+    content:
+        oxy_label(text, "Spezifikation: ", 
+            styles, "@import 'labels.css';")
+        oxy_textArea(edit, "#text",
+            fontInherit, true,
+            rows, 2,
+            columns, 30);
+}
+
+/* msIdentifier */
+
+msIdentifier {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+}
+
+msIdentifier:after {
+    content:
+        oxy_editor(
+            type, button, 
+            action, oxy_action(
+                name, 'Alt. Signatur einfügen', 
+                description, 'Alt. Signatur einfügen', 
+                operation, 'InsertFragmentOperation', 
+                arg-fragment, '<altIdentifier xmlns="http://www.tei-c.org/ns/1.0"><idno/></altIdentifier>',
+                arg-insertLocation, '.',
+                arg-insertPosition, 'Inside as last child',
+                arg-schemaAware,'false'),
+            color, black, 
+            width, 20em);
+    display:block;
+    padding-top: 0.125em;
+    padding-left: 180px;
+}
+
+
+msIdentifier > * {
+    display:block;
+}
+
+msIdentifier > repository {
+    content:
+        oxy_label(text, "Archiv: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            editable, false,
+            fontInherit, true,
+            columns, 25);
+}
+
+msIdentifier > collection {
+    content:
+        oxy_label(text, "Sammlung: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            editable, false,
+            fontInherit, true,
+            columns, 25);
+}
+
+msIdentifier > idno {
+    content:
+        oxy_label(text, "Signatur: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            editable, false,
+            fontInherit, true,
+            columns, 25);
+}
+
+msIdentifier > altIdentifier > idno {
+    content:
+        oxy_label(text, "Alt. Signatur: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            editable, false,
+            fontInherit, true,
+            columns, 25);
 }
 
 /* language */
@@ -424,9 +600,15 @@ correspAction orgName {
         oxy_textfield(
             edit, "#text",
             fontInherit, true,
-            columns, 25);
+            columns, 25)
+    oxy_editor(type, combo,
+            edit, "@type"
+            editable, false,
+            values, "source, conjecture",
+            fontInherit, true,
+            columns, 10
+        );
     display: block;
-    -oxy-editable: false;
 }
 
 correspAction date {
@@ -454,6 +636,20 @@ correspAction[type='received'] persName:before {
     ; 
 }
 
+correspAction persName:after {
+    -oxy-append-content: 
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'persName_reg'
+                  )
+              )
+         );
+}
+
 correspAction[type='sent'] placeName:before {
     content:
         oxy_label(
@@ -470,6 +666,20 @@ correspAction[type='received'] placeName:before {
             styles, "@import 'labels.css';"
         )
     ;
+}
+
+correspAction placeName:after {
+    -oxy-append-content: 
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'placeName_reg'
+                  )
+              )
+         );
 }
 
 correspAction[type='sent'] date:before {
@@ -728,7 +938,7 @@ publicationStmt {
     display: none;
 }
 
-sourceDesc {
+sourceDesc > listBibl {
     display: none;
 }
 
@@ -776,9 +986,9 @@ notesStmt note[type='global_comment'] p {
 
 /* text */
 
-teiHeader:after {
+text:before {
     display: block;
-    content:
+    -oxy-prepend-content:
             oxy_label(text, oxy_concat("Referenzen im Text (", oxy_xpath("count(ancestor::TEI//rs)"), ")"), styles, "@import 'labels_sub.css';")
             oxy_htmlContent(
             content, oxy_concat(oxy_xpath("if (//rs) then '' else 'keine'"), oxy_xpath("let $lookup := doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-bibl.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml') return concat('<ul> ', (for $x in //rs => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => string-join(),'</ul>')")),
