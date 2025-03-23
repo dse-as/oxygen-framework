@@ -18,6 +18,7 @@
             <xsl:variable name="list">
                 <ul type="org">
                     <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:sort select="tokenize(.,'&quot;')[4]"/>
                         <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
                         <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
                         <xsl:if test="matches($id,'\d\d\d') and $label!=''">
@@ -39,6 +40,7 @@
             <xsl:variable name="list">
                 <ul type="org">
                     <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:sort select="tokenize(.,'&quot;')[4]"/>
                         <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
                         <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
                         <xsl:if test="matches($id,'\d\d\d') and $label!=''">
@@ -60,6 +62,7 @@
             <xsl:variable name="list">
                 <ul type="org">
                     <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:sort select="tokenize(.,'&quot;')[4]"/>
                         <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
                         <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
                         <xsl:if test="matches($id,'\d\d\d') and $label!=''">
