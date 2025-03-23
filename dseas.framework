@@ -2107,10 +2107,10 @@ rs_org</String>
 											<String>Faksimile im Universal Viewer öffnen</String>
 										</field>
 										<field name="largeIconPath">
-											<String>${framework}/images/uv-20.png</String>
+											<String>${framework}/images/iiif-20.png</String>
 										</field>
 										<field name="smallIconPath">
-											<String>${framework}/images/uv-16.png</String>
+											<String>${framework}/images/iiif-16.png</String>
 										</field>
 										<field name="accessKey">
 											<String></String>
@@ -2856,6 +2856,12 @@ delete</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>generate_lookup_all</String>
+												</field>
+											</toolbarItem>
+											<toolbarSeparator/>
+											<toolbarItem>
+												<field name="actionID">
+													<String>open_iiif_images</String>
 												</field>
 											</toolbarItem>
 										</toolbarEntry-array>
