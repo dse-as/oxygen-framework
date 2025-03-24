@@ -5,6 +5,30 @@
 
     <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
 
+    <!-- global variables -->
+    
+    <let name="filename" value="tokenize(document-uri(/), '/')[last()]"/>
+    <let name="dir" value="tokenize(document-uri(/), '/')[last() - 1]"/>
+    <let name="type" value="$filename => substring-before('_')"/>
+    <let name="typePl" value="$type||'s'"/>
+    
+    <pattern>
+        
+        <rule context="tei:TEI">
+            <let name="pathToFacs" value="'../../facs/'||$typePl||'/'||$dir||'/'||$filename"/>
+            <assert test="doc-available($pathToFacs)">Missing file with facsimile in <value-of select="$pathToFacs"/></assert>
+            
+            <let name="idRegex" value="'^'||$type||'_\d{4}'"/>
+            <assert test="matches($filename,$idRegex||'\.xml$')">The filename does not follow the conventions.</assert>
+            <assert test="contains($filename,@xml:id)">@xml:id must correspond to the filename (<xsl:value-of select="$filename"/>)</assert>
+            <assert test="matches(@xml:id,$idRegex||'$')">The <name/> element needs '@xml:id' with the prefix '<xsl:value-of select="$type"/>_' followed by exactly 4 digits.</assert>
+            
+            <let name="pathRegex" value="$typePl||'/'||substring-after(@xml:id,'_') => substring(1,2)||'/'||@xml:id||'.xml'"/>
+            <assert test="matches(document-uri(/),$pathRegex)">The file is not saved in the right location (<xsl:value-of select="$pathRegex"/>; current location: <xsl:value-of select="document-uri(/)"/>).</assert>
+        </rule>
+        
+    </pattern>    
+    
     <!-- allowed elements -->
     
     <pattern>
@@ -45,9 +69,17 @@
             <assert test="tei:note">A &lt;<name/>&gt; element must contain a &lt;note&gt; element.</assert>
         </rule>
         
+        <!-- sourceDesc -->
+        <rule context="tei:sourceDesc">
+            <report test="ancestor::tei:TEI/@type='dseas-letter' and not(tei:msDesc)">A &lt;<name/>&gt; element of a letter must contain a &lt;msDesc&gt; element.</report>
+            <report test="ancestor::tei:TEI/@type='dseas-smallform' and not(tei:bibl)">A &lt;<name/>&gt; element of a smallform must contain a &lt;bibl&gt; element.</report>
+        </rule>
+        
         <!-- profileDesc -->
         <rule context="tei:profileDesc">
+            <assert test="tei:langUsage">A &lt;<name/>&gt; element must contain a &lt;langUsage&gt; element.</assert>
             <assert test="tei:textClass">A &lt;<name/>&gt; element must contain a &lt;textClass&gt; element.</assert>
+            <report test="ancestor::tei:TEI/@type='dseas-letter' and not(tei:correspDesc)">A &lt;<name/>&gt; element of a letter must contain a &lt;correspDesc&gt; element.</report>
         </rule>
         
     </pattern>
