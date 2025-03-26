@@ -895,7 +895,7 @@ rs[type='person'],
 rs[type='org'],
 rs[type='place'],
 rs[type='bibl'] {
-    border-bottom: 3px solid Salmon;
+    border-bottom: 3px solid #68D391;
     color: #000000;
 } 
 
@@ -1431,7 +1431,7 @@ space[dim='vertical'] {
 /* Quotes */
 
 text quote {
-    color: fuchsia;
+    background-color: #FFF5F5;
 }
 
 text quote:before  {
