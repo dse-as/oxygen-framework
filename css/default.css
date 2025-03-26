@@ -1302,30 +1302,30 @@ text add:focus:after {
 
 /* Renditions */
 
-text hi[rendition="#b"] {
+hi[rendition="#b"] {
     font-weight: bold;
 }
 
-text hi[rendition="#u"] {
+hi[rendition="#u"] {
     text-decoration: underline;
 }
 
-text hi[rendition="#sub"] {
+hi[rendition="#sub"] {
     font-size:small;
     vertical-align:sub;
 }
 
-text hi[rendition="#sup"] {
+hi[rendition="#sup"] {
     position: relative; 
     top: -0.5em;
     font-size: 0.7em;
 }
 
-text hi[rendition="#i"] {
+hi[rendition="#i"] {
     font-style: italic;
 }
 
-text hi[rendition="#g"] {
+hi[rendition="#g"] {
     letter-spacing:0.125em;
 }
 

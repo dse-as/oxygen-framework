@@ -314,7 +314,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+														<String>oxy:allows-child-element("hi") and (ancestor::text or ancestor::note[@type='global_comment'])</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -360,7 +360,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+														<String>oxy:allows-child-element("hi") and (ancestor::text or ancestor::note[@type='global_comment'])</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -406,7 +406,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+														<String>oxy:allows-child-element("hi") and (ancestor::text or ancestor::note[@type='global_comment'])</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -452,7 +452,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+														<String>oxy:allows-child-element("hi") and (ancestor::text or ancestor::note[@type='global_comment'])</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -502,7 +502,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+														<String>oxy:allows-child-element("hi") and (ancestor::text or ancestor::note[@type='global_comment'])</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
@@ -552,7 +552,7 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String>oxy:allows-child-element("hi") and ancestor::text</String>
+														<String>oxy:allows-child-element("hi") and (ancestor::text or ancestor::note[@type='global_comment'])</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
