@@ -1473,3 +1473,50 @@ oxy|comment {
     color:green !important;
     background-color:transparent !important;
 }
+
+/* listEvent */
+
+listEvent {
+    max-width: 60em;
+    padding: 1em;
+    font-family: Roboto;
+}
+
+listEvent * {
+    -oxy-display-tags: none;
+}
+
+listEvent > event {
+    border-bottom: 1px steelblue dashed;
+    padding-bottom: 1em;
+}
+
+listEvent > event > label {
+    display: block;
+    font-size: 1.2em;
+    font-weight:bold;
+    -oxy-placeholder-content: "[Titel]";
+}
+
+listEvent > event > date {
+	content: 
+        oxy_label(text, "Datum (von): ", 
+            styles, "@import 'labels.css';")
+        oxy_datePicker(columns, 10, edit , "@from", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+        oxy_label(text, "Datum (bis): ", 
+            text-align, right,
+            styles, "@import 'labels.css';")
+        oxy_datePicker(columns, 10, edit , "@to", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+listEvent > event > note:before {
+    content:         
+        oxy_label(
+            text, "Beschreibung"
+            styles, "@import 'labels.css';"
+        );
+    display: block;
+    margin-bottom: 0.5em;
+}
