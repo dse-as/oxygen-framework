@@ -16,7 +16,7 @@
         <xsl:if test="$type = 'person' or $type = 'all'">
             <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet=Personen')"/>
             <xsl:variable name="list">
-                <ul type="org">
+                <ul type="persons">
                     <xsl:for-each select="$result[position() gt 1]">
                         <xsl:sort select="tokenize(.,'&quot;')[4]"/>
                         <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
@@ -38,7 +38,7 @@
         <xsl:if test="$type = 'place' or $type = 'all'">
             <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet=Orte')"/>
             <xsl:variable name="list">
-                <ul type="org">
+                <ul type="places">
                     <xsl:for-each select="$result[position() gt 1]">
                         <xsl:sort select="tokenize(.,'&quot;')[4]"/>
                         <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
