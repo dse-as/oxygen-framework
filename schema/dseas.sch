@@ -88,6 +88,11 @@
 
     <pattern>
         
+        <!-- anchor -->
+        <rule context="tei:anchor">
+            <assert test="@xml:id">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+        </rule>
+        
         <!-- cb -->
         <rule context="tei:cb">
             <assert test="@type">A &lt;<name/>&gt; element must contain a @type attribute.</assert>
@@ -112,6 +117,13 @@
             <assert test="@dim">A &lt;<name/>&gt; element must contain a @dim attribute.</assert>
         </rule>
         
+        <!-- rs -->
+        <rule context="tei:rs">
+            <assert test="@type">A &lt;<name/>&gt; element must contain a @type attribute.</assert>
+            <assert test="@key">A &lt;<name/>&gt; element must contain a @key attribute.</assert>
+            <assert test="@xml:id">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+        </rule>
+        
         <!-- hi -->
         <rule context="tei:hi">
             <assert test="@rendition">A &lt;<name/>&gt; element needs to have @rendition attribute.</assert>
@@ -126,6 +138,8 @@
         <rule context="tei:note">
             <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
             <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
+            <report test="ancestor::tei:text and not(@type='annotation')">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
+            <report test="ancestor::tei:text and not(@xml:id)">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
         </rule>
         
         <!-- opener -->
