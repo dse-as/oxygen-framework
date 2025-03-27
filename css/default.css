@@ -1080,9 +1080,9 @@ notesStmt note[type='global_comment'] p {
 text:before {
     display: block;
     -oxy-prepend-content:
-            oxy_label(text, oxy_concat("Referenzen im Text (", oxy_xpath("count(ancestor::TEI//rs)"), ")"), styles, "@import 'labels_sub.css';")
+            oxy_label(text, oxy_concat("Referenzen im Text (", oxy_xpath("count(ancestor::TEI//rs[@key])"), ")"), styles, "@import 'labels_sub.css';")
             oxy_htmlContent(
-            content, oxy_concat(oxy_xpath("if (//rs) then '' else 'keine'"), oxy_xpath("let $lookup := doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-bibl.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml') return concat('<ul> ', (for $x in //rs => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => string-join(),'</ul>')")),
+            content, oxy_concat(oxy_xpath("if (//rs[@key]) then '' else 'keine'"), oxy_xpath("let $lookup := doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-bibl.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml') return concat('<ul style=\"padding-bottom: 20px;\"> ', (for $x in //rs[@key] => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')")),
             width, 100%);
     padding: 0.5em 0.5em 0.5em 0;
     margin: 1em 0 0.5em 0;
