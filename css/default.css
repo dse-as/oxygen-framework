@@ -1006,6 +1006,10 @@ titleStmt title {
     visibility: visible;
 } 
 
+TEI titleStmt hi {
+    background: #eee;
+}
+
 TEI[type='dseas-letter'] titleStmt title {
     -oxy-placeholder-content: "Titel des Briefs";
 } 

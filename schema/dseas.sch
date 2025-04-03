@@ -125,7 +125,7 @@
         </rule>
         
         <!-- hi -->
-        <rule context="tei:hi">
+        <rule context="tei:hi[not(ancestor::tei:titleStmt)]">
             <assert test="@rendition">A &lt;<name/>&gt; element needs to have @rendition attribute.</assert>
         </rule>
 
