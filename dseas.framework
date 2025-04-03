@@ -1145,7 +1145,140 @@
 																<String>insertPosition</String>
 																<String>After</String>
 															</entry>
-
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>title</String>
+										</field>
+										<field name="name">
+											<String>Bibliographischer Eintrag referenzieren</String>
+										</field>
+										<field name="description">
+											<String>Verknüpft das Element mit einem Eintrag aus dem Bibliographieregister</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/bibl-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/bibl-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>ctrl alt P</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>count(ancestor::bibl) = 2 and ancestor::sourceDesc</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-org.xml</String>
+															</entry>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;title xmlns='http://www.tei-c.org/ns/1.0' key='$XPATH{@id}'>$XPATH{@val}&lt;/title></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>.</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>After</String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>count(ancestor::bibl) = 1 and ancestor::listBibl</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-bibl.xml</String>
+															</entry>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;title xmlns='http://www.tei-c.org/ns/1.0' key='$XPATH{@id}'>$XPATH{@val}&lt;/title></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>.</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>After</String>
+															</entry>
 															<entry>
 																<String>multiple selection</String>
 																<String>false</String>
@@ -1423,6 +1556,22 @@ rs_org</String>
 															<entry>
 																<String>elementLocation</String>
 																<String>preceding-sibling::placeName[1]</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::title and preceding-sibling::title</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocation</String>
+																<String>preceding-sibling::title[1]</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -2518,6 +2667,53 @@ delete</String>
 															<entry>
 																<String>actionIDs</String>
 																<String>placeName
+delete</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>title_reg</String>
+										</field>
+										<field name="name">
+											<String>Titel referenzieren</String>
+										</field>
+										<field name="description">
+											<String><!--TODO--></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>title
 delete</String>
 															</entry>
 														</serializableOrderedMap>

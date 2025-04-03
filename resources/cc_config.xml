@@ -56,4 +56,33 @@
         </items>
     </valueProposals>
 
+    <valueProposals path="tei:sourceDesc/tei:bibl/tei:bibl/@type" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="Manuskript"/>
+            <item value="Typoskript"/>
+            <item value="Zeitschriftenartikel"/>
+            <item value="Zeitungsartikel"/>
+            <item value="Feuilleton"/>
+            <item value="Sammelbandbeitrag"/>
+            <item value="Fotoreportage"/>
+            <item value="Fotografie"/>
+        </items>
+    </valueProposals>
+
+    <valueProposals path="tei:sourceDesc/tei:bibl/tei:bibl/@subtype" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="Rezension"/>
+            <item value="Beilage"/>
+            <item value="Serie"/>
+        </items>
+    </valueProposals>
+
+    <valueProposals path="tei:sourceDesc/tei:bibl/tei:bibl/@ana" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="Rezension"/>
+            <item value="Beilage"/>
+            <item value="Serie"/>
+        </items>
+    </valueProposals>
+    
 </config>

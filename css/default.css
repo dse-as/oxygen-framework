@@ -395,7 +395,47 @@ sourceDesc > bibl > bibl:before {
 }
 
 sourceDesc > bibl > bibl {
-    margin-top: 1em;
+    content:
+        oxy_label(text, "\A@type: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, combo,
+            edit, "@type"
+            editable, false,
+            canRemoveValue,true,
+            fontInherit, true,
+            columns, 20)
+        oxy_label(text, "\A@subtype: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, combo,
+            edit, "@subtype"
+            editable, false,
+            canRemoveValue,true,
+            fontInherit, true,
+            columns, 15)
+        oxy_label(text, "\A@ana: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, combo,
+            edit, "@ana"
+            editable, false,
+            canRemoveValue,true,
+            fontInherit, true,
+            columns, 15)
+        "\A";
+    padding-top: 1em;
+}
+
+sourceDesc bibl > title:after {
+    -oxy-append-content: 
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'title_reg'
+                  )
+              )
+         );
 }
 
 sourceDesc > bibl > bibl > title {
@@ -406,20 +446,28 @@ sourceDesc > bibl > bibl > title {
             edit, "#text",
             editable, false,
             fontInherit, true,
-            columns, 25);
+            columns, 25)
+        oxy_editor(type, combo,
+            edit, "@level"
+            editable, false,
+            values, "j, s, u",
+            labels, "Journal, Serie, Unpubliziert",
+            fontInherit, true,
+            columns, 10
+        );
 }
 
-sourceDesc > bibl > bibl > date {
+sourceDesc bibl > date {
 	content: 
         oxy_label(text, "Datum: ", 
             styles, "@import 'labels.css';")
-        oxy_datePicker(columns, 22, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
+        oxy_datePicker(columns, 17, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
     display: block;
     visibility: -oxy-collapse-text;
 }
 
 
-sourceDesc > bibl > bibl > biblScope {
+sourceDesc bibl > biblScope {
     content:
         oxy_label(text, "Spezifikation: ", 
             styles, "@import 'labels.css';")
@@ -1016,7 +1064,7 @@ TEI[type='dseas-letter'] titleStmt title {
 
 TEI[type='dseas-smallform'] titleStmt title {
     -oxy-placeholder-content: "Titel der kleinen Form";
-} 
+}
 
 titleStmt author,
 titleStmt editor,
