@@ -121,7 +121,16 @@
         <rule context="tei:rs">
             <assert test="@type">A &lt;<name/>&gt; element must contain a @type attribute.</assert>
             <assert test="@key">A &lt;<name/>&gt; element must contain a @key attribute.</assert>
-            <assert test="@xml:id">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+            <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+            <sqf:fix id="addXMLID">
+                <sqf:description>
+                    <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
+                </sqf:description>
+                <xsl:variable name="id" select="if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]) 
+                    then format-number(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','')) => number() + 1,'0') 
+                    else count(ancestor::element()[last()]//*:rs)"/>
+                <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'r'||$id"/></sqf:add>
+            </sqf:fix>
         </rule>
         
         <!-- hi -->
