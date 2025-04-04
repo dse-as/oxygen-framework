@@ -90,7 +90,16 @@
         
         <!-- anchor -->
         <rule context="tei:anchor">
-            <assert test="@xml:id">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+            <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+            <sqf:fix id="addXMLID">
+                <sqf:description>
+                    <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
+                </sqf:description>
+                <xsl:variable name="id" select="if (ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]) 
+                    then format-number(max(ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','')) => number() + 1,'0') 
+                    else count(ancestor::element()[last()]//*:anchor)"/>
+                <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'a'||$id"/></sqf:add>
+            </sqf:fix>
         </rule>
         
         <!-- cb -->
@@ -147,8 +156,23 @@
         <rule context="tei:note">
             <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
             <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
-            <report test="ancestor::tei:text and not(@type='annotation')">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
-            <report test="ancestor::tei:text and not(@xml:id)">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
+            <report test="ancestor::tei:text and not(@type='annotation')" sqf:fix="addTypeAnnotation">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
+            <sqf:fix id="addTypeAnnotation">
+                <sqf:description>
+                    <sqf:title>Add type attribute with value 'annotation' to <name/> element.</sqf:title>
+                </sqf:description>
+                <sqf:add target="type" node-type="attribute"><xsl:value-of select="'annotation'"/></sqf:add>
+            </sqf:fix>
+            <report test="@type='annotation' and not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
+            <sqf:fix id="addXMLID">
+                <sqf:description>
+                    <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
+                </sqf:description>
+                <xsl:variable name="id" select="if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]) 
+                    then format-number(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','')) => number() + 1,'0') 
+                    else count(ancestor::element()[last()]//*:note[@type='annotation'])"/>
+                <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'n'||$id"/></sqf:add>
+            </sqf:fix>
         </rule>
         
         <!-- opener -->
