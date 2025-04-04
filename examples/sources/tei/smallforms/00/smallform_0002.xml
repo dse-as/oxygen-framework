@@ -24,33 +24,48 @@
             </note>
          </notesStmt>
          <sourceDesc>
-            <bibl type="magazine_article">
-               <persName key="26135" type="author">Schwarzenbach, Annemarie (1908-1942)</persName>
-               <persName type="photographer"/>
-               <bibl type="monogr">
-                  <title level="j">Wandervogel</title>,
+            <bibl corresp="smallform_0002">
+               <persName key="person_0082" type="author">Schwarzenbach, Annemarie (1908-1942)</persName>
+               <bibl type="Zeitschriftenartikel">
+                  <title level="j">Wandervogel</title>
                   <date when="1925-10-01"/>
                   <biblScope>Nr. 3/4, S. 17f. («Antwort» von Vren Högger S. 18f.)</biblScope>
                </bibl>
             </bibl>
-            <listBibl type="surrogates">
-               <bibl>
-                  <idno/>
-                  <ref/>
-                  <figure/>
-               </bibl>
-            </listBibl>
-            <listBibl type="editions">
-               <bibl>
-                  <title/>
-                  <biblScope/>
-               </bibl>
-            </listBibl>
-            <listBibl type="translations">
-               <bibl>
-                  <title/>
-                  <biblScope/>
-               </bibl>
+            <listBibl type="related">
+               <listBibl type="surrogates">
+                  <bibl>
+                     <title/>
+                     <biblScope/>
+                     <note/>
+                  </bibl>
+               </listBibl>
+               <listBibl type="editions">
+                  <bibl>
+                     <title/>
+                     <biblScope/>
+                     <note/>
+                  </bibl>
+               </listBibl>
+               <listBibl type="translations">
+                  <bibl>
+                     <title/>
+                     <biblScope/>
+                     <note/>
+                  </bibl>
+               </listBibl>
+               <listBibl type="online">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="published">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="genetic">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="articleseries">
+                  <bibl/>
+               </listBibl>
             </listBibl>
          </sourceDesc>
       </fileDesc>

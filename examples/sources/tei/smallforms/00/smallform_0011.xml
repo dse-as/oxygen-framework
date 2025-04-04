@@ -24,33 +24,48 @@
             </note>
          </notesStmt>
          <sourceDesc>
-            <bibl type="review">
-               <persName key="26135" type="author">Schwarzenbach, Annemarie (1908-1942)</persName>
-               <persName type="photographer"/>
-               <bibl type="monogr">
-                  <title level="j">NZZ</title>,
+            <bibl corresp="smallform_0011">
+               <persName key="person_0082" type="author">Schwarzenbach, Annemarie (1908-1942)</persName>
+               <bibl type="Rezension">
+                  <title key="organisation_0013" level="j">NZZ</title>
                   <date when="1929-11-10"/>
                   <biblScope>Nr. 2168, Bl. 3</biblScope>
                </bibl>
             </bibl>
-            <listBibl type="surrogates">
-               <bibl>
-                  <idno/>
-                  <ref/>
-                  <figure/>
-               </bibl>
-            </listBibl>
-            <listBibl type="editions">
-               <bibl>
-                  <title/>
-                  <biblScope/>
-               </bibl>
-            </listBibl>
-            <listBibl type="translations">
-               <bibl>
-                  <title/>
-                  <biblScope/>
-               </bibl>
+            <listBibl type="related">
+               <listBibl type="surrogates">
+                  <bibl>
+                     <title/>
+                     <biblScope/>
+                     <note/>
+                  </bibl>
+               </listBibl>
+               <listBibl type="editions">
+                  <bibl>
+                     <title/>
+                     <biblScope/>
+                     <note/>
+                  </bibl>
+               </listBibl>
+               <listBibl type="translations">
+                  <bibl>
+                     <title/>
+                     <biblScope/>
+                     <note/>
+                  </bibl>
+               </listBibl>
+               <listBibl type="online">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="published">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="genetic">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="articleseries">
+                  <bibl/>
+               </listBibl>
             </listBibl>
          </sourceDesc>
       </fileDesc>

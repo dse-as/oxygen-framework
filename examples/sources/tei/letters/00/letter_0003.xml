@@ -34,37 +34,37 @@
                         </altIdentifier>
                     </msIdentifier>
                 </msDesc>
-                <listBibl type="surrogates">
-                    <bibl>
-                        <idno type="patrinum">587678</idno>
-                        <ref target="https://patrinum.ch/record/587678"/>
-                        <figure type="iiif" facs="https://patrinum.ch/nanna/proxy/iiif/manifest/587678"/>
-                    </bibl>
-                </listBibl>
-                <listBibl type="editions">
-                    <bibl>
-                        <title key="addReferenceHere">Miermont (2008)</title>
-                        <biblScope>S. 16 und S. 131 (N. 3)</biblScope>
-                    </bibl>
-                </listBibl>
-                <listBibl type="translations">
-                    <bibl>
-                        <title/>
-                        <biblScope/>
-                    </bibl>
+                <listBibl type="related">
+                    <listBibl type="editions">
+                        <bibl>
+                            <title/>
+                            <biblScope/>
+                            <note/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="translations">
+                        <bibl>
+                            <title/>
+                            <biblScope/>
+                            <note/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="online">
+                        <bibl/>
+                    </listBibl>
                 </listBibl>
             </sourceDesc>
         </fileDesc>
         <profileDesc>
             <correspDesc>
                 <correspAction type="sent">
-                    <persName key="26135">Schwarzenbach, Annemarie (1908-1942)</persName>
+                    <persName key="person_0082">Schwarzenbach, Annemarie (1908-1942)</persName>
                     <date when="1932-07-04" type="source"/>
-                    <placeName key="208763" type="conjecture">Potsdam</placeName>
+                    <placeName key="addReferenceHere" type="conjecture">Potsdam</placeName>
                 </correspAction>
                 <correspAction type="received">
-                    <persName key="14844918">Bourdet, Claude (1909-1996)</persName>
-                    <placeName key="13088451">Zürich</placeName>
+                    <persName key="person_0006">Bourdet, Claude (1909-1996)</persName>
+                    <placeName key="addReferenceHere">Zürich</placeName>
                 </correspAction>
              </correspDesc>
              <langUsage>

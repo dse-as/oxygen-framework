@@ -34,36 +34,36 @@
                         </altIdentifier>
                     </msIdentifier>
                 </msDesc>
-                <listBibl type="surrogates">
-                    <bibl>
-                        <idno/>
-                        <ref/>
-                        <figure/>
-                    </bibl>
-                </listBibl>
-                <listBibl type="editions">
-                    <bibl>
-                        <title/>
-                        <biblScope/>
-                    </bibl>
-                </listBibl>
-                <listBibl type="translations">
-                    <bibl>
-                        <title/>
-                        <biblScope/>
-                    </bibl>
+                <listBibl type="related">
+                    <listBibl type="editions">
+                        <bibl>
+                            <title/>
+                            <biblScope/>
+                            <note/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="translations">
+                        <bibl>
+                            <title/>
+                            <biblScope/>
+                            <note/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="online">
+                        <bibl/>
+                    </listBibl>
                 </listBibl>
             </sourceDesc>
         </fileDesc>
         <profileDesc>
             <correspDesc>
                 <correspAction type="sent">
-                    <persName key="26135">Schwarzenbach, Annemarie (1908-1942)</persName>
+                    <persName key="person_0082">Schwarzenbach, Annemarie (1908-1942)</persName>
                     <date when="1941-04-10" type="conjecture"/>
-                    <placeName key="13088451" type="source">Zürich</placeName>
+                    <placeName key="addReferenceHere" type="source">Zürich</placeName>
                 </correspAction>
                 <correspAction type="received">
-                    <persName key="addReferenceHere">McCullers, Carson (1917-1967)</persName>
+                    <persName key="person_0058">McCullers, Carson (1917-1967)</persName>
                     <placeName key="addReferenceHere"/>
                 </correspAction>
              </correspDesc>
