@@ -32,8 +32,14 @@
     <!-- allowed elements -->
     
     <pattern>
-        
+
         <rule context="tei:body/*">
+            <let name="allowedElements" value="'div'"/>
+            
+            <assert test="local-name() = tokenize($allowedElements, ' ')">Unexpected element(s) found in element '&lt;<value-of select="parent::*/name()"/>&gt;'. A &lt;<value-of select="parent::*/name()"/>&gt; element may contain only the elements '<value-of select="$allowedElements"/>'. Offending element: &lt;<value-of select="local-name()[not(. = tokenize($allowedElements, ' '))]"/>&gt;.</assert>
+        </rule>
+        
+        <rule context="tei:body/div/*">
             <let name="allowedElements" value="'closer div lg milestone opener p pb postscript'"/>
             
             <assert test="local-name() = tokenize($allowedElements, ' ')">Unexpected element(s) found in element '&lt;<value-of select="parent::*/name()"/>&gt;'. A &lt;<value-of select="parent::*/name()"/>&gt; element may contain only the elements '<value-of select="$allowedElements"/>'. Offending element: &lt;<value-of select="local-name()[not(. = tokenize($allowedElements, ' '))]"/>&gt;.</assert>
@@ -73,6 +79,30 @@
         <rule context="tei:sourceDesc">
             <report test="ancestor::tei:TEI/@type='dseas-letter' and not(tei:msDesc)">A &lt;<name/>&gt; element of a letter must contain a &lt;msDesc&gt; element.</report>
             <report test="ancestor::tei:TEI/@type='dseas-smallform' and not(tei:bibl)">A &lt;<name/>&gt; element of a smallform must contain a &lt;bibl&gt; element.</report>
+            <report test="descendant::tei:bibl[@type='Manuskript' or @type='Typoskript'] and not(child::tei:msDesc)" sqf:fix="addMsDesc">A smallform of type 'Manuskript' or 'Typoskript' must contain a msDesc element.</report>
+            <sqf:fix id="addMsDesc">
+                <sqf:description>
+                    <sqf:title>Add msDesc to <name/> element.</sqf:title>
+                </sqf:description>
+                <sqf:add match="." position="first-child"><msDesc xmlns="http://www.tei-c.org/ns/1.0">
+                    <msIdentifier>
+                        <repository/>
+                        <collection/>
+                        <idno/>
+                    </msIdentifier>
+                </msDesc></sqf:add>
+            </sqf:fix>
+        </rule>
+        
+        <!-- msDesc -->
+        <rule context="tei:msDesc">
+            <report test="ancestor::tei:TEI[@type='dseas-smallform'] and not(following::tei:bibl[@type='Manuskript' or @type='Typoskript'])" sqf:fix="deleteMsDesc">A smallform which is not of type 'Manuskript' or 'Typoskript' must not contain a msDesc element.</report>
+            <sqf:fix id="deleteMsDesc">
+                <sqf:description>
+                    <sqf:title>Delete msDesc element.</sqf:title>
+                </sqf:description>
+                <sqf:delete match="self::*"/>
+            </sqf:fix>
         </rule>
         
         <!-- profileDesc -->
