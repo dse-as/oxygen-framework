@@ -444,6 +444,42 @@ sourceDesc > bibl > bibl > title {
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
+            fontInherit, true,
+            columns, 25)
+        oxy_editor(type, combo,
+            edit, "@level"
+            editable, false,
+            values, "j, s, u",
+            labels, "Journal, Serie, Unpubliziert",
+            fontInherit, true,
+            columns, 10
+        );
+}
+
+sourceDesc > bibl > bibl > date {
+	content: 
+        oxy_label(text, "Datum: ", 
+            styles, "@import 'labels.css';")
+        oxy_datePicker(columns, 17, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+sourceDesc listBibl[type='related'] {
+    content:
+        oxy_label(text, "Zugehörige Einträge", 
+            styles, "@import 'labels_sub.css';");
+    margin-bottom: 1em;
+    -oxy-foldable:true;
+    -oxy-folded:true;
+}
+
+sourceDesc listBibl > bibl > title {
+    content:
+        oxy_label(text, oxy_xpath("let $type:=ancestor::listBibl[1]/@type return (if ($type='surrogates') then 'Surrogat' else if ($type='editions') then 'Edition' else if ($type='translations') then 'Übersetzung' else 'y')||': '"), 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
             editable, false,
             fontInherit, true,
             columns, 25)
@@ -457,24 +493,52 @@ sourceDesc > bibl > bibl > title {
         );
 }
 
-sourceDesc bibl > date {
-	content: 
-        oxy_label(text, "Datum: ", 
-            styles, "@import 'labels.css';")
-        oxy_datePicker(columns, 17, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
-    display: block;
-    visibility: -oxy-collapse-text;
-}
-
-
 sourceDesc bibl > biblScope {
     content:
-        oxy_label(text, "Spezifikation: ", 
+        oxy_label(text, "Bereich: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            fontInherit, true,
+            columns, 25);
+}
+
+sourceDesc bibl > note {
+    content:
+        oxy_label(text, "Anmerkung: ", 
             styles, "@import 'labels.css';")
         oxy_textArea(edit, "#text",
             fontInherit, true,
             rows, 2,
             columns, 30);
+}
+
+sourceDesc > listBibl > listBibl > bibl {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    visibility: -oxy-collapse-text;
+}
+
+sourceDesc > listBibl > listBibl > bibl > * {
+    display:block;
+}
+
+listBibl[type='online'] > bibl {
+    content:
+        oxy_label(text, "Online: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "@source",
+            fontInherit, true,
+            columns, 35);
+}
+
+listBibl[type='published'],
+listBibl[type='genetic'],
+listBibl[type='articleseries'] {
+    display: none;
 }
 
 /* msIdentifier */
@@ -733,7 +797,7 @@ correspAction orgName {
             edit, "#text",
             fontInherit, true,
             columns, 25)
-    oxy_editor(type, combo,
+        oxy_editor(type, combo,
             edit, "@type"
             editable, false,
             values, "source, conjecture",
@@ -1078,10 +1142,6 @@ editionStmt {
 }
 
 publicationStmt {
-    display: none;
-}
-
-sourceDesc > listBibl {
     display: none;
 }
 
