@@ -220,6 +220,28 @@
             <assert test="name(.) = 'xml-model'" role="warning">Try to clean up this Oxygen instruction.</assert>
         </rule>
 
+        <!-- persName -->
+        <rule context="tei:persName">
+            <report test="@key and not(@type)">A &lt;<name/>&gt; element must contain a @type attribute.</report>
+        </rule>
+
+        <!-- placeName -->
+        <rule context="tei:placeName">
+            <report test="@key and not(@type)">A &lt;<name/>&gt; element must contain a @type attribute.</report>
+        </rule>
+
+        <!-- language -->
+        <rule context="tei:langUsage/tei:language">
+            <let name="ident" value="@ident"/>
+            <report test="preceding-sibling::*/@ident = $ident">Duplicate &lt;<name/>&gt; entry.</report>
+        </rule>
+        
+        <!-- keywords -->
+        <rule context="tei:keywords/tei:list/tei:item">
+            <let name="sameAs" value="@sameAs"/>
+            <report test="preceding-sibling::*/@sameAs = $sameAs">Duplicate &lt;<name/>&gt; in keywords.</report>
+        </rule>
+        
     </pattern>
 
     <pattern>
