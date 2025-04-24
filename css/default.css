@@ -358,11 +358,7 @@ sourceDesc > bibl persName {
             labels, "Autor/in, Fotograf/in",
             fontInherit, true,
             columns, 10
-        );
-}
-
-sourceDesc > bibl persName:after {
-    -oxy-append-content: 
+        )
         " "
         oxy_buttonGroup(
             label, '▼',
@@ -373,6 +369,18 @@ sourceDesc > bibl persName:after {
                   )
               )
          );
+}
+
+sourceDesc > bibl > persName:first-of-type:after {
+    content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' nicht referenziert'");
+    color: oxy_xpath("if (matches(@key,'person_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
+}
+
+sourceDesc > bibl > persName:not(first-of-type):after {
+    content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' nicht referenziert'");
+    color: oxy_xpath("if (matches(@key,'person_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
 }
 
 sourceDesc > bibl > bibl:before {
@@ -456,6 +464,12 @@ sourceDesc > bibl > bibl > title {
         );
 }
 
+sourceDesc > bibl > bibl > title:after {
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'organisation_')) then ' = '||@key else ' nicht referenziert'");
+    color: oxy_xpath("if (matches(@key,'organisation_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
+}
+
 sourceDesc > bibl > bibl > date {
 	content: 
         oxy_label(text, "Datum: ", 
@@ -491,6 +505,12 @@ sourceDesc listBibl > bibl > title {
             fontInherit, true,
             columns, 10
         );
+}
+
+sourceDesc listBibl > bibl > title:after {
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'.+')) then ' = '||@key else ' nicht referenziert'");
+    color: oxy_xpath("if (matches(@key,'.+')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
 }
 
 sourceDesc bibl > biblScope {
@@ -853,6 +873,12 @@ correspAction persName:after {
          );
 }
 
+correspAction persName:after {
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' nicht referenziert'");
+    color: oxy_xpath("if (matches(@key,'person_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
+}
+
 correspAction[type='sent'] placeName:before {
     content:
         oxy_label(
@@ -883,6 +909,12 @@ correspAction placeName:after {
                   )
               )
          );
+}
+
+correspAction placeName:after {
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'place_')) then ' = '||@key else ' nicht referenziert'");
+    color: oxy_xpath("if (matches(@key,'place_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
 }
 
 correspAction[type='sent'] date:before {
