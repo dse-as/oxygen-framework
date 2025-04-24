@@ -1267,6 +1267,21 @@ text note {
     -oxy-show-placeholder: always;
 }
 
+text note:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'delete_note'
+                  )
+              )
+         );
+    ;
+    padding-left: 2px;
+}
+
 text note:has(p) {
     display: block;
     margin-left: 1em;
