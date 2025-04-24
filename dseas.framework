@@ -1923,6 +1923,84 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>open_gsheet</String>
+										</field>
+										<field name="name">
+											<String>Google Sheet öffnen</String>
+										</field>
+										<field name="description">
+											<String>Google Sheet öffnen</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/gsheet-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/gsheet-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>not(@type) or @type='person'</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=846284184</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>@type='place'</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=811311071</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>@type='org'</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=1709662033</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>open_zotero</String>
 										</field>
 										<field name="name">
@@ -2374,6 +2452,11 @@ delete</String>
 											<menuItem>
 												<field name="actionID">
 													<String>open_iiif_images</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>open_gsheet</String>
 												</field>
 											</menuItem>
 											<menuItem>
