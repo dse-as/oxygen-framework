@@ -1255,6 +1255,68 @@
 												</actionMode>
 												<actionMode>
 													<field name="xpathCondition">
+														<String>ancestor-or-self::persName</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocation</String>
+																<String>ancestor-or-self::persName</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::pb</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocation</String>
+																<String>ancestor-or-self::pb</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete_preceding-sibling</String>
+										</field>
+										<field name="name">
+											<String>Vorhergehendes Element löschen</String>
+										</field>
+										<field name="description">
+											<String>Vorhergehendes Element komplett löschen</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
 														<String>ancestor-or-self::persName and preceding-sibling::persName</String>
 													</field>
 													<field name="argValues">
@@ -1294,22 +1356,6 @@
 															<entry>
 																<String>elementLocation</String>
 																<String>preceding-sibling::title[1]</String>
-															</entry>
-														</serializableOrderedMap>
-													</field>
-													<field name="operationID">
-														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
-													</field>
-												</actionMode>
-												<actionMode>
-													<field name="xpathCondition">
-														<String>ancestor-or-self::pb</String>
-													</field>
-													<field name="argValues">
-														<serializableOrderedMap>
-															<entry>
-																<String>elementLocation</String>
-																<String>ancestor-or-self::pb</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -2376,10 +2422,10 @@
 											<String>persName_reg</String>
 										</field>
 										<field name="name">
-											<String>Personenreferenz</String>
+											<String>Personeneintrag referenzieren</String>
 										</field>
 										<field name="description">
-											<String><!--TODO--></String>
+											<String>Verknüpft das Element mit einem Eintrag aus dem Personenregister</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2404,7 +2450,7 @@
 															<entry>
 																<String>actionIDs</String>
 																<String>persName
-delete</String>
+delete_preceding-sibling</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -2423,10 +2469,10 @@ delete</String>
 											<String>placeName_reg</String>
 										</field>
 										<field name="name">
-											<String>Ortereferenz</String>
+											<String>Ortseintrag referenzieren</String>
 										</field>
 										<field name="description">
-											<String><!--TODO--></String>
+											<String>Verknüpft das Element mit einem Eintrag aus dem Ortsregister</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2451,7 +2497,7 @@ delete</String>
 															<entry>
 																<String>actionIDs</String>
 																<String>placeName
-delete</String>
+delete_preceding-sibling</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -2470,10 +2516,10 @@ delete</String>
 											<String>title_reg</String>
 										</field>
 										<field name="name">
-											<String>Titel referenzieren</String>
+											<String>Bibliographischer Eintrag referenzieren</String>
 										</field>
 										<field name="description">
-											<String><!--TODO--></String>
+											<String>Verknüpft das Element mit einem Eintrag aus dem Bibliographieregister</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2498,7 +2544,7 @@ delete</String>
 															<entry>
 																<String>actionIDs</String>
 																<String>title
-delete</String>
+delete_preceding-sibling</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>

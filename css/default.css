@@ -367,6 +367,9 @@ sourceDesc > bibl persName {
                   oxy_action( 
                         id, 'persName_reg'
                   )
+                  oxy_action( 
+                        id, 'delete'
+                  )
               )
          );
 }
@@ -429,7 +432,7 @@ sourceDesc > bibl > bibl {
             fontInherit, true,
             columns, 15)
         "\A";
-    padding-top: 1em;
+    padding-top: 0em;
 }
 
 sourceDesc bibl > title:after {
