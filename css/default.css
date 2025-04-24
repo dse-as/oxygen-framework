@@ -356,6 +356,7 @@ sourceDesc > bibl persName {
             editable, false,
             values, "author, photographer",
             labels, "Autor/in, Fotograf/in",
+            canRemoveValue,true,
             fontInherit, true,
             columns, 10
         )
@@ -462,6 +463,7 @@ sourceDesc > bibl > bibl > title {
             editable, false,
             values, "j, s, u",
             labels, "Journal, Serie, Unpubliziert",
+            canRemoveValue,true,
             fontInherit, true,
             columns, 10
         );
@@ -505,6 +507,7 @@ sourceDesc listBibl > bibl > title {
             editable, false,
             values, "j, s, u",
             labels, "Journal, Serie, Unpubliziert",
+            canRemoveValue,true,
             fontInherit, true,
             columns, 10
         );
@@ -824,8 +827,10 @@ correspAction orgName {
             edit, "@type"
             editable, false,
             values, "source, conjecture",
+            labels, "Angabe aus Quelle, Ergänzte Angabe"
+            canRemoveValue,true,
             fontInherit, true,
-            columns, 10
+            columns, 15
         );
     display: block;
 }
@@ -837,8 +842,10 @@ correspAction date {
                 edit, "@type"
                 editable, false,
                 values, "source, conjecture",
+                labels, "Angabe aus Quelle, Ergänzte Angabe"
+                canRemoveValue,true,
                 fontInherit, true,
-                columns, 10
+                columns, 15
             );
     display: block;
     visibility: -oxy-collapse-text;
