@@ -1231,11 +1231,12 @@ notesStmt note[type='global_comment']:before {
 notesStmt note[type='global_comment'] {
     background-color: #ffffff;
     display: block;
-    visibility: visible;
+    visibility: -oxy-collapse-text;
 }
 
 notesStmt note[type='global_comment'] p {
     display: block;
+    visibility: visible;
 }
 
 /* text */
