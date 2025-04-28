@@ -126,7 +126,7 @@
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
                 <xsl:variable name="id" select="if (ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]) 
-                    then format-number(max(ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','')) => number() + 1,'0') 
+                    then string(max(ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','')) => number() + 1) 
                     else count(ancestor::element()[last()]//*:anchor)"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'a'||$id"/></sqf:add>
             </sqf:fix>
@@ -166,7 +166,7 @@
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
                 <xsl:variable name="id" select="if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]) 
-                    then format-number(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','')) => number() + 1,'0') 
+                    then string(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','')) => number() + 1) 
                     else count(ancestor::element()[last()]//*:rs)"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'r'||$id"/></sqf:add>
             </sqf:fix>
@@ -199,7 +199,7 @@
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
                 <xsl:variable name="id" select="if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]) 
-                    then format-number(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','')) => number() + 1,'0') 
+                    then string(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','')) => number() + 1) 
                     else count(ancestor::element()[last()]//*:note[@type='annotation'])"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'n'||$id"/></sqf:add>
             </sqf:fix>
