@@ -102,15 +102,6 @@
                <listBibl type="online">
                   <bibl/>
                </listBibl>
-               <listBibl type="published">
-                  <bibl/>
-               </listBibl>
-               <listBibl type="genetic">
-                  <bibl/>
-               </listBibl>
-               <listBibl type="articleseries">
-                  <bibl/>
-               </listBibl>
             </listBibl>
          </sqf:add>
             </sqf:fix>
@@ -244,14 +235,19 @@
 
         <!-- persName -->
         <rule context="tei:persName">
-            <report test="@key and not(@type)">A &lt;<name/>&gt; element must contain a @type attribute.</report>
+            <report test="@key and not(@type)" role="warning">A &lt;<name/>&gt; element must contain a @type attribute.</report>
         </rule>
 
         <!-- placeName -->
         <rule context="tei:placeName">
-            <report test="@key and not(@type)">A &lt;<name/>&gt; element must contain a @type attribute.</report>
+            <report test="@key and not(@type)" role="warning">A &lt;<name/>&gt; element must contain a @type attribute.</report>
         </rule>
 
+        <!-- title -->
+        <rule context="tei:title">
+            <report test="@key and not(@level)" role="warning">A &lt;<name/>&gt; element must contain a @level attribute.</report>
+        </rule>
+        
         <!-- language -->
         <rule context="tei:langUsage/tei:language">
             <let name="ident" value="@ident"/>
