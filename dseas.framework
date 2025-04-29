@@ -1941,6 +1941,10 @@
 																<String>fragment</String>
 																<String>&lt;foreign xmlns='http://www.tei-c.org/ns/1.0'/></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
