@@ -2005,6 +2005,270 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>bibl_surrogate</String>
+										</field>
+										<field name="name">
+											<String>Surrogat einfügen</String>
+										</field>
+										<field name="description">
+											<String>Eintrag für Surrogat einfügen</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::listBibl[@type='related'] and child::listBibl and not(child::listBibl[@type='surrogates'])</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;listBibl type="surrogates" xmlns='http://www.tei-c.org/ns/1.0'>
+      &lt;bibl>
+         &lt;title/>
+         &lt;biblScope/>
+         &lt;note/>
+      &lt;/bibl>
+   &lt;/listBibl></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>child::listBibl[@type='editions'] | child::listBibl[@type='translations'] | child::listBibl[@type='online']</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Before</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::listBibl[@type='related'] and child::listBibl[@type='surrogates']</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;bibl xmlns='http://www.tei-c.org/ns/1.0'>
+         &lt;title/>
+         &lt;biblScope/>
+         &lt;note/>
+      &lt;/bibl></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>listBibl[@type='surrogates']</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as first child</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>bibl_edition</String>
+										</field>
+										<field name="name">
+											<String>Edition einfügen</String>
+										</field>
+										<field name="description">
+											<String>Eintrag für Edition einfügen</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::listBibl[@type='related'] and child::listBibl and not(child::listBibl[@type='editions'])</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;listBibl type="editions" xmlns='http://www.tei-c.org/ns/1.0'>
+      &lt;bibl>
+         &lt;title/>
+         &lt;biblScope/>
+         &lt;note/>
+      &lt;/bibl>
+   &lt;/listBibl></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>child::listBibl[@type='translations'] | child::listBibl[@type='online']</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Before</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::listBibl[@type='related'] and child::listBibl[@type='editions']</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;bibl xmlns='http://www.tei-c.org/ns/1.0'>
+         &lt;title/>
+         &lt;biblScope/>
+         &lt;note/>
+      &lt;/bibl></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>listBibl[@type='editions']</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as first child</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>bibl_translation</String>
+										</field>
+										<field name="name">
+											<String>Übersetzung einfügen</String>
+										</field>
+										<field name="description">
+											<String>Eintrag für Übersetzung einfügen</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::listBibl[@type='related'] and child::listBibl and not(child::listBibl[@type='translations'])</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;listBibl type="translations" xmlns='http://www.tei-c.org/ns/1.0'>
+      &lt;bibl>
+         &lt;title/>
+         &lt;biblScope/>
+         &lt;note/>
+      &lt;/bibl>
+   &lt;/listBibl></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>child::listBibl[@type='online']</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Before</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::listBibl[@type='related'] and child::listBibl[@type='translations']</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;bibl xmlns='http://www.tei-c.org/ns/1.0'>
+         &lt;title/>
+         &lt;biblScope/>
+         &lt;note/>
+      &lt;/bibl></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>listBibl[@type='translations']</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as first child</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>open_geovistory</String>
 										</field>
 										<field name="name">

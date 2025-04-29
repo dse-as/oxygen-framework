@@ -484,13 +484,20 @@ sourceDesc > bibl > bibl > date {
     visibility: -oxy-collapse-text;
 }
 
+sourceDesc listBibl[type='related']:before {
+    content:
+        oxy_label(text, "Zugehörige Einträge", styles, "@import 'labels.css';");
+    display:block;
+    font-size: 0.85em;
+    margin-bottom: 0.5em;
+}
+
 sourceDesc listBibl[type='related'] {
     content:
-        oxy_label(text, "Zugehörige Einträge", 
-            styles, "@import 'labels_sub.css';");
+        oxy_editor(type, button, actionID, bibl_surrogate, transparent, false, showText, true, color, black, width, 7em)
+        oxy_editor(type, button, actionID, bibl_edition, transparent, false, showText, true, color, black, width, 7em)
+        oxy_editor(type, button, actionID, bibl_translation, transparent, false, showText, true, color, black, width, 7em);
     margin-bottom: 1em;
-    -oxy-foldable:true;
-    -oxy-folded:true;
 }
 
 sourceDesc listBibl > bibl > title {
