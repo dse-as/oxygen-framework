@@ -138,6 +138,10 @@
 																<String>fragment</String>
 																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="#b"/></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -184,6 +188,10 @@
 																<String>fragment</String>
 																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="#g"/></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -229,6 +237,10 @@
 															<entry>
 																<String>fragment</String>
 																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="#i"/></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -376,6 +388,10 @@
 																<String>fragment</String>
 																<String>&lt;hi xmlns="http://www.tei-c.org/ns/1.0" rendition="#u"/></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -425,6 +441,10 @@
 																	then string(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer]/replace(.,'n','')) => number() + 1) 
 																	else count(ancestor::element()[last()]//*:note[@type='annotation']) + 1
 																	)}" xmlns="http://www.tei-c.org/ns/1.0">${caret}&lt;/note></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1665,6 +1685,10 @@
 																<String>fragment</String>
 																<String>&lt;unclear xmlns='http://www.tei-c.org/ns/1.0'/></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -1710,6 +1734,10 @@
 															<entry>
 																<String>fragment</String>
 																<String>&lt;add xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1757,6 +1785,10 @@
 																<String>fragment</String>
 																<String>&lt;del xmlns='http://www.tei-c.org/ns/1.0'/></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -1802,6 +1834,10 @@
 															<entry>
 																<String>fragment</String>
 																<String>&lt;choice xmlns="http://www.tei-c.org/ns/1.0">&lt;abbr>&lt;/abbr>&lt;expan>${caret}&lt;/expan>&lt;/choice></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1849,6 +1885,10 @@
 																<String>fragment</String>
 																<String>&lt;choice xmlns="http://www.tei-c.org/ns/1.0">&lt;sic>&lt;/sic>&lt;corr>${caret}&lt;/corr>&lt;/choice></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -1894,6 +1934,10 @@
 															<entry>
 																<String>fragment</String>
 																<String>&lt;quote xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1990,6 +2034,10 @@
 															<entry>
 																<String>fragment</String>
 																<String>&lt;g xmlns='http://www.tei-c.org/ns/1.0'/></String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>true</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
