@@ -92,6 +92,28 @@
                     </msIdentifier>
                 </msDesc></sqf:add>
             </sqf:fix>
+            
+            <report test="not(child::tei:listBibl[@type='related'])" sqf:fix="addListBiblRelated">A smallform or letter must contain a listBibl element of type 'related'.</report>
+            <sqf:fix id="addListBiblRelated">
+                <sqf:description>
+                    <sqf:title>Add listBibl[@type='related'] to <name/> element.</sqf:title>
+                </sqf:description>
+                <sqf:add match="." position="last-child" xml:space="preserve">   <listBibl xmlns="http://www.tei-c.org/ns/1.0" type="related">
+               <listBibl type="online">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="published">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="genetic">
+                  <bibl/>
+               </listBibl>
+               <listBibl type="articleseries">
+                  <bibl/>
+               </listBibl>
+            </listBibl>
+         </sqf:add>
+            </sqf:fix>
         </rule>
         
         <!-- msDesc -->
