@@ -502,7 +502,7 @@ sourceDesc listBibl[type='related'] {
 
 sourceDesc listBibl > bibl > title {
     content:
-        oxy_label(text, oxy_xpath("let $type:=ancestor::listBibl[1]/@type return (if ($type='surrogates') then 'Surrogat' else if ($type='editions') then 'Edition' else if ($type='translations') then 'Übersetzung' else 'y')||': '"), 
+        oxy_label(text, oxy_xpath("let $type:=ancestor::listBibl[1]/@type return (if ($type='surrogates') then 'Surrogat' else if ($type='editions') then 'Edition' else if ($type='translations') then 'Übersetzung' else 'no type')||': '"), 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -1071,7 +1071,7 @@ rs[type='person']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
-            tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')//*[@id=$id]/@val"),
+            tooltip, oxy_xpath("let $id := ./@key return doc('${framework(DSE-AS)}/resources/lookup-person.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
                   oxy_action( 
@@ -1092,7 +1092,7 @@ rs[type='org']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
-            tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml')//*[@id=$id]/@val"),
+            tooltip, oxy_xpath("let $id := ./@key return doc('${framework(DSE-AS)}/resources/lookup-org.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
                   oxy_action( 
@@ -1113,7 +1113,7 @@ rs[type='place']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
-            tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')//*[@id=$id]/@val"),
+            tooltip, oxy_xpath("let $id := ./@key return doc('${framework(DSE-AS)}/resources/lookup-place.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
                   oxy_action( 
@@ -1134,7 +1134,7 @@ rs[type='bibl']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
-            tooltip, oxy_xpath("let $id := ./@key return doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-bibl.xml')//*[@id=$id]/@val"),
+            tooltip, oxy_xpath("let $id := ./@key return doc('${framework(DSE-AS)}/resources/lookup-bibl.xml')//*[@id=$id]/@val"),
             actions, 
               oxy_action_list(
                   oxy_action(
@@ -1253,7 +1253,7 @@ text:before {
     -oxy-prepend-content:
             oxy_label(text, oxy_concat("Referenzen im Text (", oxy_xpath("count(ancestor::TEI//rs[@key])"), ")"), styles, "@import 'labels_sub.css';")
             oxy_htmlContent(
-            content, oxy_concat(oxy_xpath("if (//rs[@key]) then '' else 'keine'"), oxy_xpath("let $lookup := doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-person.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-place.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-bibl.xml')|doc('file:/${frameworkDir(DSE-AS)}/resources/lookup-org.xml') return concat('<ul style=\"padding-bottom: 20px;\"> ', (for $x in //rs[@key] => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')")),
+            content, oxy_concat(oxy_xpath("if (//rs[@key]) then '' else 'keine'"), oxy_xpath("let $lookup := doc('${framework(DSE-AS)}/resources/lookup-person.xml')|doc('${framework(DSE-AS)}/resources/lookup-place.xml')|doc('${framework(DSE-AS)}/resources/lookup-bibl.xml')|doc('${framework(DSE-AS)}/resources/lookup-org.xml') return concat('<ul style=\"padding-bottom: 20px;\"> ', (for $x in //rs[@key] => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')")),
             width, 100%);
     padding: 0.5em 0.5em 0.5em 0;
     margin: 1em 0 0.5em 0;
