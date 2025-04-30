@@ -437,8 +437,8 @@
 															<entry>
 																<String>fragment</String>
 																<String>&lt;note type="annotation" xml:id="n${xpath_eval(
-																	if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer]/replace(.,'n','')) => number() + 1) 
+																	if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer])
+																	then max(for $id in ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:note[@type='annotation']) + 1
 																	)}" xmlns="http://www.tei-c.org/ns/1.0">${caret}&lt;/note></String>
 															</entry>
@@ -492,7 +492,7 @@
 																<String>first element</String>
 																<String>&lt;anchor xmlns="http://www.tei-c.org/ns/1.0" xml:id="a${xpath_eval(
 																	if (ancestor::element()[last()]//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]/replace(.,'a','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','') return xs:int($id)) + 1 
 																	else count(ancestor::element()[last()]//*:anchor) + 1
 																	)}"/></String>
 															</entry>
@@ -504,11 +504,11 @@
 																<String>second element</String>
 																<String>&lt;note type="annotation" xml:id="n${xpath_eval(
 																	if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer]/replace(.,'n','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:note[@type='annotation']) + 1
 																	)}" xmlns="http://www.tei-c.org/ns/1.0" targetEnd="a${xpath_eval(
 																	if (ancestor::element()[last()]//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]/replace(.,'a','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:anchor) + 1
 																	)}" /></String>
 															</entry>
@@ -574,7 +574,7 @@
 																<String>item variable</String>
 																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='person' key='$XPATH{@id}' xml:id="r${xpath_eval(
 																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:rs) + 1
 																	)}"/></String>
 															</entry>
@@ -1189,7 +1189,7 @@
 																<String>item variable</String>
 																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='org' key='$XPATH{@id}' xml:id="r${xpath_eval(
 																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:rs) + 1
 																	)}"/></String>
 															</entry>
@@ -2627,7 +2627,7 @@
 																<String>item variable</String>
 																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='place' key='$XPATH{@id}' xml:id="r${xpath_eval(
 																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:rs) + 1
 																	)}"/></String>
 															</entry>
@@ -2705,7 +2705,7 @@
 																<String>item variable</String>
 																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='bibl' key='$XPATH{@id}' xml:id="r${xpath_eval(
 																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
-																	then string(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]/replace(.,'r','')) => number() + 1) 
+																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:rs) + 1
 																	)}"/></String>
 															</entry>
