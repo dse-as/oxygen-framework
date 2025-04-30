@@ -72,7 +72,12 @@
 
         <!-- notesStmt -->
         <rule context="tei:notesStmt">
-            <assert test="tei:note">A &lt;<name/>&gt; element must contain a &lt;note&gt; element.</assert>
+            <assert test="tei:note[@type='global_comment']">A &lt;<name/>&gt; element must contain a &lt;note&gt; element of type 'global_comment'.</assert>
+        </rule>
+
+        <!-- global_comment -->
+        <rule context="tei:note[@type='global_comment']">
+            <assert test="tei:p">A &lt;<name/>&gt; element of type 'global_comment' must contain a &lt;p&gt; element.</assert>
         </rule>
         
         <!-- sourceDesc -->
@@ -197,8 +202,8 @@
             <assert test=". = tokenize($allowedValues, ' ')">Unexpected value found in attribute @<name/>. A <name/> attribute may contain only the values <xsl:value-of select="tokenize($allowedValues,' ')[not(position()=last())]" separator=", "/> or <xsl:value-of select="tokenize($allowedValues,' ')[last()]"/>.</assert>
         </rule>
         
-        <!-- note -->
-        <rule context="tei:note">
+        <!-- note (annotation) -->
+        <rule context="tei:note[not(@type='global_comment')]">
             <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
             <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
             <report test="ancestor::tei:text and not(@type='annotation')" sqf:fix="addTypeAnnotation">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
@@ -219,6 +224,11 @@
                     else count(ancestor::element()[last()]//*:note[@type='annotation'])"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'n'||$id"/></sqf:add>
             </sqf:fix>
+        </rule>
+        
+        <!-- note (global_comment) -->
+        <rule context="tei:note[@type='global_comment']">
+            <report test="text()[normalize-space()]">A &lt;<name/>&gt; of type 'global_comment' cannot contain text as child node.</report>
         </rule>
         
         <!-- opener -->
