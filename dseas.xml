@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.8.0</xt:version>
+        <xt:version>0.8.1</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -13,6 +13,13 @@
             <h1>dse-as Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.8.1</h3>
+                <p>Release date: 30/4/2025</p>
+                <p>Fix:</p>
+                <ul>
+                    <li>Bug bei der Generierung von @xml:id bei anchor, note und rs</li>
+                    <li>Abfrage von Zotero-Einträgen auf max. 100 erhöht (Zwischenlösung)</li>
+                </ul>
                 <h3>Version 0.8.0</h3>
                 <p>Release date: 30/4/2025</p>
                 <p>Neu:</p>
@@ -24,7 +31,7 @@
                 </ul>
                 <p>Fix:</p>
                 <ul>
-                    <li>Bug bei der Generierung von @xml:id bei anchor, note und rs</li>
+                    <li>Bug bei der Generierung von @xml:id bei anchor, note und rs (Nachtrag: erst in v0.8.1 gefixt)</li>
                     <li>Schema-bewusstes Einfügen von foreign</li>
                 </ul>
                 <h3>Version 0.7.4</h3>
