@@ -80,7 +80,7 @@
         </xsl:if>
         
         <xsl:if test="$type = 'bibl' or $type = 'all'">
-            <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero-project||'/items') => parse-json()"/>
+            <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero-project||'/items?limit=100') => parse-json()"/>
             <xsl:variable name="list">
                 <ul type="bibl">
                     <xsl:for-each select="$result?*?('data')">
