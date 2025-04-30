@@ -179,7 +179,7 @@
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
                 <xsl:variable name="id" select="if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]) 
-                    then string(max(ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','')) => number() + 1) 
+                    then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
                     else count(ancestor::element()[last()]//*:rs)"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'r'||$id"/></sqf:add>
             </sqf:fix>
