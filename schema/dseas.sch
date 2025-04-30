@@ -133,13 +133,14 @@
         
         <!-- anchor -->
         <rule context="tei:anchor">
+            <report test="@xml:id = preceding::tei:anchor/@xml:id or @xml:id = following::tei:anchor/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
             <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
             <sqf:fix id="addXMLID">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
                 <xsl:variable name="id" select="if (ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]) 
-                    then string(max(ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','')) => number() + 1) 
+                    then max(for $id in ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','') return xs:int($id)) + 1
                     else count(ancestor::element()[last()]//*:anchor)"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'a'||$id"/></sqf:add>
             </sqf:fix>
@@ -173,7 +174,7 @@
         <rule context="tei:rs">
             <assert test="@type">A &lt;<name/>&gt; element must contain a @type attribute.</assert>
             <assert test="@key">A &lt;<name/>&gt; element must contain a @key attribute.</assert>
-            <report test="@xml:id = preceding::tei:rs/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="@xml:id = preceding::tei:rs/@xml:id or @xml:id = following::tei:rs/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
             <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
             <sqf:fix id="addXMLID">
                 <sqf:description>
@@ -207,13 +208,14 @@
                 </sqf:description>
                 <sqf:add target="type" node-type="attribute"><xsl:value-of select="'annotation'"/></sqf:add>
             </sqf:fix>
+            <report test="@type='annotation' and (@xml:id = preceding::tei:note[@type='annotation']/@xml:id or @xml:id = following::tei:note[@type='annotation']/@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
             <report test="@type='annotation' and not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
             <sqf:fix id="addXMLID">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
                 <xsl:variable name="id" select="if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]) 
-                    then string(max(ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','')) => number() + 1) 
+                    then max(for $id in ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','') return xs:int($id)) + 1
                     else count(ancestor::element()[last()]//*:note[@type='annotation'])"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'n'||$id"/></sqf:add>
             </sqf:fix>
