@@ -108,8 +108,6 @@ TEI:not(:-oxy-visible) > text {
 
 /* Foldable Sections */
 
-teiHeader,
-text,
 front,
 body,
 back {
@@ -1154,7 +1152,7 @@ rs[type='bibl']:focus-within:after {
 /* teiHeader */
 
 teiHeader {
-    padding: 0.5em 0.5em 0.5em 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
     margin: 0 0 0.5em 0;
     border: 1px steelblue dashed;
     background-color: #e5f5f9;
@@ -1248,16 +1246,32 @@ notesStmt note[type='global_comment'] p {
 
 /* text */
 
-text:before {
+text:after(19995) {
     display: block;
-    -oxy-prepend-content:
-            oxy_label(text, oxy_concat("Referenzen im Text (", oxy_xpath("count(ancestor::TEI//rs[@key])"), ")"), styles, "@import 'labels_sub.css';")
+    content:
+            oxy_label(text, "Referenzen im Text", styles, "@import 'labels_sub.css';")
             oxy_htmlContent(
-            content, oxy_concat(oxy_xpath("if (//rs[@key]) then '' else 'keine'"), oxy_xpath("let $lookup := doc('${framework(DSE-AS)}/resources/lookup-person.xml')|doc('${framework(DSE-AS)}/resources/lookup-place.xml')|doc('${framework(DSE-AS)}/resources/lookup-bibl.xml')|doc('${framework(DSE-AS)}/resources/lookup-org.xml') return concat('<ul style=\"padding-bottom: 20px;\"> ', (for $x in //rs[@key] => sort(@type) return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')")),
-            width, 100%);
-    padding: 0.5em 0.5em 0.5em 0;
-    margin: 1em 0 0.5em 0;
-    border-top: 1px steelblue dashed;
+                content, oxy_xpath("let $htmlString := concat( \
+                        (if (.//rs[matches(@key,'person_')] and doc-available('${framework(DSE-AS)}/resources/lookup-person.xml')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-person.xml') return concat(concat('<b>Personen (',count(.//rs[matches(@key,'person_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'person_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        else ''), \
+                        (if (.//rs[matches(@key,'place_')] and doc-available('${framework(DSE-AS)}/resources/lookup-place.xml')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-place.xml') return concat(concat('<b>Orte (',count(.//rs[matches(@key,'place_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'place_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        else ''), \
+                        (if (.//rs[matches(@key,'organisation_')] and doc-available('${framework(DSE-AS)}/resources/lookup-org.xml')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-org.xml') return concat(concat('<b>Organisationen (',count(.//rs[matches(@key,'organisation_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'organisation_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        else ''), \
+                        (if (.//rs[@type='bibl'] and doc-available('${framework(DSE-AS)}/resources/lookup-bibl.xml')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-bibl.xml') return concat(concat('<b>Bibliographie (',count(.//rs[@type='bibl']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='bibl'] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        else '') \
+                        ) \
+                        return if ($htmlString[normalize-space()]) then $htmlString else '<i>keine</i>'"),
+                width, 100%);
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border: 1px #c2410c dashed;
+    background-color: #FFFAF0;
 }
 
 text body {
