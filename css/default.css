@@ -434,7 +434,7 @@ sourceDesc > bibl > bibl {
     padding-top: 0em;
 }
 
-sourceDesc bibl > title:after {
+sourceDesc > bibl > bibl > title:after {
     -oxy-append-content: 
         " "
         oxy_buttonGroup(
@@ -516,6 +516,23 @@ sourceDesc listBibl > bibl > title {
             fontInherit, true,
             columns, 10
         );
+}
+
+sourceDesc listBibl > bibl > title:after {
+    -oxy-append-content: 
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'title_reg'
+                  )
+                  oxy_action( 
+                        id, 'delete'
+                  )
+              )
+         );
 }
 
 sourceDesc listBibl > bibl > title:after {
