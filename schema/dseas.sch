@@ -260,6 +260,16 @@
         <rule context="tei:title">
             <report test="@key and not(@level)" role="warning">A &lt;<name/>&gt; element must contain a @level attribute.</report>
         </rule>
+
+        <!-- listBibl -->
+        <rule context="tei:sourceDesc/tei:listBibl">
+            <assert test="@type='related'">A &lt;<name/>&gt; element in &lt;sourceDesc&gt; must contain a @type attribute with the value 'related'.</assert>
+        </rule>
+        
+        <rule context="tei:sourceDesc/tei:listBibl/tei:listBibl">
+            <let name="allowedAttributeValues" value="'surrogates|editions|translations|online|published|genetic|articleseries'"/>
+            <assert test="@type and matches(@type,$allowedAttributeValues)">A &lt;<name/>&gt; element in &lt;listBibl&gt; must contain a @type attribute with a valid value (<value-of select="$allowedAttributeValues => replace('\|',', ')"/>).</assert>
+        </rule>
         
         <!-- language -->
         <rule context="tei:langUsage/tei:language">
