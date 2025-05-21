@@ -1067,6 +1067,10 @@ rs:before {
     margin-right: 6px;
 }
 
+rs:not([type='person']):not([type='org']):not([type='place']):not([type='bibl']) {
+    border-bottom: 3px solid #68D391;
+}
+
 rs[type='person'],
 rs[type='org'],
 rs[type='place'],
