@@ -15,7 +15,7 @@
     <pattern>
         
         <rule context="tei:TEI">
-            <let name="pathToFacs" value="'../../facs/'||$typePl||'/'||$dir||'/'||$filename"/>
+            <let name="pathToFacs" value="'../../../facs/'||$typePl||'/'||$dir||'/'||$filename"/>
             <assert test="doc-available($pathToFacs)">Missing file with facsimile in <value-of select="$pathToFacs"/></assert>
             
             <let name="idRegex" value="'^'||$type||'_\d{4}'"/>
@@ -149,13 +149,6 @@
                     else count(ancestor::element()[last()]//*:anchor)"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'a'||$id"/></sqf:add>
             </sqf:fix>
-        </rule>
-        
-        <!-- cb -->
-        <rule context="tei:cb">
-            <assert test="@type">A &lt;<name/>&gt; element must contain a @type attribute.</assert>
-            <report test="@type='start' and not(following::tei:cb[@type='end'])">A &lt;<name/>&gt; element of @type "start" must have a following &lt;cb&gt; of @type "end".</report>
-            <report test="@type='end' and not(preceding::tei:cb[@type='start'])">A &lt;<name/>&gt; element of @type "end" must have a preceding &lt;cb&gt; of @type "start".</report>
         </rule>
 
         <!-- g -->
