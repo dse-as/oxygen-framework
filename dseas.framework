@@ -1547,6 +1547,52 @@
 									</action>
 									<action>
 										<field name="id">
+											<String>unwrap</String>
+										</field>
+										<field name="name">
+											<String>Kodierung löschen</String>
+										</field>
+										<field name="description">
+											<String>Löscht die Kodierung</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::unclear</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>unwrapElementLocation</String>
+																<String>ancestor-or-self::unclear</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.UnwrapTagsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>lb</String>
 										</field>
 										<field name="name">

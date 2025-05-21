@@ -1614,6 +1614,20 @@ text unclear {
     margin-right: 2px;
 }
 
+text unclear:focus-within:after {
+    padding-left: 2px;
+    content:
+        oxy_buttonGroup(
+            label, '▼', 
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'unwrap'
+                  )
+              )
+         );
+}
+
 text foreign {
     background-color: #e0e0e0;
 }
