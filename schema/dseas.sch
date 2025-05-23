@@ -15,7 +15,7 @@
     <pattern>
         
         <rule context="tei:TEI">
-            <let name="pathToFacs" value="'../../../facs/'||$typePl||'/'||$dir||'/'||$filename"/>
+            <let name="pathToFacs" value="document-uri(/) => replace('sources/tei/','sources/facs/') => replace('.xml$','_facs.xml')"/>
             <assert test="doc-available($pathToFacs)">Missing file with facsimile in <value-of select="$pathToFacs"/></assert>
             
             <let name="idRegex" value="'^'||$type||'_\d{4}'"/>
