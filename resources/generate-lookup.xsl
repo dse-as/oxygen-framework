@@ -83,7 +83,7 @@
             <xsl:variable name="result" select="unparsed-text('https://api.zotero.org/groups/'||$zotero-project||'/items?limit=100') => parse-json()"/>
             <xsl:variable name="list">
                 <ul type="bibl">
-                    <xsl:for-each select="$result?*?('data')">
+                    <xsl:for-each select="$result?*?('data')[not(matches(?('itemType'), 'annotation|attachment|note'))]">
                         <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
                         <xsl:sort select="?('date')"/>
                         <xsl:sort select="?('title')"/>
