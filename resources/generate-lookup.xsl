@@ -6,13 +6,16 @@
     version="3.0">
     
     <xsl:param name="type" select="'all'"/>
-    
-    <xsl:variable name="sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
-    <xsl:variable name="zotero-project" select="'5746334'"/>
+    <xsl:param name="sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
+    <xsl:param name="zotero-project" select="'5746334'"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
         
+        <xsl:if test="system-property('xsl:version') lt '3.0'">
+            <xsl:message terminate="yes">XSLT 3.0 or higher is required.</xsl:message>
+        </xsl:if>
+
         <xsl:if test="$type = 'person' or $type = 'all'">
             <xsl:variable name="result" select="unparsed-text-lines('https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet=Personen')"/>
             <xsl:variable name="list">
