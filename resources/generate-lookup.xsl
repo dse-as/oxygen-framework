@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:err="http://www.w3.org/2005/xqt-errors"
     exclude-result-prefixes="#all"
     expand-text="true"
@@ -9,6 +10,7 @@
     <xsl:param name="type" select="'all'"/>
     <xsl:param name="sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
     <xsl:param name="zotero-project" select="'5746334'"/>
+    <xsl:param name="zotero-batch-size" select="100"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
@@ -34,7 +36,7 @@
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'bibl' or $type = 'all'">
-            <xsl:call-template name="generate-list-from-zotero"/>
+            <xsl:call-template name="fetch-zotero-items"/>
         </xsl:if>
     </xsl:template>
     
@@ -71,29 +73,31 @@
     </xsl:template>
     
     <!-- Zotero -->
-    <xsl:template name="generate-list-from-zotero">
-        <xsl:param name="url" select="'https://api.zotero.org/groups/'||$zotero-project||'/items?limit=100'"/>
+    <xsl:template name="fetch-zotero-items">
+        <xsl:param name="start" select="0"/>
+        <xsl:param name="accum" as="array(*)" select="[]"/>
+        <xsl:variable name="url" select="'https://api.zotero.org/groups/'||$zotero-project||'/items?limit='||$zotero-batch-size||'&amp;start='||$start"/>
+
         <xsl:try>
-            <xsl:variable name="result" select="unparsed-text($url) => parse-json()"/>
-            <xsl:variable name="list">
-                <ul type="bibl">
-                    <xsl:for-each select="$result?*?('data')[not(matches(?('itemType'), 'annotation|attachment|note'))]">
-                        <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
-                        <xsl:sort select="?('date')"/>
-                        <xsl:sort select="?('title')"/>
-                        <xsl:variable name="id" select="?('key')"/>
-                        <xsl:variable name="itemType" select="?('itemType')"/>
-                        <xsl:variable name="label" select="?('title')"/>
-                        <xsl:variable name="creator" select="?('creators')[1]?*?('lastName')[1]"/>
-                        <xsl:variable name="date" select="?('date')"/>
-                        <li id="{$id}" val="{(if ($creator) then $creator else 'NN') || (if ($date) then ' (' || $date || '): ' else ': ') || $label || ' [' || $id || '], ' || $itemType}"/>
-                    </xsl:for-each>
-                </ul>
-            </xsl:variable>
-            <xsl:result-document href="{$result-path||'lookup-bibl.xml'}" method="xml" indent="no">
-                <xsl:copy-of select="$list"/>
-            </xsl:result-document>
-            <xsl:message expand-text="yes">✅ Saved {count($list//*:li)} bibliographic entries in {$result-path||'lookup-bibl.xml'}</xsl:message>
+            <xsl:variable name="response" select="unparsed-text($url) => parse-json()"/>
+            <xsl:variable name="items" select="$response?*?('data')"/>
+            <xsl:variable name="new-accum" select="array:append($accum, $items)"/>
+            
+            <xsl:choose>
+                <xsl:when test="exists($items) and count($items) = $zotero-batch-size">
+                    <!-- More items likely available, recurse -->
+                    <xsl:call-template name="fetch-zotero-items">
+                        <xsl:with-param name="start" select="$start + $zotero-batch-size"/>
+                        <xsl:with-param name="accum" select="$new-accum"/>
+                    </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!-- All items fetched, process $new-accum -->
+                    <xsl:call-template name="process-zotero-items">
+                        <xsl:with-param name="all-items" select="$new-accum"/>
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:catch>
                 <xsl:message>⚠ Failed to fetch or parse data from {$url}
                     Code: <xsl:value-of select="$err:code"/>
@@ -101,6 +105,30 @@
                 </xsl:message>
             </xsl:catch>
         </xsl:try>
+    </xsl:template>
+    
+    <xsl:template name="process-zotero-items">
+        <xsl:param name="all-items" as="array(*)"/>
+        <xsl:variable name="flat-items" select="array:flatten($all-items)"/>
+        <xsl:variable name="list">
+            <ul type="bibl">
+                <xsl:for-each select="$flat-items[not(matches(?('itemType'), 'annotation|attachment|note'))]">
+                    <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
+                    <xsl:sort select="?('date')"/>
+                    <xsl:sort select="?('title')"/>
+                    <xsl:variable name="id" select="?('key')"/>
+                    <xsl:variable name="itemType" select="?('itemType')"/>
+                    <xsl:variable name="label" select="?('title')"/>
+                    <xsl:variable name="creator" select="?('creators')[1]?*?('lastName')[1]"/>
+                    <xsl:variable name="date" select="?('date')"/>
+                    <li id="{$id}" val="{(if ($creator) then $creator else 'NN') || (if ($date) then ' (' || $date || '): ' else ': ') || $label || ' [' || $id || '], ' || $itemType}"/>
+                </xsl:for-each>
+            </ul>
+        </xsl:variable>
+        <xsl:result-document href="{$result-path||'lookup-bibl.xml'}" method="xml" indent="no">
+            <xsl:copy-of select="$list"/>
+        </xsl:result-document>
+        <xsl:message expand-text="yes">✅ Saved {count($list//*:li)} bibliographic entries in {$result-path||'lookup-bibl.xml'}</xsl:message>
     </xsl:template>
     
 </xsl:transform>
