@@ -8,7 +8,7 @@
     version="3.0">
     
     <xsl:param name="type" select="'all'"/>
-    <xsl:param name="sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
+    <xsl:param name="gsheet-sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
     <xsl:param name="zotero-project" select="'5746334'"/>
     <xsl:param name="zotero-batch-size" select="100"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
@@ -18,19 +18,19 @@
             <xsl:message terminate="yes">XSLT 3.0 or higher is required.</xsl:message>
         </xsl:if>
         <xsl:if test="$type = 'person' or $type = 'all'">
-            <xsl:call-template name="generate-list-from-gsheet">
+            <xsl:call-template name="fetch-and-process-gsheet-items">
                 <xsl:with-param name="sheet" select="'Personen'"/>
                 <xsl:with-param name="output-file" select="'lookup-person.xml'"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'place' or $type = 'all'">
-            <xsl:call-template name="generate-list-from-gsheet">
+            <xsl:call-template name="fetch-and-process-gsheet-items">
                 <xsl:with-param name="sheet" select="'Orte'"/>
                 <xsl:with-param name="output-file" select="'lookup-place.xml'"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'org' or $type = 'all'">
-            <xsl:call-template name="generate-list-from-gsheet">
+            <xsl:call-template name="fetch-and-process-gsheet-items">
                 <xsl:with-param name="sheet" select="'Organisationen'"/>
                 <xsl:with-param name="output-file" select="'lookup-org.xml'"/>
             </xsl:call-template>
@@ -41,10 +41,10 @@
     </xsl:template>
     
     <!-- Google Sheet -->
-    <xsl:template name="generate-list-from-gsheet">
+    <xsl:template name="fetch-and-process-gsheet-items">
         <xsl:param name="sheet"/>
         <xsl:param name="output-file"/>
-        <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet='||$sheet"/>
+        <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$gsheet-sheetID||'/gviz/tq?tqx=out:csv&amp;sheet='||$sheet"/>
         <xsl:try>
             <xsl:variable name="result" select="unparsed-text-lines($url)"/>
             <xsl:variable name="list">
