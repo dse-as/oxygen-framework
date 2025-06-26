@@ -244,6 +244,16 @@
             <report test="@key and not(@type)" role="warning">A &lt;<name/>&gt; element must contain a @type attribute.</report>
         </rule>
 
+        <rule context="tei:TEI[@type='dseas-letter']//tei:correspAction//tei:persName/@type">
+            <let name="allowedValues" value="'source conjecture'"/>
+            <assert test=". = tokenize($allowedValues, ' ')">Unexpected value found in attribute @<name/>. A <name/> attribute may contain only the values <xsl:value-of select="tokenize($allowedValues,' ')[not(position()=last())]" separator=", "/> or <xsl:value-of select="tokenize($allowedValues,' ')[last()]"/>.</assert>
+        </rule>
+
+        <rule context="tei:TEI[@type='dseas-smallform']//tei:bibl/tei:persName/@type">
+            <let name="allowedValues" value="'author photographer illustrator'"/>
+            <assert test=". = tokenize($allowedValues, ' ')">Unexpected value found in attribute @<name/>. A <name/> attribute may contain only the values <xsl:value-of select="tokenize($allowedValues,' ')[not(position()=last())]" separator=", "/> or <xsl:value-of select="tokenize($allowedValues,' ')[last()]"/>.</assert>
+        </rule>
+        
         <!-- placeName -->
         <rule context="tei:placeName">
             <report test="@key and not(@type)" role="warning">A &lt;<name/>&gt; element must contain a @type attribute.</report>

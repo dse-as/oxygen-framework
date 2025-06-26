@@ -352,8 +352,8 @@ sourceDesc > bibl persName {
         oxy_editor(type, combo,
             edit, "@type"
             editable, false,
-            values, "author, photographer",
-            labels, "Autor/in, Fotograf/in",
+            values, "author, photographer, illustrator",
+            labels, "Autor/in, Fotograf/in, Illustrator/in",
             canRemoveValue,true,
             fontInherit, true,
             columns, 10
