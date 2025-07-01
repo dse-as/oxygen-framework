@@ -172,6 +172,7 @@
         <rule context="tei:rs">
             <assert test="@type">A &lt;<name/>&gt; element must contain a @type attribute.</assert>
             <assert test="@key">A &lt;<name/>&gt; element must contain a @key attribute.</assert>
+            <assert test="matches(@key, '^'||@type||'_')">A &lt;<name/>&gt; element must contain corresponding @key and @type attributes.</assert>
             <report test="@xml:id = preceding::tei:rs/@xml:id or @xml:id = following::tei:rs/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
             <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
             <sqf:fix id="addXMLID">
