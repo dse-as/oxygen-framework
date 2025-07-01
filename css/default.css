@@ -1046,6 +1046,11 @@ addrLine {
 
 /* Referencing strings */
 
+rs{
+    border-bottom: 3px solid #68D391;
+    color: #000000;
+}
+
 rs[type='person']:before {
     -oxy-prepend-content: url('../images/person-20.png');
     width: 1em;
@@ -1062,27 +1067,20 @@ rs[type='bibl']:before {
     -oxy-prepend-content: url('../images/bibl-20.png');
     width: 1em;
 }
+rs[type='letter']:before {
+    -oxy-prepend-content: url('../images/letter-20.png');
+    width: 1em;
+}
+rs[type='smallform']:before {
+    -oxy-prepend-content: url('../images/smallform-20.png');
+    width: 1em;
+}
 
-rs:before {
+rs[type]:before {
     margin-right: 6px;
 }
 
-rs:not([type='person']):not([type='org']):not([type='place']):not([type='bibl']) {
-    border-bottom: 3px solid #68D391;
-}
-
-rs[type='person'],
-rs[type='org'],
-rs[type='place'],
-rs[type='bibl'] {
-    border-bottom: 3px solid #68D391;
-    color: #000000;
-} 
-
-rs[type='person']:focus-within:after,
-rs[type='org']:focus-within:after,
-rs[type='place']:focus-within:after,
-rs[type='bibl']:focus-within:after {
+rs[type]:focus-within:after {
     padding-left: 2px;
 }
 
@@ -1162,6 +1160,22 @@ rs[type='bibl']:focus-within:after {
                   oxy_action( 
                         id, 'rs_key'
                   ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
+rs[type='letter']:focus-within:after,
+rs[type='smallform']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            tooltip, oxy_xpath("./@key"),
+            actions, 
+              oxy_action_list(
                   oxy_action( 
                         id, 'rs_unwrap'
                   )
@@ -1284,6 +1298,12 @@ text:after(19995) {
                         else ''), \
                         (if (.//rs[@type='bibl'] and doc-available('${framework(DSE-AS)}/resources/lookup-bibl.xml')) \
                         then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-bibl.xml') return concat(concat('<b>Bibliographie (',count(.//rs[@type='bibl']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='bibl'] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        else ''), \
+                        (if (.//rs[@type='smallform']) \
+                        then (concat(concat('<b>Kleine Formen (',count(.//rs[@type='smallform']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='smallform'] return concat('<li>',$x/@key,'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        else ''), \
+                        (if (.//rs[@type='letter']) \
+                        then (concat(concat('<b>Briefe (',count(.//rs[@type='letter']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='letter'] return concat('<li>',$x/@key,'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else '') \
                         ) \
                         return if ($htmlString[normalize-space()]) then $htmlString else '<i>keine</i>'"),
