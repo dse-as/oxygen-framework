@@ -1742,18 +1742,49 @@ listEvent * {
 }
 
 listEvent > event {
-    border-bottom: 1px steelblue dashed;
-    padding-bottom: 1em;
+    content:
+        oxy_label(text, "@xml:id: ", 
+            styles, "@import 'labels.css';")
+        oxy_label(text, oxy_xpath("@xml:id"))
+        oxy_label(text, "\A")
+        oxy_label(text, "@type: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, combo,
+            edit, "@type",
+            values, "travel,event",
+            labels, "travel,event",
+            canRemoveValue,true,
+            editable, false,
+            fontInherit, true,
+            columns, 10)
+        oxy_label(text, "\A");
+    display: block;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border: 1px #64748b dashed;
+    background-color: #f8fafc;
+    margin-bottom: 1em;
+}
+
+listEvent > event[type='travel'] {
+    border: 1px #22d3ee dashed;
+    background-color: #ecfeff;
+}
+
+listEvent > event[type='event'] {
+    border: 1px #4d7c0f dashed;
+    background-color: #f7fee7;
 }
 
 listEvent > event > label {
-    display: block;
-    font-size: 1.2em;
-    font-weight:bold;
     -oxy-placeholder-content: "[Titel]";
+    background-color: #ffffff;
+    display: block;
+    font-size: 1.4em;
+    padding: 0 0 0 0.3em;
+    visibility: visible;
 }
 
-listEvent > event > date {
+listEvent > event date {
 	content: 
         oxy_label(text, "Datum (von): ", 
             styles, "@import 'labels.css';")
@@ -1767,11 +1798,31 @@ listEvent > event > date {
 }
 
 listEvent > event > note:before {
-    content:         
-        oxy_label(
-            text, "Beschreibung"
-            styles, "@import 'labels.css';"
-        );
+    background-color: #f8fafc;
     display: block;
-    margin-bottom: 0.5em;
+    content: "Beschreibung";
+    font-weight: bold;
+    padding: 0 0 0.5em 0;
 }
+
+listEvent > event[type='travel'] > note:before {
+    background-color: #ecfeff;
+}
+
+listEvent > event[type='event'] > note:before {
+    background-color: #f7fee7;
+}
+
+listEvent > event > note {
+    background-color: #ffffff;
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+listEvent > event > note p {
+    display: block;
+    margin: 8px;
+    padding-bottom: 8px;
+    visibility: visible;
+}
+
