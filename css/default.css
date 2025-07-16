@@ -348,7 +348,7 @@ sourceDesc > bibl persName {
         oxy_textfield(
             edit, "#text",
             fontInherit, true,
-            columns, 25)
+            columns, 35)
         oxy_editor(type, combo,
             edit, "@type"
             editable, false,
@@ -455,7 +455,7 @@ sourceDesc > bibl > bibl > title {
         oxy_editor(type, text,
             edit, "#text",
             fontInherit, true,
-            columns, 25)
+            columns, 35)
         oxy_editor(type, combo,
             edit, "@level"
             editable, false,
@@ -498,6 +498,10 @@ sourceDesc listBibl[type='related'] {
     margin-bottom: 1em;
 }
 
+sourceDesc listBibl[type='related'] listBibl {
+    padding-left: 4px;
+}
+
 sourceDesc listBibl > bibl > title {
     content:
         oxy_label(text, oxy_xpath("let $type:=ancestor::listBibl[1]/@type return (if ($type='surrogates') then 'Surrogat' else if ($type='editions') then 'Edition' else if ($type='translations') then 'Übersetzung' else 'no type')||': '"), 
@@ -506,7 +510,7 @@ sourceDesc listBibl > bibl > title {
             edit, "#text",
             editable, false,
             fontInherit, true,
-            columns, 25)
+            columns, 35)
         oxy_editor(type, combo,
             edit, "@level"
             editable, false,
@@ -548,7 +552,7 @@ sourceDesc bibl > biblScope {
         oxy_editor(type, text,
             edit, "#text",
             fontInherit, true,
-            columns, 25);
+            columns, 35);
 }
 
 sourceDesc bibl > note {
@@ -630,7 +634,7 @@ msIdentifier > repository {
             edit, "#text",
             editable, false,
             fontInherit, true,
-            columns, 25);
+            columns, 35);
 }
 
 msIdentifier > collection {
@@ -641,7 +645,7 @@ msIdentifier > collection {
             edit, "#text",
             editable, false,
             fontInherit, true,
-            columns, 25);
+            columns, 35);
 }
 
 msIdentifier > idno {
@@ -652,7 +656,7 @@ msIdentifier > idno {
             edit, "#text",
             editable, false,
             fontInherit, true,
-            columns, 25);
+            columns, 35);
 }
 
 msIdentifier > altIdentifier > idno {
@@ -663,7 +667,7 @@ msIdentifier > altIdentifier > idno {
             edit, "#text",
             editable, false,
             fontInherit, true,
-            columns, 25);
+            columns, 35);
 }
 
 /* language */
@@ -755,7 +759,7 @@ keywords[ana=keywords] list item {
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
-            columns, 20)
+            columns, 25)
             " "
         oxy_buttonGroup(
             label, '▼', 
@@ -809,7 +813,7 @@ keywords[ana=travels] list item {
             canRemoveValue,true,
             editable, false,
             fontInherit, true,
-            columns, 20)
+            columns, 25)
             " "
         oxy_buttonGroup(
             label, '▼', 
@@ -859,7 +863,7 @@ correspAction orgName {
 
 correspAction date {
 	content: 
-        oxy_datePicker(columns, 25, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+        oxy_datePicker(columns, 18, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
         oxy_editor(type, combo,
                 edit, "@type"
                 editable, false,
@@ -1825,4 +1829,3 @@ listEvent > event > note p {
     padding-bottom: 8px;
     visibility: visible;
 }
-
