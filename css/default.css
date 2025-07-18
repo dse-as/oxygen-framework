@@ -158,6 +158,24 @@ TEI[xml|id]:before {
     vertical-align: middle;
 }
 
+TEI[xml|id][type='dseas-letter']:before {
+    -oxy-append-content: 
+        oxy_label(
+            text, " "
+            width, 25px
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_editor(type, combo,
+            edit, "@subtype"
+            editable, false,
+            values, oxy_xpath("doc('${framework(DSE-AS)}/resources/cc_config.xml')//*:valueProposals[@path='tei:TEI[@type=\''dseas-letter\'']/@subtype']//*:item/@value => string-join(', ')")
+            labels, oxy_xpath("doc('${framework(DSE-AS)}/resources/cc_config.xml')//*:valueProposals[@path='tei:TEI[@type=\''dseas-letter\'']/@subtype']//*:item/@annotation => string-join(', ')")
+            canRemoveValue, true,
+            fontInherit, false,
+            columns, 10
+        );
+}
+
 /* Paragraph */
 
 p:after{

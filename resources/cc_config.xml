@@ -13,6 +13,14 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/ccfilter/config http://www.oxygenxml.com/ns/ccfilter/config/ccConfigSchemaFilter.xsd"
     xmlns="http://www.oxygenxml.com/ns/ccfilter/config">
 
+    <valueProposals path="tei:TEI[@type='dseas-letter']/@subtype" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <items>
+            <item value="letter" annotation="Brief"/>
+            <item value="postcard" annotation="Postkarte"/>
+            <item value="telegram" annotation="Telegramm"/>
+        </items>
+    </valueProposals>
+    
     <valueProposals path="tei:language/@ident" editable="onlyAllowedItems" xmlns:tei="http://www.tei-c.org/ns/1.0">
         <items>
             <item value="de" annotation="Deutsch"/>
