@@ -14,27 +14,44 @@
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
-        <xsl:if test="system-property('xsl:version') lt '3.0'">
-            <xsl:message terminate="yes">XSLT 3.0 or higher is required.</xsl:message>
-        </xsl:if>
         <xsl:if test="$type = 'person' or $type = 'all'">
             <xsl:call-template name="fetch-and-process-gsheet-items">
+                <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
                 <xsl:with-param name="sheet" select="'Personen'"/>
                 <xsl:with-param name="output-file" select="'lookup-person.xml'"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'place' or $type = 'all'">
             <xsl:call-template name="fetch-and-process-gsheet-items">
+                <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
                 <xsl:with-param name="sheet" select="'Orte'"/>
                 <xsl:with-param name="output-file" select="'lookup-place.xml'"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'org' or $type = 'all'">
             <xsl:call-template name="fetch-and-process-gsheet-items">
+                <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
                 <xsl:with-param name="sheet" select="'Organisationen'"/>
                 <xsl:with-param name="output-file" select="'lookup-org.xml'"/>
             </xsl:call-template>
         </xsl:if>
+        
+        <xsl:if test="$type = 'letter' or $type = 'all'">
+            <xsl:call-template name="fetch-and-process-gsheet-items">
+                <xsl:with-param name="sheetID" select="'1KgZmtgZUEKx6o48KXTAYxWHhsOVrIxyOElFAUUOIc98'"/>
+                <xsl:with-param name="sheet" select="'Briefe'"/>
+                <xsl:with-param name="output-file" select="'lookup-letter.xml'"/>
+            </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="$type = 'smallform' or $type = 'all'">
+            <xsl:call-template name="fetch-and-process-gsheet-items">
+                <xsl:with-param name="sheetID" select="'1S2Qun726gyqUKr2Yb5vW9RaGPlo8vZ43qbTV-xryyEo'"/>
+                <xsl:with-param name="sheet" select="'Kleine+Formen'"/>
+                <xsl:with-param name="output-file" select="'lookup-smallform.xml'"/>
+            </xsl:call-template>
+        </xsl:if>
+        
         <xsl:if test="$type = 'bibl' or $type = 'all'">
             <xsl:call-template name="fetch-zotero-items"/>
         </xsl:if>
@@ -42,9 +59,10 @@
     
     <!-- Google Sheet -->
     <xsl:template name="fetch-and-process-gsheet-items">
+        <xsl:param name="sheetID"/>
         <xsl:param name="sheet"/>
         <xsl:param name="output-file"/>
-        <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$gsheet-sheetID||'/gviz/tq?tqx=out:csv&amp;sheet='||$sheet"/>
+        <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet='||$sheet"/>
         <xsl:try>
             <xsl:variable name="result" select="unparsed-text-lines($url)"/>
             <xsl:variable name="list">

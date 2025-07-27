@@ -1210,14 +1210,34 @@ rs[type='bibl']:focus-within:after {
     ;
 }
 
-rs[type='letter']:focus-within:after,
+rs[type='letter']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            tooltip, oxy_xpath("let $id := ./@key return (if (doc-available('${framework(DSE-AS)}/resources/lookup-letter.xml')) then doc('${framework(DSE-AS)}/resources/lookup-letter.xml')//*[@id=$id]/@val||' [='||$id||']' else '')"),
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'rs_key'
+                  ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
 rs[type='smallform']:focus-within:after {
     content: 
         oxy_buttonGroup(
             label, '▼',
-            tooltip, oxy_xpath("./@key"),
+            tooltip, oxy_xpath("let $id := ./@key return (if (doc-available('${framework(DSE-AS)}/resources/lookup-smallform.xml')) then doc('${framework(DSE-AS)}/resources/lookup-smallform.xml')//*[@id=$id]/@val||' [='||$id||']' else '')"),
             actions, 
               oxy_action_list(
+                  oxy_action( 
+                        id, 'rs_key'
+                  ),
                   oxy_action( 
                         id, 'rs_unwrap'
                   )

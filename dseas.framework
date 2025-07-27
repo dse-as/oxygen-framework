@@ -834,6 +834,110 @@
 														<String>org.bbaw.telota.ediarum.RegisterChangeAttributeOperation</String>
 													</field>
 												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::rs[@type='letter']</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>attribute name</String>
+																<String>key</String>
+															</entry>
+															<entry>
+																<String>attribute value</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>xpath to element of the attribute</String>
+																<String>.</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterChangeAttributeOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::rs[@type='smallform']</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-smallform.xml</String>
+															</entry>
+															<entry>
+																<String>attribute name</String>
+																<String>key</String>
+															</entry>
+															<entry>
+																<String>attribute value</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>xpath to element of the attribute</String>
+																<String>.</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterChangeAttributeOperation</String>
+													</field>
+												</actionMode>
 											</actionMode-array>
 										</field>
 										<field name="enabledInReadOnlyContext">
@@ -1188,6 +1292,162 @@
 															<entry>
 																<String>item variable</String>
 																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='org' key='$XPATH{@id}' xml:id="r${xpath_eval(
+																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
+																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
+																	else count(ancestor::element()[last()]//*:rs) + 1
+																	)}"/></String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>rs_letter</String>
+										</field>
+										<field name="name">
+											<String>Briefreferenz</String>
+										</field>
+										<field name="description">
+											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Briefregister</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/letter-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/letter-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>ctrl alt O</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("rs")</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='letter' key='$XPATH{@id}' xml:id="r${xpath_eval(
+																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
+																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
+																	else count(ancestor::element()[last()]//*:rs) + 1
+																	)}"/></String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>rs_smallform</String>
+										</field>
+										<field name="name">
+											<String>Referenz auf kleine Form</String>
+										</field>
+										<field name="description">
+											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Kleine Formen-Register</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/smallform-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/smallform-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>ctrl alt O</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>oxy:allows-child-element("rs")</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-smallform.xml</String>
+															</entry>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;rs  xmlns='http://www.tei-c.org/ns/1.0'  type='smallform' key='$XPATH{@id}' xml:id="r${xpath_eval(
 																	if (ancestor::element()[last()]//*:rs/@xml:id[replace(.,"r","") castable as xs:integer]) 
 																	then max(for $id in ancestor::element()[last()]//*:rs/@xml:id[replace(.,'r','') castable as xs:integer]/replace(.,'r','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:rs) + 1
@@ -3128,6 +3388,16 @@ delete_preceding-sibling</String>
 													<String>rs_bibl</String>
 												</field>
 											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>rs_letter</String>
+												</field>
+											</menuItem>
+											<menuItem>
+												<field name="actionID">
+													<String>rs_smallform</String>
+												</field>
+											</menuItem>
 											<menuSeparator/>
 											<menuItem>
 												<field name="actionID">
@@ -3275,6 +3545,16 @@ delete_preceding-sibling</String>
 											<toolbarItem>
 												<field name="actionID">
 													<String>rs_bibl</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>rs_letter</String>
+												</field>
+											</toolbarItem>
+											<toolbarItem>
+												<field name="actionID">
+													<String>rs_smallform</String>
 												</field>
 											</toolbarItem>
 											<toolbarSeparator/>
