@@ -336,6 +336,26 @@ cb:focus:after {
     ;
 }
 
+/* handShift */
+
+handShift:before {
+    content: url('../images/hand_shift-20.png');
+}
+
+handShift:focus:after {
+    -oxy-append-content:
+        oxy_label(
+            text, " medium: "
+            styles, "@import 'labels_sub.css';"
+        )
+        oxy_combobox(
+            edit, "@medium"
+            editable, true,
+            width, 7em
+        )  
+    ;
+}
+
 /* Byline */
 
 byline {
