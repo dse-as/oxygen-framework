@@ -195,19 +195,30 @@
             <assert test=". = tokenize($allowedValues, ' ')">Unexpected value found in attribute @<name/>. A <name/> attribute may contain only the values <xsl:value-of select="tokenize($allowedValues,' ')[not(position()=last())]" separator=", "/> or <xsl:value-of select="tokenize($allowedValues,' ')[last()]"/>.</assert>
         </rule>
         
-        <!-- note (annotation) -->
-        <rule context="tei:note[not(@type='global_comment')]">
-            <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
-            <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
-            <report test="ancestor::tei:text and not(@type='annotation')" sqf:fix="addTypeAnnotation">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
+        <!-- note -->
+        <rule context="tei:note[not(@type)]">
+            <report test="ancestor::tei:text and not(ancestor::tei:figure) and not(@type='annotation')" sqf:fix="addTypeAnnotation">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
             <sqf:fix id="addTypeAnnotation">
                 <sqf:description>
                     <sqf:title>Add type attribute with value 'annotation' to <name/> element.</sqf:title>
                 </sqf:description>
                 <sqf:add target="type" node-type="attribute"><xsl:value-of select="'annotation'"/></sqf:add>
             </sqf:fix>
-            <report test="@type='annotation' and (@xml:id = preceding::tei:note[@type='annotation']/@xml:id or @xml:id = following::tei:note[@type='annotation']/@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
-            <report test="@type='annotation' and not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
+            <report test="ancestor::tei:text and ancestor::tei:figure and not(@type='figure_note')" sqf:fix="addTypeFigureNote">A &lt;<name/>&gt; element in figure must contain a @type attribute with the value 'figure_note'.</report>
+            <sqf:fix id="addTypeFigureNote">
+                <sqf:description>
+                    <sqf:title>Add type attribute with value 'figure_note' to <name/> element.</sqf:title>
+                </sqf:description>
+                <sqf:add target="type" node-type="attribute"><xsl:value-of select="'figure_note'"/></sqf:add>
+            </sqf:fix>
+        </rule>
+        
+        <!-- note (annotation) -->
+        <rule context="tei:note[@type='annotation']">
+            <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
+            <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
+            <report test="@xml:id = preceding::tei:note[@type='annotation']/@xml:id or @xml:id = following::tei:note[@type='annotation']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
             <sqf:fix id="addXMLID">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
