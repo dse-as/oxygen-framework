@@ -150,7 +150,20 @@
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'a'||$id"/></sqf:add>
             </sqf:fix>
         </rule>
-
+        
+        <!-- ref -->
+        <rule context="tei:ref">
+            <assert test="@type='noteAnchor'" sqf:fix="addTypeNoteAnchor">A &lt;<name/>&gt; element must contain a @type attribute with value 'noteAnchor'.</assert>
+            <sqf:fix id="addTypeNoteAnchor">
+                <sqf:description>
+                    <sqf:title>Add type attribute with value 'noteAnchor' to <name/> element.</sqf:title>
+                </sqf:description>
+                <sqf:add target="type" node-type="attribute">noteAnchor</sqf:add>
+            </sqf:fix>
+            <assert test="@target">A &lt;<name/>&gt; element must contain a @target attribute.</assert>
+            <report test="@target = preceding::tei:ref/@target or @target = following::tei:ref/@target">A &lt;<name/>&gt; element must contain an unique @target attribute.</report>
+        </rule>
+        
         <!-- g -->
         <rule context="tei:g">
             <assert test="@ref">A &lt;<name/>&gt; element must contain a @ref attribute.</assert>
@@ -196,15 +209,15 @@
         </rule>
         
         <!-- note -->
-        <rule context="tei:note[not(@type)]">
-            <report test="ancestor::tei:text and not(ancestor::tei:figure) and not(@type='annotation')" sqf:fix="addTypeAnnotation">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation'.</report>
+        <rule context="tei:note[not(@type)][ancestor::tei:text]">
+            <report test="not(ancestor::tei:figure) and not(@type)" sqf:fix="addTypeAnnotation">A &lt;<name/>&gt; element in text must contain a @type attribute with the value 'annotation|endnote|figure_note|footnote'.</report>
             <sqf:fix id="addTypeAnnotation">
                 <sqf:description>
-                    <sqf:title>Add type attribute with value 'annotation' to <name/> element.</sqf:title>
+                    <sqf:title>Add type attribute to <name/> element.</sqf:title>
                 </sqf:description>
-                <sqf:add target="type" node-type="attribute"><xsl:value-of select="'annotation'"/></sqf:add>
+                <sqf:add target="type" node-type="attribute"></sqf:add>
             </sqf:fix>
-            <report test="ancestor::tei:text and ancestor::tei:figure and not(@type='figure_note')" sqf:fix="addTypeFigureNote">A &lt;<name/>&gt; element in figure must contain a @type attribute with the value 'figure_note'.</report>
+            <report test="ancestor::tei:figure and not(@type='figure_note')" sqf:fix="addTypeFigureNote">A &lt;<name/>&gt; element in figure must contain a @type attribute with the value 'figure_note'.</report>
             <sqf:fix id="addTypeFigureNote">
                 <sqf:description>
                     <sqf:title>Add type attribute with value 'figure_note' to <name/> element.</sqf:title>
@@ -216,9 +229,9 @@
         <!-- note (annotation) -->
         <rule context="tei:note[@type='annotation']">
             <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
-            <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
+            <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element of type 'annotation' with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
             <report test="@xml:id = preceding::tei:note[@type='annotation']/@xml:id or @xml:id = following::tei:note[@type='annotation']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
-            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element in text must contain an @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element of type 'annotation' must contain an @xml:id attribute.</report>
             <sqf:fix id="addXMLID">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
@@ -228,6 +241,45 @@
                     else count(ancestor::element()[last()]//*:note[@type='annotation'])"/>
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'n'||$id"/></sqf:add>
             </sqf:fix>
+        </rule>
+
+        <!-- note (endnote) -->
+        <rule context="tei:note[@type='endnote']">
+            <let name="xmlId" value="@xml:id"/>
+            <report test="@xml:id and not(preceding::tei:ref[@target='#'||$xmlId])">A &lt;<name/>&gt; element of type 'endnote' with an @xml:id must have a preceding &lt;ref&gt; element with an according @target.</report>
+            <report test="@xml:id = preceding::tei:note[@type='endnote']/@xml:id or @xml:id = following::tei:note[@type='endnote']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element of type 'endnote' must contain an @xml:id attribute.</report>
+            <sqf:fix id="addXMLID">
+                <sqf:description>
+                    <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
+                </sqf:description>
+                <xsl:variable name="id" select="if (ancestor::element()[last()]//*:note[@type='endnote' or @type='footnote']/@xml:id[replace(.,'o','') castable as xs:integer]) 
+                    then max(for $id in ancestor::element()[last()]//*:note[@type='endnote' or @type='footnote']/@xml:id[replace(.,'o','') castable as xs:integer]/replace(.,'o','') return xs:int($id)) + 1
+                    else count(ancestor::element()[last()]//*:note[@type='endnote' or @type='footnote'])"/>
+                <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'o'||$id"/></sqf:add>
+            </sqf:fix>
+        </rule>
+        
+        <!-- note (footnote) -->
+        <rule context="tei:note[@type='footnote']">
+            <let name="xmlId" value="@xml:id"/>
+            <report test="@xml:id and not(preceding::tei:ref[@target='#'||$xmlId])">A &lt;<name/>&gt; element of type 'footnote' with an @xml:id must have a preceding &lt;ref&gt; element with an according @target.</report>
+            <report test="@xml:id = preceding::tei:note[@type='footnote']/@xml:id or @xml:id = following::tei:note[@type='footnote']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element of type 'footnote' must contain an @xml:id attribute.</report>
+            <sqf:fix id="addXMLID">
+                <sqf:description>
+                    <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
+                </sqf:description>
+                <xsl:variable name="id" select="if (ancestor::element()[last()]//*:note[@type='endnote' or @type='footnote']/@xml:id[replace(.,'o','') castable as xs:integer]) 
+                    then max(for $id in ancestor::element()[last()]//*:note[@type='endnote' or @type='footnote']/@xml:id[replace(.,'o','') castable as xs:integer]/replace(.,'o','') return xs:int($id)) + 1
+                    else count(ancestor::element()[last()]//*:note[@type='endnote' or @type='footnote'])"/>
+                <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'o'||$id"/></sqf:add>
+            </sqf:fix>
+        </rule>
+        
+        <!-- note (figure_note) -->
+        <rule context="tei:note[@type='figure_note']">
+            <report test="not(ancestor::tei:figure)">A &lt;<name/>&gt; element of type 'figure_note' must be a descendant of figure.</report>
         </rule>
         
         <!-- note (global_comment) -->
