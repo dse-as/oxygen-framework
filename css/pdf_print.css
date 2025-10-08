@@ -1,0 +1,308 @@
+
+/* pdf_print.css */
+
+/* Layout */
+
+html {
+    counter-reset: page;
+}
+
+body {
+    hyphens: auto;
+}
+
+@page {
+    size: A4;
+    counter-reset: footnote 1;
+    margin-right: 50mm;
+    @footnote {
+        content: leader(solid);
+        color: black;
+        margin: 15px;
+    }
+    @top-center {
+        content: string(heading_title);
+        font-style: italic;
+        font-size: 70%;
+    }
+    @bottom-center {
+        content: counter(page);
+        font-size:85%;
+    }
+}
+
+.createdAt {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    display: block;
+    font-style: italic;
+    font-size: 70%;
+}
+
+/* Heading */
+
+.heading {
+    string-set: heading_title content();
+    display: none;
+}
+
+h1, h2, h3, h4, h5,
+.criticalAppNextPage,
+.criticalAppNextPage hr {
+  page-break-after: avoid;
+}
+
+/* Footnote */
+
+.footnote { 
+    float: footnote;
+    counter-increment: footnote;
+    text-align: justify;
+    hyphens: auto;
+    font-size: 85%;
+}
+
+.footnote::footnote-call {
+    content: counter(footnote);
+    vertical-align: super;
+    font-size: 0.8em;
+}
+
+.footnote::footnote-marker {
+    content: counter(footnote, decimal);
+    font-size: 70%;
+}
+
+/* Endnote */
+
+.criticalApp {
+    list-style-type: none;
+}
+
+.endnote {
+    font-weight: bold;
+}
+
+/* Header */
+
+.infoTitle {
+    font-style: normal;
+    font-weight: bold;
+}
+
+header {
+    font-size: 80%;                 
+}
+
+.title {
+    display: block;
+}
+
+.headerInfo {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    font-style: italic;
+}
+
+.headerData {
+    display: block;
+    font-style: italic;
+}
+
+/* Content */
+
+.textDiv {
+    padding-bottom: 0.5em;
+}
+
+div h1 {
+    font-size: 160%;
+}
+div h2 {
+    font-size: 140%;
+}
+div h3 {
+    font-size: 130%;
+}
+div h4 {
+    font-size: 125%;
+}
+div h5 {
+    font-size: 120%;
+}
+div h6 {
+    font-size: 110%;
+}
+
+.minorHeading {
+    font-weight: bold;
+}
+
+/* Text */
+
+.additionLabel {
+    font-style: italic;
+}
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.corr {
+    font-style: italic;
+}
+
+.dateline {
+    text-align: right;
+}
+
+.deleted {
+    font-style: italic;
+}
+
+.deletedGap {
+    font-style: italic;
+}
+
+.expan {
+    font-style: italic;
+}
+
+.foreign {
+    font-family: Helvetica;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.spaced {
+    letter-spacing: 0.1em;
+}
+
+.pbNum {
+    font-size: smaller;
+}
+
+.quoteBlock{
+    margin-left: 5em;
+}
+
+.quoteInline {
+    font-style: normal;
+}
+
+.regLink {
+    color: black;
+    text-decoration: none;
+}
+
+.sic {
+    font-style: normal;
+}
+
+.spaceFootnote {
+    font-style: italic;
+}
+
+.strophe {
+    display: block;
+    padding-bottom: 0.5em;
+}
+
+.sub {
+    vertical-align: sub;
+    font-size: 70%;
+}
+
+.sup {
+    vertical-align: super;
+    font-size: 70%;
+}
+
+.underline {
+    border-bottom: black 1px solid;
+}
+
+/* Lists */
+
+ul.list{
+    list-style-type:none;
+}
+
+ul.list li{
+    padding-bottom:0.5em;
+}
+
+ul.list li:before{
+   content: attr(content)" "; 
+}
+
+ul.list li.none{
+    list-style-type:none
+}
+
+
+/* Tables */
+
+table {
+    display: table;
+    width:100%;
+    hyphens: auto;
+    border: 1px solid white;
+    border-collapse: collapse;
+    max-width: 160mm;
+}
+
+tr {
+    display: table-row;
+}
+
+td {
+    display: table-cell;
+}
+
+table.table,
+table.table tr,
+table.table td {
+    hyphens: auto;
+}
+
+table.table td:first-of-type {
+    padding: 0 0 0.5em 0;
+    text-align: left;
+}
+
+table.table td {
+    padding: 0 0 0.5em 0.5em;
+    text-align: left;
+}
+
+table.tableDrawn,
+table.tableDrawn th,
+table.tableDrawn td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    max-width: 160mm;
+}
+
+table caption span.tableCaption {
+    display: block;
+    text-align: left;
+    font-style: italic;
+    font-weight: normal;
+}
