@@ -3,6 +3,7 @@
     
     <languageList>
         <language description="German" lang="de_DE"/>
+        <language description="English" lang="en_US"/>
     </languageList>
     
     <!-- Actions -->
@@ -11,490 +12,626 @@
     
     <key value="hi-bold">
         <val lang="de_DE">Fettdruck</val>
+        <val lang="en_US">Bold</val>
     </key>
     <key value="hi-bold_description">
         <val lang="de_DE">Fettgedruckter Text</val>
+        <val lang="en_US">Bold text</val>
     </key>
    
     <key value="hi-g">
         <val lang="de_DE">Sperrdruck</val>
+        <val lang="en_US">Letterspacing</val>
     </key>
     <key value="hi-g_description">
         <val lang="de_DE">Gesperrter Text</val>
+        <val lang="en_US">Letterspaced text</val>
     </key>
     
     <key value="hi-italic">
         <val lang="de_DE">Kursiv</val>
+        <val lang="en_US">Italic</val>
     </key>
     <key value="hi-italic_description">
         <val lang="de_DE">Kursive Textstelle</val>
+        <val lang="en_US">Italic text</val>
     </key>
  
     <key value="hi-subscript">
         <val lang="de_DE">Tiefgestellt</val>
+        <val lang="en_US">Subscript</val>
     </key>
     <key value="hi-subscript_description">
         <val lang="de_DE">Tiefgestellter Text</val>
+        <val lang="en_US">Subscript text</val>
     </key>
     
     <key value="hi-superscript">
         <val lang="de_DE">Hochgestellt</val>
+        <val lang="en_US">Superscript</val>
     </key>
     <key value="hi-superscript_description">
         <val lang="de_DE">Hochgestellter Text</val>
+        <val lang="en_US">Superscript text</val>
     </key> 
     
     <key value="hi-underline">
         <val lang="de_DE">Unterstrichen</val>
+        <val lang="en_US">Underline</val>
     </key>
     <key value="hi-underline_description">
         <val lang="de_DE">Unterstrichene Textstelle</val>
+        <val lang="en_US">Underlined text</val>
     </key>
     
     <!-- Line and page beginnings -->
     
     <key value="lb">
         <val lang="de_DE">Zeilenanfang</val>
+        <val lang="en_US">Line break</val>
     </key>
     <key value="lb_description">
         <val lang="de_DE">Zeilenanfang im Text</val>
+        <val lang="en_US">Line break in text</val>
     </key>
 
     <key value="pb">
         <val lang="de_DE">Seitenanfang</val>
+        <val lang="en_US">Page break</val>
     </key>
     <key value="pb_description">
         <val lang="de_DE">Seitenanfang im Text</val>
+        <val lang="en_US">Page break in text</val>
     </key>
     
     <!-- Notes -->
     
     <key value="note">
         <val lang="de_DE">Anmerkung einfügen</val>
+        <val lang="en_US">Insert note</val>
     </key>
     <key value="note_description">
         <val lang="de_DE">Anmerkung einfügen</val>
+        <val lang="en_US">Insert note</val>
     </key>
     
     <key value="note_anchor">
         <val lang="de_DE">Anmerkung und Verweisziel einfügen</val>
+        <val lang="en_US">Insert note and anchor</val>
     </key>
     <key value="note_anchor_description">
         <val lang="de_DE">Fügt eine Anmerkung mit Verweisziel ein</val>
+        <val lang="en_US">Insert a note with anchor</val>
     </key>
 
     <!-- Referencing strings -->
 
     <key value="rs_bibl">
         <val lang="de_DE">Bibliographiereferenz</val>
+        <val lang="en_US">Bibliographic reference</val>
     </key>
     <key value="rs_bibl_description">
         <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bibliographieregister</val>
+        <val lang="en_US">Links the selected text to an entry in the bibliography register</val>
     </key>
 
     <key value="rs_letter">
         <val lang="de_DE">Briefreferenz</val>
+        <val lang="en_US">Letter reference</val>
     </key>
     <key value="rs_letter_description">
         <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Briefregister</val>
+        <val lang="en_US">Links the selected text to an entry in the letter register</val>
     </key>
 
     <key value="rs_org">
         <val lang="de_DE">Organisationsreferenz</val>
+        <val lang="en_US">Organization reference</val>
     </key>
     <key value="rs_org_description">
         <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Organisationenregister</val>
+        <val lang="en_US">Links the selected text to an entry in the organization register</val>
     </key>
 
     <key value="rs_person">
         <val lang="de_DE">Personenreferenz</val>
+        <val lang="en_US">Person reference</val>
     </key>
     <key value="rs_person_description">
         <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Personenregister</val>
+        <val lang="en_US">Links the selected text to an entry in the person register</val>
     </key>
 
     <key value="rs_place">
         <val lang="de_DE">Ortereferenz</val>
+        <val lang="en_US">Place reference</val>
     </key>
     <key value="rs_place_description">
         <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Orteregister</val>
+        <val lang="en_US">Links the selected text to an entry in the place register</val>
     </key>
 
     <key value="rs_smallform">
         <val lang="de_DE">Referenz auf kleine Form</val>
+        <val lang="en_US">Short form reference</val>
     </key>
     <key value="rs_smallform_description">
         <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Kleine Formen-Register</val>
+        <val lang="en_US">Links the selected text to an entry in the short forms register</val>
     </key>
     
     <key value="rs_key">
         <val lang="de_DE">Neu referenzieren</val>
+        <val lang="en_US">Re-reference</val>
     </key>
     <key value="rs_key_description">
         <val lang="de_DE">Öffnet den Register, um die Entität neu zu referenzieren</val>
+        <val lang="en_US">Opens the register to re-reference the entity</val>
     </key>
     
     <!-- Textual elements -->
 
     <key value="gap">
         <val lang="de_DE">Lücke/Unleserlicher Text</val>
+        <val lang="en_US">Gap/Illegible text</val>
     </key>
     <key value="gap_description">
         <val lang="de_DE">Lücke/Unleserlicher Text</val>
+        <val lang="en_US">Gap/Illegible text</val>
     </key>
     
     <key value="unclear">
         <val lang="de_DE">Unsichere Lesung</val>
+        <val lang="en_US">Unclear reading</val>
     </key>
     <key value="unclear_description">
         <val lang="de_DE">Unsichere Lesung</val>
+        <val lang="en_US">Unclear reading</val>
     </key>
     
     <key value="add">
         <val lang="de_DE">Hinzufügung</val>
+        <val lang="en_US">Addition</val>
     </key>
     <key value="add_description">
         <val lang="de_DE">Hinzufügung im Text durch Autor/in</val>
+        <val lang="en_US">Addition in the text by the author</val>
     </key>
 
     <key value="del">
         <val lang="de_DE">Streichung</val>
+        <val lang="en_US">Deletion</val>
     </key>
     <key value="del_description">
         <val lang="de_DE">Streichung im Text durch Autor/in</val>
+        <val lang="en_US">Deletion in the text by the author</val>
     </key>
     
     <key value="abbr-expan">
         <val lang="de_DE">Abkürzung</val>
+        <val lang="en_US">Abbreviation</val>
     </key>
     <key value="abbr-expan_description">
         <val lang="de_DE">Abkürzung im Text auflösen</val>
+        <val lang="en_US">Expand abbreviation in text</val>
     </key>
     
     <key value="sic-corr">
         <val lang="de_DE">Fehlerhafte Schreibweise</val>
+        <val lang="en_US">Incorrect spelling</val>
     </key>
     <key value="sic-corr_description">
         <val lang="de_DE">Fehlerhafte Schreibweise im Text korrigieren</val>
+        <val lang="en_US">Correct incorrect spelling in text</val>
     </key>
     
     <key value="quote">
         <val lang="de_DE">Zitat</val>
+        <val lang="en_US">Quote</val>
     </key>
     <key value="quote_description">
         <val lang="de_DE">Zitat im Text</val>
+        <val lang="en_US">Quote in text</val>
     </key>
     
     <key value="foreign">
         <val lang="de_DE">Fremdsprachiger Abschnitt</val>
+        <val lang="en_US">Foreign language section</val>
     </key>
     <key value="foreign_description">
         <val lang="de_DE">Fremdsprachiger Abschnitt im Text</val>
+        <val lang="en_US">Foreign language section in text</val>
     </key>
     
     <key value="g">
         <val lang="de_DE">Geminationsstrich</val>
+        <val lang="en_US">Gemination stroke</val>
     </key>
     <key value="g_description">
         <val lang="de_DE">Geminationsstrich im Text</val>
+        <val lang="en_US">Gemination stroke in text</val>
     </key>
 
     <!-- Document related -->
 
     <key value="generate_lookup_all">
         <val lang="de_DE">Alle Lookups generieren</val>
+        <val lang="en_US">Generate all lookups</val>
     </key>
     <key value="generate_lookup_all_description">
         <val lang="de_DE">Führt ein Transformationsszenario aus, das alle Register neu generiert</val>
+        <val lang="en_US">Runs a transformation scenario that regenerates all registers</val>
     </key>
     
     <key value="open_gsheet">
         <val lang="de_DE">Google Sheet öffnen</val>
+        <val lang="en_US">Open Google Sheet</val>
     </key>
     <key value="open_gsheet_description">
         <val lang="de_DE">Google Sheet öffnen</val>
+        <val lang="en_US">Open Google Sheet</val>
     </key>
 
     <key value="open_iiif_images">
         <val lang="de_DE">In IIIF-Viewer öffnen</val>
+        <val lang="en_US">Open in IIIF viewer</val>
     </key>
     <key value="open_iiif_images_description">
         <val lang="de_DE">Faksimile im Universal Viewer öffnen</val>
+        <val lang="en_US">Open facsimile in Universal Viewer</val>
     </key>
     
     <key value="open_manual">
         <val lang="de_DE">Dokumentation</val>
+        <val lang="en_US">Documentation</val>
     </key>
     <key value="open_manual_description">
         <val lang="de_DE">Dokumentation im Webbrowser öffnen</val>
+        <val lang="en_US">Open documentation in web browser</val>
     </key>
     
     <key value="open_zotero">
         <val lang="de_DE">In Zotero öffnen</val>
+        <val lang="en_US">Open in Zotero</val>
     </key>
     <key value="open_zotero_description">
         <val lang="de_DE">Öffnet die referenzierte Entität in Zotero</val>
+        <val lang="en_US">Opens the referenced entity in Zotero</val>
     </key>
     
     <key value="printPDF">
         <val lang="de_DE">PDF erstellen</val>
+        <val lang="en_US">Create PDF</val>
     </key>
     <key value="printPDF_description">
         <val lang="de_DE">Erstellt aus dem Dokument ein PDF</val>
+        <val lang="en_US">Creates a PDF from the document</val>
     </key>
     
     <!-- Delete actions -->
 
     <key value="delete">
         <val lang="de_DE">Element löschen</val>
+        <val lang="en_US">Delete element</val>
     </key>
     <key value="delete_description">
         <val lang="de_DE">Element komplett löschen</val>
+        <val lang="en_US">Delete element completely</val>
     </key>
     
     <key value="delete_note">
         <val lang="de_DE">Anmerkung löschen</val>
+        <val lang="en_US">Delete note</val>
     </key>
     <key value="delete_note_description">
         <val lang="de_DE">Anmerkung komplett löschen</val>
+        <val lang="en_US">Delete note completely</val>
     </key>
     
     <key value="rs_unwrap">
         <val lang="de_DE">Referenz löschen</val>
+        <val lang="en_US">Delete reference</val>
     </key>
     <key value="rs_unwrap_description">
         <val lang="de_DE">Löscht die Referenz (rs)</val>
+        <val lang="en_US">Deletes the reference (rs)</val>
     </key>
     
     <key value="unwrap">
         <val lang="de_DE">Kodierung löschen</val>
+        <val lang="en_US">Delete encoding</val>
     </key>
     <key value="unwrap_description">
         <val lang="de_DE">Löscht die Kodierung</val>
+        <val lang="en_US">Deletes the encoding</val>
     </key>
     
     <!-- Register -->
 
     <key value="persName_reg">
         <val lang="de_DE">Personeneintrag referenzieren</val>
+        <val lang="en_US">Reference person entry</val>
     </key>
     <key value="persName_reg_description">
         <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Personenregister</val>
+        <val lang="en_US">Links the element to an entry in the person register</val>
     </key>
 
     <key value="placeName_reg">
         <val lang="de_DE">Ortseintrag referenzieren</val>
+        <val lang="en_US">Reference place entry</val>
     </key>
     <key value="placeName_reg_description">
         <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Ortsregister</val>
+        <val lang="en_US">Links the element to an entry in the place register</val>
     </key>
 
     <key value="title_reg">
         <val lang="de_DE">Bibliographischer Eintrag referenzieren</val>
+        <val lang="en_US">Reference bibliographic entry</val>
     </key>
     <key value="title_reg_description">
         <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Bibliographieregister</val>
+        <val lang="en_US">Links the element to an entry in the bibliography register</val>
     </key>
     
     <!-- Bibl -->
 
     <key value="bibl_surrogate">
         <val lang="de_DE">Surrogat einfügen</val>
+        <val lang="en_US">Insert surrogate</val>
     </key>
     <key value="bibl_surrogate_description">
         <val lang="de_DE">Eintrag für Surrogat einfügen</val>
+        <val lang="en_US">Insert entry for surrogate</val>
     </key>
     
     <key value="bibl_edition">
         <val lang="de_DE">Edition einfügen</val>
+        <val lang="en_US">Insert edition</val>
     </key>
     <key value="bibl_edition_description">
         <val lang="de_DE">Eintrag für Edition einfügen</val>
+        <val lang="en_US">Insert entry for edition</val>
     </key>
 
     <key value="bibl_translation">
         <val lang="de_DE">Übersetzung einfügen</val>
+        <val lang="en_US">Insert translation</val>
     </key>
     <key value="bibl_translation_description">
         <val lang="de_DE">Eintrag für Übersetzung einfügen</val>
+        <val lang="en_US">Insert entry for translation</val>
     </key>
     
     <!-- Placeholder -->
     
     <key value="byline_placeholder">
         <val lang="de_DE">Verfasserinnenzeile</val>
+        <val lang="en_US">Byline</val>
     </key>
     
     <key value="dateline_placeholder">
         <val lang="de_DE">Datumszeile</val>
+        <val lang="en_US">Dateline</val>
     </key>
     
     <key value="opener-salute_placeholder">
         <val lang="de_DE">Anrede</val>
+        <val lang="en_US">Salutation</val>
     </key>
 
     <key value="closer-salute_placeholder">
         <val lang="de_DE">Grussformel</val>
+        <val lang="en_US">Closing salutation</val>
     </key>
     
     <key value="signed_placeholder">
         <val lang="de_DE">Unterschrift</val>
+        <val lang="en_US">Signature</val>
     </key>
     
     <key value="addrLine_placeholder">
         <val lang="de_DE">Adresszeile</val>
+        <val lang="en_US">Address line</val>
     </key>
     
     <key value="head_placeholder">
         <val lang="de_DE">Titel</val>
+        <val lang="en_US">Title</val>
     </key>
     
     <key value="lg-l_placeholder">
         <val lang="de_DE">Verszeile</val>
+        <val lang="en_US">Verse line</val>
     </key>
     
     <key value="note_placeholder">
         <val lang="de_DE">Anmerkung eingeben</val>
+        <val lang="en_US">Enter note</val>
     </key>
     
     <key value="figure_placeholder">
-        <val lang="de_DE">Zeichnung o.ä.</val>
+        <val lang="de_DE">Zeichnung</val>
+        <val lang="en_US">Drawing</val>
     </key>
     
     <key value="figure-head_placeholder">
         <val lang="de_DE">Überschrift der Abbildung</val>
+        <val lang="en_US">Figure heading</val>
     </key>
     
     <key value="figure-p_placeholder">
         <val lang="de_DE">Bildunterschrift der Autorin</val>
+        <val lang="en_US">Author's caption</val>
     </key>
     
     <key value="add_placeholder">
         <val lang="de_DE">Hinzufügung</val>
+        <val lang="en_US">Addition</val>
     </key>
     
     <key value="choice-sic_placeholder">
         <val lang="de_DE">Fehlerhafte Form</val>
+        <val lang="en_US">Incorrect form</val>
     </key>
     
     <key value="choice-corr_placeholder">
         <val lang="de_DE">Korrigierte Form</val>
+        <val lang="en_US">Corrected form</val>
     </key>
     
     <key value="choice-expan_placeholder">
         <val lang="de_DE">Aufgelöste Schreibung</val>
+        <val lang="en_US">Expanded spelling</val>
     </key>
     
     <key value="event-label_placeholder">
         <val lang="de_DE">Titel</val>
+        <val lang="en_US">Title</val>
     </key>
 
     <!-- Label -->
 
     <key value="title">
         <val lang="de_DE">Titel</val>
+        <val lang="en_US">Title</val>
     </key>
     <key value="title-smallform_label">
         <val lang="de_DE">Titel der kleinen Form</val>
+        <val lang="en_US">Title of short form</val>
     </key>
     <key value="title-letter_label">
         <val lang="de_DE">Titel des Briefs</val>
+        <val lang="en_US">Title of letter</val>
     </key>
     <key value="editorial-contribution_label">
         <val lang="de_DE">Redaktioneller Beitrag</val>
+        <val lang="en_US">Editorial contribution</val>
     </key>
     <key value="person_label">
         <val lang="de_DE">Person</val>
+        <val lang="en_US">Person</val>
     </key>
     <key value="journal_label">
         <val lang="de_DE">Zeitschrift</val>
+        <val lang="en_US">Journal</val>
     </key>
     <key value="date_label">
         <val lang="de_DE">Datum</val>
+        <val lang="en_US">Date</val>
     </key>
     <key value="date-from_label">
         <val lang="de_DE">Datum (von)</val>
+        <val lang="en_US">Date (from)</val>
     </key>
     <key value="date-to_label">
         <val lang="de_DE">Datum (bis)</val>
+        <val lang="en_US">Date (to)</val>
     </key>
     <key value="related-entries_label">
         <val lang="de_DE">Zugehörige Einträge</val>
+        <val lang="en_US">Related entries</val>
     </key>
     <key value="section_label">
         <val lang="de_DE">Bereich</val>
+        <val lang="en_US">Section</val>
     </key>
     <key value="note_label">
         <val lang="de_DE">Anmerkung</val>
+        <val lang="en_US">Note</val>
     </key>
     <key value="online_label">
         <val lang="de_DE">Online</val>
+        <val lang="en_US">Online</val>
     </key>
     <key value="archive_label">
         <val lang="de_DE">Archiv</val>
+        <val lang="en_US">Archive</val>
     </key>
     <key value="collection_label">
         <val lang="de_DE">Sammlung</val>
+        <val lang="en_US">Collection</val>
     </key>
     <key value="shelfmark_label">
         <val lang="de_DE">Signatur</val>
+        <val lang="en_US">Shelfmark</val>
     </key>
     <key value="alt-shelfmark_label">
         <val lang="de_DE">Alt. Signatur</val>
+        <val lang="en_US">Alt. shelfmark</val>
     </key>
     <key value="language_label">
         <val lang="de_DE">Sprache</val>
+        <val lang="en_US">Language</val>
     </key>
     <key value="keyword_label">
         <val lang="de_DE">Schlagwort</val>
+        <val lang="en_US">Keyword</val>
     </key>
     <key value="travel_label">
         <val lang="de_DE">Reise</val>
+        <val lang="en_US">Travel</val>
     </key>
     <key value="sender_label">
         <val lang="de_DE">Absender/in</val>
+        <val lang="en_US">Sender</val>
     </key>
     <key value="recipient_label">
         <val lang="de_DE">Empfänger/in</val>
+        <val lang="en_US">Recipient</val>
     </key>
     <key value="place-of-writing_label">
         <val lang="de_DE">Schreibort</val>
+        <val lang="en_US">Place of writing</val>
     </key>
     <key value="place-of-receipt_label">
         <val lang="de_DE">Empfangsort</val>
+        <val lang="en_US">Place of receipt</val>
     </key>
     <key value="date-of-writing_label">
         <val lang="de_DE">Schreibdatum</val>
+        <val lang="en_US">Date of writing</val>
     </key>
     <key value="date-of-receipt_label">
         <val lang="de_DE">Empfangsdatum</val>
+        <val lang="en_US">Date of receipt</val>
     </key>
     <key value="references-text_label">
         <val lang="de_DE">Referenzen im Text</val>
+        <val lang="en_US">References in text</val>
     </key>
     <key value="persons_label">
         <val lang="de_DE">Personen</val>
+        <val lang="en_US">Persons</val>
     </key>
     <key value="places_label">
         <val lang="de_DE">Orte</val>
+        <val lang="en_US">Places</val>
     </key>
     <key value="organizations_label">
         <val lang="de_DE">Organisationen</val>
+        <val lang="en_US">Organizations</val>
     </key>
     <key value="bibliography_label">
         <val lang="de_DE">Bibliographie</val>
+        <val lang="en_US">Bibliography</val>
     </key>
     <key value="short-forms_label">
         <val lang="de_DE">Kleine Formen</val>
+        <val lang="en_US">Short forms</val>
     </key>
     <key value="letters_label">
         <val lang="de_DE">Briefe</val>
+        <val lang="en_US">Letters</val>
     </key>
     <key value="none_label">
         <val lang="de_DE">keine</val>
+        <val lang="en_US">none</val>
     </key>
     <key value="not-referenced_label">
         <val lang="de_DE">nicht referenziert</val>
+        <val lang="en_US">not referenced</val>
     </key>
     
-</translation> 
+</translation>
