@@ -27,6 +27,7 @@
 					<field name="classpath">
 						<String-array>
 							<String>${framework}/ediarum-3.1.0.jar</String>
+							<String>${framework}/i18n/</String>
 							<String>${framework}/resources/</String>
 						</String-array>
 					</field>
@@ -63,10 +64,10 @@
 											<String>generate_lookup_all</String>
 										</field>
 										<field name="name">
-											<String>Alle Lookups generieren</String>
+											<String>${i18n(generate_lookup_all)}</String>
 										</field>
 										<field name="description">
-											<String>Führt ein Transformationsszenario aus, das alle Register neu generiert</String>
+											<String>${i18n(generate_lookup_all_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/refresh-20.png</String>
@@ -109,10 +110,10 @@
 											<String>hi[bold]</String>
 										</field>
 										<field name="name">
-											<String>Fettdruck</String>
+											<String>${i18n(hi-bold)}</String>
 										</field>
 										<field name="description">
-											<String>Fettgedruckter Text</String>
+											<String>${i18n(hi-bold_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/bold-20.png</String>
@@ -159,10 +160,10 @@
 											<String>hi[g]</String>
 										</field>
 										<field name="name">
-											<String>Sperrdruck</String>
+											<String>${i18n(hi-g)}</String>
 										</field>
 										<field name="description">
-											<String>Gesperrter Text</String>
+											<String>${i18n(hi-g_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/spaced-20.png</String>
@@ -209,10 +210,10 @@
 											<String>hi[italic]</String>
 										</field>
 										<field name="name">
-											<String>Kursiv</String>
+											<String>${i18n(hi-italic)}</String>
 										</field>
 										<field name="description">
-											<String>Kursive Textstelle</String>
+											<String>${i18n(hi-italic_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/italic-20.png</String>
@@ -259,10 +260,10 @@
 											<String>hi[subscript]</String>
 										</field>
 										<field name="name">
-											<String>Tiefgestellt</String>
+											<String>${i18n(hi-subscript)}</String>
 										</field>
 										<field name="description">
-											<String>Tiefgestellter Text</String>
+											<String>${i18n(hi-subscript_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/subscript-20.png</String>
@@ -309,10 +310,10 @@
 											<String>hi[superscript]</String>
 										</field>
 										<field name="name">
-											<String>Hochgestellt</String>
+											<String>${i18n(hi-superscript)}</String>
 										</field>
 										<field name="description">
-											<String>Hochgestellter Text</String>
+											<String>${i18n(hi-superscript_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/superscript-20.png</String>
@@ -359,10 +360,10 @@
 											<String>hi[underline]</String>
 										</field>
 										<field name="name">
-											<String>Unterstrichen</String>
+											<String>${i18n(hi-underline)}</String>
 										</field>
 										<field name="description">
-											<String>Unterstrichene Textstelle</String>
+											<String>${i18n(hi-underline_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/underline-20.png</String>
@@ -409,10 +410,10 @@
 											<String>note</String>
 										</field>
 										<field name="name">
-											<String>Anmerkung einfügen</String>
+											<String>${i18n(note)}</String>
 										</field>
 										<field name="description">
-											<String>Anmerkung einfügen</String>
+											<String>${i18n(note_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/note-20.png</String>
@@ -463,10 +464,10 @@
 											<String>note_anchor</String>
 										</field>
 										<field name="name">
-											<String>Anmerkung und Verweisziel einfügen</String>
+											<String>${i18n(note_anchor)}</String>
 										</field>
 										<field name="description">
-											<String>Fügt eine Anmerkung mit Verweisziel ein</String>
+											<String>${i18n(note_anchor_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/note_anchor-20.png</String>
@@ -529,10 +530,10 @@
 											<String>rs_person</String>
 										</field>
 										<field name="name">
-											<String>Personenreferenz</String>
+											<String>${i18n(rs_person)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Personenregister</String>
+											<String>${i18n(rs_person_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/person-20.png</String>
@@ -607,10 +608,10 @@
 											<String>rs_key</String>
 										</field>
 										<field name="name">
-											<String>Neu referenzieren</String>
+											<String>${i18n(rs_key)}</String>
 										</field>
 										<field name="description">
-											<String>Öffnet den Register, um die Entität neu zu referenzieren.</String>
+											<String>${i18n(ry_key_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -1248,10 +1249,10 @@
 											<String>rs_org</String>
 										</field>
 										<field name="name">
-											<String>Organisationsreferenz</String>
+											<String>${i18n(rs_org)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Organisationenregister</String>
+											<String>${i18n(rs_org_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/org-20.png</String>
@@ -1326,10 +1327,10 @@
 											<String>rs_letter</String>
 										</field>
 										<field name="name">
-											<String>Briefreferenz</String>
+											<String>${i18n(rs_letter)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Briefregister</String>
+											<String>${i18n(rs_letter_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/letter-20.png</String>
@@ -1404,10 +1405,10 @@
 											<String>rs_smallform</String>
 										</field>
 										<field name="name">
-											<String>Referenz auf kleine Form</String>
+											<String>${i18n(rs_smallform)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Kleine Formen-Register</String>
+											<String>${i18n(rs_smallform_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/smallform-20.png</String>
@@ -1482,10 +1483,10 @@
 											<String>delete</String>
 										</field>
 										<field name="name">
-											<String>Element löschen</String>
+											<String>${i18n(delete)}</String>
 										</field>
 										<field name="description">
-											<String>Element komplett löschen</String>
+											<String>${i18n(delete_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -1686,10 +1687,10 @@
 											<String>delete_note</String>
 										</field>
 										<field name="name">
-											<String>Anmerkung löschen</String>
+											<String>${i18n(delete_note)}</String>
 										</field>
 										<field name="description">
-											<String>Anmerkung komplett löschen</String>
+											<String>${i18n(delete_note_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -1764,10 +1765,10 @@
 											<String>rs_unwrap</String>
 										</field>
 										<field name="name">
-											<String>Referenz löschen</String>
+											<String>${i18n(rs_unwrap)}</String>
 										</field>
 										<field name="description">
-											<String>Löscht die Referenz (rs)</String>
+											<String>${i18n(rs_unwrap_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -1810,10 +1811,10 @@
 											<String>unwrap</String>
 										</field>
 										<field name="name">
-											<String>Kodierung löschen</String>
+											<String>${i18n(unwrap)}</String>
 										</field>
 										<field name="description">
-											<String>Löscht die Kodierung</String>
+											<String>${i18n(unwrap_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -1856,10 +1857,10 @@
 											<String>lb</String>
 										</field>
 										<field name="name">
-											<String>Zeilenanfang</String>
+											<String>${i18n(lb)}</String>
 										</field>
 										<field name="description">
-											<String>Zeilenanfang im Text</String>
+											<String>${i18n(lb_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/line_break-20.png</String>
@@ -1902,10 +1903,10 @@
 											<String>pb</String>
 										</field>
 										<field name="name">
-											<String>Seitenanfang</String>
+											<String>${i18n(pb)}</String>
 										</field>
 										<field name="description">
-											<String>Seitenanfang im Text</String>
+											<String>${i18n(pb_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/page_break-20.png</String>
@@ -1948,10 +1949,10 @@
 											<String>gap</String>
 										</field>
 										<field name="name">
-											<String>Lücke/Unleserlicher Text</String>
+											<String>${i18n(gap)}</String>
 										</field>
 										<field name="description">
-											<String></String>
+											<String>${i18n(gap_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/gap-20.png</String>
@@ -1994,10 +1995,10 @@
 											<String>unclear</String>
 										</field>
 										<field name="name">
-											<String>Unsichere Lesung</String>
+											<String>${i18n(unclear)}</String>
 										</field>
 										<field name="description">
-											<String></String>
+											<String>${i18n(unclear_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/unclear-20.png</String>
@@ -2044,10 +2045,10 @@
 											<String>add</String>
 										</field>
 										<field name="name">
-											<String>Hinzufügung</String>
+											<String>${i18n(add)}</String>
 										</field>
 										<field name="description">
-											<String>Hinzufügung im Text durch Autor/in</String>
+											<String>${i18n(add_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/addition-20.png</String>
@@ -2094,10 +2095,10 @@
 											<String>del</String>
 										</field>
 										<field name="name">
-											<String>Streichung</String>
+											<String>${i18n(del)}</String>
 										</field>
 										<field name="description">
-											<String>Streichung im Text durch Autor/in</String>
+											<String>${i18n(del_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/deletion-20.png</String>
@@ -2144,10 +2145,10 @@
 											<String>abbr-expan</String>
 										</field>
 										<field name="name">
-											<String>Abkürzung</String>
+											<String>${i18n(abbr-expan)}</String>
 										</field>
 										<field name="description">
-											<String>Abkürzung im Text auflösen</String>
+											<String>${i18n(abbr-expan_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/abbreviation-20.png</String>
@@ -2194,10 +2195,10 @@
 											<String>sic-corr</String>
 										</field>
 										<field name="name">
-											<String>Fehlerhafte Schreibweise</String>
+											<String>${i18n(sic-corr)}</String>
 										</field>
 										<field name="description">
-											<String>Fehlerhafte Schreibweise im Text korrigieren</String>
+											<String>${i18n(sic-corr_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/corr-sic.gif</String>
@@ -2244,10 +2245,10 @@
 											<String>quote</String>
 										</field>
 										<field name="name">
-											<String>Zitat</String>
+											<String>${i18n(quote)}</String>
 										</field>
 										<field name="description">
-											<String>Zitat im Text</String>
+											<String>${i18n(quote_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/quote-20.png</String>
@@ -2294,10 +2295,10 @@
 											<String>foreign</String>
 										</field>
 										<field name="name">
-											<String>Fremdsprachiger Abschnitt</String>
+											<String>${i18n(foreign)}</String>
 										</field>
 										<field name="description">
-											<String>Fremdsprachiger Abschnitt im Text</String>
+											<String>${i18n(foreign_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/foreign-20.png</String>
@@ -2344,10 +2345,10 @@
 											<String>g</String>
 										</field>
 										<field name="name">
-											<String>Geminationsstrich</String>
+											<String>${i18n(g)}</String>
 										</field>
 										<field name="description">
-											<String>Geminationsstrich im Text</String>
+											<String>${i18n(g_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/mgem-20.png</String>
@@ -2394,10 +2395,10 @@
 											<String>bibl_surrogate</String>
 										</field>
 										<field name="name">
-											<String>Surrogat einfügen</String>
+											<String>${i18n(bibl_surrogate)}</String>
 										</field>
 										<field name="description">
-											<String>Eintrag für Surrogat einfügen</String>
+											<String>${i18n(bibl_surrogate_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2482,10 +2483,10 @@
 											<String>bibl_edition</String>
 										</field>
 										<field name="name">
-											<String>Edition einfügen</String>
+											<String>${i18n(bibl_edition)}</String>
 										</field>
 										<field name="description">
-											<String>Eintrag für Edition einfügen</String>
+											<String>${i18n(bibl_edition_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2570,10 +2571,10 @@
 											<String>bibl_translation</String>
 										</field>
 										<field name="name">
-											<String>Übersetzung einfügen</String>
+											<String>${i18n(bibl_translation)}</String>
 										</field>
 										<field name="description">
-											<String>Eintrag für Übersetzung einfügen</String>
+											<String>${i18n(bibl_translation_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2704,10 +2705,10 @@
 											<String>open_gsheet</String>
 										</field>
 										<field name="name">
-											<String>Google Sheet öffnen</String>
+											<String>${i18n(open_gsheet)}</String>
 										</field>
 										<field name="description">
-											<String>Google Sheet öffnen</String>
+											<String>${i18n(open_gsheet_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/gsheet-20.png</String>
@@ -2782,10 +2783,10 @@
 											<String>open_zotero</String>
 										</field>
 										<field name="name">
-											<String>In Zotero öffnen</String>
+											<String>${i18n(open_zotero)}</String>
 										</field>
 										<field name="description">
-											<String>Öffnet die referenzierte Entität in Zotero</String>
+											<String>${i18n(open_zotero_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2828,10 +2829,10 @@
 											<String>open_iiif_images</String>
 										</field>
 										<field name="name">
-											<String>In IIIF-Viewer öffnen</String>
+											<String>${i18n(open_iiif_images)}</String>
 										</field>
 										<field name="description">
-											<String>Faksimile im Universal Viewer öffnen</String>
+											<String>${i18n(open_iiif_images_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/iiif-20.png</String>
@@ -2874,10 +2875,10 @@
 											<String>open_manual</String>
 										</field>
 										<field name="name">
-											<String>Dokumentation</String>
+											<String>${i18n(open_manual)}</String>
 										</field>
 										<field name="description">
-											<String>Dokumentation im Webbrowser öffnen</String>
+											<String>${i18n(open_manual_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -2920,10 +2921,10 @@
 											<String>rs_place</String>
 										</field>
 										<field name="name">
-											<String>Ortereferenz</String>
+											<String>${i18n(rs_place)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Orteregister</String>
+											<String>${i18n(rs_place_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/place-20.png</String>
@@ -2998,10 +2999,10 @@
 											<String>rs_bibl</String>
 										</field>
 										<field name="name">
-											<String>Bibliographiereferenz</String>
+											<String>${i18n(rs_bibl)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bibliographieregister</String>
+											<String>${i18n(rs_bibl_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/bibl-20.png</String>
@@ -3076,10 +3077,10 @@
 											<String>persName_reg</String>
 										</field>
 										<field name="name">
-											<String>Personeneintrag referenzieren</String>
+											<String>${i18n(persName_reg)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft das Element mit einem Eintrag aus dem Personenregister</String>
+											<String>${i18n(persName_reg_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -3123,10 +3124,10 @@ delete_preceding-sibling</String>
 											<String>placeName_reg</String>
 										</field>
 										<field name="name">
-											<String>Ortseintrag referenzieren</String>
+											<String>${i18n(placeName_reg)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft das Element mit einem Eintrag aus dem Ortsregister</String>
+											<String>${i18n(placeName_reg_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -3170,10 +3171,10 @@ delete_preceding-sibling</String>
 											<String>title_reg</String>
 										</field>
 										<field name="name">
-											<String>Bibliographischer Eintrag referenzieren</String>
+											<String>${i18n(title_reg)}</String>
 										</field>
 										<field name="description">
-											<String>Verknüpft das Element mit einem Eintrag aus dem Bibliographieregister</String>
+											<String>${i18n(title_reg_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
@@ -3217,10 +3218,10 @@ delete_preceding-sibling</String>
 											<String>printPDF</String>
 										</field>
 										<field name="name">
-											<String>PDF erstellen</String>
+											<String>${i18n(printPDF)}</String>
 										</field>
 										<field name="description">
-											<String>Erstellt aus dem Dokument ein PDF.</String>
+											<String>${i18n(printPDF_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/pdf-20.png</String>

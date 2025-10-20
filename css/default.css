@@ -203,7 +203,7 @@ ab[type='redactional'] {
 ab[type='redactional']:before {
     -oxy-append-content: 
         oxy_label(
-            text, "Redaktioneller Beitrag"
+            text, "${i18n(editorial-contribution_label)}"
             color, steelblue
             styles, "@import 'labels_sub.css';"
         )
@@ -363,7 +363,7 @@ byline {
     padding:2px;
     margin:2px;
     margin-bottom: 5px;
-    -oxy-placeholder-content: "[Verfasserinnenzeile]";
+    -oxy-placeholder-content: "[${i18n(byline_placeholder)}]";
 }
 
 /* msIdentifier */
@@ -381,7 +381,7 @@ sourceDesc > bibl > * {
 
 sourceDesc > bibl persName {
     content:
-        oxy_label(text, "Person: ", 
+        oxy_label(text, "${i18n(person_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_textfield(
             edit, "#text",
@@ -412,13 +412,13 @@ sourceDesc > bibl persName {
 }
 
 sourceDesc > bibl > persName:first-of-type:after {
-    content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' nicht referenziert'");
+    content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
     color: oxy_xpath("if (matches(@key,'person_')) then 'steelblue' else 'red'");
     font-size: 0.85em;
 }
 
 sourceDesc > bibl > persName:not(first-of-type):after {
-    content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' nicht referenziert'");
+    content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
     color: oxy_xpath("if (matches(@key,'person_')) then 'steelblue' else 'red'");
     font-size: 0.85em;
 }
@@ -488,7 +488,7 @@ sourceDesc > bibl > bibl > title:after {
 
 sourceDesc > bibl > bibl > title {
     content:
-        oxy_label(text, "Zeitschrift: ", 
+        oxy_label(text, "${i18n(journal_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -506,14 +506,14 @@ sourceDesc > bibl > bibl > title {
 }
 
 sourceDesc > bibl > bibl > title:after {
-    -oxy-append-content: " " oxy_xpath("if (matches(@key,'organisation_')) then ' = '||@key else ' nicht referenziert'");
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'organisation_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
     color: oxy_xpath("if (matches(@key,'organisation_')) then 'steelblue' else 'red'");
     font-size: 0.85em;
 }
 
 sourceDesc > bibl > bibl > date {
 	content: 
-        oxy_label(text, "Datum: ", 
+        oxy_label(text, "${i18n(date_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_datePicker(columns, 17, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);
     display: block;
@@ -522,7 +522,7 @@ sourceDesc > bibl > bibl > date {
 
 sourceDesc listBibl[type='related']:before {
     content:
-        oxy_label(text, "Zugehörige Einträge", styles, "@import 'labels.css';");
+        oxy_label(text, "${i18n(related-entries_label)}", styles, "@import 'labels.css';");
     display:block;
     font-size: 0.85em;
     margin-bottom: 0.5em;
@@ -578,14 +578,14 @@ sourceDesc listBibl > bibl > title:after {
 }
 
 sourceDesc listBibl > bibl > title:after {
-    -oxy-append-content: " " oxy_xpath("if (matches(@key,'.+')) then ' = '||@key else ' nicht referenziert'");
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'.+')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
     color: oxy_xpath("if (matches(@key,'.+')) then 'steelblue' else 'red'");
     font-size: 0.85em;
 }
 
 sourceDesc bibl > biblScope {
     content:
-        oxy_label(text, "Bereich: ", 
+        oxy_label(text, "${i18n(section_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -595,7 +595,7 @@ sourceDesc bibl > biblScope {
 
 sourceDesc bibl > note {
     content:
-        oxy_label(text, "Anmerkung: ", 
+        oxy_label(text, "${i18n(note_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_textArea(edit, "#text",
             fontInherit, true,
@@ -617,7 +617,7 @@ sourceDesc > listBibl > listBibl > bibl > * {
 
 listBibl[type='online'] > bibl {
     content:
-        oxy_label(text, "Online: ", 
+        oxy_label(text, "${i18n(online_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "@source",
@@ -666,7 +666,7 @@ msIdentifier > * {
 
 msIdentifier > repository {
     content:
-        oxy_label(text, "Archiv: ", 
+        oxy_label(text, "${i18n(archive_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -677,7 +677,7 @@ msIdentifier > repository {
 
 msIdentifier > collection {
     content:
-        oxy_label(text, "Sammlung: ", 
+        oxy_label(text, "${i18n(collection_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -688,7 +688,7 @@ msIdentifier > collection {
 
 msIdentifier > idno {
     content:
-        oxy_label(text, "Signatur: ", 
+        oxy_label(text, "${i18n(shelfmark_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -699,7 +699,7 @@ msIdentifier > idno {
 
 msIdentifier > altIdentifier > idno {
     content:
-        oxy_label(text, "Alt. Signatur: ", 
+        oxy_label(text, "${i18n(alt-shelfmark_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -736,7 +736,7 @@ langUsage:after {
 
 langUsage language {
     content:
-        oxy_label(text, "Sprache: ", 
+        oxy_label(text, "${i18n(language_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@ident",
@@ -788,7 +788,7 @@ keywords[ana=keywords] list:after {
 
 keywords[ana=keywords] list item {
     content:
-        oxy_label(text, "Schlagwort: ", 
+        oxy_label(text, "${i18n(keyword_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@sameAs",
@@ -842,7 +842,7 @@ keywords[ana=travels] list:after {
 
 keywords[ana=travels] list item {
     content:
-        oxy_label(text, "Reise: ", 
+        oxy_label(text, "${i18n(travel_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_editor(type, combo,
             edit, "@sameAs",
@@ -918,7 +918,7 @@ correspAction date {
 correspAction[type='sent'] persName:before {
     content:
         oxy_label(
-            text, "Absender/in: "
+            text, "${i18n(sender_label)}: "
             styles, "@import 'labels.css';"
         )
     ;
@@ -927,7 +927,7 @@ correspAction[type='sent'] persName:before {
 correspAction[type='received'] persName:before {
     content:
         oxy_label(
-            text, "Empfänger/in: "
+            text, "${i18n(recipient_label)}: "
             styles, "@import 'labels.css';"
         )
     ; 
@@ -948,7 +948,7 @@ correspAction persName:after {
 }
 
 correspAction persName:after {
-    -oxy-append-content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' nicht referenziert'");
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
     color: oxy_xpath("if (matches(@key,'person_')) then 'steelblue' else 'red'");
     font-size: 0.85em;
 }
@@ -956,7 +956,7 @@ correspAction persName:after {
 correspAction[type='sent'] placeName:before {
     content:
         oxy_label(
-            text, "Schreibort: "
+            text, "${i18n(place-of-writing_label)}: "
             styles, "@import 'labels.css';"
         )
     ;
@@ -965,7 +965,7 @@ correspAction[type='sent'] placeName:before {
 correspAction[type='received'] placeName:before {
     content:
         oxy_label(
-            text, "Empfangsort: "
+            text, "${i18n(place-of-receipt_label)}: "
             styles, "@import 'labels.css';"
         )
     ;
@@ -986,7 +986,7 @@ correspAction placeName:after {
 }
 
 correspAction placeName:after {
-    -oxy-append-content: " " oxy_xpath("if (matches(@key,'place_')) then ' = '||@key else ' nicht referenziert'");
+    -oxy-append-content: " " oxy_xpath("if (matches(@key,'place_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
     color: oxy_xpath("if (matches(@key,'place_')) then 'steelblue' else 'red'");
     font-size: 0.85em;
 }
@@ -994,7 +994,7 @@ correspAction placeName:after {
 correspAction[type='sent'] date:before {
     content:
         oxy_label(
-            text, "Schreibdatum: "
+            text, "${i18n(date-of-writing_label)}: "
             styles, "@import 'labels.css';"
         )
     ;
@@ -1003,7 +1003,7 @@ correspAction[type='sent'] date:before {
 correspAction[type='received'] date:before {
     content:
         oxy_label(
-            text, "Empfangsdatum: "
+            text, "${i18n(date-of-receipt_label)}: "
             styles, "@import 'labels.css';"
         )
     ;
@@ -1046,19 +1046,19 @@ signed {
 }
 
 dateline {
-    -oxy-placeholder-content: "[Datumszeile]";
+    -oxy-placeholder-content: "[${i18n(dateline_placeholder)}]";
 }
 
 opener salute {
-    -oxy-placeholder-content: "[Anrede]";
+    -oxy-placeholder-content: "[${i18n(opener-salute_placeholder)}]";
 }
 
 closer salute {
-    -oxy-placeholder-content: "[Grussformel]";
+    -oxy-placeholder-content: "[${i18n(closer-salute_placeholder)}]";
 }
 
 signed {
-    -oxy-placeholder-content: "[Unterschrift]";
+    -oxy-placeholder-content: "[${i18n(signed_placeholder)}]";
 }
 
 address {
@@ -1083,7 +1083,7 @@ addrLine {
     display: block;
     margin-left: 6px;
     visibility: visible;
-    -oxy-placeholder-content: "[Adresszeile]";
+    -oxy-placeholder-content: "[${i18n(addrLine_placeholder)}]";
 }
 
 /* Referencing strings */
@@ -1262,7 +1262,7 @@ titleStmt {
 }
 
 titleStmt title {
-    -oxy-placeholder-content: "Titel";
+    -oxy-placeholder-content: "${i18n(title_label)}";
     background-color: #ffffff;
     display: block;
     font-style: italic;
@@ -1276,11 +1276,11 @@ TEI titleStmt hi {
 }
 
 TEI[type='dseas-letter'] titleStmt title {
-    -oxy-placeholder-content: "Titel des Briefs";
+    -oxy-placeholder-content: "${i18n(title-letter_label)}";
 } 
 
 TEI[type='dseas-smallform'] titleStmt title {
-    -oxy-placeholder-content: "Titel der kleinen Form";
+    -oxy-placeholder-content: "${i18n(title-smallform_label)}";
 }
 
 titleStmt author,
@@ -1346,29 +1346,29 @@ notesStmt note[type='global_comment'] p {
 text:after(19995) {
     display: block;
     content:
-            oxy_label(text, "Referenzen im Text", styles, "@import 'labels_sub.css';")
+            oxy_label(text, "${i18n(references-text_label)}", styles, "@import 'labels_sub.css';")
             oxy_htmlContent(
                 content, oxy_xpath("let $htmlString := concat( \
                         (if (.//rs[matches(@key,'person_')] and doc-available('${framework(DSE-AS)}/resources/lookup-person.xml')) \
-                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-person.xml') return concat(concat('<b>Personen (',count(.//rs[matches(@key,'person_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'person_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-person.xml') return concat(concat('<b>${i18n(persons_label)} (',count(.//rs[matches(@key,'person_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'person_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else ''), \
                         (if (.//rs[matches(@key,'place_')] and doc-available('${framework(DSE-AS)}/resources/lookup-place.xml')) \
-                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-place.xml') return concat(concat('<b>Orte (',count(.//rs[matches(@key,'place_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'place_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-place.xml') return concat(concat('<b>${i18n(places_label)} (',count(.//rs[matches(@key,'place_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'place_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else ''), \
                         (if (.//rs[matches(@key,'organisation_')] and doc-available('${framework(DSE-AS)}/resources/lookup-org.xml')) \
-                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-org.xml') return concat(concat('<b>Organisationen (',count(.//rs[matches(@key,'organisation_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'organisation_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-org.xml') return concat(concat('<b>${i18n(organizations_label)} (',count(.//rs[matches(@key,'organisation_')]/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[matches(@key,'organisation_')] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else ''), \
                         (if (.//rs[@type='bibl'] and doc-available('${framework(DSE-AS)}/resources/lookup-bibl.xml')) \
-                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-bibl.xml') return concat(concat('<b>Bibliographie (',count(.//rs[@type='bibl']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='bibl'] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        then (let $lookup := doc('${framework(DSE-AS)}/resources/lookup-bibl.xml') return concat(concat('<b>${i18n(bibliography_label)} (',count(.//rs[@type='bibl']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='bibl'] return concat('<li>',($lookup//*[@id=$x/@key]/@val),'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else ''), \
                         (if (.//rs[@type='smallform']) \
-                        then (concat(concat('<b>Kleine Formen (',count(.//rs[@type='smallform']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='smallform'] return concat('<li>',$x/@key,'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        then (concat(concat('<b>${i18n(short-forms_label)} (',count(.//rs[@type='smallform']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='smallform'] return concat('<li>',$x/@key,'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else ''), \
                         (if (.//rs[@type='letter']) \
-                        then (concat(concat('<b>Briefe (',count(.//rs[@type='letter']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='letter'] return concat('<li>',$x/@key,'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
+                        then (concat(concat('<b>${i18n(letters_label)} (',count(.//rs[@type='letter']/@key => distinct-values()),')</b><ul style=\"padding-bottom: 10px;\"> '), (for $x in .//rs[@type='letter'] return concat('<li>',$x/@key,'</li>')) => distinct-values() => sort() => string-join(),'</ul>')) \
                         else '') \
                         ) \
-                        return if ($htmlString[normalize-space()]) then $htmlString else '<i>keine</i>'"),
+                        return if ($htmlString[normalize-space()]) then $htmlString else '<i>${i18n(none_label)}</i>'"),
                 width, 100%);
     padding: 0.5em 0.5em 0.5em 0.5em;
     margin-top: 2em;
@@ -1386,7 +1386,7 @@ text head {
     font-weight: bold;
     display: block;
     margin: 0.5em 0 1em 0;
-    -oxy-placeholder-content: "[Titel]";
+    -oxy-placeholder-content: "[${i18n(head_placeholder)}]";
 }
 
 text head[type="h1"] {
@@ -1415,7 +1415,7 @@ text lg {
 
 text lg l {
     display: block;
-    -oxy-placeholder-content: "[Verszeile]";
+    -oxy-placeholder-content: "[${i18n(lg-l_placeholder)}]";
 }
 
 text list,
@@ -1430,7 +1430,7 @@ text list {
 text note {
     background-color: #e0e0e0;
     padding: 0 4px 0 4px;
-    -oxy-placeholder-content: "[Anmerkung eingeben]";
+    -oxy-placeholder-content: "[${i18n(note_placeholder)}]";
     -oxy-show-placeholder: always;
 }
 
@@ -1499,15 +1499,15 @@ text fw:focus:after {
 text figure {
     display: block;
     margin: 0 0 0 0.5em;
-    -oxy-placeholder-content: "[Zeichnung o.ä.]";
+    -oxy-placeholder-content: "[${i18n(figure_placeholder)}]";
 }
 
 text figure head {
-    -oxy-placeholder-content: "[Überschrift der Abbildung]";
+    -oxy-placeholder-content: "[${i18n(figure-head_placeholder)}]";
 }
 
 text figure p {
-    -oxy-placeholder-content: "[Bildunterschrift der Autorin]"
+    -oxy-placeholder-content: "[${i18n(figure-p_placeholder)}]";
 }
 
 text figure graphic {
@@ -1588,7 +1588,7 @@ text del {
 
 text add {
     color: green;
-    -oxy-placeholder-content: "[Hinzufügung]"
+    -oxy-placeholder-content: "[${i18n(add_placeholder)}]";
 }
 
 text add:focus:after {
@@ -1653,11 +1653,11 @@ text choice expan {
 }
 
 text choice sic {
-    -oxy-placeholder-content: "[Fehlerhafte Form]";
+    -oxy-placeholder-content: "[${i18n(choice-sic_placeholder)}]";
 }
 
 text choice corr {
-    -oxy-placeholder-content: "[Korrigierte Form]";
+    -oxy-placeholder-content: "[${i18n(choice-corr_placeholder)}]";
 }
 
 text choice abbr {
@@ -1667,7 +1667,7 @@ text choice abbr {
 
 text choice expan {
     background-color: #E8FFDD;
-    -oxy-placeholder-content: "[Aufgelöste Schreibung]";
+    -oxy-placeholder-content: "[${i18n(choice-expan_placeholder)}]";
 }
 
 text abbr {
@@ -1838,7 +1838,7 @@ listEvent > event[type='event'] {
 }
 
 listEvent > event > label {
-    -oxy-placeholder-content: "[Titel]";
+    -oxy-placeholder-content: "[${i18n(event-label_placeholder)}]";
     background-color: #ffffff;
     display: block;
     font-size: 1.4em;
@@ -1848,10 +1848,10 @@ listEvent > event > label {
 
 listEvent > event date {
 	content: 
-        oxy_label(text, "Datum (von): ", 
+        oxy_label(text, "${i18n(date-from_label)}: ", 
             styles, "@import 'labels.css';")
         oxy_datePicker(columns, 10, edit , "@from", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
-        oxy_label(text, "Datum (bis): ", 
+        oxy_label(text, "${i18n(date-to_label)}: ", 
             text-align, right,
             styles, "@import 'labels.css';")
         oxy_datePicker(columns, 10, edit , "@to", format, "yyyy-MM-dd", validateInput, false, fontInherit, true);

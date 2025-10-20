@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translation>
+    
+    <languageList>
+        <language description="German" lang="de_DE"/>
+    </languageList>
+    
+    <!-- Actions -->
+
+    <!-- Renditions -->
+    
+    <key value="hi-bold">
+        <val lang="de_DE">Fettdruck</val>
+    </key>
+    <key value="hi-bold_description">
+        <val lang="de_DE">Fettgedruckter Text</val>
+    </key>
+   
+    <key value="hi-g">
+        <val lang="de_DE">Sperrdruck</val>
+    </key>
+    <key value="hi-g_description">
+        <val lang="de_DE">Gesperrter Text</val>
+    </key>
+    
+    <key value="hi-italic">
+        <val lang="de_DE">Kursiv</val>
+    </key>
+    <key value="hi-italic_description">
+        <val lang="de_DE">Kursive Textstelle</val>
+    </key>
+ 
+    <key value="hi-subscript">
+        <val lang="de_DE">Tiefgestellt</val>
+    </key>
+    <key value="hi-subscript_description">
+        <val lang="de_DE">Tiefgestellter Text</val>
+    </key>
+    
+    <key value="hi-superscript">
+        <val lang="de_DE">Hochgestellt</val>
+    </key>
+    <key value="hi-superscript_description">
+        <val lang="de_DE">Hochgestellter Text</val>
+    </key> 
+    
+    <key value="hi-underline">
+        <val lang="de_DE">Unterstrichen</val>
+    </key>
+    <key value="hi-underline_description">
+        <val lang="de_DE">Unterstrichene Textstelle</val>
+    </key>
+    
+    <!-- Line and page beginnings -->
+    
+    <key value="lb">
+        <val lang="de_DE">Zeilenanfang</val>
+    </key>
+    <key value="lb_description">
+        <val lang="de_DE">Zeilenanfang im Text</val>
+    </key>
+
+    <key value="pb">
+        <val lang="de_DE">Seitenanfang</val>
+    </key>
+    <key value="pb_description">
+        <val lang="de_DE">Seitenanfang im Text</val>
+    </key>
+    
+    <!-- Notes -->
+    
+    <key value="note">
+        <val lang="de_DE">Anmerkung einfügen</val>
+    </key>
+    <key value="note_description">
+        <val lang="de_DE">Anmerkung einfügen</val>
+    </key>
+    
+    <key value="note_anchor">
+        <val lang="de_DE">Anmerkung und Verweisziel einfügen</val>
+    </key>
+    <key value="note_anchor_description">
+        <val lang="de_DE">Fügt eine Anmerkung mit Verweisziel ein</val>
+    </key>
+
+    <!-- Referencing strings -->
+
+    <key value="rs_bibl">
+        <val lang="de_DE">Bibliographiereferenz</val>
+    </key>
+    <key value="rs_bibl_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bibliographieregister</val>
+    </key>
+
+    <key value="rs_letter">
+        <val lang="de_DE">Briefreferenz</val>
+    </key>
+    <key value="rs_letter_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Briefregister</val>
+    </key>
+
+    <key value="rs_org">
+        <val lang="de_DE">Organisationsreferenz</val>
+    </key>
+    <key value="rs_org_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Organisationenregister</val>
+    </key>
+
+    <key value="rs_person">
+        <val lang="de_DE">Personenreferenz</val>
+    </key>
+    <key value="rs_person_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Personenregister</val>
+    </key>
+
+    <key value="rs_place">
+        <val lang="de_DE">Ortereferenz</val>
+    </key>
+    <key value="rs_place_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Orteregister</val>
+    </key>
+
+    <key value="rs_smallform">
+        <val lang="de_DE">Referenz auf kleine Form</val>
+    </key>
+    <key value="rs_smallform_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Kleine Formen-Register</val>
+    </key>
+    
+    <key value="rs_key">
+        <val lang="de_DE">Neu referenzieren</val>
+    </key>
+    <key value="rs_key_description">
+        <val lang="de_DE">Öffnet den Register, um die Entität neu zu referenzieren</val>
+    </key>
+    
+    <!-- Textual elements -->
+
+    <key value="gap">
+        <val lang="de_DE">Lücke/Unleserlicher Text</val>
+    </key>
+    <key value="gap_description">
+        <val lang="de_DE">Lücke/Unleserlicher Text</val>
+    </key>
+    
+    <key value="unclear">
+        <val lang="de_DE">Unsichere Lesung</val>
+    </key>
+    <key value="unclear_description">
+        <val lang="de_DE">Unsichere Lesung</val>
+    </key>
+    
+    <key value="add">
+        <val lang="de_DE">Hinzufügung</val>
+    </key>
+    <key value="add_description">
+        <val lang="de_DE">Hinzufügung im Text durch Autor/in</val>
+    </key>
+
+    <key value="del">
+        <val lang="de_DE">Streichung</val>
+    </key>
+    <key value="del_description">
+        <val lang="de_DE">Streichung im Text durch Autor/in</val>
+    </key>
+    
+    <key value="abbr-expan">
+        <val lang="de_DE">Abkürzung</val>
+    </key>
+    <key value="abbr-expan_description">
+        <val lang="de_DE">Abkürzung im Text auflösen</val>
+    </key>
+    
+    <key value="sic-corr">
+        <val lang="de_DE">Fehlerhafte Schreibweise</val>
+    </key>
+    <key value="sic-corr_description">
+        <val lang="de_DE">Fehlerhafte Schreibweise im Text korrigieren</val>
+    </key>
+    
+    <key value="quote">
+        <val lang="de_DE">Zitat</val>
+    </key>
+    <key value="quote_description">
+        <val lang="de_DE">Zitat im Text</val>
+    </key>
+    
+    <key value="foreign">
+        <val lang="de_DE">Fremdsprachiger Abschnitt</val>
+    </key>
+    <key value="foreign_description">
+        <val lang="de_DE">Fremdsprachiger Abschnitt im Text</val>
+    </key>
+    
+    <key value="g">
+        <val lang="de_DE">Geminationsstrich</val>
+    </key>
+    <key value="g_description">
+        <val lang="de_DE">Geminationsstrich im Text</val>
+    </key>
+
+    <!-- Document related -->
+
+    <key value="generate_lookup_all">
+        <val lang="de_DE">Alle Lookups generieren</val>
+    </key>
+    <key value="generate_lookup_all_description">
+        <val lang="de_DE">Führt ein Transformationsszenario aus, das alle Register neu generiert</val>
+    </key>
+    
+    <key value="open_gsheet">
+        <val lang="de_DE">Google Sheet öffnen</val>
+    </key>
+    <key value="open_gsheet_description">
+        <val lang="de_DE">Google Sheet öffnen</val>
+    </key>
+
+    <key value="open_iiif_images">
+        <val lang="de_DE">In IIIF-Viewer öffnen</val>
+    </key>
+    <key value="open_iiif_images_description">
+        <val lang="de_DE">Faksimile im Universal Viewer öffnen</val>
+    </key>
+    
+    <key value="open_manual">
+        <val lang="de_DE">Dokumentation</val>
+    </key>
+    <key value="open_manual_description">
+        <val lang="de_DE">Dokumentation im Webbrowser öffnen</val>
+    </key>
+    
+    <key value="open_zotero">
+        <val lang="de_DE">In Zotero öffnen</val>
+    </key>
+    <key value="open_zotero_description">
+        <val lang="de_DE">Öffnet die referenzierte Entität in Zotero</val>
+    </key>
+    
+    <key value="printPDF">
+        <val lang="de_DE">PDF erstellen</val>
+    </key>
+    <key value="printPDF_description">
+        <val lang="de_DE">Erstellt aus dem Dokument ein PDF</val>
+    </key>
+    
+    <!-- Delete actions -->
+
+    <key value="delete">
+        <val lang="de_DE">Element löschen</val>
+    </key>
+    <key value="delete_description">
+        <val lang="de_DE">Element komplett löschen</val>
+    </key>
+    
+    <key value="delete_note">
+        <val lang="de_DE">Anmerkung löschen</val>
+    </key>
+    <key value="delete_note_description">
+        <val lang="de_DE">Anmerkung komplett löschen</val>
+    </key>
+    
+    <key value="rs_unwrap">
+        <val lang="de_DE">Referenz löschen</val>
+    </key>
+    <key value="rs_unwrap_description">
+        <val lang="de_DE">Löscht die Referenz (rs)</val>
+    </key>
+    
+    <key value="unwrap">
+        <val lang="de_DE">Kodierung löschen</val>
+    </key>
+    <key value="unwrap_description">
+        <val lang="de_DE">Löscht die Kodierung</val>
+    </key>
+    
+    <!-- Register -->
+
+    <key value="persName_reg">
+        <val lang="de_DE">Personeneintrag referenzieren</val>
+    </key>
+    <key value="persName_reg_description">
+        <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Personenregister</val>
+    </key>
+
+    <key value="placeName_reg">
+        <val lang="de_DE">Ortseintrag referenzieren</val>
+    </key>
+    <key value="placeName_reg_description">
+        <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Ortsregister</val>
+    </key>
+
+    <key value="title_reg">
+        <val lang="de_DE">Bibliographischer Eintrag referenzieren</val>
+    </key>
+    <key value="title_reg_description">
+        <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Bibliographieregister</val>
+    </key>
+    
+    <!-- Bibl -->
+
+    <key value="bibl_surrogate">
+        <val lang="de_DE">Surrogat einfügen</val>
+    </key>
+    <key value="bibl_surrogate_description">
+        <val lang="de_DE">Eintrag für Surrogat einfügen</val>
+    </key>
+    
+    <key value="bibl_edition">
+        <val lang="de_DE">Edition einfügen</val>
+    </key>
+    <key value="bibl_edition_description">
+        <val lang="de_DE">Eintrag für Edition einfügen</val>
+    </key>
+
+    <key value="bibl_translation">
+        <val lang="de_DE">Übersetzung einfügen</val>
+    </key>
+    <key value="bibl_translation_description">
+        <val lang="de_DE">Eintrag für Übersetzung einfügen</val>
+    </key>
+    
+    <!-- Placeholder -->
+    
+    <key value="byline_placeholder">
+        <val lang="de_DE">Verfasserinnenzeile</val>
+    </key>
+    
+    <key value="dateline_placeholder">
+        <val lang="de_DE">Datumszeile</val>
+    </key>
+    
+    <key value="opener-salute_placeholder">
+        <val lang="de_DE">Anrede</val>
+    </key>
+
+    <key value="closer-salute_placeholder">
+        <val lang="de_DE">Grussformel</val>
+    </key>
+    
+    <key value="signed_placeholder">
+        <val lang="de_DE">Unterschrift</val>
+    </key>
+    
+    <key value="addrLine_placeholder">
+        <val lang="de_DE">Adresszeile</val>
+    </key>
+    
+    <key value="head_placeholder">
+        <val lang="de_DE">Titel</val>
+    </key>
+    
+    <key value="lg-l_placeholder">
+        <val lang="de_DE">Verszeile</val>
+    </key>
+    
+    <key value="note_placeholder">
+        <val lang="de_DE">Anmerkung eingeben</val>
+    </key>
+    
+    <key value="figure_placeholder">
+        <val lang="de_DE">Zeichnung o.ä.</val>
+    </key>
+    
+    <key value="figure-head_placeholder">
+        <val lang="de_DE">Überschrift der Abbildung</val>
+    </key>
+    
+    <key value="figure-p_placeholder">
+        <val lang="de_DE">Bildunterschrift der Autorin</val>
+    </key>
+    
+    <key value="add_placeholder">
+        <val lang="de_DE">Hinzufügung</val>
+    </key>
+    
+    <key value="choice-sic_placeholder">
+        <val lang="de_DE">Fehlerhafte Form</val>
+    </key>
+    
+    <key value="choice-corr_placeholder">
+        <val lang="de_DE">Korrigierte Form</val>
+    </key>
+    
+    <key value="choice-expan_placeholder">
+        <val lang="de_DE">Aufgelöste Schreibung</val>
+    </key>
+    
+    <key value="event-label_placeholder">
+        <val lang="de_DE">Titel</val>
+    </key>
+
+    <!-- Label -->
+
+    <key value="title">
+        <val lang="de_DE">Titel</val>
+    </key>
+    <key value="title-smallform_label">
+        <val lang="de_DE">Titel der kleinen Form</val>
+    </key>
+    <key value="title-letter_label">
+        <val lang="de_DE">Titel des Briefs</val>
+    </key>
+    <key value="editorial-contribution_label">
+        <val lang="de_DE">Redaktioneller Beitrag</val>
+    </key>
+    <key value="person_label">
+        <val lang="de_DE">Person</val>
+    </key>
+    <key value="journal_label">
+        <val lang="de_DE">Zeitschrift</val>
+    </key>
+    <key value="date_label">
+        <val lang="de_DE">Datum</val>
+    </key>
+    <key value="date-from_label">
+        <val lang="de_DE">Datum (von)</val>
+    </key>
+    <key value="date-to_label">
+        <val lang="de_DE">Datum (bis)</val>
+    </key>
+    <key value="related-entries_label">
+        <val lang="de_DE">Zugehörige Einträge</val>
+    </key>
+    <key value="section_label">
+        <val lang="de_DE">Bereich</val>
+    </key>
+    <key value="note_label">
+        <val lang="de_DE">Anmerkung</val>
+    </key>
+    <key value="online_label">
+        <val lang="de_DE">Online</val>
+    </key>
+    <key value="archive_label">
+        <val lang="de_DE">Archiv</val>
+    </key>
+    <key value="collection_label">
+        <val lang="de_DE">Sammlung</val>
+    </key>
+    <key value="shelfmark_label">
+        <val lang="de_DE">Signatur</val>
+    </key>
+    <key value="alt-shelfmark_label">
+        <val lang="de_DE">Alt. Signatur</val>
+    </key>
+    <key value="language_label">
+        <val lang="de_DE">Sprache</val>
+    </key>
+    <key value="keyword_label">
+        <val lang="de_DE">Schlagwort</val>
+    </key>
+    <key value="travel_label">
+        <val lang="de_DE">Reise</val>
+    </key>
+    <key value="sender_label">
+        <val lang="de_DE">Absender/in</val>
+    </key>
+    <key value="recipient_label">
+        <val lang="de_DE">Empfänger/in</val>
+    </key>
+    <key value="place-of-writing_label">
+        <val lang="de_DE">Schreibort</val>
+    </key>
+    <key value="place-of-receipt_label">
+        <val lang="de_DE">Empfangsort</val>
+    </key>
+    <key value="date-of-writing_label">
+        <val lang="de_DE">Schreibdatum</val>
+    </key>
+    <key value="date-of-receipt_label">
+        <val lang="de_DE">Empfangsdatum</val>
+    </key>
+    <key value="references-text_label">
+        <val lang="de_DE">Referenzen im Text</val>
+    </key>
+    <key value="persons_label">
+        <val lang="de_DE">Personen</val>
+    </key>
+    <key value="places_label">
+        <val lang="de_DE">Orte</val>
+    </key>
+    <key value="organizations_label">
+        <val lang="de_DE">Organisationen</val>
+    </key>
+    <key value="bibliography_label">
+        <val lang="de_DE">Bibliographie</val>
+    </key>
+    <key value="short-forms_label">
+        <val lang="de_DE">Kleine Formen</val>
+    </key>
+    <key value="letters_label">
+        <val lang="de_DE">Briefe</val>
+    </key>
+    <key value="none_label">
+        <val lang="de_DE">keine</val>
+    </key>
+    <key value="not-referenced_label">
+        <val lang="de_DE">nicht referenziert</val>
+    </key>
+    
+</translation> 
