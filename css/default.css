@@ -542,7 +542,7 @@ sourceDesc listBibl[type='related'] listBibl {
 
 sourceDesc listBibl > bibl > title {
     content:
-        oxy_label(text, oxy_xpath("let $type:=ancestor::listBibl[1]/@type return (if ($type='surrogates') then 'Surrogat' else if ($type='editions') then 'Edition' else if ($type='translations') then 'Übersetzung' else 'no type')||': '"), 
+        oxy_label(text, oxy_xpath("let $type:=ancestor::listBibl[1]/@type return (if ($type='surrogates') then '${i18n(surrogate_label)}' else if ($type='editions') then '${i18n(edition_label)}' else if ($type='translations') then '${i18n(translation_label)}' else 'no type')||': '"), 
             styles, "@import 'labels.css';")
         oxy_editor(type, text,
             edit, "#text",
@@ -1325,7 +1325,7 @@ notesStmt {
 notesStmt note[type='global_comment']:before {
     background-color: #e5f5f9;
     display: block;
-    content: "Übersichtskommentar";
+    content: "${i18n(global-comment_label)}";
     font-weight: bold;
     padding: 0 0 0.3em 0;
 }
@@ -1772,8 +1772,8 @@ teiHeader facsimile {
 teiHeader facsimile:before {
     display: block;
     content: "Digitalisat"
-             oxy_label(text, oxy_xpath("' (Regionen: '||(count(descendant::*:zone[@rendition='TextRegion']))||' / '"))
-             oxy_label(text, oxy_xpath("' Zeilen: '||(count(descendant::*:zone[not(@rendition='TextRegion')]))||')'"));
+             oxy_label(text, oxy_xpath("' (${i18n(regions_placeholder)}: '||(count(descendant::*:zone[@rendition='TextRegion']))||' / '"))
+             oxy_label(text, oxy_xpath("' ${i18n(lines_placeholder)}: '||(count(descendant::*:zone[not(@rendition='TextRegion')]))||')'"));
     font-weight: bold;
 }
 
@@ -1862,7 +1862,7 @@ listEvent > event date {
 listEvent > event > note:before {
     background-color: #f8fafc;
     display: block;
-    content: "Beschreibung";
+    content: "${i18n(description_label)}";
     font-weight: bold;
     padding: 0 0 0.5em 0;
 }

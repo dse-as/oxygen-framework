@@ -633,5 +633,33 @@
         <val lang="de_DE">nicht referenziert</val>
         <val lang="en_US">not referenced</val>
     </key>
-    
+    <key value="global-comment_label">
+        <val lang="de_DE">Übersichtskommentar</val>
+        <val lang="en_US">Global comment</val>
+    </key>
+    <key value="description_label">
+        <val lang="de_DE">Beschreibung</val>
+        <val lang="en_US">Description</val>
+    </key>    
+    <key value="surrogate_label">
+        <val lang="de_DE">Surrogat</val>
+        <val lang="en_US">Surrogate</val>
+    </key>
+    <key value="edition_label">
+        <val lang="de_DE">Edition</val>
+        <val lang="en_US">Edition</val>
+    </key>
+    <key value="translation_label">
+        <val lang="de_DE">Übersetzung</val>
+        <val lang="en_US">Translation</val>
+    </key>
+    <key value="regions_label">
+        <val lang="de_DE">Regionen</val>
+        <val lang="en_US">Regions</val>
+    </key>
+    <key value="lines_label">
+        <val lang="de_DE">Zeilen</val>
+        <val lang="en_US">Lines</val>
+    </key>
+
 </translation>
