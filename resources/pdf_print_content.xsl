@@ -16,36 +16,25 @@
     </xsl:template>
     
     <!-- g -->
-    <xsl:template mode="#all" match="g[@ref='#ngem']">
+    <xsl:template mode="#all" match="g[(@ref='#ngem' and .='n') or (@ref='#mgem' and .='m')]">
         <span class="g">
-            <xsl:text>&#772;</xsl:text>
-            <xsl:apply-templates mode="#current"/>
+            <xsl:value-of select=".||."/>
         </span>
     </xsl:template>
+
+    <!-- milestone -->
+    <xsl:template mode="#all" match="milestone"/>
     
     <!-- lb -->
     <xsl:template mode="#all" match="lb">
-        <br/>
-    </xsl:template>
-    
-    <!--TODO-->
-    <xsl:template mode="#all" match="text()
-        [
-        (following::node()[1]/local-name() = 'lb' and following::node()[1]/@break = 'no')
-        or 
-        (following::node()[1]/local-name() = 'milestone' and following::node()[2]/local-name() = 'lb' and following::node()[2]/@break = 'no')
-        ]
-        ">
-        <xsl:analyze-string regex="(\S+)(\s*$)" select=".">
-            <xsl:matching-substring>
-                <xsl:value-of select="regex-group(1)||'-'||regex-group(2)"/>
-            </xsl:matching-substring>
-            <xsl:non-matching-substring>
-                <xsl:value-of select="."/>
-            </xsl:non-matching-substring>
-        </xsl:analyze-string>
+        <!--<br/>-->
     </xsl:template>
         
+    <!-- This template removes trailing whitespace directly preceding a lb element with @break = 'no' -->
+    <xsl:template mode="#all" match="text()[following-sibling::*[position()=1 and local-name()='lb' and @break='no']][matches(.,'\s+$')]">
+        <xsl:value-of select="replace(.,'\s+$','')"/>    
+    </xsl:template>
+
     <!-- p -->
     <xsl:template match="p">
         <xsl:element name="p">
