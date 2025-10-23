@@ -120,6 +120,26 @@
         </xsl:for-each>
     </xsl:template>
     
+    <!-- Editionen -->
+    <xsl:template name="headerEditions">
+        <span class="infoTitle">Posthume Edition: </span><br/>
+        <xsl:for-each select=".//listBibl[@type='editions']/bibl">
+            <p class="headerData">
+                <xsl:value-of select="(title[normalize-space()] | biblScope[normalize-space()]) => string-join(', ')"/>
+            </p>
+        </xsl:for-each>
+    </xsl:template>
+    
+    <!-- Digitalisat (online) -->
+    <xsl:template name="headerOnline">
+        <span class="infoTitle">Digitalisat (online): </span><br/>
+        <xsl:for-each select=".//listBibl[@type='online']/bibl">
+            <p class="headerData">
+                <xsl:value-of select="@source"/>
+            </p>
+        </xsl:for-each>
+    </xsl:template>
+    
     <!-- Überblickskommentar -->
     <xsl:template name="headerGlobalComment">
         <xsl:if test=".//notesStmt/note[@type='global_comment']">

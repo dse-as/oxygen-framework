@@ -73,6 +73,12 @@
                 <xsl:if test=".//sourceDesc/bibl">
                     <xsl:call-template name="headerBibl"/>
                 </xsl:if>
+                <xsl:if test=".//listBibl[@type='editions']">
+                    <xsl:call-template name="headerEditions"/>
+                </xsl:if>
+                <xsl:if test=".//listBibl[@type='online']">
+                    <xsl:call-template name="headerOnline"/>
+                </xsl:if>
                 <xsl:if test=".//notesStmt/note[@type='global_comment'][normalize-space()]">
                     <xsl:call-template name="headerGlobalComment"/>
                 </xsl:if>
