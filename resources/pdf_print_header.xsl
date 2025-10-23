@@ -81,7 +81,7 @@
                 <xsl:value-of select="."/>
                 <br/>
             </xsl:for-each>            
-            <xsl:for-each select=".//sourceDesc/bibl/bibl/date[normalize-space()]">
+            <xsl:for-each select=".//sourceDesc/bibl/bibl/date[@when or @from or @to]">
                 <xsl:value-of select="dseas:formatDateAttributes(.)"/>
                 <br/>
             </xsl:for-each>
@@ -185,7 +185,7 @@
         <xsl:choose>
             <xsl:when test="matches($date,'^\d\d\d\d-\d\d-\d\d$')">
                 <xsl:try>
-                    <xsl:value-of select="format-date($date, '[D1o] [MNn] [Y0001]')"/>
+                    <xsl:value-of select="format-date($date, '[D1o] [MNn] [Y0001]','de',(),())"/>
                     <xsl:catch>
                         <xsl:value-of select="$date"/>
                     </xsl:catch>
@@ -193,7 +193,7 @@
             </xsl:when>
             <xsl:when test="matches($date,'^\d\d\d\d-\d\d$')">
                 <xsl:try>
-                    <xsl:value-of select="format-date($date, '[MNn] [Y0001]')"/>
+                    <xsl:value-of select="format-date($date, '[MNn] [Y0001]','de',(),())"/>
                     <xsl:catch>
                         <xsl:value-of select="$date"/>
                     </xsl:catch>
