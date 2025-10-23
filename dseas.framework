@@ -611,7 +611,7 @@
 											<String>${i18n(rs_key)}</String>
 										</field>
 										<field name="description">
-											<String>${i18n(ry_key_description)}</String>
+											<String>${i18n(rs_key_description)}</String>
 										</field>
 										<field name="largeIconPath">
 											<String></String>
