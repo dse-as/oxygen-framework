@@ -79,7 +79,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift F5</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -275,7 +275,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift 5</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -325,7 +325,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift 6</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -425,7 +425,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift N</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -479,7 +479,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift A</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -623,7 +623,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String></String>
+											<String>ctrl alt R</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1342,7 +1342,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt O</String>
+											<String>ctrl alt T</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1420,7 +1420,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>ctrl alt O</String>
+											<String>ctrl alt S</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1498,7 +1498,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift Delete</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1702,7 +1702,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt Delete</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1780,7 +1780,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt Back_space</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1826,7 +1826,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift Back_space</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1872,7 +1872,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift L</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1918,7 +1918,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift K</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -1964,7 +1964,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift 7</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2010,7 +2010,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift 8</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2060,7 +2060,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift 9</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2110,7 +2110,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift 0</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2160,7 +2160,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt 1</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2210,7 +2210,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt 2</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2260,7 +2260,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt Q</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2310,7 +2310,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt F</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2360,7 +2360,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt 3</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2720,7 +2720,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt G</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2798,7 +2798,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt Z</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2844,7 +2844,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl alt I</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -2890,7 +2890,7 @@
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>F1</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -3233,7 +3233,7 @@ delete_preceding-sibling</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<null/>
+											<String>ctrl shift P</String>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
