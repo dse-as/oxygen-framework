@@ -63,7 +63,7 @@
           <item><gi>body</gi> from the textstructure module as a place to put that text</item>
         </list>
       </p>
-      <schemaSpec ident="tei_dseas" start="TEI listEvent" prefix="tei_" targetLang="en" docLang="en">
+      <schemaSpec ident="tei_dseas" start="TEI listEvent list" prefix="tei_" targetLang="en" docLang="en">
         
         <!-- required minimal header elements -->
         <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc correspDesc textClass notesStmt keywords profileDesc catRef correspAction idno edition editionStmt language langUsage"/>
@@ -78,7 +78,35 @@
         <moduleRef key="tei"/>
         
         
-      <moduleRef key="msdescription" include="msDesc msIdentifier repository altIdentifier additional surrogates collection"/><moduleRef key="gaiji" include="g"/><moduleRef key="namesdates" include="orgName persName placeName listEvent event"/><moduleRef key="transcr" include="facsimile surface zone fw space handShift"/><moduleRef key="linking" include="ab anchor seg"/><moduleRef key="figures" include="table row cell figure"/><moduleRef key="analysis" include="pc"/><classRef key="att.global.analytic"/></schemaSpec>
+        <moduleRef key="msdescription" include="msDesc msIdentifier repository altIdentifier additional surrogates collection"/>
+        <moduleRef key="gaiji" include="g"/>
+        <moduleRef key="namesdates" include="orgName persName placeName listEvent event"/>
+        <moduleRef key="transcr" include="facsimile surface zone fw space handShift"/>
+        <moduleRef key="linking" include="ab anchor seg"/>
+        <moduleRef key="figures" include="table row cell figure"/>
+        <moduleRef key="analysis" include="pc"/>
+        <classRef key="att.global.analytic"/>
+        
+        <elementSpec ident="rs" module="core" mode="change">
+          <attList>
+            <attDef ident="type" mode="replace" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="bibl"><desc>Bibliographical entry</desc></valItem>
+                <valItem ident="correspondence"><desc>Correspondence</desc></valItem>
+                <valItem ident="image"><desc>Image</desc></valItem>
+                <valItem ident="letter"><desc>Letter</desc></valItem>
+                <valItem ident="longform"><desc>Longform</desc></valItem>
+                <valItem ident="org"><desc>Organisation</desc></valItem>
+                <valItem ident="person"><desc>Person</desc></valItem>
+                <valItem ident="place"><desc>Place</desc></valItem>
+                <valItem ident="smallform"><desc>Smallform</desc></valItem>
+                <valItem ident="travel"><desc>Travel</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+      </schemaSpec>
     </body>
   </text>
 </TEI>
