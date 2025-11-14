@@ -62,18 +62,16 @@
         <xsl:param name="sheetID"/>
         <xsl:param name="sheet"/>
         <xsl:param name="output-file"/>
-        <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tqx=out:csv&amp;sheet='||$sheet"/>
+        <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tq=select%20A%2C%20B%20where%20A%20matches%20''%5Ba-z%5D*_%5Cd%2B''%20and%20B%20is%20not%20null%20order%20by%20B&amp;tqx=out:csv&amp;sheet='||$sheet"/>
         <xsl:try>
             <xsl:variable name="result" select="unparsed-text-lines($url)"/>
             <xsl:variable name="list">
                 <ul type="{lower-case($sheet)}">
-                    <xsl:for-each select="$result[position() gt 1][count(tokenize(.,'&quot;')) ge 4]">
-                        <xsl:sort select="tokenize(.,'&quot;')[4]"/>
-                        <xsl:variable name="id" select="tokenize(.,'&quot;')[2]"/>
-                        <xsl:variable name="label" select="tokenize(.,'&quot;')[4]"/>
-                        <xsl:if test="matches($id,'\d\d\d') and $label!=''">
-                            <li id="{$id}" val="{$label}"/>
-                        </xsl:if>
+                    <xsl:for-each select="$result[position() gt 1]">
+                        <xsl:variable name="cells" select="tokenize(.,'&quot;,&quot;')"/>
+                        <xsl:variable name="id" select="$cells[1] => replace('^&quot;','')"/>
+                        <xsl:variable name="label" select="$cells[2] => replace('&quot;&quot;','&quot;') => replace('&quot;$','')"/>
+                        <li id="{$id}" val="{$label}"/>
                     </xsl:for-each>
                 </ul>
             </xsl:variable>
