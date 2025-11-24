@@ -302,7 +302,7 @@
         </rule>
 
         <!-- persName -->
-        <rule context="tei:persName">
+        <rule context="tei:teiHeader//tei:persName">
             <report test="@key and not(@type)" role="warning">A &lt;<name/>&gt; element must contain a @type attribute.</report>
         </rule>
 
@@ -317,7 +317,7 @@
         </rule>
         
         <!-- placeName -->
-        <rule context="tei:placeName">
+        <rule context="tei:teiHeader//tei:placeName">
             <report test="@key and not(@type)" role="warning">A &lt;<name/>&gt; element must contain a @type attribute.</report>
         </rule>
 
