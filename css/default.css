@@ -1803,7 +1803,9 @@ listEvent * {
     -oxy-display-tags: none;
 }
 
-listEvent > event {
+/* listEvent (travels) */
+
+listEvent[type='dseas-travels'] > event {
     content:
         oxy_label(text, "@xml:id: ", 
             styles, "@import 'labels.css';")
@@ -1827,17 +1829,17 @@ listEvent > event {
     margin-bottom: 1em;
 }
 
-listEvent > event[type='travel'] {
+listEvent[type='dseas-travels'] > event[type='travel'] {
     border: 1px #22d3ee dashed;
     background-color: #ecfeff;
 }
 
-listEvent > event[type='event'] {
+listEvent[type='dseas-travels'] > event[type='event'] {
     border: 1px #4d7c0f dashed;
     background-color: #f7fee7;
 }
 
-listEvent > event > label {
+listEvent[type='dseas-travels'] > event > label {
     -oxy-placeholder-content: "[${i18n(event-label_placeholder)}]";
     background-color: #ffffff;
     display: block;
@@ -1846,7 +1848,7 @@ listEvent > event > label {
     visibility: visible;
 }
 
-listEvent > event date {
+listEvent[type='dseas-travels'] > event date {
 	content: 
         oxy_label(text, "${i18n(date-from_label)}: ", 
             styles, "@import 'labels.css';")
@@ -1859,7 +1861,7 @@ listEvent > event date {
     visibility: -oxy-collapse-text;
 }
 
-listEvent > event > note:before {
+listEvent[type='dseas-travels'] > event > note:before {
     background-color: #f8fafc;
     display: block;
     content: "${i18n(description_label)}";
@@ -1867,21 +1869,96 @@ listEvent > event > note:before {
     padding: 0 0 0.5em 0;
 }
 
-listEvent > event[type='travel'] > note:before {
+listEvent[type='dseas-travels'] > event[type='travel'] > note:before {
     background-color: #ecfeff;
 }
 
-listEvent > event[type='event'] > note:before {
+listEvent[type='dseas-travels'] > event[type='event'] > note:before {
     background-color: #f7fee7;
 }
 
-listEvent > event > note {
+listEvent[type='dseas-travels'] > event > note {
     background-color: #ffffff;
     display: block;
     visibility: -oxy-collapse-text;
 }
 
-listEvent > event > note p {
+listEvent[type='dseas-travels'] > event > note p {
+    display: block;
+    margin: 8px;
+    padding-bottom: 8px;
+    visibility: visible;
+}
+
+/* listEvent (correspondences) */
+
+listEvent[type='dseas-correspondences']:before {
+    content:
+        oxy_label(text, "Korrespondenz-Kommentare", 
+            styles, "@import 'labels.css';");
+    font-size: 1.4em;
+    padding-bottom: 0.5em;
+}
+
+/*listEvent[type='dseas-correspondences'] {
+    visibility: -oxy-collapse-text;
+}*/
+
+listEvent[type='dseas-correspondences'] > event {
+    content:
+        oxy_label(text, "@xml:id: ", 
+            styles, "@import 'labels.css';",
+            width, 9em)
+        oxy_label(text, oxy_xpath("@xml:id"))
+        "\A\A";
+    display: block;
+    padding: 1em 0.7em 0.5em 0.7em;
+    border: 1px #ff6467 dashed;
+    background-color: #fef2f2;
+    margin-bottom: 1.5em;
+    visibility: -oxy-collapse-text;
+}
+
+listEvent[type='dseas-correspondences'] > event > label {
+    visibility: -oxy-collapse-text;
+}
+
+listEvent[type='dseas-correspondences'] > event > label > persName {
+    content:
+        oxy_label(text, "${i18n(correspondent_label)}: ", 
+            styles, "@import 'labels.css';",
+            width, 9em)
+        oxy_textfield(
+            edit, "#text",
+            fontInherit, true,
+            columns, 25)
+            " " oxy_xpath("if (matches(@key,'person_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'")
+            "\A";
+    font-size: 1em;
+    padding: 0;
+    margin-bottom: 0.5em;
+    visibility: -oxy-collapse-text;
+}
+
+listEvent[type='dseas-correspondences'] > event > note:before {
+    background-color: #f8fafc;
+    display: block;
+    content: "${i18n(comment_label)}";
+    font-weight: bold;
+    padding: 0 0 0.5em 0;
+}
+
+listEvent[type='dseas-correspondences'] > event > note:before {
+    background-color: #fef2f2;
+}
+
+listEvent[type='dseas-correspondences'] > event > note {
+    background-color: #ffffff;
+    display: block;
+    visibility: -oxy-collapse-text;
+}
+
+listEvent[type='dseas-correspondences'] > event > note p {
     display: block;
     margin: 8px;
     padding-bottom: 8px;

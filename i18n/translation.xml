@@ -775,6 +775,16 @@
         <val lang="en_US">Global comment</val>
         <val lang="it_IT">Commento generale</val>
     </key>
+    <key value="comment_label">
+        <val lang="de_DE">Kommentar</val>
+        <val lang="en_US">Comment</val>
+        <val lang="it_IT">Commento</val>
+    </key>
+    <key value="correspondent_label">
+        <val lang="de_DE">Korrepondent/in</val>
+        <val lang="en_US">Correspondent</val>
+        <val lang="it_IT">Corrispondente</val>
+    </key>
     <key value="description_label">
         <val lang="de_DE">Beschreibung</val>
         <val lang="en_US">Description</val>

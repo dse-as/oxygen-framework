@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../schema/tei_dseas.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../../schema/dseas.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<listEvent xmlns="http://www.tei-c.org/ns/1.0" type="dseas-correspondences">
+    <event type="correspondence_summary" xml:id="correspondence_0006">
+        <label>
+            <persName key="person_0006">Bourdet, Claude</persName>
+        </label>
+        <note>
+            <p/>
+        </note>
+    </event>
+    <event type="correspondence_summary" xml:id="correspondence_0007">
+        <label>
+            <persName key="person_0007">Boveri, Margret</persName>
+        </label>
+        <note>
+            <p/>
+        </note>
+    </event>
+</listEvent>    
