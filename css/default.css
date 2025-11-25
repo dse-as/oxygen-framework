@@ -1827,6 +1827,7 @@ listEvent[type='dseas-travels'] > event {
     border: 1px #64748b dashed;
     background-color: #f8fafc;
     margin-bottom: 1em;
+    visibility: -oxy-collapse-text;
 }
 
 listEvent[type='dseas-travels'] > event[type='travel'] {
@@ -1899,10 +1900,6 @@ listEvent[type='dseas-correspondences']:before {
     font-size: 1.4em;
     padding-bottom: 0.5em;
 }
-
-/*listEvent[type='dseas-correspondences'] {
-    visibility: -oxy-collapse-text;
-}*/
 
 listEvent[type='dseas-correspondences'] > event {
     content:
