@@ -215,41 +215,35 @@
         </p>
     </xsl:template>
         
+    <!-- map rendition values to class names -->
+    <xsl:variable name="rendition-map" as="map(xs:string, xs:string)">
+        <xsl:map>
+            <xsl:map-entry key="'#u'" select="'underline'"/>
+            <xsl:map-entry key="'#i'" select="'italic'"/>
+            <xsl:map-entry key="'#b'" select="'bold'"/>
+            <xsl:map-entry key="'#g'" select="'spaced'"/>
+            <xsl:map-entry key="'#sub'" select="'sub'"/>
+            <xsl:map-entry key="'#sup'" select="'sup'"/>
+            <xsl:map-entry key="'#c'" select="'center'"/>
+        </xsl:map>
+    </xsl:variable>
+    
     <!-- hi -->
-    <xsl:template match="hi[@rendition='#u']" mode="#all">
-        <span class="underline">
-            <xsl:apply-templates mode="#current"/>
-        </span>
-    </xsl:template>
-    <xsl:template match="hi[@rendition='#i']" mode="#all">
-        <span class="italic">
-            <xsl:apply-templates mode="#current"/>
-        </span>
-    </xsl:template>
-    <xsl:template match="hi[@rendition='#b']" mode="#all">
-        <span class="bold">
-            <xsl:apply-templates mode="#current"/>
-        </span>
-    </xsl:template>
-    <xsl:template match="hi[@rendition='#g']" mode="#all">
-        <span class="spaced">
-            <xsl:apply-templates mode="#current"/>
-        </span>
-    </xsl:template>
-    <xsl:template match="hi[@rendition='#sub']" mode="#all">
-        <span class="sub">
-            <xsl:apply-templates mode="#current"/>
-        </span>
-    </xsl:template>
-    <xsl:template match="hi[@rendition='#sup']" mode="#all">
-        <span class="sup">
-            <xsl:apply-templates mode="#current"/>
-        </span>
-    </xsl:template>
-    <xsl:template match="hi[@rendition='#c']" mode="#all">        
-        <span class="center">
-            <xsl:apply-templates mode="#current"/>
-        </span>
+    <xsl:template match="hi[@rendition]" mode="#all">
+        <xsl:variable name="cssClass" select="$rendition-map(@rendition)"/>
+        <xsl:choose>
+            <xsl:when test="exists($cssClass)">
+                <span class="{$cssClass}">
+                    <xsl:apply-templates mode="#current"/>
+                </span>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- Fallback for unknown rendition values -->
+                <span class="{substring-after(@rendition, '#')}">
+                    <xsl:apply-templates mode="#current"/>
+                </span>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <!-- unclear -->
@@ -343,149 +337,153 @@
         </span>
     </xsl:function>
     
-    <xsl:function name="dseas:noteContent_noteFoot">
-        <xsl:param name="node"/>
-        <xsl:apply-templates select="$node/node()"/>
-    </xsl:function>
-    
-    <xsl:function name="dseas:noteContent_add">
-        <xsl:param name="node"/>
-        <xsl:apply-templates select="$node"/>
-        <xsl:text>] </xsl:text>
-        <span class="additionLabel">
-            <xsl:choose>
-                <xsl:when test="$node[not(@place)]">
-                    <xsl:text>eingetragen</xsl:text>
-                </xsl:when>
-                <xsl:when test="$node[@place = 'above']">
-                    <xsl:text>überhalb eingetragen</xsl:text>
-                </xsl:when>
-                <xsl:when test="$node[@place = 'below']">
-                    <xsl:text>unterhalb eingetragen</xsl:text>
-                </xsl:when>
-                <xsl:when test="$node[@place = 'top']">
-                    <xsl:text>am oberen Rand eingetragen</xsl:text>
-                </xsl:when>
-                <xsl:when test="$node[@place = 'left']">
-                    <xsl:text>am linken Rand eingetragen</xsl:text>
-                </xsl:when>
-                <xsl:when test="$node[@place = 'right']">
-                    <xsl:text>am rechten Rand eingetragen</xsl:text>
-                </xsl:when>
-                <xsl:when test="$node[@place = 'bottom']">
-                    <xsl:text>am unteren Rand eingetragen</xsl:text>
-                </xsl:when>
-            </xsl:choose>
-        </span>
+    <!-- Handler for all note content types -->
+    <xsl:function name="dseas:noteContent">
+        <xsl:param name="node" as="node()"/>
         
-        <!--TODO: Hand-->
-        <xsl:if test="$node[@hand]">
-            <xsl:text> durch </xsl:text>
-        </xsl:if>
         <xsl:choose>
-            <xsl:when test="$node[@hand='#author']">
-                <xsl:text>Autor dieses Textes</xsl:text>
+            <!-- noteFoot: Content notes (annotation/figure_note) -->
+            <xsl:when test="$node[self::note and (@type='annotation' or @type='figure_note')]">
+                <xsl:apply-templates select="$node/node()"/>
             </xsl:when>
-            <xsl:when test="$node[@hand='#addressee']">
-                <xsl:text>Empfänger des Briefes</xsl:text>
+            
+            <!-- add: Addition -->
+            <xsl:when test="$node[self::add]">
+                <xsl:apply-templates select="$node"/>
+                <xsl:text>] </xsl:text>
+                <span class="additionLabel">
+                    <xsl:choose>
+                        <xsl:when test="$node[not(@place)]">
+                            <xsl:text>eingetragen</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node[@place = 'above']">
+                            <xsl:text>überhalb eingetragen</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node[@place = 'below']">
+                            <xsl:text>unterhalb eingetragen</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node[@place = 'top']">
+                            <xsl:text>am oberen Rand eingetragen</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node[@place = 'left']">
+                            <xsl:text>am linken Rand eingetragen</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node[@place = 'right']">
+                            <xsl:text>am rechten Rand eingetragen</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node[@place = 'bottom']">
+                            <xsl:text>am unteren Rand eingetragen</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </span>
+                <xsl:if test="$node[@hand]">
+                    <xsl:text> durch </xsl:text>
+                </xsl:if>
+                <xsl:choose>
+                    <xsl:when test="$node[@hand='#author']">
+                        <xsl:text>Autor dieses Textes</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@hand='#addressee']">
+                        <xsl:text>Empfänger des Briefes</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@hand='#unknown']">
+                        <xsl:text>unbekannten Schreiber</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
             </xsl:when>
-            <xsl:when test="$node[@hand='#unknown']">
-                <xsl:text>unbekannten Schreiber</xsl:text>
+            
+            <!-- choice: Abbreviation, correction, or normalization -->
+            <xsl:when test="$node[self::choice]">
+                <xsl:choose>
+                    <xsl:when test="$node[abbr]">
+                        <xsl:text>Abkürzung durch Herausgeber aufgelöst.</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[corr[not(@type='deleted')]]">
+                        <xsl:value-of select="$node/corr||'] '||$node/sic"/>
+                    </xsl:when>
+                    <xsl:when test="$node[corr[(@type='deleted')]]">
+                        <span class="italic"><xsl:text>folgt </xsl:text></span>
+                        <xsl:value-of select="'&lt;&lt;'||$node/sic||'&gt;&gt;'"/>
+                    </xsl:when>
+                    <xsl:when test="$node[orig]">
+                        <xsl:value-of select="$node/reg||'] '||$node/orig"/>
+                    </xsl:when>
+                </xsl:choose>
             </xsl:when>
-        </xsl:choose>
-        
-    </xsl:function>
-    
-    <xsl:function name="dseas:noteContent_choice">
-        <xsl:param name="node"/>
-        <xsl:choose>
-            <xsl:when test="$node[abbr]">
-                <xsl:text>Abkürzung durch Herausgeber aufgelöst.</xsl:text>
+            
+            <!-- del: Deletion -->
+            <xsl:when test="$node[self::del]">
+                <xsl:text>||] </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$node[gap]">
+                        <span class="deletedGap">
+                            <span class="angleBracket">&#x2329;</span>
+                            <xsl:apply-templates select="$node/gap//preceding-sibling::node()"/>
+                            <span class="gapSymbol"> &#8970;&#8969; </span>
+                            <xsl:apply-templates select="$node/gap//following-sibling::node()"/>
+                            <span class="angleBracket">&#x232A;</span>
+                        </span>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <span class="deleted">
+                            <xsl:apply-templates select="$node/string()"/>
+                        </span>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:when>
-            <xsl:when test="$node[corr[not(@type='deleted')]]">
-                <xsl:value-of select="$node/corr||'] '||$node/sic"/>
+            
+            <!-- gap: Gap/lacuna -->
+            <xsl:when test="$node[self::gap]">
+                <span class="gapSymbol">&#8970;&#8969;</span>
+                <xsl:text>] </xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$node[@reason = 'lost']">
+                        <xsl:text>Verlust</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@reason = 'illegible']">
+                        <xsl:text>unleserlich</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
             </xsl:when>
-            <xsl:when test="$node[corr[(@type='deleted')]]">
-                <span class="italic"><xsl:text>folgt </xsl:text></span>
-                <xsl:value-of select="'&lt;&lt;'||$node/sic||'&gt;&gt;'"/>
+            
+            <!-- note: Original note/marginal (non-annotation type) -->
+            <xsl:when test="$node[self::note]">
+                <xsl:text>Anmerkung im Original</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$node[@place='right']">
+                        <xsl:text> am rechten Rand</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@place='left']">
+                        <xsl:text> am linken Rand</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@place='top']">
+                        <xsl:text> am oberen Rand</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@place='bottom']">
+                        <xsl:text> am unteren Rand</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="$node[@place='inline']">
+                        <xsl:text> innerhalb der Zeile</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:value-of select="if ($node[normalize-space()]) then ': '||$node => normalize-space() else ''"/>
             </xsl:when>
-            <xsl:when test="$node[orig]">
-                <xsl:value-of select="$node/reg||'] '||$node/orig"/>
-            </xsl:when>
-        </xsl:choose>
-    </xsl:function>
-    
-    <xsl:function name="dseas:noteContent_del">
-        <xsl:param name="node"/>
-        <xsl:text>||] </xsl:text>
-        <xsl:choose>
-            <xsl:when test="$node[gap]">
-                <span class="deletedGap">
-                    <span class="angleBracket">&#x2329;</span>
-                    <xsl:apply-templates select="$node/gap//preceding-sibling::node()"/>
-                    <span class="gapSymbol"> &#8970;&#8969; </span>
-                    <xsl:apply-templates select="$node/gap//following-sibling::node()"/>
-                    <span class="angleBracket">&#x232A;</span>
+            
+            <!-- space: Intentional space/gap -->
+            <xsl:when test="$node[self::space]">
+                <span class="spaceFootnote">
+                    <xsl:choose>
+                        <xsl:when test="$node/@dim= 'horizontal'">
+                            <xsl:text>Horizontale </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="$node/@dim = 'vertical'">
+                            <xsl:text>Vertikale </xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                    <xsl:text>Lücke</xsl:text>
                 </span>
             </xsl:when>
-            <xsl:otherwise>
-                <span class="deleted">
-                    <xsl:apply-templates select="$node/string()"/>
-                </span>
-            </xsl:otherwise>
         </xsl:choose>
-    </xsl:function>
-    
-    <xsl:function name="dseas:noteContent_gap">
-        <xsl:param name="node"/>
-        <span class="gapSymbol">&#8970;&#8969;</span>
-        <xsl:text>] </xsl:text>
-        <xsl:choose>
-            <xsl:when test="$node[@reason = 'lost']">
-                <xsl:text>Verlust</xsl:text>
-            </xsl:when>
-            <xsl:when test="$node[@reason = 'illegible']">
-                <xsl:text>unleserlich</xsl:text>
-            </xsl:when>
-        </xsl:choose>
-    </xsl:function>
-    
-    <xsl:function name="dseas:noteContent_note">
-        <xsl:param name="node"/>
-        <xsl:text>Anmerkung im Original</xsl:text>
-        <xsl:choose>
-            <xsl:when test="$node[@place='right']">
-                <xsl:text> am rechten Rand</xsl:text>
-            </xsl:when>
-            <xsl:when test="$node[@place='left']">
-                <xsl:text> am linken Rand</xsl:text>
-            </xsl:when>
-            <xsl:when test="$node[@place='top']">
-                <xsl:text> am oberen Rand</xsl:text>
-            </xsl:when>
-            <xsl:when test="$node[@place='bottom']">
-                <xsl:text> am unteren Rand</xsl:text>
-            </xsl:when>
-            <xsl:when test="$node[@place='inline']">
-                <xsl:text> innerhalb der Zeile</xsl:text>
-            </xsl:when>
-        </xsl:choose>
-        <xsl:value-of select="if ($node[normalize-space()]) then ': '||$node => normalize-space() else ''"/>
-    </xsl:function>
-    
-    <xsl:function name="dseas:noteContent_space">
-        <xsl:param name="node"/>
-        <span class="spaceFootnote">
-            <xsl:choose>
-                <xsl:when test="$node/@dim= 'horizontal'">
-                    <xsl:text>Horizontale </xsl:text>
-                </xsl:when>
-                <xsl:when test="$node/@dim = 'vertical'">
-                    <xsl:text>Vertikale </xsl:text>
-                </xsl:when>
-            </xsl:choose>
-            <xsl:text>Lücke</xsl:text>
-        </span>
     </xsl:function>
 
 </xsl:stylesheet>

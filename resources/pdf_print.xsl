@@ -159,7 +159,7 @@
             <xsl:when test="self::note">
                 <xsl:if test="$placeOfNotes eq 'foot'">
                     <span class="footnote">
-                        <xsl:copy-of select="dseas:noteContent_noteFoot(.)"/>
+                        <xsl:copy-of select="dseas:noteContent(.)"/>
                     </span>
                 </xsl:if>
             </xsl:when>
@@ -188,7 +188,7 @@
             
             <xsl:choose>
                 <xsl:when test="self::note">
-                    <xsl:copy-of select="dseas:noteContent_noteFoot(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
                 <xsl:when test="self::rs">
                     <xsl:copy-of select="dseas:getRegisterLink(.)"/>
@@ -214,7 +214,7 @@
                 <xsl:apply-templates mode="#current"/>
                 <xsl:if test="$placeOfNotes eq 'end'">
                     <span class="footnote">
-                        <xsl:copy-of select="dseas:noteContent_add(.)"/>
+                        <xsl:copy-of select="dseas:noteContent(.)"/>
                     </span>
                 </xsl:if>
             </xsl:when>
@@ -226,7 +226,7 @@
                         </span>
                         <xsl:if test="$placeOfNotes eq 'end'">
                             <span class="footnote">
-                                <xsl:copy-of select="dseas:noteContent_choice(.)"/>
+                                <xsl:copy-of select="dseas:noteContent(.)"/>
                             </span>
                         </xsl:if>
                     </xsl:when>
@@ -238,7 +238,7 @@
                         </xsl:if>
                         <xsl:if test="$placeOfNotes eq 'end'">
                             <span class="footnote">
-                                <xsl:copy-of select="dseas:noteContent_choice(.)"/>
+                                <xsl:copy-of select="dseas:noteContent(.)"/>
                             </span>
                         </xsl:if>
                     </xsl:when>
@@ -246,7 +246,7 @@
                         <xsl:apply-templates mode="#current" select="reg"/>
                         <xsl:if test="$placeOfNotes eq 'end'">
                             <span class="footnote">
-                                <xsl:copy-of select="dseas:noteContent_choice(.)"/>
+                                <xsl:copy-of select="dseas:noteContent(.)"/>
                             </span>
                         </xsl:if>
                     </xsl:when>
@@ -256,7 +256,7 @@
                 <xsl:text>||</xsl:text>
                 <xsl:if test="$placeOfNotes eq 'end'">
                     <span class="footnote">
-                        <xsl:copy-of select="dseas:noteContent_del(.)"/>
+                        <xsl:copy-of select="dseas:noteContent(.)"/>
                     </span>
                 </xsl:if>
             </xsl:when>
@@ -269,14 +269,14 @@
                 </xsl:choose>
                 <xsl:if test="$placeOfNotes eq 'end'">
                     <span class="footnote">
-                        <xsl:copy-of select="dseas:noteContent_gap(.)"/>
+                        <xsl:copy-of select="dseas:noteContent(.)"/>
                     </span>
                 </xsl:if>
             </xsl:when>
             <xsl:when test="self::note">
                 <xsl:if test="$placeOfNotes eq 'end'">
                     <span class="footnote">
-                        <xsl:copy-of select="dseas:noteContent_note(.)"/>
+                        <xsl:copy-of select="dseas:noteContent(.)"/>
                     </span>
                 </xsl:if>
             </xsl:when>
@@ -284,7 +284,7 @@
                 <xsl:text>| _ |</xsl:text>
                 <xsl:if test="$placeOfNotes eq 'end'">
                     <span class="footnote">
-                        <xsl:copy-of select="dseas:noteContent_space(.)"/>
+                        <xsl:copy-of select="dseas:noteContent(.)"/>
                     </span>
                 </xsl:if>
             </xsl:when>
@@ -310,22 +310,22 @@
             
             <xsl:choose>
                 <xsl:when test="self::add">
-                    <xsl:copy-of select="dseas:noteContent_add(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
                 <xsl:when test="self::choice">
-                    <xsl:copy-of select="dseas:noteContent_choice(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
                 <xsl:when test="self::del[not(ancestor::subst)]">
-                    <xsl:copy-of select="dseas:noteContent_del(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
                 <xsl:when test="self::gap">
-                    <xsl:copy-of select="dseas:noteContent_gap(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
                 <xsl:when test="self::note">
-                    <xsl:copy-of select="dseas:noteContent_note(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
                 <xsl:when test="self::space">
-                    <xsl:copy-of select="dseas:noteContent_space(.)"/>
+                    <xsl:copy-of select="dseas:noteContent(.)"/>
                 </xsl:when>
             </xsl:choose>
         </li>
