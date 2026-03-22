@@ -1605,34 +1605,34 @@ text add:focus:after {
 
 /* Renditions */
 
-hi[rendition="#b"] {
+hi[rendition~="#b"] {
     font-weight: bold;
 }
 
-hi[rendition="#u"] {
+hi[rendition~="#u"] {
     text-decoration: underline;
 }
 
-hi[rendition="#sub"] {
+hi[rendition~="#sub"] {
     font-size:small;
     vertical-align:sub;
 }
 
-hi[rendition="#sup"] {
+hi[rendition~="#sup"] {
     position: relative; 
     top: -0.5em;
     font-size: 0.7em;
 }
 
-hi[rendition="#i"] {
+hi[rendition~="#i"] {
     font-style: italic;
 }
 
-hi[rendition="#g"] {
+hi[rendition~="#g"] {
     letter-spacing:0.125em;
 }
 
-head[rendition='#c'] {
+head[rendition~='#c'] {
     text-align: center;
 }
 
