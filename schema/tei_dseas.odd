@@ -87,9 +87,39 @@
         <moduleRef key="analysis" include="pc"/>
         <classRef key="att.global.analytic"/>
         
+        <elementSpec ident="add" module="core" mode="change">
+          <attList>
+            <attDef ident="place" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="top"><desc>at the top of the page</desc></valItem>
+                <valItem ident="bottom"><desc>at the foot of the page</desc></valItem>
+                <valItem ident="above"><desc>above the line</desc></valItem>
+                <valItem ident="right"><desc>to the right</desc></valItem>
+                <valItem ident="below"><desc>below the line</desc></valItem>
+                <valItem ident="left"><desc>to the left</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        <elementSpec ident="hi" module="core" mode="change">
+          <attList>
+            <attDef ident="rendition" mode="change" usage="opt">
+              <valList type="closed" mode="replace">
+                <valItem ident="#b"><desc>bold</desc></valItem>
+                <valItem ident="#i"><desc>italics</desc></valItem>
+                <valItem ident="#u"><desc>underline</desc></valItem>
+                <valItem ident="#sub"><desc>subscript</desc></valItem>
+                <valItem ident="#sup"><desc>superscript</desc></valItem>
+                <valItem ident="#g"><desc>spaced (gesperrt)</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
         <elementSpec ident="rs" module="core" mode="change">
           <attList>
-            <attDef ident="type" mode="replace" usage="req">
+            <attDef ident="type" mode="change" usage="req">
               <valList type="closed" mode="replace">
                 <valItem ident="bibl"><desc>Bibliographical entry</desc></valItem>
                 <valItem ident="correspondence"><desc>Correspondence</desc></valItem>
