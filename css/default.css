@@ -1714,8 +1714,16 @@ text unclear:focus-within:after {
          );
 }
 
+/* Foreign */
+
 text foreign {
-    background-color: #e0e0e0;
+    background-color: #EDF2F7;
+}
+
+text foreign[xml|lang]:after {
+    -oxy-append-content: " [" attr(xml|lang) "]";
+    color: #A0AEC0;
+    font-size: 0.85em;
 }
 
 text foreign:focus:after {
@@ -1730,35 +1738,39 @@ text foreign:focus:after {
     ;
 }
 
-space,
-space[dim='horizontal'] {
+/* Space */
+
+text space,
+text space[dim='horizontal'] {
     content: url('../images/space_horizontal-20.png');
     padding: 0 0.5em 0 0.5em;
     width: 1em;
     -oxy-editable: false;
 }
 
-space[dim='vertical'] {
+text space[dim='vertical'] {
     content: url('../images/space_vertical-20.png');
     padding: 0.5em 0 0.5em 0;
     width: 1em;
     -oxy-editable: false;
 }
 
-/* Quotes */
+/* Quote */
 
 text quote {
     background-color: #FFF5F5;
 }
 
-text quote:before  {
-    color: fuchsia;
-    content: "\"";
+text quote:before {
+    content: "«";
+    color: #E53E3E;
+    margin-right: 2px;
 }
 
 text quote:after {
-    color: fuchsia;
-    content: "\"";
+    content: "»";
+    color: #E53E3E;
+    margin-left: 2px;
 }
 
 /* Facsimile */
