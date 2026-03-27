@@ -102,6 +102,28 @@
           </attList>
         </elementSpec>
         
+        <elementSpec ident="g" module="core" mode="change">
+          <attList>
+            <attDef ident="ref" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="#ngem"><desc>ngem</desc></valItem>
+                <valItem ident="#mngem"><desc>mngem</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        <elementSpec ident="gap" module="core" mode="change">
+          <attList>
+            <attDef ident="reason" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="illegible"><desc>illegible</desc></valItem>
+                <valItem ident="lost"><desc>lost</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
         <elementSpec ident="hi" module="core" mode="change">
           <attList>
             <attDef ident="rendition" mode="change" usage="opt">
