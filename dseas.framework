@@ -490,20 +490,12 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>first element</String>
+																<String>fragment</String>
 																<String>&lt;anchor xmlns="http://www.tei-c.org/ns/1.0" xml:id="a${xpath_eval(
 																	if (ancestor::element()[last()]//*:anchor/@xml:id[replace(.,"a","") castable as xs:integer]) 
 																	then max(for $id in ancestor::element()[last()]//*:anchor/@xml:id[replace(.,'a','') castable as xs:integer]/replace(.,'a','') return xs:int($id)) + 1 
 																	else count(ancestor::element()[last()]//*:anchor) + 1
-																	)}"/></String>
-															</entry>
-															<entry>
-																<String>id</String>
-																<String>${id}</String>
-														    </entry>
-															<entry>
-																<String>second element</String>
-																<String>&lt;note type="annotation" xml:id="n${xpath_eval(
+																	)}"/>${selection}&lt;note type="annotation" xml:id="n${xpath_eval(
 																	if (ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,"n","") castable as xs:integer]) 
 																	then max(for $id in ancestor::element()[last()]//*:note[@type='annotation']/@xml:id[replace(.,'n','') castable as xs:integer]/replace(.,'n','') return xs:int($id)) + 1
 																	else count(ancestor::element()[last()]//*:note[@type='annotation']) + 1
@@ -513,10 +505,14 @@
 																	else count(ancestor::element()[last()]//*:anchor) + 1
 																	)}" /></String>
 															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>false</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.SurroundWithDifferentFragmentsOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.InsertOrReplaceFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
