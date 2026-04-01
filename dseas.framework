@@ -2656,52 +2656,6 @@
 									</action>
 									<action>
 										<field name="id">
-											<String>open_geovistory</String>
-										</field>
-										<field name="name">
-											<String>In Geovistory öffnen</String>
-										</field>
-										<field name="description">
-											<String>Öffnet die referenzierte Entität in Geovistory</String>
-										</field>
-										<field name="largeIconPath">
-											<String></String>
-										</field>
-										<field name="smallIconPath">
-											<String></String>
-										</field>
-										<field name="accessKey">
-											<String></String>
-										</field>
-										<field name="accelerator">
-											<null/>
-										</field>
-										<field name="actionModes">
-											<actionMode-array>
-												<actionMode>
-													<field name="xpathCondition">
-														<String></String>
-													</field>
-													<field name="argValues">
-														<serializableOrderedMap>
-															<entry>
-																<String>URL</String>
-																<String>http://geovistory.org/resource/${xpath_eval(@key)}</String>
-															</entry>
-														</serializableOrderedMap>
-													</field>
-													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
-													</field>
-												</actionMode>
-											</actionMode-array>
-										</field>
-										<field name="enabledInReadOnlyContext">
-											<Boolean>false</Boolean>
-										</field>
-									</action>
-									<action>
-										<field name="id">
 											<String>open_gsheet</String>
 										</field>
 										<field name="name">
@@ -2731,13 +2685,13 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>URL</String>
-																<String>https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=846284184</String>
+																<String>resourcePath</String>
+																<String>"https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=846284184"</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
 													</field>
 												</actionMode>
 												<actionMode>
@@ -2747,13 +2701,13 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>URL</String>
-																<String>https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=811311071</String>
+																<String>resourcePath</String>
+																<String>"https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=811311071"</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
 													</field>
 												</actionMode>
 												<actionMode>
@@ -2763,13 +2717,13 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>URL</String>
-																<String>https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=1709662033</String>
+																<String>resourcePath</String>
+																<String>"https://docs.google.com/spreadsheets/d/1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc#gid=1709662033"</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -2809,13 +2763,13 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>URL</String>
-																<String>https://www.zotero.org/groups/5746334/dse_as_bibl-id/items/${xpath_eval(@key)}</String>
+																<String>resourcePath</String>
+																<String>"https://www.zotero.org/groups/5746334/dse_as_bibl-id/items/"||@key</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -2855,13 +2809,13 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>URL</String>
-																<String>https://uv-v4.netlify.app/#?manifest=https://iiif.annemarie-schwarzenbach.ch/presentation/${xpath_eval(ancestor::*:TEI[1]/@xml:id)}.json</String>
+																<String>resourcePath</String>
+																<String>"https://uv-v4.netlify.app/#?manifest=https://iiif.annemarie-schwarzenbach.ch/presentation/"||ancestor::*:TEI[1]/@xml:id||".json"</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -2901,13 +2855,13 @@
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
-																<String>URL</String>
-																<String>https://docs.annemarie-schwarzenbach.ch</String>
+																<String>resourcePath</String>
+																<String>"https://docs.annemarie-schwarzenbach.ch"</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.OpenFileOperation</String>
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
