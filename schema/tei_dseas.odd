@@ -65,19 +65,19 @@
       </p>
       <schemaSpec ident="tei_dseas" start="TEI listEvent list" prefix="tei_" targetLang="en" docLang="en">
         
-        <!-- required minimal header elements -->
+        <!-- required header elements -->
         <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc correspDesc textClass notesStmt keywords profileDesc catRef correspAction idno edition editionStmt language langUsage"/>
         
-        <!-- required core elements (p and title for use in titleStmt) -->
+        <!-- required core elements -->
         <moduleRef key="core" include="p title rs note head pb lb lg l address addrLine cb listBibl bibl add del abbr quote unclear gap hi list item date publisher graphic author foreign editor ref milestone choice expan sic corr biblScope respStmt label ptr"/>
         
-        <!-- required textstructure elements (TEI, text, and body) -->
+        <!-- required textstructure elements -->
         <moduleRef key="textstructure" include="TEI text body opener closer front back div salute dateline signed postscript byline floatingText"/>
         
         <!-- required module tei instantiates lots of classes used for further expansion of this odd -->
         <moduleRef key="tei"/>
         
-        
+        <!-- elements selected from different modules -->
         <moduleRef key="msdescription" include="msDesc msIdentifier repository altIdentifier additional surrogates collection"/>
         <moduleRef key="gaiji" include="g"/>
         <moduleRef key="namesdates" include="orgName persName placeName listEvent event"/>
@@ -85,8 +85,45 @@
         <moduleRef key="linking" include="ab anchor seg"/>
         <moduleRef key="figures" include="table row cell figure"/>
         <moduleRef key="analysis" include="pc"/>
-        <classRef key="att.global.analytic"/>
         
+        <!-- add attribute classes needed from other modules -->
+        <classRef key="att.global.analytic"/>
+
+        <!-- delete unused attribute classes -->
+        <classSpec type="atts" ident="att.cmc" mode="delete"/>
+        <classSpec type="atts" ident="att.global.change" mode="delete"/>
+        <classSpec type="atts" ident="att.global.source" mode="delete"/>
+        <classSpec type="atts" ident="att.ranging" mode="delete"/>
+        
+        <!-- delete some attributes from global linking -->
+        <classSpec type="atts" ident="att.global.linking" mode="change">
+          <attList>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+          </attList>
+        </classSpec>
+        
+        <!-- delete some attributes from global rendition -->
+        <classSpec type="atts" ident="att.global.rendition" mode="change">
+          <attList>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+          </attList>
+        </classSpec>
+
+        <!-- delete @cert from global responsibility -->
+        <classSpec type="atts" ident="att.global.responsibility" mode="change">
+          <attList>
+            <attDef ident="cert" mode="delete"/>
+          </attList>
+        </classSpec>
+        
+        <!-- change existing elements -->
+
         <elementSpec ident="add" module="core" mode="change">
           <attList>
             <attDef ident="place" mode="change" usage="req">
@@ -121,6 +158,7 @@
                 <valItem ident="lost"><desc>lost</desc></valItem>
               </valList>
             </attDef>
+            <attDef ident="hand" mode="delete"/>
           </attList>
         </elementSpec>
         
