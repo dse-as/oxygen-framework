@@ -453,6 +453,15 @@
         <val lang="en_US">Links the element to an entry in the bibliography register</val>
         <val lang="it_IT">Collega l'elemento a una voce del registro bibliografico</val>
     </key>
+
+    <key value="smallform_reg">
+        <val lang="de_DE">Kleine Form referenzieren</val>
+        <val lang="en_US">Reference smallform</val>
+    </key>
+    <key value="smallform_reg_description">
+        <val lang="de_DE">Verknüpft das Element mit einer kleinen Form</val>
+        <val lang="en_US">Links the element to a smallform</val>
+    </key>
     
     <!-- Bibl -->
 
@@ -487,6 +496,15 @@
         <val lang="de_DE">Eintrag für Übersetzung einfügen</val>
         <val lang="en_US">Insert entry for translation</val>
         <val lang="it_IT">Inserisci voce per traduzione</val>
+    </key>
+   
+    <key value="bibl_serie">
+        <val lang="de_DE">Artikelreihe einfügen</val>
+        <val lang="en_US">Insert article serie</val>
+    </key>
+    <key value="bibl_serie_description">
+        <val lang="de_DE">Eintrag für Artikelreihe einfügen</val>
+        <val lang="en_US">Insert entry for article serie</val>
     </key>
     
     <!-- Placeholder -->

@@ -326,7 +326,7 @@
         </rule>
         
         <rule context="tei:sourceDesc/tei:listBibl/tei:listBibl">
-            <let name="allowedAttributeValues" value="'surrogates|editions|translations|online|published|genetic|articleseries'"/>
+            <let name="allowedAttributeValues" value="'surrogates|editions|translations|online|published|genetic|articleseries|series|witness'"/>
             <assert test="@type and matches(@type,$allowedAttributeValues)">A &lt;<name/>&gt; element in &lt;listBibl&gt; must contain a @type attribute with a valid value (<value-of select="$allowedAttributeValues => replace('\|',', ')"/>).</assert>
         </rule>
         

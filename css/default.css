@@ -542,7 +542,8 @@ sourceDesc listBibl[type='related'] {
     content:
         oxy_editor(type, button, actionID, bibl_surrogate, transparent, false, showText, true, color, black, width, 7em)
         oxy_editor(type, button, actionID, bibl_edition, transparent, false, showText, true, color, black, width, 7em)
-        oxy_editor(type, button, actionID, bibl_translation, transparent, false, showText, true, color, black, width, 7em);
+        oxy_editor(type, button, actionID, bibl_translation, transparent, false, showText, true, color, black, width, 7em)
+        oxy_editor(type, button, actionID, bibl_serie, transparent, false, showText, true, color, black, width, 7em);
     margin-bottom: 1em;
 }
 
@@ -639,6 +640,46 @@ listBibl[type='published'],
 listBibl[type='genetic'],
 listBibl[type='articleseries'] {
     display: none;
+}
+
+
+/* listBibl (series) */
+
+sourceDesc listBibl > listBibl[type='series'] > bibl {
+    content:
+        oxy_label(text, "Artikelreihe: ", 
+            styles, "@import 'labels.css';")
+        oxy_editor(type, text,
+            edit, "#text",
+            editable, false,
+            fontInherit, true,
+            columns, 35)
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'smallform_reg'
+                  )
+                  oxy_action( 
+                        id, 'delete'
+                  )
+              )
+         )
+    ;
+}
+
+sourceDesc listBibl > listBibl[type='series'] > bibl:after {
+    content: " " oxy_xpath("if (matches(@key,'smallform_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
+    color: oxy_xpath("if (matches(@key,'smallform_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
+}
+
+sourceDesc listBibl > listBibl[type='series'] > bibl:not(first-of-type):after {
+    content: " " oxy_xpath("if (matches(@key,'smallform_')) then ' = '||@key else ' ${i18n(not-referenced_label)}'");
+    color: oxy_xpath("if (matches(@key,'smallform_')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
 }
 
 /* msIdentifier */
