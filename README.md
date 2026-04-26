@@ -1,10 +1,10 @@
-# 📑 dse-as oXygen Framework
+# 📑 DSE-AS oXygen Framework
 
-This repository contains an oXygen XML Editor framework to customize the editing environment of the _Digital Scholarly Edition Annermarie Schwarzenbach_ (dse-as).
+This repository contains an oXygen XML Editor framework to customize the editing environment of the _Digital Scholary Edition Annermarie Schwarzenbach_ (DSE-AS).
 
 ## Features
 
-* Simple graphical display of the project's markup based on [TEI-XML](https://tei-c.org/guidelines/) and the [DTA-Basisformat](https://www.deutschestextarchiv.de/doku/basisformat/index.html).
+* Simple graphical display of the project's markup based on [TEI-XML](https://tei-c.org/guidelines/).
 * Referencing of entries in [Google Sheets](https://docs.google.com/spreadsheets).
 * Referencing of bibliographic entries in [Zotero Groups](https://www.zotero.org/groups). 
 * Uses [ediarum.JAR](https://github.com/ediarum/ediarum.JAR) for index operations in [Oxygen Author Mode](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/editing-xml-documents-author.html).
@@ -55,10 +55,9 @@ Alternatively, confirm and remember warnings regarding these hosts.
 
 This framework is made possible thanks to the inspirations from this projects:
 
-* [hallerNet](https://hallernet.org/)
+* [République des Lettres](https://republique-des-lettres.ch/)
 * [HisTEI](https://github.com/odaata/HisTEI)
-* [ediarum.BASE.edit](https://github.com/ediarum/ediarum.BASE.edit)
-* [ediarum.jar](https://github.com/ediarum/ediarum.JAR)
+* [ediarum](https://github.com/ediarum)
 
 ## License
 
@@ -68,5 +67,5 @@ This framework is made possible thanks to the inspirations from this projects:
 
 This framework contains software and icons from third parties:
 
-* [ediarum.jar](https://github.com/ediarum/ediarum.JAR) by Berlin-Brandenburg Academey of Sciences and Humanities: GNU Lesser General Public License, see [LGPL.txt](https://github.com/ediarum/ediarum.JAR/blob/main/LGPL.txt)
+* [ediarum.jar](https://github.com/ediarum/ediarum.JAR) by Berlin-Brandenburg Academy of Sciences and Humanities: GNU Lesser General Public License, see [LGPL.txt](https://github.com/ediarum/ediarum.JAR/blob/main/LGPL.txt)
 * Icons from [HisTEI](https://github.com/odaata/HisTEI) by Mike Olson: MIT, see [LICENSE](https://github.com/odaata/HisTEI/blob/master/LICENSE)
