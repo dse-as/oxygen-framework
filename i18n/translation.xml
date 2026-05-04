@@ -422,6 +422,15 @@
         <val lang="de_DE">Eintrag für Artikelreihe einfügen</val>
         <val lang="en_US">Insert entry for article serie</val>
     </key>
+
+    <key value="bibl_witness">
+        <val lang="de_DE">Textstufe verknüpfen</val>
+        <val lang="en_US">Insert article witness</val>
+    </key>
+    <key value="bibl_witness_description">
+        <val lang="de_DE">Eintrag für Textstufe verknüpfen</val>
+        <val lang="en_US">Insert entry for article witness</val>
+    </key>
     
     <!-- Placeholder -->
     
