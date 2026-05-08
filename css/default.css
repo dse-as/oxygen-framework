@@ -1222,6 +1222,12 @@ rs[type='smallform']:before {
     position: relative;
     top: 0.1em;
 }
+rs[type='image']:before {
+    -oxy-prepend-content: url('../images/image-20.png');
+    width: 1em;
+    position: relative;
+    top: 0.1em;
+}
 
 rs[type]:before {
     margin-right: 6px;
@@ -1347,6 +1353,25 @@ rs[type='smallform']:focus-within:after {
             label, '▼',
             fontInherit, true,
             tooltip, oxy_xpath("let $id := ./@key return (if (doc-available('${framework(DSE-AS)}/resources/lookup-smallform.xml')) then doc('${framework(DSE-AS)}/resources/lookup-smallform.xml')//*[@id=$id]/@val||' [='||$id||']' else '')"),
+            actions, 
+              oxy_action_list(
+                  oxy_action( 
+                        id, 'rs_key'
+                  ),
+                  oxy_action( 
+                        id, 'rs_unwrap'
+                  )
+              )
+         );
+    ;
+}
+
+rs[type='image']:focus-within:after {
+    content: 
+        oxy_buttonGroup(
+            label, '▼',
+            fontInherit, true,
+            tooltip, oxy_xpath("let $id := ./@key return (if (doc-available('${framework(DSE-AS)}/resources/lookup-image.xml')) then doc('${framework(DSE-AS)}/resources/lookup-image.xml')//*[@id=$id]/@val||' [='||$id||']' else '')"),
             actions, 
               oxy_action_list(
                   oxy_action( 

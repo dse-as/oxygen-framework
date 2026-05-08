@@ -51,6 +51,14 @@
                 <xsl:with-param name="output-file" select="'lookup-smallform.xml'"/>
             </xsl:call-template>
         </xsl:if>
+
+        <xsl:if test="$type = 'image' or $type = 'all'">
+            <xsl:call-template name="fetch-and-process-gsheet-items">
+                <xsl:with-param name="sheetID" select="'13Sf1h6-bufC8q6N91gPxFrAh-di1PDpXXX5TQUHCMMo'"/>
+                <xsl:with-param name="sheet" select="'Fotografien'"/>
+                <xsl:with-param name="output-file" select="'lookup-image.xml'"/>
+            </xsl:call-template>
+        </xsl:if>
         
         <xsl:if test="$type = 'bibl' or $type = 'all'">
             <xsl:call-template name="fetch-zotero-items"/>
