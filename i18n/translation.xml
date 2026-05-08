@@ -161,6 +161,15 @@
         <val lang="en_US">Links the selected text to an entry in the short forms register</val>
     </key>
     
+    <key value="rs_image">
+        <val lang="de_DE">Referenz auf Bild (Fotografie)</val>
+        <val lang="en_US">Image (photography) reference</val>
+    </key>
+    <key value="rs_image_description">
+        <val lang="de_DE">Verknüpft den ausgewählten Textabschnitt mit einem Eintrag aus dem Bilder-Register</val>
+        <val lang="en_US">Links the selected text to an entry in the image (photography) register</val>
+    </key>
+    
     <key value="rs_key">
         <val lang="de_DE">Neu referenzieren</val>
         <val lang="en_US">Re-reference</val>
