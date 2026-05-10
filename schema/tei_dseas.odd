@@ -127,12 +127,43 @@
           </attList>
         </elementSpec>
         
+        <elementSpec ident="body" module="textstructure" mode="change">
+          <content>
+            <elementRef key="div" minOccurs="1" maxOccurs="1"/>
+          </content>
+        </elementSpec>
+        
+        <elementSpec ident="div" module="textstructure" mode="change">
+          <content>
+            <alternate minOccurs="1" maxOccurs="unbounded">
+              <elementRef key="ab"/>
+              <elementRef key="address"/>
+              <elementRef key="byline"/>
+              <elementRef key="closer"/>
+              <elementRef key="dateline"/>
+              <elementRef key="div"/>
+              <elementRef key="figure"/>
+              <elementRef key="floatingText"/>
+              <elementRef key="head"/>
+              <elementRef key="lg"/>
+              <elementRef key="list"/>
+              <elementRef key="metamark"/>
+              <elementRef key="milestone"/>
+              <elementRef key="opener"/>
+              <elementRef key="p"/>
+              <elementRef key="pb"/>
+              <elementRef key="postscript"/>
+              <elementRef key="table"/>
+            </alternate>
+          </content>
+        </elementSpec>
+        
         <elementSpec ident="g" module="core" mode="change">
           <attList>
             <attDef ident="ref" mode="change" usage="req">
               <valList type="closed" mode="replace">
                 <valItem ident="#ngem"><desc>ngem</desc></valItem>
-                <valItem ident="#mngem"><desc>mngem</desc></valItem>
+                <valItem ident="#mgem"><desc>mgem</desc></valItem>
               </valList>
             </attDef>
           </attList>
@@ -167,6 +198,9 @@
         
         <elementSpec ident="rs" module="core" mode="change">
           <attList>
+            <attDef ident="key" mode="change" usage="req"/>
+            <attDef ident="xml:id" mode="change" usage="req"/>
+            <attDef ident="subtype" mode="delete"/>
             <attDef ident="type" mode="change" usage="req">
               <valList type="closed" mode="replace">
                 <valItem ident="bibl"><desc>Bibliographical entry</desc></valItem>

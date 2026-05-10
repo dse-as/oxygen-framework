@@ -29,24 +29,6 @@
         
     </pattern>    
     
-    <!-- allowed elements -->
-    
-    <pattern>
-
-        <rule context="tei:body/*">
-            <let name="allowedElements" value="'div'"/>
-            
-            <assert test="local-name() = tokenize($allowedElements, ' ')">Unexpected element(s) found in element '&lt;<value-of select="parent::*/name()"/>&gt;'. A &lt;<value-of select="parent::*/name()"/>&gt; element may contain only the elements '<value-of select="$allowedElements"/>'. Offending element: &lt;<value-of select="local-name()[not(. = tokenize($allowedElements, ' '))]"/>&gt;.</assert>
-        </rule>
-        
-        <rule context="tei:body/div/*">
-            <let name="allowedElements" value="'closer div lg milestone opener p pb postscript'"/>
-            
-            <assert test="local-name() = tokenize($allowedElements, ' ')">Unexpected element(s) found in element '&lt;<value-of select="parent::*/name()"/>&gt;'. A &lt;<value-of select="parent::*/name()"/>&gt; element may contain only the elements '<value-of select="$allowedElements"/>'. Offending element: &lt;<value-of select="local-name()[not(. = tokenize($allowedElements, ' '))]"/>&gt;.</assert>
-        </rule>
-        
-    </pattern>
-    
     <!-- mandatory elements -->
     
     <pattern>
@@ -164,12 +146,6 @@
             <report test="@target = preceding::tei:ref/@target or @target = following::tei:ref/@target">A &lt;<name/>&gt; element must contain an unique @target attribute.</report>
         </rule>
         
-        <!-- g -->
-        <rule context="tei:g">
-            <report test="@ref='#ngem' and text()!='n'">A &lt;<name/>&gt; element with a @ref to "#ngem" must enclose exactly a letter "n".</report>
-            <report test="@ref='#mgem' and text()!='m'">A &lt;<name/>&gt; element with a @ref to "#mgem" must enclose exactly a letter "m".</report>
-        </rule>
-        
         <!-- space -->
         <rule context="tei:space">
             <assert test="@dim">A &lt;<name/>&gt; element must contain a @dim attribute.</assert>
@@ -177,7 +153,6 @@
         
         <!-- rs -->
         <rule context="tei:rs">
-            <assert test="@key">A &lt;<name/>&gt; element must contain a @key attribute.</assert>
             <report test="@xml:id = preceding::tei:rs/@xml:id or @xml:id = following::tei:rs/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
             <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
             <sqf:fix id="addXMLID">
