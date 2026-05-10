@@ -4,15 +4,27 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.8.10</xt:version>
+        <xt:version>0.8.11</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
         <xt:name>dse-as</xt:name>
         <xt:description xmlns="http://www.w3.org/1999/xhtml">
-            <h1>dse-as Oxygen Framework</h1>
+            <h1>DSE-AS Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.8.11</h3>
+                <p>Release date: 11/05/2026</p>
+                <p>Neu:</p>
+                <ul>
+                    <li>Referenzierung von Fotografien (image)</li>
+                    <li>Smallforms: Verlinkung von Artikelreihe und Textstufe</li>
+                </ul>
+                <p>Update:</p>
+                <ul>
+                    <li>Schriftart zu Noto Sans geändert</li>
+                    <li>CSS, verschiedene kleinere Anpassungen an der Maske</li>
+                </ul>
                 <h3>Version 0.8.10</h3>
                 <p>Release date: 25/11/2025</p>
                 <p>Neu:</p>
