@@ -308,6 +308,9 @@ pb:after {
             actions, 
               oxy_action_list(
                   oxy_action( 
+                        id, 'open_iiif_image'
+                  )
+                  oxy_action( 
                         id, 'delete'
                   )
               )

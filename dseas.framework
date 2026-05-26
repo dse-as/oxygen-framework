@@ -2871,13 +2871,60 @@
 											<actionMode-array>
 												<actionMode>
 													<field name="xpathCondition">
-														<String></String>
+														<String>unparsed-text-available("https://iiif.annemarie-schwarzenbach.ch/presentation/"||ancestor::*:TEI[1]/@xml:id||".json") and 
+																matches(unparsed-text("https://iiif.annemarie-schwarzenbach.ch/presentation/"||ancestor::*:TEI[1]/@xml:id||".json"),'@context')</String>
 													</field>
 													<field name="argValues">
 														<serializableOrderedMap>
 															<entry>
 																<String>resourcePath</String>
-																<String>"https://uv-v4.netlify.app/#?manifest=https://iiif.annemarie-schwarzenbach.ch/presentation/"||ancestor::*:TEI[1]/@xml:id||".json"</String>
+																<String>"https://cforney.github.io/iiif-viewer-nuxt/content/zoom?manifest=https://iiif.annemarie-schwarzenbach.ch/presentation/"||ancestor::*:TEI[1]/@xml:id => encode-for-uri()||".json"</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.OpenInSystemAppOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>true</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>open_iiif_image</String>
+										</field>
+										<field name="name">
+											<String>In IIIF-Viewer öffnen</String>
+										</field>
+										<field name="description">
+											<String>Faksimile im Universal Viewer öffnen</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/iiif-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/iiif-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::*:pb[matches(@xml:id,'^p\d+$')] and ancestor::*:TEI[1]/@xml:id</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>resourcePath</String>
+																<String>"https://cforney.github.io/iiif-viewer-nuxt/content/zoom?manifest=https://iiif.annemarie-schwarzenbach.ch/presentation/"||ancestor::*:TEI[1]/@xml:id => encode-for-uri()||".json&amp;canvas=p"||string(xs:integer(substring(@xml:id,2)))</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
