@@ -4,14 +4,14 @@
 @namespace oxy url('http://www.oxygenxml.com/extensions/author');
 
 @font-face{
-    font-family: "Roboto";
+    font-family: "NotoSans";
     src:url("../fonts/Noto_Sans/NotoSans-Regular.ttf");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face{
-    font-family: "Roboto-italic";
+    font-family: "NotoSans-italic";
     src:url("../fonts/Noto_Sans/NotoSans-Italic.ttf");
     font-weight: normal;
 }
@@ -19,7 +19,7 @@
 TEI {
     max-width: 54em;
     padding: 1em;
-    font-family: Roboto;
+    font-family: NotoSans;
 }
 
 /* Tabs */
@@ -1695,7 +1695,7 @@ text table {
 }
 text table > head{
     display: table-caption;
-    font-family: "Roboto-italic";
+    font-family: "NotoSans-italic";
     margin-bottom: 6pt;
 }
 
@@ -1993,7 +1993,7 @@ oxy|comment {
 listEvent {
     max-width: 60em;
     padding: 1em;
-    font-family: Roboto;
+    font-family: NotoSans;
 }
 
 listEvent * {
