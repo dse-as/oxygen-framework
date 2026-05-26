@@ -122,6 +122,8 @@
                 <valItem ident="right"><desc>to the right</desc></valItem>
                 <valItem ident="below"><desc>below the line</desc></valItem>
                 <valItem ident="left"><desc>to the left</desc></valItem>
+                <valItem ident="inline"><desc>within the body of the text</desc></valItem>
+                <valItem ident="inspace"><desc>in a predefined space, for example left by an earlier scribe</desc></valItem>
               </valList>
             </attDef>
           </attList>
