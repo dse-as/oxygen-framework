@@ -287,8 +287,8 @@
         <val lang="en_US">Open in IIIF viewer</val>
     </key>
     <key value="open_iiif_images_description">
-        <val lang="de_DE">Faksimile im Universal Viewer öffnen</val>
-        <val lang="en_US">Open facsimile in Universal Viewer</val>
+        <val lang="de_DE">Faksimile im IIIF-Viewer öffnen</val>
+        <val lang="en_US">Open facsimile in IIIF Viewer</val>
     </key>
     
     <key value="open_manual">

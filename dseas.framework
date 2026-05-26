@@ -2900,7 +2900,7 @@
 											<String>In IIIF-Viewer öffnen</String>
 										</field>
 										<field name="description">
-											<String>Faksimile im Universal Viewer öffnen</String>
+											<String>Faksimile im IIIF-Viewer öffnen</String>
 										</field>
 										<field name="largeIconPath">
 											<String>${framework}/images/iiif-20.png</String>
