@@ -133,19 +133,6 @@
             </sqf:fix>
         </rule>
         
-        <!-- ref -->
-        <rule context="tei:ref">
-            <assert test="@type='noteAnchor'" sqf:fix="addTypeNoteAnchor">A &lt;<name/>&gt; element must contain a @type attribute with value 'noteAnchor'.</assert>
-            <sqf:fix id="addTypeNoteAnchor">
-                <sqf:description>
-                    <sqf:title>Add type attribute with value 'noteAnchor' to <name/> element.</sqf:title>
-                </sqf:description>
-                <sqf:add target="type" node-type="attribute">noteAnchor</sqf:add>
-            </sqf:fix>
-            <assert test="@target">A &lt;<name/>&gt; element must contain a @target attribute.</assert>
-            <report test="@target = preceding::tei:ref/@target or @target = following::tei:ref/@target">A &lt;<name/>&gt; element must contain an unique @target attribute.</report>
-        </rule>
-        
         <!-- space -->
         <rule context="tei:space">
             <assert test="@dim">A &lt;<name/>&gt; element must contain a @dim attribute.</assert>
@@ -169,11 +156,6 @@
         <!-- hi -->
         <rule context="tei:hi[not(ancestor::tei:titleStmt)]">
             <assert test="@rendition">A &lt;<name/>&gt; element needs to have @rendition attribute.</assert>
-        </rule>
-
-        <rule context="tei:hi/@rendition">
-            <let name="allowedValues" value="'#b #i #u #sub #sup #g'"/>
-            <assert test=". = tokenize($allowedValues, ' ')">Unexpected value found in attribute @<name/>. A <name/> attribute may contain only the values <xsl:value-of select="tokenize($allowedValues,' ')[not(position()=last())]" separator=", "/> or <xsl:value-of select="tokenize($allowedValues,' ')[last()]"/>.</assert>
         </rule>
         
         <!-- note -->

@@ -17,7 +17,18 @@
           a tei_minimal template. It has since been substantially revised and extended to define the TEI customization for
           the DSE-AS project.</p>
       </sourceDesc>
-    </fileDesc><encodingDesc><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-13T23:05:17.921Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-14T13:43:08.740Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-15T23:05:17.893Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-18T14:36:20.519Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-22T02:09:40.659Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-01-25T00:08:47.208Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-03-06T09:40:08.222Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-03-12T13:04:56.902Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-03-14T19:31:21.858Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-03-27T13:15:08.001Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-03T12:25:33.835Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-04-29T21:49:35.851Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo><appInfo><application ident="RomaJS" version="1.1.2" when="2025-07-27T12:44:51.950Z"><desc>File edited with <ref target="https://github.com/TEIC/romajs">RomaJS</ref></desc></application></appInfo></encodingDesc>
+    </fileDesc>
+    <encodingDesc>
+      <tagsDecl>
+        <rendition xml:id="b" scheme="css">font-weight: bold;</rendition>
+        <rendition xml:id="i" scheme="css">font-style: italic;</rendition>
+        <rendition xml:id="u" scheme="css">text-decoration: underline;</rendition>
+        <rendition xml:id="sub" scheme="css">vertical-align: sub; font-size: smaller;</rendition>
+        <rendition xml:id="sup" scheme="css">vertical-align: super; font-size: smaller;</rendition>
+        <rendition xml:id="g" scheme="css">letter-spacing: 0.125em;</rendition>
+        <rendition xml:id="c" scheme="css">text-align: center;</rendition>
+      </tagsDecl>
+    </encodingDesc>
   </teiHeader>
   <text>
     <body>
@@ -98,7 +109,6 @@
         <!-- delete some attributes from global rendition -->
         <classSpec type="atts" ident="att.global.rendition" mode="change">
           <attList>
-            <attDef ident="rend" mode="delete"/>
             <attDef ident="style" mode="delete"/>
           </attList>
         </classSpec>
@@ -131,8 +141,18 @@
         
         <elementSpec ident="body" module="textstructure" mode="change">
           <content>
-            <elementRef key="div" minOccurs="1" maxOccurs="1"/>
+            <elementRef key="div" minOccurs="1" maxOccurs="unbounded"/>
           </content>
+        </elementSpec>
+        
+        <elementSpec ident="del" module="core" mode="change">
+          <attList>
+            <attDef ident="rend" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="overstrike"><desc>overstrike</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
         </elementSpec>
         
         <elementSpec ident="div" module="textstructure" mode="change">
@@ -195,6 +215,28 @@
                 <valItem ident="#g"><desc>spaced (gesperrt)</desc></valItem>
               </valList>
             </attDef>
+          </attList>
+        </elementSpec>
+
+        <elementSpec ident="lb" module="core" mode="change">
+          <attList>
+            <attDef ident="break" mode="change" usage="opt">
+              <valList type="closed" mode="replace">
+                <valItem ident="yes"><desc>Line beginning does mark the start of a new word.</desc></valItem>
+                <valItem ident="no"><desc>Line beginning does NOT mark the start of a new word.</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+
+        <elementSpec ident="ref" module="core" mode="change">
+          <attList>
+            <attDef ident="type" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="noteAnchor"><desc>Reference used as note anchor.</desc></valItem>
+              </valList>
+            </attDef>
+            <attDef ident="target" mode="change" usage="req"/>
           </attList>
         </elementSpec>
         
