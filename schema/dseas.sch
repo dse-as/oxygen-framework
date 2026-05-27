@@ -133,11 +133,6 @@
             </sqf:fix>
         </rule>
         
-        <!-- space -->
-        <rule context="tei:space">
-            <assert test="@dim">A &lt;<name/>&gt; element must contain a @dim attribute.</assert>
-        </rule>
-        
         <!-- rs -->
         <rule context="tei:rs">
             <report test="@xml:id = preceding::tei:rs/@xml:id or @xml:id = following::tei:rs/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
@@ -180,9 +175,9 @@
         <rule context="tei:note[@type='annotation']">
             <let name="targetEnd" value="@targetEnd => replace('^#','')"/>
             <report test="@targetEnd and not(preceding::tei:anchor[@xml:id=$targetEnd])">A &lt;<name/>&gt; element of type 'annotation' with a @targetEnd attribute must have a preceding &lt;anchor&gt; element with an according @xml:id.</report>
-            <report test="@xml:id = preceding::tei:note[@type='annotation']/@xml:id or @xml:id = following::tei:note[@type='annotation']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
-            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element of type 'annotation' must contain an @xml:id attribute.</report>
-            <sqf:fix id="addXMLID">
+            <report test="@xml:id = preceding::tei:note[@type='annotation']/@xml:id or @xml:id = following::tei:note[@type='annotation']/@xml:id" sqf:fix="addXMLIDAnnotation">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLIDAnnotation">A &lt;<name/>&gt; element of type 'annotation' must contain an @xml:id attribute.</report>
+            <sqf:fix id="addXMLIDAnnotation">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
@@ -192,14 +187,14 @@
                 <sqf:add target="xml:id" node-type="attribute"><xsl:value-of select="'n'||$id"/></sqf:add>
             </sqf:fix>
         </rule>
-
+        
         <!-- note (endnote) -->
         <rule context="tei:note[@type='endnote']">
             <let name="xmlId" value="@xml:id"/>
             <report test="@xml:id and not(preceding::tei:ref[@target='#'||$xmlId])">A &lt;<name/>&gt; element of type 'endnote' with an @xml:id must have a preceding &lt;ref&gt; element with an according @target.</report>
-            <report test="@xml:id = preceding::tei:note[@type='endnote']/@xml:id or @xml:id = following::tei:note[@type='endnote']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
-            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element of type 'endnote' must contain an @xml:id attribute.</report>
-            <sqf:fix id="addXMLID">
+            <report test="@xml:id = preceding::tei:note[@type='endnote']/@xml:id or @xml:id = following::tei:note[@type='endnote']/@xml:id" sqf:fix="addXMLIDEndnote">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLIDEndnote">A &lt;<name/>&gt; element of type 'endnote' must contain an @xml:id attribute.</report>
+            <sqf:fix id="addXMLIDEndnote">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
@@ -214,9 +209,9 @@
         <rule context="tei:note[@type='footnote']">
             <let name="xmlId" value="@xml:id"/>
             <report test="@xml:id and not(preceding::tei:ref[@target='#'||$xmlId])">A &lt;<name/>&gt; element of type 'footnote' with an @xml:id must have a preceding &lt;ref&gt; element with an according @target.</report>
-            <report test="@xml:id = preceding::tei:note[@type='footnote']/@xml:id or @xml:id = following::tei:note[@type='footnote']/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
-            <report test="not(@xml:id)" sqf:fix="addXMLID">A &lt;<name/>&gt; element of type 'footnote' must contain an @xml:id attribute.</report>
-            <sqf:fix id="addXMLID">
+            <report test="@xml:id = preceding::tei:note[@type='footnote']/@xml:id or @xml:id = following::tei:note[@type='footnote']/@xml:id" sqf:fix="addXMLIDFootnote">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <report test="not(@xml:id)" sqf:fix="addXMLIDFootnote">A &lt;<name/>&gt; element of type 'footnote' must contain an @xml:id attribute.</report>
+            <sqf:fix id="addXMLIDFootnote">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>

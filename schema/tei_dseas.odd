@@ -91,7 +91,6 @@
         <!-- delete unused attribute classes -->
         <classSpec type="atts" ident="att.cmc" mode="delete"/>
         <classSpec type="atts" ident="att.global.change" mode="delete"/>
-        <classSpec type="atts" ident="att.global.source" mode="delete"/>
         <classSpec type="atts" ident="att.ranging" mode="delete"/>
         
         <!-- delete some attributes from global linking -->
@@ -147,7 +146,7 @@
         
         <elementSpec ident="del" module="core" mode="change">
           <attList>
-            <attDef ident="rend" mode="change" usage="req">
+            <attDef ident="rend" mode="change" usage="opt">
               <valList type="closed" mode="replace">
                 <valItem ident="overstrike"><desc>overstrike</desc></valItem>
               </valList>
@@ -166,6 +165,7 @@
               <elementRef key="div"/>
               <elementRef key="figure"/>
               <elementRef key="floatingText"/>
+              <elementRef key="fw"/>
               <elementRef key="head"/>
               <elementRef key="lg"/>
               <elementRef key="list"/>
@@ -175,6 +175,7 @@
               <elementRef key="p"/>
               <elementRef key="pb"/>
               <elementRef key="postscript"/>
+              <elementRef key="space"/>
               <elementRef key="table"/>
             </alternate>
           </content>
@@ -229,6 +230,20 @@
           </attList>
         </elementSpec>
 
+        <elementSpec ident="note" module="core" mode="change">
+          <attList>
+            <attDef ident="type" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="global_comment"><desc>Global comment in teiHeader notesStmt.</desc></valItem>
+                <valItem ident="annotation"><desc>Inline annotation note in text.</desc></valItem>
+                <valItem ident="footnote"><desc>Footnote referenced from text.</desc></valItem>
+                <valItem ident="endnote"><desc>Endnote referenced from text.</desc></valItem>
+                <valItem ident="figure_note"><desc>Note attached to a figure.</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+
         <elementSpec ident="ref" module="core" mode="change">
           <attList>
             <attDef ident="type" mode="change" usage="req">
@@ -257,6 +272,17 @@
                 <valItem ident="place"><desc>Place</desc></valItem>
                 <valItem ident="smallform"><desc>Smallform</desc></valItem>
                 <valItem ident="travel"><desc>Travel</desc></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+
+        <elementSpec ident="space" module="transcr" mode="change">
+          <attList>
+            <attDef ident="dim" mode="change" usage="req">
+              <valList type="closed" mode="replace">
+                <valItem ident="horizontal"><desc>horizontal space</desc></valItem>
+                <valItem ident="vertical"><desc>vertical space</desc></valItem>
               </valList>
             </attDef>
           </attList>
