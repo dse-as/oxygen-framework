@@ -232,7 +232,7 @@
 
         <elementSpec ident="note" module="core" mode="change">
           <attList>
-            <attDef ident="type" mode="change" usage="req">
+            <attDef ident="type" mode="change" usage="opt">
               <valList type="closed" mode="replace">
                 <valItem ident="global_comment"><desc>Global comment in teiHeader notesStmt.</desc></valItem>
                 <valItem ident="annotation"><desc>Inline annotation note in text.</desc></valItem>
@@ -272,6 +272,7 @@
                 <valItem ident="place"><desc>Place</desc></valItem>
                 <valItem ident="smallform"><desc>Smallform</desc></valItem>
                 <valItem ident="travel"><desc>Travel</desc></valItem>
+                <valItem ident="event"><desc>Event</desc></valItem>
               </valList>
             </attDef>
           </attList>
