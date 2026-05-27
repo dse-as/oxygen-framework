@@ -2,6 +2,7 @@
 
 @namespace xml "http://www.w3.org/XML/1998/namespace";
 @namespace oxy url('http://www.oxygenxml.com/extensions/author');
+@namespace xi url('http://www.w3.org/2001/XInclude');
 
 @font-face{
     font-family: "NotoSans";
@@ -1682,7 +1683,6 @@ text g:focus:after {
         )
         oxy_combobox(
             edit, "@ref"
-            values, "#ngem, #mgem"
         )
     ;
 }
@@ -1754,23 +1754,39 @@ text add[place="below"] {
 }
 
 text add[place="left"] {
-    border-left: 3px solid green;
+    border-left: 2px solid green;
     margin-left: 2px;
     padding-left: 6px;
 }
 
 text add[place="right"] {
-    border-right: 3px solid green;
+    border-right: 2px solid green;
     margin-right: 2px;
     padding-right: 6px;
 }
 
 text add[place="top"] {
-    border-top: 3px solid green;
+    border-top: 2px solid green;
 }
 
 text add[place="bottom"] {
-    border-bottom: 3px solid green;
+    border-bottom: 2px solid green;
+}
+
+text add[place="inline"]:before {
+    content: "⟨";
+    padding-right: 2px;
+}
+
+text add[place="inline"]:after {
+    content: "⟩";
+    padding-left: 2px;
+}
+
+text add[place="inspace"] {
+    border: 2px dashed green;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 text add:focus:after {
@@ -1856,7 +1872,7 @@ text choice expan {
 }
 
 text gap {
-    content: " … ";
+    content: attr(reason, string, "…");
     background-color: #FFC458;
     margin-left: 2px;
     margin-right: 2px;
@@ -1870,7 +1886,6 @@ text gap:focus {
         )
         oxy_combobox(
             edit, "@reason"
-            values, "illegible, lost"
         )
     ;
 }
@@ -1986,6 +2001,12 @@ oxy|comment {
     display:block !important;
     color:green !important;
     background-color:transparent !important;
+}
+
+/* XInclude */
+xi|fallback {
+    display: none !important;
+    -oxy-display-tags: none;
 }
 
 /* listEvent */
