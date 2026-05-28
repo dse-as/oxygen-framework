@@ -1830,6 +1830,26 @@ hi[rendition~="#g"] {
     letter-spacing:0.125em;
 }
 
+text hi:-oxy-selected,
+text hi:-oxy-selection-inside {
+    -oxy-floating-toolbar:
+        oxy_label(text, "hi @rendition: ")
+        oxy_combobox(
+            edit, '@rendition',
+            columns, 8
+            )
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            fontInherit, false,
+            actions,
+              oxy_action_list(
+                  oxy_action(id, 'unwrap')
+              )
+         );
+    ;
+}
+
 head[rendition~='#c'] {
     text-align: center;
 }
