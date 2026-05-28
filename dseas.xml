@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.8.11</xt:version>
+        <xt:version>0.9.0</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -13,6 +13,22 @@
             <h1>DSE-AS Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.9.0</h3>
+                <p>Release date: 28/05/2026</p>
+                <p>Neu:</p>
+                <ul>
+                    <li>Spezifische Seite im IIIF-Viewer direkt öffnen</li>
+                    <li>Neuer Dialog für das Referenzieren von Entitäten</li>
+                    <li>Floating toolbar bei hi</li>
+                </ul>
+                <p>Update:</p>
+                <ul>
+                    <li>Verschiedene Anpassungen am Schema</li>
+                </ul>
+                <p>Fix:</p>
+                <ul>
+                    <li>IIIF-Manifest im Viewer öffnen</li>
+                </ul>
                 <h3>Version 0.8.11</h3>
                 <p>Release date: 11/05/2026</p>
                 <p>Neu:</p>
