@@ -26,7 +26,7 @@
 					</field>
 					<field name="classpath">
 						<String-array>
-							<String>${framework}/ediarum-3.1.0.jar</String>
+							<String>${framework}/oxygen-dse-register-1.0.0.jar</String>
 							<String>${framework}/i18n/</String>
 							<String>${framework}/resources/</String>
 						</String-array>
@@ -587,10 +587,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -677,10 +697,30 @@
 																<String>xpath to element of the attribute</String>
 																<String>.</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterChangeAttributeOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterChangeAttributeOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -760,10 +800,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -843,10 +903,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -925,10 +1005,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -1007,10 +1107,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
 													</field>
 												</actionMode>
 												<actionMode>
@@ -1059,10 +1179,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterInsertFragmentOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -1137,10 +1277,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -1215,10 +1375,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -1293,10 +1473,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -3050,10 +3250,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -3128,10 +3348,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>
@@ -3206,10 +3446,30 @@
 																<String>node</String>
 																<String>//li</String>
 															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
-														<String>org.bbaw.telota.ediarum.RegisterSurroundWithElementOperation</String>
+														<String>digital.scholarly.edition.operations.RegisterSurroundWithElementOperation</String>
 													</field>
 												</actionMode>
 											</actionMode-array>

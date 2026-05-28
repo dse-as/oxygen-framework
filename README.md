@@ -67,5 +67,5 @@ This framework is made possible thanks to the inspirations from this projects:
 
 This framework contains software and icons from third parties:
 
-* [ediarum.jar](https://github.com/ediarum/ediarum.JAR) by Berlin-Brandenburg Academy of Sciences and Humanities: GNU Lesser General Public License, see [LGPL.txt](https://github.com/ediarum/ediarum.JAR/blob/main/LGPL.txt)
+* oxygen-dse-register.jar is based on [ediarum.jar](https://github.com/ediarum/ediarum.JAR) by Berlin-Brandenburg Academy of Sciences and Humanities: GNU Lesser General Public License, see [LGPL.txt](https://github.com/ediarum/ediarum.JAR/blob/main/LGPL.txt)
 * Icons from [HisTEI](https://github.com/odaata/HisTEI) by Mike Olson: MIT, see [LICENSE](https://github.com/odaata/HisTEI/blob/master/LICENSE)
