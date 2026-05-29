@@ -548,7 +548,7 @@ sourceDesc listBibl[type='related'] {
         oxy_editor(type, button, actionID, bibl_edition, transparent, false, showText, true, color, black, width, 7em)
         oxy_editor(type, button, actionID, bibl_translation, transparent, false, showText, true, color, black, width, 7em)
         oxy_editor(type, button, actionID, bibl_serie, transparent, false, showText, true, color, black, width, 7em, visible, oxy_xpath("if (listBibl[@type='series']) then 'false' else 'true'"))
-        oxy_editor(type, button, actionID, bibl_witness, transparent, false, showText, true, color, black, width, 7em, visible, oxy_xpath("if (listBibl[@type='witness']) then 'false' else 'true'"));
+        oxy_editor(type, button, actionID, bibl_witness, transparent, false, showText, true, color, black, width, 7em);
     margin-bottom: 1em;
 }
 
