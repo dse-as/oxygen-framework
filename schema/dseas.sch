@@ -50,16 +50,18 @@
         <!-- titleStmt -->
         <rule context="tei:titleStmt">
             <assert test="tei:title">A &lt;<name/>&gt; element must contain a &lt;title&gt; element.</assert>
+            <report test="not(tei:title[@type='desc']) and following::tei:bibl[@type='Manuskript' or @type='Typoskript']" role="warning" sqf:fix="addTitleDesc">A smallform of type 'Manuskript' or 'Typoskript' usually contains an additional title (Titel-Zusatz).</report>
+            <sqf:fix id="addTitleDesc">
+                <sqf:description>
+                    <sqf:title>Add title[@type='desc'] to <name/> element.</sqf:title>
+                </sqf:description>
+                <sqf:add match="." position="last-child"><title xmlns="http://www.tei-c.org/ns/1.0" type="desc"></title></sqf:add>
+            </sqf:fix>
         </rule>
 
         <!-- notesStmt -->
         <rule context="tei:notesStmt">
             <assert test="tei:note[@type='global_comment']">A &lt;<name/>&gt; element must contain a &lt;note&gt; element of type 'global_comment'.</assert>
-        </rule>
-
-        <!-- global_comment -->
-        <rule context="tei:note[@type='global_comment']">
-            <assert test="tei:p">A &lt;<name/>&gt; element of type 'global_comment' must contain a &lt;p&gt; element.</assert>
         </rule>
         
         <!-- sourceDesc -->
@@ -135,9 +137,9 @@
         
         <!-- rs -->
         <rule context="tei:rs">
-            <report test="@xml:id = preceding::tei:rs/@xml:id or @xml:id = following::tei:rs/@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
-            <assert test="@xml:id" sqf:fix="addXMLID">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
-            <sqf:fix id="addXMLID">
+            <report test="@xml:id = preceding::tei:rs/@xml:id or @xml:id = following::tei:rs/@xml:id" sqf:fix="addXMLIDRs">A &lt;<name/>&gt; element must contain an unique @xml:id attribute.</report>
+            <assert test="@xml:id" sqf:fix="addXMLIDRs">A &lt;<name/>&gt; element must contain an @xml:id attribute.</assert>
+            <sqf:fix id="addXMLIDRs">
                 <sqf:description>
                     <sqf:title>Add @xml:id attribute to <name/> element.</sqf:title>
                 </sqf:description>
@@ -229,6 +231,7 @@
         
         <!-- note (global_comment) -->
         <rule context="tei:note[@type='global_comment']">
+            <assert test="tei:p">A &lt;<name/>&gt; element of type 'global_comment' must contain a &lt;p&gt; element.</assert>
             <report test="text()[normalize-space()]">A &lt;<name/>&gt; of type 'global_comment' cannot contain text as child node.</report>
         </rule>
         
