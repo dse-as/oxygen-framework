@@ -530,7 +530,7 @@
 
     <!-- Label -->
 
-    <key value="title">
+    <key value="title_label">
         <val lang="de_DE">Titel</val>
         <val lang="en_US">Title</val>
     </key>
@@ -541,6 +541,10 @@
     <key value="title-letter_label">
         <val lang="de_DE">Titel des Briefs</val>
         <val lang="en_US">Title of letter</val>
+    </key>
+    <key value="title-desc_label">
+        <val lang="de_DE">Titel-Zusatz</val>
+        <val lang="en_US">Title additional</val>
     </key>
     <key value="editorial-contribution_label">
         <val lang="de_DE">Redaktioneller Beitrag</val>

@@ -1426,6 +1426,12 @@ TEI[type='dseas-smallform'] titleStmt title {
     -oxy-placeholder-content: "${i18n(title-smallform_label)}";
 }
 
+TEI[type='dseas-smallform'] titleStmt title[type='desc'] {
+    -oxy-placeholder-content: "${i18n(title-desc_label)}";
+    font-size: 1.2em;
+    padding-top: 0.3em;
+}
+
 titleStmt author,
 titleStmt editor,
 titleStmt respStmt {
