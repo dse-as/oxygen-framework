@@ -264,13 +264,6 @@
             </sqf:fix>
         </rule>
 
-        <!-- label (global_comment): nur vereinbarte Zwischentitel zulassen -->
-        <rule context="tei:note[@type='global_comment']//tei:label">
-            <let name="allowedLabels" value="'Entstehungskontext|Publikationskontext|Historischer Kontext'"/>
-            <let name="value" value="normalize-space(.) => replace(':\s*$', '')"/>
-            <assert test="$value = tokenize($allowedLabels, '\|')" role="warning">Unerwarteter Zwischentitel "<value-of select="$value"/>". Ein &lt;<name/>&gt; im Übersichtskommentar sollte einen der vereinbarten Werte enthalten: <xsl:value-of select="tokenize($allowedLabels,'\|')[not(position()=last())]" separator=", "/> oder <value-of select="tokenize($allowedLabels,'\|')[last()]"/>.</assert>
-        </rule>
-
         <!-- opener -->
         <rule context="tei:opener">
             <report test="text()[normalize-space()]">An &lt;<name/>&gt; cannot contain text as child node.</report>
@@ -342,6 +335,55 @@
             <report test="contains(., '¬')" role="warning">Ungewöhnliches Vorkommen von Negationszeichen "¬". Möglicherweise eine unverarbeitete Silbentrennung?</report>
             <report test="contains(., '[')" role="warning">Ungewöhnliches Vorkommen von eckiger Klammer "[". Möglicherweise ein unverarbeiteter Kommentar?</report>
             <report test="contains(., ']')" role="warning">Ungewöhnliches Vorkommen von eckiger Klammer "]". Möglicherweise ein unverarbeiteter Kommentar?</report>
+        </rule>
+
+    </pattern>
+
+    <!-- In DSE-AS an <lb/> marks the START of a line and must be the first content inside the
+         block whose line it begins. It is misplaced when it sits in a parent immediately before a
+         block-level element (it should be moved into that block), or when it begins a line that has
+         no content. Zero-width markers (anchor, pb, milestone, space, cb) are transparent. -->
+    <pattern id="lb-placement">
+
+        <rule context="tei:lb">
+            <let name="lb" value="."/>
+            <let name="probe" value="following-sibling::node()[
+                  (self::text() and normalize-space(.) != '')
+                  or (self::* and not(self::tei:anchor or self::tei:pb or self::tei:milestone
+                       or self::tei:space or self::tei:cb))][1]"/>
+
+            <report role="warning" sqf:fix="moveLbIntoBlock"
+                test="$probe[self::tei:div or self::tei:p or self::tei:ab or self::tei:opener
+                    or self::tei:closer or self::tei:salute or self::tei:signed or self::tei:dateline
+                    or self::tei:byline or self::tei:postscript or self::tei:epigraph
+                    or self::tei:argument or self::tei:trailer or self::tei:lg or self::tei:l
+                    or self::tei:list or self::tei:item or self::tei:head or self::tei:address
+                    or self::tei:addrLine or self::tei:figure or self::tei:table or self::tei:row
+                    or self::tei:cell]">[LB-PLACE] In the DSE-AS line-beginning model an &lt;lb/&gt;
+                marks the START of a line and must be the first content inside the block it begins.
+                This &lt;lb/&gt; is placed before the block element &lt;<value-of
+                    select="local-name($probe)"/>&gt;; move it to be the first child of that
+                &lt;<value-of select="local-name($probe)"/>&gt;.</report>
+
+            <sqf:fix id="moveLbIntoBlock">
+                <sqf:description>
+                    <sqf:title>Move this &lt;lb/&gt; to the start of the following block element</sqf:title>
+                </sqf:description>
+                <sqf:add match="$probe" position="first-child">
+                    <xsl:copy-of select="$lb"/>
+                </sqf:add>
+                <sqf:delete/>
+            </sqf:fix>
+
+            <report role="warning"
+                test="not($probe) and (parent::tei:p or parent::tei:salute or parent::tei:signed
+                    or parent::tei:dateline or parent::tei:byline or parent::tei:addrLine
+                    or parent::tei:head or parent::tei:l or parent::tei:div or parent::tei:opener
+                    or parent::tei:closer or parent::tei:address or parent::tei:postscript
+                    or parent::tei:ab or parent::tei:lg or parent::tei:list or parent::tei:item)"
+                >[LB-EMPTY] This &lt;lb/&gt; begins a line that has no content before the end of
+                &lt;<value-of select="local-name(parent::*)"/>&gt;. Remove it or move it to the start
+                of the next line's content.</report>
         </rule>
 
     </pattern>
