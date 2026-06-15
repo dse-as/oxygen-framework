@@ -98,6 +98,13 @@ header {
     display: block;
 }
 
+.subtitle {
+    display: block;
+    font-size: 130%;
+    font-style: italic;
+    font-weight: normal;
+}
+
 .headerInfo {
     padding-top: 0.2em;
     padding-bottom: 0.2em;
@@ -107,6 +114,17 @@ header {
 .headerData {
     display: block;
     font-style: italic;
+}
+
+.facsimileLink, .onlineLink {
+    color: #00529b;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.onlineLink {
+    word-break: break-all;
 }
 
 .subheading {

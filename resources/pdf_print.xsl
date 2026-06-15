@@ -82,6 +82,9 @@
                 <xsl:if test=".//notesStmt/note[@type='global_comment'][normalize-space()]">
                     <xsl:call-template name="headerGlobalComment"/>
                 </xsl:if>
+                <xsl:if test="./@xml:id">
+                    <xsl:call-template name="headerFacsimile"/>
+                </xsl:if>
             </div>
             <br/>
         </header>
@@ -105,10 +108,13 @@
     
     <!-- TEMPLATES (APP) -->
     
-    <!-- structure_criticalApp -->
+    <!-- 
+        structure_criticalApp: Renders the critical apparatus section.
+    -->
     <xsl:template name="structure_criticalApp">
         <xsl:param name="placeOfNotes"/>
         
+        <!-- Text-critical elements: add, choice, del, gap, note (non-annotation), space -->
         <xsl:variable name="textNoteElements" select="//add[not(ancestor::subst)] |
                             //choice[abbr | corr | orig] |
                             //del[not(ancestor::subst)] |
@@ -116,6 +122,7 @@
                             //note[ancestor::div][not(@type='annotation') and not(@type='figure_note') and not(ancestor::seg)] |
                             //space"/>
         
+        <!-- Content note elements: annotation notes, rs references, ref targets -->
         <xsl:variable name="contentNoteElements" select="//note[ancestor-or-self::div and (@type='annotation' or @type='figure_note')] |
                             //rs[ancestor-or-self::body][not(@key=preceding::rs[ancestor-or-self::body]/@key)][not(@type='place')] |
                             //ref[ancestor-or-self::body][not(ancestor-or-self::note)][@target]"/>
@@ -146,7 +153,10 @@
         
     </xsl:template>
     
-    <!-- Footnotes - content notes -->
+    <!-- 
+        Footnotes - content notes (annotation/figure notes, rs references, ref targets)
+        Pattern must stay in sync with $contentNoteElements and dseas:getCounterContent()
+    -->
     <xsl:template match="note[ancestor-or-self::div and (@type='annotation' or @type='figure_note')] |
                          rs[ancestor-or-self::body][not(@key=preceding::rs[ancestor-or-self::body]/@key)][not(@type='place')] |
                          ref[ancestor-or-self::body][not(ancestor-or-self::note)][@target]">
@@ -197,7 +207,10 @@
         </li>
     </xsl:template>
     
-    <!-- Footnotes - textcritial notes -->
+    <!-- 
+        Footnotes - textcritical notes (add, choice, del, gap, note, space)
+        Pattern must stay in sync with $textNoteElements and dseas:getCounterText()
+    -->
     <xsl:template match="add[not(ancestor::subst)] |
                          choice[abbr | corr | orig] |
                          del[not(ancestor::subst)] |
@@ -300,40 +313,24 @@
         </xsl:if>
     </xsl:template>
     
-    <!-- Endnotes - textcritial notes -->
+    <!-- Endnotes - textcritical notes -->
     <xsl:template mode="criticalAppText" match="*">
         
         <xsl:variable name="counter" select="dseas:getCounterText(.)"/>
         
         <li>
             <xsl:copy-of select="dseas:endnoteAtEnd($counter)"/>
-            
-            <xsl:choose>
-                <xsl:when test="self::add">
-                    <xsl:copy-of select="dseas:noteContent(.)"/>
-                </xsl:when>
-                <xsl:when test="self::choice">
-                    <xsl:copy-of select="dseas:noteContent(.)"/>
-                </xsl:when>
-                <xsl:when test="self::del[not(ancestor::subst)]">
-                    <xsl:copy-of select="dseas:noteContent(.)"/>
-                </xsl:when>
-                <xsl:when test="self::gap">
-                    <xsl:copy-of select="dseas:noteContent(.)"/>
-                </xsl:when>
-                <xsl:when test="self::note">
-                    <xsl:copy-of select="dseas:noteContent(.)"/>
-                </xsl:when>
-                <xsl:when test="self::space">
-                    <xsl:copy-of select="dseas:noteContent(.)"/>
-                </xsl:when>
-            </xsl:choose>
+            <!-- All text-critical element types use the unified noteContent function -->
+            <xsl:copy-of select="dseas:noteContent(.)"/>
         </li>
     </xsl:template>
 
     <!-- FUNCTIONS (APP) -->
     
-    <!-- getCounterText -->
+    <!-- 
+        getCounterText: Returns alphabetic counter (aa, ab, ...) for text-critical notes.
+        Count pattern must stay in sync with $textNoteElements and the textcritical template match.
+    -->
     <xsl:function name="dseas:getCounterText" as="xs:string">
         <xsl:param name="node" as="node()"/>
         <xsl:for-each select="$node">
@@ -347,7 +344,10 @@
         </xsl:for-each>
     </xsl:function>    
 
-    <!-- getCounterContent -->
+    <!-- 
+        getCounterContent: Returns alphabetic counter (aa, ab, ...) for content notes.
+        Count pattern must stay in sync with $contentNoteElements and the content notes template match.
+    -->
     <xsl:function name="dseas:getCounterContent" as="xs:string">
         <xsl:param name="node" as="node()"/>
         <xsl:for-each select="$node">
@@ -358,7 +358,10 @@
         </xsl:for-each>
     </xsl:function>
     
-    <!-- getRegisterLink -->
+    <!-- 
+        getRegisterLink: Returns the register link(s) for a given rs or ref element.
+        Looks up the value(s) in the corresponding lookup XML document based on the type attribute.
+    -->
     <xsl:function name="dseas:getRegisterLink">
         <xsl:param name="node"/>
         <xsl:variable name="registerType" select="$node/@type"/>

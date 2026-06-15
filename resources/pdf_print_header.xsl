@@ -11,8 +11,13 @@
     <!-- Titel -->
     <xsl:template name="headerTitle">
         <h1 class="title">
-            <xsl:value-of select=".//titleStmt/title => fn:normalize-space()"/>
+            <xsl:value-of select=".//titleStmt/title[1] => fn:normalize-space()"/>
         </h1>
+        <xsl:if test=".//titleStmt/title[@type='desc'][normalize-space()]">
+            <p class="subtitle">
+                <xsl:value-of select=".//titleStmt/title[@type='desc'][1] => fn:normalize-space()"/>
+            </p>
+        </xsl:if>
     </xsl:template>
     
     <!-- Identifikator -->
@@ -132,12 +137,26 @@
     
     <!-- Digitalisat (online) -->
     <xsl:template name="headerOnline">
-        <span class="infoTitle">Digitalisat (online): </span><br/>
-        <xsl:for-each select=".//listBibl[@type='online']/bibl">
+        <xsl:if test=".//listBibl[@type='online']/bibl[normalize-space(@source)]">
+            <span class="infoTitle">Digitalisat (online): </span><br/>
+            <xsl:for-each select=".//listBibl[@type='online']/bibl[normalize-space(@source)]">
+                <p class="headerData">
+                    <a class="onlineLink" href="{@source}"><xsl:value-of select="@source"/></a>
+                </p>
+            </xsl:for-each>
+        </xsl:if>
+    </xsl:template>
+    
+    <!-- Faksimile (IIIF-Viewer) -->
+    <xsl:template name="headerFacsimile">
+        <xsl:if test=".//pb[@facs]">
+            <xsl:variable name="manifest"
+                select="'https://iiif.annemarie-schwarzenbach.ch/presentation/' || (@xml:id => encode-for-uri()) || '.json'"/>
             <p class="headerData">
-                <xsl:value-of select="@source"/>
+                <span class="infoTitle">Faksimile: </span>
+                <a class="facsimileLink" href="https://cforney.github.io/iiif-viewer-nuxt/content/zoom?manifest={$manifest}">Im IIIF-Viewer öffnen</a>
             </p>
-        </xsl:for-each>
+        </xsl:if>
     </xsl:template>
     
     <!-- Überblickskommentar -->
