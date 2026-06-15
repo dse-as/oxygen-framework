@@ -1492,6 +1492,13 @@ notesStmt note[type='global_comment'] p {
     padding: 0.5em;
 }
 
+notesStmt note[type='global_comment'] p label {
+    color: #02818a;
+    font-weight: bold;
+    padding-right: 0.35em;
+    -oxy-placeholder-content: "[${i18n(subheading-label_placeholder)}]";
+}
+
 /* text */
 
 text:after(19995) {

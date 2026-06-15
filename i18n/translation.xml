@@ -447,7 +447,12 @@
         <val lang="de_DE">Verfasserinnenzeile</val>
         <val lang="en_US">Byline</val>
     </key>
-    
+
+    <key value="subheading-label_placeholder">
+        <val lang="de_DE">Zwischentitel, z. B. Historischer Kontext:</val>
+        <val lang="en_US">Subheading, e.g. Historical context:</val>
+    </key>
+
     <key value="dateline_placeholder">
         <val lang="de_DE">Datumszeile</val>
         <val lang="en_US">Dateline</val>

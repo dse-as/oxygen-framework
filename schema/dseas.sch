@@ -233,8 +233,44 @@
         <rule context="tei:note[@type='global_comment']">
             <assert test="tei:p">A &lt;<name/>&gt; element of type 'global_comment' must contain a &lt;p&gt; element.</assert>
             <report test="text()[normalize-space()]">A &lt;<name/>&gt; of type 'global_comment' cannot contain text as child node.</report>
+            <!-- Übersichtskommentar enthält Text, aber gar keine Zwischentitel-Auszeichnung.
+                 Feuert nur, wenn nicht ohnehin schon ein einzelner Absatz unten beanstandet wird. -->
+            <report test="normalize-space(string(.)) != ''
+                          and not(.//tei:label)
+                          and not(tei:p[matches(normalize-space(string(.)), '^[\p{Lu}][^:.!?]{2,40}:')])"
+                role="warning">Dieser &lt;<name/>&gt; ist nicht mit &lt;label&gt;-Zwischentiteln (z. B. "Entstehungskontext:", "Historischer Kontext:") strukturiert. Falls der Text Themenabschnitte enthält, sollten diese als &lt;label&gt; ausgezeichnet werden.</report>
         </rule>
-        
+
+        <!-- note (global_comment) > p: erkennbarer Zwischentitel ohne label-Auszeichnung -->
+        <rule context="tei:note[@type='global_comment']/tei:p">
+            <report test="not(tei:label) and matches(normalize-space(string(.)), '^[\p{Lu}][^:.!?]{2,40}:')"
+                role="warning" sqf:fix="wrapSubheadingInLabel">Dieser Absatz beginnt mit einer Zwischenüberschrift (z. B. "Historischer Kontext:"), die als &lt;label&gt; ausgezeichnet werden sollte.</report>
+            <sqf:fix id="wrapSubheadingInLabel">
+                <sqf:description>
+                    <sqf:title>Zwischenüberschrift als &lt;label&gt; auszeichnen</sqf:title>
+                </sqf:description>
+                <sqf:replace match="text()[normalize-space()][1]">
+                    <xsl:analyze-string select="." regex="^(\s*)([\p{{Lu}}][^:.!?]{{2,40}}:)(.*)$" flags="s">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(1)"/>
+                            <label xmlns="http://www.tei-c.org/ns/1.0"><xsl:value-of select="regex-group(2)"/></label>
+                            <xsl:value-of select="regex-group(3)"/>
+                        </xsl:matching-substring>
+                        <xsl:non-matching-substring>
+                            <xsl:value-of select="."/>
+                        </xsl:non-matching-substring>
+                    </xsl:analyze-string>
+                </sqf:replace>
+            </sqf:fix>
+        </rule>
+
+        <!-- label (global_comment): nur vereinbarte Zwischentitel zulassen -->
+        <rule context="tei:note[@type='global_comment']//tei:label">
+            <let name="allowedLabels" value="'Entstehungskontext|Publikationskontext|Historischer Kontext'"/>
+            <let name="value" value="normalize-space(.) => replace(':\s*$', '')"/>
+            <assert test="$value = tokenize($allowedLabels, '\|')" role="warning">Unerwarteter Zwischentitel "<value-of select="$value"/>". Ein &lt;<name/>&gt; im Übersichtskommentar sollte einen der vereinbarten Werte enthalten: <xsl:value-of select="tokenize($allowedLabels,'\|')[not(position()=last())]" separator=", "/> oder <value-of select="tokenize($allowedLabels,'\|')[last()]"/>.</assert>
+        </rule>
+
         <!-- opener -->
         <rule context="tei:opener">
             <report test="text()[normalize-space()]">An &lt;<name/>&gt; cannot contain text as child node.</report>
@@ -307,7 +343,7 @@
             <report test="contains(., '[')" role="warning">Ungewöhnliches Vorkommen von eckiger Klammer "[". Möglicherweise ein unverarbeiteter Kommentar?</report>
             <report test="contains(., ']')" role="warning">Ungewöhnliches Vorkommen von eckiger Klammer "]". Möglicherweise ein unverarbeiteter Kommentar?</report>
         </rule>
-        
+
     </pattern>
-    
+
 </schema>

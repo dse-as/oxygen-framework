@@ -109,6 +109,12 @@ header {
     font-style: italic;
 }
 
+.subheading {
+    font-weight: bold;
+    font-style: normal;
+    padding-right: 0.35em;
+}
+
 /* Content */
 
 .textDiv {

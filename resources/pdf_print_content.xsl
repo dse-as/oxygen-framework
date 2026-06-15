@@ -42,6 +42,13 @@
         </xsl:element>
     </xsl:template>
     
+    <!-- label (Zwischentitel im Überblickskommentar) -->
+    <xsl:template mode="#all" match="label[ancestor::note[@type='global_comment']]">
+        <span class="subheading">
+            <xsl:apply-templates mode="#current"/>
+        </span>
+    </xsl:template>
+
     <!-- pb -->
     <xsl:template mode="#all" match="pb">
         <span class="pb">
