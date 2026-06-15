@@ -26,13 +26,48 @@
     <xsl:template mode="#all" match="milestone"/>
     
     <!-- lb -->
+    <!-- A normal <lb/> is a word boundary; it renders as nothing because the
+         source whitespace that surrounds it already collapses to a single
+         space. A non-breaking <lb break="no"/> renders as nothing too, and the
+         surrounding whitespace is stripped by the text() normalisation below. -->
     <xsl:template mode="#all" match="lb">
         <!--<br/>-->
     </xsl:template>
-        
-    <!-- This template removes trailing whitespace directly preceding a lb element with @break = 'no' -->
-    <xsl:template mode="#all" match="text()[following-sibling::*[position()=1 and local-name()='lb' and @break='no']][matches(.,'\s+$')]">
-        <xsl:value-of select="replace(.,'\s+$','')"/>    
+
+    <!-- ============================================================
+         Line-break (lb) whitespace normalisation
+         ============================================================
+         The sources are transcribed line by line: every physical line of the
+         witness starts with an <lb/>, and because the XML is pretty-printed,
+         each line's text node carries trailing "newline + indentation"
+         whitespace. The reading text in the PDF must join those lines again:
+
+           * normal  <lb/>          word boundary  => keep one space
+                                     (the trailing source whitespace provides it)
+           * <lb break="no"/>       NOT a word boundary => the word continues,
+                                     so the two lines are joined with NO space
+                                     (e.g. "Ein" + "zelnen" => "Einzelnen")
+
+         Only <lb break="no"/> joins the two halves. Hyphens are NEVER altered:
+         a word-final "-" before a normal <lb/> is kept verbatim (so e.g.
+         "Anne-" + <lb/> + "marie" stays "Anne- marie", it is NOT merged into
+         "Annemarie").
+         ============================================================ -->
+    <xsl:template mode="#all" match="text()">
+        <xsl:choose>
+            <!-- Whitespace-only node: it normally just pads the gap between
+                 inline markup and an <lb>. Drop it when it merely fills the gap
+                 around a non-breaking <lb> (otherwise it collapses into a stray
+                 space inside the joined word); keep it everywhere else. -->
+            <xsl:when test="not(normalize-space())">
+                <xsl:if test="not(dseas:inNoBreakGap(.))">
+                    <xsl:value-of select="."/>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="dseas:normaliseLineText(.)"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- p -->
@@ -41,7 +76,7 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:element>
     </xsl:template>
-    
+
     <!-- label (Zwischentitel im Überblickskommentar) -->
     <xsl:template mode="#all" match="label[ancestor::note[@type='global_comment']]">
         <span class="subheading">
@@ -302,7 +337,69 @@
     </xsl:template>
     
     <!-- FUNCTIONS -->
-    
+
+    <!-- True when a whitespace-only text node only pads the gap immediately
+         before or after a non-word-breaking <lb> (i.e. there is no significant
+         text between it and that <lb>). Such padding must be discarded so the
+         word halves join seamlessly; whitespace anywhere else is preserved. -->
+    <xsl:function name="dseas:inNoBreakGap" as="xs:boolean">
+        <xsl:param name="t" as="text()"/>
+        <xsl:variable name="nextNoBreak" select="$t/following::lb[@break='no'][1]"/>
+        <xsl:variable name="prevNoBreak" select="$t/preceding::lb[@break='no'][1]"/>
+        <xsl:sequence select="
+            (: in the gap that ends just before a non-breaking lb :)
+            (exists($nextNoBreak)
+                and (empty($t/following::text()[normalize-space()])
+                     or $nextNoBreak &lt;&lt; $t/following::text()[normalize-space()][1]))
+            or
+            (: in the gap that starts just after a non-breaking lb :)
+            (exists($prevNoBreak)
+                and (empty($t/preceding::text()[normalize-space()])
+                     or $t/preceding::text()[normalize-space()][1] &lt;&lt; $prevNoBreak))
+            "/>
+    </xsl:function>
+
+    <!-- Normalises a significant (non-whitespace) text node with respect to the
+         line breaks around it: strips the leading whitespace when the previous
+         line was joined onto this one (preceding lb break="no"), and strips the
+         trailing whitespace when this line is joined onto the next one (following
+         lb break="no"). A plain word-breaking <lb/> leaves the surrounding
+         whitespace untouched so it collapses to the expected single inter-word
+         space. Hyphens are left exactly as transcribed. -->
+    <xsl:function name="dseas:normaliseLineText" as="xs:string">
+        <xsl:param name="t" as="text()"/>
+
+        <!-- the <lb> that opens this text node's line, if this is its first
+             significant text -->
+        <xsl:variable name="prevLb" select="$t/preceding::lb[1]"/>
+        <xsl:variable name="lineInitial" as="xs:boolean" select="
+            exists($prevLb)
+            and (empty($t/preceding::text()[normalize-space()])
+                 or $t/preceding::text()[normalize-space()][1] &lt;&lt; $prevLb)"/>
+
+        <!-- the <lb> that closes this text node's line, if this is its last
+             significant text -->
+        <xsl:variable name="nextLb" select="$t/following::lb[1]"/>
+        <xsl:variable name="lineFinal" as="xs:boolean" select="
+            exists($nextLb)
+            and (empty($t/following::text()[normalize-space()])
+                 or $nextLb &lt;&lt; $t/following::text()[normalize-space()][1])"/>
+
+        <!-- the previous line joins onto this one only when it ended on a
+             non-breaking lb; this line joins onto the next one only when it ends
+             on a non-breaking lb -->
+        <xsl:variable name="joinedFromPrev" as="xs:boolean"
+            select="$lineInitial and $prevLb/@break = 'no'"/>
+        <xsl:variable name="joinsToNext" as="xs:boolean"
+            select="$lineFinal and $nextLb/@break = 'no'"/>
+
+        <xsl:variable name="afterLead" select="
+            if ($joinedFromPrev) then replace(string($t), '^\s+', '') else string($t)"/>
+        <xsl:variable name="afterTrail" select="
+            if ($joinsToNext) then replace($afterLead, '\s+$', '') else $afterLead"/>
+        <xsl:sequence select="$afterTrail"/>
+    </xsl:function>
+
     <xsl:function name="dseas:drawCell">
         <xsl:param name="node"/>
         <xsl:choose>
