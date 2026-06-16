@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.9.0</xt:version>
+        <xt:version>0.9.1</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -13,6 +13,20 @@
             <h1>DSE-AS Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.9.1</h3>
+                <p>Release date: 16/06/2026</p>
+                <p>Neu:</p>
+                <ul>
+                    <li>Titel-Zusatz</li>
+                    <li>label in global_comment</li>
+                    <li>PDF Print, Link auf Digitalisate (IIIF-Viewer)</li>
+                </ul>
+                <p>Update:</p>
+                <ul>
+                    <li>Button Textzeugen bleibt ersichtlich</li>
+                    <li>PDF Print, verbesserte Normalisierung von lb und Trennstrichen</li>
+                    <li>Schematron, restriktivere Kontrolle von lb</li>
+                </ul>
                 <h3>Version 0.9.0</h3>
                 <p>Release date: 28/05/2026</p>
                 <p>Neu:</p>
