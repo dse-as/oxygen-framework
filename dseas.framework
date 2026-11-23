@@ -609,7 +609,7 @@
 															</entry>
 															<entry>
 																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Lebensdaten[width:100; type:date]=$XPATH{@dates}|Typ[width:200]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
+																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:100]=$XPATH{@alt_n}|Lebensdaten[width:100; type:date]=$XPATH{@dates}|Typ[width:200]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1291,7 +1291,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -1308,6 +1308,10 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
+															</entry>
+															<entry>
+																<String>column definitions</String>
+																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:150]=$XPATH{@alt_n}|Typ[width:150]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -3280,7 +3284,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -3297,6 +3301,10 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
+															</entry>
+															<entry>
+																<String>column definitions</String>
+																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:150]=$XPATH{@alt_n}|Typ[width:150]=$XPATH{@type}|Land[width:50]=$XPATH{@country}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>

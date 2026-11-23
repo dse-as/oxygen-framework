@@ -21,16 +21,24 @@
                 <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
                 <xsl:with-param name="sheet" select="'Personen'"/>
                 <xsl:with-param name="output-file" select="'lookup-person.xml'"/>
-                <!-- Extra columns of the register dialog: sheet columns J-K (birth and
-                     death date) become li/@dates ("1911–1977"), column L ("Typ") li/@type -->
-                <xsl:with-param name="extra-columns" select="'dates=J-K', 'type=L'"/>
+                <!-- Extra columns of the register dialog:
+                column F ("Variante; Spitzname") li/@alt_n,
+                sheet columns J-K (birth and death date) become li/@dates ("1911–1977"),
+                column L ("Typ") li/@type -->
+                <xsl:with-param name="extra-columns" select="'alt_n=F', 'dates=J-K', 'type=L'"/>
             </xsl:call-template>
-        </xsl:if>
+        </xsl:if>)
         <xsl:if test="$type = 'place' or $type = 'all'">
             <xsl:call-template name="fetch-and-process-gsheet-items">
                 <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
                 <xsl:with-param name="sheet" select="'Orte'"/>
                 <xsl:with-param name="output-file" select="'lookup-place.xml'"/>
+                <!-- Extra columns of the register dialog:
+                column E ("Namensvariante; Namensvariante") li/@alt_n,
+                column K ("Type") li/@type,
+                column M ("Land) li/@country,
+                 -->
+                <xsl:with-param name="extra-columns" select="'alt_n=E', 'type=K', 'country=M'"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'org' or $type = 'all'">
@@ -38,6 +46,10 @@
                 <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
                 <xsl:with-param name="sheet" select="'Organisationen'"/>
                 <xsl:with-param name="output-file" select="'lookup-org.xml'"/>
+                <!-- Extra columns of the register dialog:
+                column E ("Alternative Namen") li/@alt_n,
+                column G ("Type") li/@type -->
+                <xsl:with-param name="extra-columns" select="'alt_n=E', 'type=G'"/>
             </xsl:call-template>
         </xsl:if>
         
