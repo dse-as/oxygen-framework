@@ -639,6 +639,18 @@
         <val lang="de_DE">Schreibdatum</val>
         <val lang="en_US">Date of writing</val>
     </key>
+    <key value="date-exact_label">
+        <val lang="de_DE">exakt</val>
+        <val lang="en_US">exact</val>
+    </key>
+    <key value="date-notBefore_label">
+        <val lang="de_DE">oder frühestens</val>
+        <val lang="en_US">or not before</val>
+    </key>
+    <key value="date-notAfter_label">
+        <val lang="de_DE">spätestens</val>
+        <val lang="en_US">not after</val>
+    </key>
     <key value="date-of-receipt_label">
         <val lang="de_DE">Empfangsdatum</val>
         <val lang="en_US">Date of receipt</val>

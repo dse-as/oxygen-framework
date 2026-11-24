@@ -996,9 +996,16 @@ correspAction orgName {
     display: block;
 }
 
+/* exact date (@when) or uncertain range (@notBefore/@notAfter); yyyy, yyyy-MM or yyyy-MM-dd; conflicts reported by Schematron */
 correspAction date {
-	content: 
-        oxy_datePicker(columns, 18, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+	content:
+        oxy_label(text, "${i18n(date-exact_label)}: ", styles, "* {font-weight: bold;}")
+        oxy_datePicker(columns, 11, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+        oxy_label(text, "  ${i18n(date-notBefore_label)}: ", styles, "* {font-weight: bold;}")
+        oxy_datePicker(columns, 11, edit , "@notBefore", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+        oxy_label(text, "  ${i18n(date-notAfter_label)}: ", styles, "* {font-weight: bold;}")
+        oxy_datePicker(columns, 11, edit , "@notAfter", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
+        "  "
         oxy_editor(type, combo,
                 edit, "@type"
                 editable, false,

@@ -171,59 +171,50 @@
     
     <!-- FUNCTIONS -->
     
-    <!-- formatDateAttributes -->
-    <xsl:function name="dseas:formatDateAttributes">
-        <xsl:param name="date"/>
+    <!-- formatDateAttributes: @when | @notBefore/@notAfter (letters) | @from/@to (smallforms);
+         conjectural dates in brackets -->
+    <xsl:function name="dseas:formatDateAttributes" as="xs:string">
+        <xsl:param name="date" as="element()*"/>
+        <xsl:variable name="d" select="$date[1]"/>
+        <xsl:variable name="min" select="($d/@notBefore, $d/@from)[1]"/>
+        <xsl:variable name="max" select="($d/@notAfter, $d/@to)[1]"/>
+        <xsl:variable name="text" select="
+            if ($d/@when) then dseas:formatDate($d/@when)
+            else if ($min and $max) then dseas:formatRange($min, $max)
+            else if ($min) then 'nach ' || dseas:formatDate($min)
+            else if ($max) then 'vor ' || dseas:formatDate($max)
+            else ''"/>
+        <xsl:sequence select="if ($text = '') then '-' else if ($d/@type = 'conjecture') then '[' || $text || ']' else $text"/>
+    </xsl:function>
+
+    <!-- formatRange: compact forms for year and same-year month ranges, e.g. "1928/1929", "Mai/Juni 1931", "Mai–Juli 1931" -->
+    <xsl:function name="dseas:formatRange" as="xs:string">
+        <xsl:param name="min" as="xs:string"/>
+        <xsl:param name="max" as="xs:string"/>
         <xsl:choose>
-            <xsl:when test="$date[@when]">
-                <xsl:value-of select="dseas:formatDate($date/@when)"/>
+            <xsl:when test="matches($min, '^\d{4}$') and matches($max, '^\d{4}$')">
+                <xsl:sequence select="$min || (if (xs:integer($max) - xs:integer($min) = 1) then '/' else '–') || $max"/>
             </xsl:when>
-            <xsl:when test="$date[@from and @to]">
-                <xsl:text>zwischen </xsl:text>
-                <xsl:value-of select="dseas:formatDate($date/@from)"/>
-                <xsl:text> und </xsl:text>
-                <xsl:value-of select="dseas:formatDate($date/@to)"/>
-            </xsl:when>
-            <xsl:when test="$date[@from]">
-                <xsl:text>nach </xsl:text>
-                <xsl:value-of select="dseas:formatDate($date/@from)"/>
-            </xsl:when>
-            <xsl:when test="$date[@to]">
-                <xsl:text>vor </xsl:text>
-                <xsl:value-of select="dseas:formatDate($date/@to)"/>
+            <xsl:when test="matches($min, '^\d{4}-\d\d$') and matches($max, '^\d{4}-\d\d$')
+                and substring($min, 1, 4) = substring($max, 1, 4)
+                and (every $v in ($min, $max) satisfies ($v || '-01') castable as xs:date)">
+                <xsl:variable name="months" select="for $v in ($min, $max) return format-date(xs:date($v || '-01'), '[MNn]', 'de', (), ())"/>
+                <xsl:variable name="sep" select="if (xs:integer(substring($max, 6)) - xs:integer(substring($min, 6)) = 1) then '/' else '–'"/>
+                <xsl:sequence select="$months[1] || $sep || $months[2] || ' ' || substring($min, 1, 4)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:text>-</xsl:text>
+                <xsl:sequence select="'zwischen ' || dseas:formatDate($min) || ' und ' || dseas:formatDate($max)"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
 
-    <!-- formatDate -->
-    <xsl:function name="dseas:formatDate">
+    <!-- formatDate: yyyy-mm-dd | yyyy-mm | yyyy in German; other values verbatim -->
+    <xsl:function name="dseas:formatDate" as="xs:string">
         <xsl:param name="date"/>
-        <xsl:choose>
-            <xsl:when test="matches($date,'^\d\d\d\d-\d\d-\d\d$')">
-                <xsl:try>
-                    <xsl:value-of select="format-date($date, '[D1o] [MNn] [Y0001]','de',(),())"/>
-                    <xsl:catch>
-                        <xsl:value-of select="$date"/>
-                    </xsl:catch>
-                </xsl:try>
-            </xsl:when>
-            <xsl:when test="matches($date,'^\d\d\d\d-\d\d$')">
-                <xsl:try>
-                    <xsl:value-of select="format-date($date, '[MNn] [Y0001]','de',(),())"/>
-                    <xsl:catch>
-                        <xsl:value-of select="$date"/>
-                    </xsl:catch>
-                </xsl:try>
-            </xsl:when>
-            <xsl:when test="matches($date,'^\d\d\d\d$')">
-                <xsl:value-of select="$date"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="$date"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:variable name="d" select="string($date)"/>
+        <xsl:sequence select="
+            if (matches($d, '^\d{4}-\d\d-\d\d$') and $d castable as xs:date) then format-date(xs:date($d), '[D1o] [MNn] [Y0001]', 'de', (), ())
+            else if (matches($d, '^\d{4}-\d\d$') and ($d || '-01') castable as xs:date) then format-date(xs:date($d || '-01'), '[MNn] [Y0001]', 'de', (), ())
+            else $d"/>
     </xsl:function>
 </xsl:stylesheet>

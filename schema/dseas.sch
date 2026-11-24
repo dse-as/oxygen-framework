@@ -4,6 +4,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
+    <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
 
     <!-- global variables -->
     
@@ -328,8 +329,52 @@
         
     </pattern>
 
+    <!-- letter dates: exact (@when) or uncertain range (@notBefore/@notAfter, W3C precision yyyy, yyyy-mm, yyyy-mm-dd) -->
+    <pattern id="letter-dates">
+
+        <rule context="tei:TEI[@type='dseas-letter']//tei:correspAction/tei:date">
+            <let name="when" value="string(@when)"/>
+            <!-- range bounds padded to full dates: earliest day of @notBefore, latest day of @notAfter -->
+            <let name="min" value="string(@notBefore) ! (if (matches(., '^\d{4}$')) then . || '-01-01' else if (matches(., '^\d{4}-\d\d$')) then . || '-01' else .)"/>
+            <let name="na" value="string(@notAfter)"/>
+            <let name="maxBase" value="if (matches($na, '^\d{4}$')) then $na || '-12-31' else if (matches($na, '^\d{4}-\d\d$')) then $na || '-01' else $na"/>
+            <let name="max" value="if ($maxBase castable as xs:date and matches($na, '^\d{4}-\d\d$')) then string(xs:date($maxBase) + xs:yearMonthDuration('P1M') - xs:dayTimeDuration('P1D')) else $maxBase"/>
+            <!-- legacy workarounds: "1931-05/06", "1928/1929", "1930-12/1931-01" -->
+            <let name="slashRange" value="matches($when, '^(\d{4}-\d\d/\d\d|\d{4}(-\d\d)?/\d{4}(-\d\d)?)$')"/>
+            <let name="slashMin" value="substring-before($when, '/')"/>
+            <let name="slashMax" value="substring-after($when, '/') ! (if (matches(., '^\d\d$')) then substring($when, 1, 5) || . else .)"/>
+
+            <report test="@when and (@notBefore or @notAfter)">A &lt;<name/>&gt; is either exact (@when) or a range (@notBefore/@notAfter), not both.</report>
+            <report test="@from or @to" sqf:fix="dateFromToRange">A letter date uses @notBefore/@notAfter for uncertain dates, not @from/@to (which denote a duration).</report>
+            <report test="$min castable as xs:date and $max castable as xs:date and xs:date($min) gt xs:date($max)">@notBefore (<value-of select="@notBefore"/>) must not be later than @notAfter (<value-of select="@notAfter"/>).</report>
+            <report test="preceding-sibling::tei:date">A &lt;correspAction&gt; may contain only one &lt;<name/>&gt;. Encode alternatives as a range (@notBefore/@notAfter) and explain in a note.</report>
+            <report test="parent::tei:correspAction/@type='sent' and not(@when or @notBefore or @notAfter or @from or @to)" role="warning">The date of writing is missing (@when, or @notBefore/@notAfter).</report>
+            <report test="$slashRange" sqf:fix="dateSlashRange">Invalid @when '<value-of select="$when"/>': encode uncertain periods as @notBefore/@notAfter.</report>
+            <report test="matches($when, '[\[\]]')" sqf:fix="dateBrackets">Invalid @when '<value-of select="$when"/>': remove the brackets and mark the date with @type='conjecture'.</report>
+
+            <sqf:fix id="dateFromToRange">
+                <sqf:description><sqf:title>Convert @from/@to to @notBefore/@notAfter</sqf:title></sqf:description>
+                <sqf:add use-when="@from" target="notBefore" node-type="attribute" select="string(@from)"/>
+                <sqf:add use-when="@to" target="notAfter" node-type="attribute" select="string(@to)"/>
+                <sqf:delete match="@from | @to"/>
+            </sqf:fix>
+            <sqf:fix id="dateSlashRange">
+                <sqf:description><sqf:title>Convert '<value-of select="$when"/>' to @notBefore='<value-of select="$slashMin"/>' @notAfter='<value-of select="$slashMax"/>'</sqf:title></sqf:description>
+                <sqf:add target="notBefore" node-type="attribute" select="$slashMin"/>
+                <sqf:add target="notAfter" node-type="attribute" select="$slashMax"/>
+                <sqf:delete match="@when"/>
+            </sqf:fix>
+            <sqf:fix id="dateBrackets">
+                <sqf:description><sqf:title>Remove brackets and set @type='conjecture'</sqf:title></sqf:description>
+                <sqf:replace match="@when" target="when" node-type="attribute" select="replace(., '[\[\]]', '')"/>
+                <sqf:add target="type" node-type="attribute" select="'conjecture'"/>
+            </sqf:fix>
+        </rule>
+
+    </pattern>
+
     <pattern>
-        
+
         <!-- characters -->
         <rule context="tei:text//text()[not(ancestor::tei:note)]">
             <report test="contains(., '¬')" role="warning">Ungewöhnliches Vorkommen von Negationszeichen "¬". Möglicherweise eine unverarbeitete Silbentrennung?</report>
