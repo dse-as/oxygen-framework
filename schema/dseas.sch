@@ -343,6 +343,42 @@
 
     </pattern>
 
+    <!-- editorial sequence of letters: correspContext/ref[@type='prev'|'next'] with @target = letter ID;
+         targets are resolved via the fixed path letters/NN/letter_NNNN.xml -->
+    <pattern id="letter-sequence">
+
+        <rule context="tei:correspContext">
+            <report test="preceding-sibling::tei:correspContext">Only one &lt;<name/>&gt; per letter.</report>
+            <report test="*[not(self::tei:ref)]">A &lt;<name/>&gt; may only contain &lt;ref type="prev|next"&gt;.</report>
+        </rule>
+
+        <rule context="tei:correspContext/tei:ref">
+            <let name="id" value="string(@target)"/>
+            <let name="self" value="string(ancestor::tei:TEI/@xml:id)"/>
+            <let name="path" value="resolve-uri('../' || substring($id, 8, 2) || '/' || $id || '.xml', document-uri(/))"/>
+            <let name="target" value="if (matches($id, '^letter_\d{4}$') and doc-available($path)) then doc($path) else ()"/>
+            <let name="back" value="if (@type = 'next') then 'prev' else 'next'"/>
+            <!-- sort keys: earliest known date of this and the target letter -->
+            <let name="selfKey" value="string((ancestor::tei:TEI//tei:correspAction[@type='sent']/tei:date/(@when, @notBefore, @notAfter))[1])"/>
+            <let name="targetKey" value="string(($target//tei:correspAction[@type='sent']/tei:date/(@when, @notBefore, @notAfter))[1])"/>
+            <!-- compared at the common precision, so 1929-07 and 1929-07-15 do not conflict -->
+            <let name="n" value="min((string-length($selfKey), string-length($targetKey)))"/>
+
+            <assert test="@type = ('prev', 'next')">A &lt;<name/>&gt; in &lt;correspContext&gt; must have @type 'prev' or 'next'.</assert>
+            <assert test="matches($id, '^letter_\d{4}$')">@target must be a letter ID (letter_NNNN).</assert>
+            <report test="$id = $self">A letter cannot point to itself.</report>
+            <report test="@type = preceding-sibling::tei:ref/@type">Only one '<value-of select="@type"/>' reference per letter.</report>
+            <report test="matches($id, '^letter_\d{4}$') and empty($target)" role="warning">Target letter <value-of select="$id"/> not found (<value-of select="$path"/>).</report>
+            <report test="exists($target) and $id ne $self and not($target//tei:correspContext/tei:ref[@type = $back][@target = $self])" role="warning">The sequence is not symmetrical: <value-of select="$id"/> has no '<value-of select="$back"/>' reference back to <value-of select="$self"/>.</report>
+            <report test="$selfKey and $targetKey and (if (@type = 'prev') then substring($targetKey, 1, $n) gt substring($selfKey, 1, $n) else substring($targetKey, 1, $n) lt substring($selfKey, 1, $n))" role="warning">Date conflict: the <value-of select="if (@type = 'prev') then 'preceding' else 'following'"/> letter <value-of select="$id"/> is dated <value-of select="$targetKey"/>, this letter <value-of select="$selfKey"/>.</report>
+        </rule>
+
+        <rule context="tei:ref[@type = ('prev', 'next')]">
+            <assert test="parent::tei:correspContext">A &lt;<name/>&gt; of type '<value-of select="@type"/>' belongs in &lt;correspContext&gt;.</assert>
+        </rule>
+
+    </pattern>
+
     <!-- letter dates: exact (@when) or uncertain range (@notBefore/@notAfter, W3C precision yyyy, yyyy-mm, yyyy-mm-dd) -->
     <pattern id="letter-dates">
 

@@ -3720,6 +3720,571 @@ delete_preceding-sibling</String>
 									</action>
 									<action>
 										<field name="id">
+											<String>corresp_prev</String>
+										</field>
+										<field name="name">
+											<String>${i18n(corresp_prev)}</String>
+										</field>
+										<field name="description">
+											<String>${i18n(corresp_prev_description)}</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/letter-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/letter-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::correspDesc[1][correspContext][not(correspContext/ref[@type='prev'])]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;ref xmlns='http://www.tei-c.org/ns/1.0' type='prev' target='$XPATH{@id}'/></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>ancestor-or-self::correspDesc[1]/correspContext</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as first child</String>
+															</entry>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::correspDesc[1][not(correspContext)]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;correspContext xmlns='http://www.tei-c.org/ns/1.0'>&lt;ref type='prev' target='$XPATH{@id}'/>&lt;/correspContext></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>ancestor-or-self::correspDesc[1]</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as last child</String>
+															</entry>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>corresp_next</String>
+										</field>
+										<field name="name">
+											<String>${i18n(corresp_next)}</String>
+										</field>
+										<field name="description">
+											<String>${i18n(corresp_next_description)}</String>
+										</field>
+										<field name="largeIconPath">
+											<String>${framework}/images/letter-20.png</String>
+										</field>
+										<field name="smallIconPath">
+											<String>${framework}/images/letter-16.png</String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::correspDesc[1][correspContext][not(correspContext/ref[@type='next'])]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;ref xmlns='http://www.tei-c.org/ns/1.0' type='next' target='$XPATH{@id}'/></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>ancestor-or-self::correspDesc[1]/correspContext</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as last child</String>
+															</entry>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::correspDesc[1][not(correspContext)]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>element</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>&lt;correspContext xmlns='http://www.tei-c.org/ns/1.0'>&lt;ref type='next' target='$XPATH{@id}'/>&lt;/correspContext></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>ancestor-or-self::correspDesc[1]</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as last child</String>
+															</entry>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>digital.scholarly.edition.operations.RegisterInsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>corresp_remove</String>
+										</field>
+										<field name="name">
+											<String>${i18n(corresp_remove)}</String>
+										</field>
+										<field name="description">
+											<String>${i18n(corresp_remove_description)}</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::ref[parent::correspContext][count(../ref) gt 1]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocation</String>
+																<String>.</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::ref[parent::correspContext]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocation</String>
+																<String>..</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>letter_reg</String>
+										</field>
+										<field name="name">
+											<String>${i18n(letter_reg)}</String>
+										</field>
+										<field name="description">
+											<String>${i18n(letter_reg_description)}</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::ref[parent::correspContext]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>attribute name</String>
+																<String>target</String>
+															</entry>
+															<entry>
+																<String>attribute value</String>
+																<String>$ITEMS</String>
+															</entry>
+															<entry>
+																<String>item variable</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+															<entry>
+																<String>xpath to element of the attribute</String>
+																<String>.</String>
+															</entry>
+															<entry>
+																<String>URL</String>
+																<String>${framework}/resources/lookup-letter.xml</String>
+															</entry>
+															<entry>
+																<String>item rendering</String>
+																<String>$XPATH{@val}</String>
+															</entry>
+															<entry>
+																<String>item separator</String>
+																<String> </String>
+															</entry>
+															<entry>
+																<String>multiple selection</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>namespaces</String>
+																<String>tei:http://www.tei-c.org/ns/1.0</String>
+															</entry>
+															<entry>
+																<String>node</String>
+																<String>//li</String>
+															</entry>
+															<entry>
+																<String>show IDs</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>font size</String>
+																<String>16</String>
+															</entry>
+															<entry>
+																<String>dialog width</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>dialog height</String>
+																<String>700</String>
+															</entry>
+															<entry>
+																<String>id rendering</String>
+																<String>$XPATH{@id}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>digital.scholarly.edition.operations.RegisterChangeAttributeOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>open_letter</String>
+										</field>
+										<field name="name">
+											<String>${i18n(open_letter)}</String>
+										</field>
+										<field name="description">
+											<String>${i18n(open_letter_description)}</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String></String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::ref[parent::correspContext][matches(@target, '^letter_\d{4}$')]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>script</String>
+																<String>function doOperation() {
+    var ea = authorAccess.getEditorAccess();
+    var n = authorAccess.getDocumentController().getNodeAtOffset(ea.getCaretOffset());
+    while (n != null) { if (String(n.getName()) == "ref") break; n = n.getParent(); }
+    if (n == null) return;
+    var id = String(n.getAttribute("target").getValue());
+    authorAccess.getWorkspaceAccess().open(new Packages.java.net.URL(ea.getEditorLocation(), "../" + id.substring(7, 9) + "/" + id + ".xml"));
+}</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.JSOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
 											<String>smallform_reg</String>
 										</field>
 										<field name="name">

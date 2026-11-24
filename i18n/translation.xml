@@ -382,6 +382,50 @@
         <val lang="de_DE">Entfernt diese Person (die letzte verbleibende Person kann nicht entfernt werden)</val>
         <val lang="en_US">Removes this person (the last remaining person cannot be removed)</val>
     </key>
+    <key value="corresp_prev">
+        <val lang="de_DE">Vorheriger Brief</val>
+        <val lang="en_US">Previous letter</val>
+    </key>
+    <key value="corresp_prev_description">
+        <val lang="de_DE">Legt den vorhergehenden Brief der Korrespondenz fest (correspContext)</val>
+        <val lang="en_US">Sets the preceding letter of the correspondence (correspContext)</val>
+    </key>
+    <key value="corresp_next">
+        <val lang="de_DE">Nächster Brief</val>
+        <val lang="en_US">Next letter</val>
+    </key>
+    <key value="corresp_next_description">
+        <val lang="de_DE">Legt den folgenden Brief der Korrespondenz fest (correspContext)</val>
+        <val lang="en_US">Sets the following letter of the correspondence (correspContext)</val>
+    </key>
+    <key value="corresp_remove">
+        <val lang="de_DE">Verweis entfernen</val>
+        <val lang="en_US">Remove reference</val>
+    </key>
+    <key value="corresp_remove_description">
+        <val lang="de_DE">Entfernt den Verweis auf den vorherigen/nächsten Brief</val>
+        <val lang="en_US">Removes the reference to the previous/next letter</val>
+    </key>
+    <key value="letter_reg">
+        <val lang="de_DE">Anderen Brief wählen</val>
+        <val lang="en_US">Choose another letter</val>
+    </key>
+    <key value="letter_reg_description">
+        <val lang="de_DE">Ersetzt den verknüpften Brief durch einen Eintrag aus dem Briefregister</val>
+        <val lang="en_US">Replaces the linked letter with an entry from the letter register</val>
+    </key>
+    <key value="open_letter">
+        <val lang="de_DE">Brief öffnen</val>
+        <val lang="en_US">Open letter</val>
+    </key>
+    <key value="open_letter_description">
+        <val lang="de_DE">Öffnet den verknüpften Brief in Oxygen</val>
+        <val lang="en_US">Opens the linked letter in Oxygen</val>
+    </key>
+    <key value="sequence_label">
+        <val lang="de_DE">Reihenfolge</val>
+        <val lang="en_US">Sequence</val>
+    </key>
 
     <key value="placeName_reg">
         <val lang="de_DE">Ortseintrag referenzieren</val>

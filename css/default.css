@@ -999,11 +999,11 @@ correspAction orgName {
 /* exact date (@when) or uncertain range (@notBefore/@notAfter); yyyy, yyyy-MM or yyyy-MM-dd; conflicts reported by Schematron */
 correspAction date {
 	content:
-        oxy_label(text, "${i18n(date-exact_label)}: ", styles, "* {font-weight: bold;}")
+        oxy_label(text, "${i18n(date-exact_label)}: ", styles, "font-weight: bold;")
         oxy_datePicker(columns, 11, edit , "@when", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
-        oxy_label(text, "  ${i18n(date-notBefore_label)}: ", styles, "* {font-weight: bold;}")
+        oxy_label(text, "  ${i18n(date-notBefore_label)}: ", styles, "font-weight: bold;")
         oxy_datePicker(columns, 11, edit , "@notBefore", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
-        oxy_label(text, "  ${i18n(date-notAfter_label)}: ", styles, "* {font-weight: bold;}")
+        oxy_label(text, "  ${i18n(date-notAfter_label)}: ", styles, "font-weight: bold;")
         oxy_datePicker(columns, 11, edit , "@notAfter", format, "yyyy-MM-dd", validateInput, false, fontInherit, true)
         "  "
         oxy_editor(type, combo,
@@ -1127,6 +1127,55 @@ correspAction[type='received'] date:before {
             styles, "@import 'labels.css';"
         )
     ;
+}
+
+/* Editorial sequence: correspContext/ref[@type='prev'|'next']; label read from lookup-letter.xml (not stored in ref) */
+
+correspDesc:after {
+    content:
+        oxy_label(text, "${i18n(sequence_label)}: ", styles, "@import 'labels.css';")
+        oxy_button(actionID, 'corresp_prev', showIcon, false, showText, true)
+        " "
+        oxy_button(actionID, 'corresp_next', showIcon, false, showText, true);
+    display: block;
+    font-size: 0.85em;
+}
+
+correspContext {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 0.5em;
+    visibility: -oxy-collapse-text;
+}
+
+correspContext > ref {
+    display: block;
+    content:
+        oxy_xpath("let $id := string(@target) return if (doc-available('${framework(DSE-AS)}/resources/lookup-letter.xml')) then string(doc('${framework(DSE-AS)}/resources/lookup-letter.xml')//*[@id = $id][1]/@val) else ''")
+        " "
+        oxy_buttonGroup(
+            label, '▼',
+            actions,
+              oxy_action_list(
+                  oxy_action(id, 'letter_reg')
+                  oxy_action(id, 'open_letter')
+                  oxy_action(id, 'corresp_remove')
+              )
+        );
+}
+
+correspContext > ref[type='prev']:before {
+    content: oxy_label(text, "${i18n(corresp_prev)}: ", styles, "@import 'labels.css';");
+}
+
+correspContext > ref[type='next']:before {
+    content: oxy_label(text, "${i18n(corresp_next)}: ", styles, "@import 'labels.css';");
+}
+
+correspContext > ref:after {
+    content: " " oxy_xpath("if (matches(@target,'^letter_\\d{4}$')) then ' = '||@target else ' ${i18n(not-referenced_label)}'");
+    color: oxy_xpath("if (matches(@target,'^letter_\\d{4}$')) then 'steelblue' else 'red'");
+    font-size: 0.85em;
 }
 
 /* Correspondence */

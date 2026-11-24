@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-27T23:16:25Z. . 
+Schema generated from ODD source 2026-11-24T16:30:29Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -2880,10 +2880,18 @@ Sample values include: 1] duplicate; 2] duplicate-partial; 3] excessStart; 4] ex
          <ref name="tei_note"/>
       </choice>
    </define>
+   <define name="tei_model.correspContextPart">
+      <choice>
+         <ref name="tei_model.ptrLike"/>
+         <ref name="tei_model.pLike"/>
+         <ref name="tei_note"/>
+      </choice>
+   </define>
    <define name="tei_model.correspDescPart">
       <choice>
          <ref name="tei_note"/>
          <ref name="tei_correspAction"/>
+         <ref name="tei_correspContext"/>
       </choice>
    </define>
    <define name="tei_model.resource">
@@ -3515,6 +3523,10 @@ Sample values include: 1] suspension (suspension); 2] contraction (contraction);
             <choice>
                <value>noteAnchor</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Reference used as note anchor.</a:documentation>
+               <value>prev</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">In correspContext: the preceding letter of the same correspondence (target: letter ID).</a:documentation>
+               <value>next</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">In correspContext: the following letter of the same correspondence (target: letter ID).</a:documentation>
             </choice>
          </attribute>
          <empty/>
@@ -4313,6 +4325,16 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
                </choice>
             </attribute>
          </optional>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_correspContext">
+      <element name="correspContext">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(correspondence context) provides references to preceding or following correspondence related to this piece of correspondence. [2.4.6. Correspondence Description]</a:documentation>
+         <oneOrMore>
+            <ref name="tei_model.correspContextPart"/>
+         </oneOrMore>
+         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -43,7 +43,7 @@
         <list>
           <item>Letters and short forms with their specific structural components (opener, closer, postscript, dateline,
             salute, figures with captions, floating text blocks, etc.)</item>
-          <item>Correspondence metadata via <gi>correspDesc</gi> and <gi>correspAction</gi></item>
+          <item>Correspondence metadata via <gi>correspDesc</gi> and <gi>correspAction</gi>; editorial sequence of letters via <gi>correspContext</gi></item>
           <item>Editorial interventions: corrections (<gi>choice</gi>/<gi>sic</gi>/<gi>corr</gi>), expansions of
             abbreviations (<gi>choice</gi>/<gi>abbr</gi>/<gi>expan</gi>), additions (<gi>add</gi>), deletions
             (<gi>del</gi>), gaps (<gi>gap</gi>), and unclear readings (<gi>unclear</gi>)</item>
@@ -65,7 +65,7 @@
       <schemaSpec ident="tei_dseas" start="TEI listEvent list" prefix="tei_" targetLang="en" docLang="en">
         
         <!-- header module: metadata, correspondence description, profiles, and language declarations -->
-        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc correspDesc textClass notesStmt keywords profileDesc catRef correspAction idno edition editionStmt language langUsage"/>
+        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc correspDesc textClass notesStmt keywords profileDesc catRef correspAction correspContext idno edition editionStmt language langUsage"/>
         
         <!-- core module: paragraphs, references, editorial interventions, page/line breaks, etc. -->
         <moduleRef key="core" include="p title rs note head pb lb lg l address addrLine cb listBibl bibl add del abbr quote unclear gap hi list item date publisher graphic author foreign editor ref milestone choice expan sic corr biblScope respStmt label ptr"/>
@@ -249,6 +249,8 @@
             <attDef ident="type" mode="change" usage="req">
               <valList type="closed" mode="replace">
                 <valItem ident="noteAnchor"><desc>Reference used as note anchor.</desc></valItem>
+                <valItem ident="prev"><desc>In correspContext: the preceding letter of the same correspondence (target: letter ID).</desc></valItem>
+                <valItem ident="next"><desc>In correspContext: the following letter of the same correspondence (target: letter ID).</desc></valItem>
               </valList>
             </attDef>
             <attDef ident="target" mode="change" usage="req"/>

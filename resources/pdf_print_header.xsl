@@ -72,8 +72,17 @@
                 </xsl:when>
             </xsl:choose>
         </xsl:for-each>
+        <!-- editorial sequence (correspContext) -->
+        <xsl:if test=".//correspDesc/correspContext/ref[@type = ('prev', 'next')]">
+            <p class="headerData">
+                <xsl:for-each select=".//correspDesc/correspContext/ref[@type = ('prev', 'next')]">
+                    <xsl:value-of select="(if (@type = 'prev') then 'Vorheriger Brief: ' else 'Nächster Brief: ') || dseas:letterLabel(@target, .)"/>
+                    <br/>
+                </xsl:for-each>
+            </p>
+        </xsl:if>
     </xsl:template>
-    
+
     <!-- Bibliographische Angaben (Publikation) -->
     <xsl:template name="headerBibl">
         <span class="infoTitle">Bibliographische Angaben: </span><br/>
@@ -171,6 +180,18 @@
     
     <!-- FUNCTIONS -->
     
+    <!-- letterLabel: label from lookup-letter.xml, else title of the target letter (letters/NN/letter_NNNN.xml), else the ID -->
+    <xsl:function name="dseas:letterLabel" as="xs:string">
+        <xsl:param name="id" as="xs:string"/>
+        <xsl:param name="context" as="node()"/>
+        <xsl:variable name="lookup" select="resolve-uri('lookup-letter.xml', static-base-uri())"/>
+        <xsl:variable name="file" select="resolve-uri('../' || substring($id, 8, 2) || '/' || $id || '.xml', base-uri($context))"/>
+        <xsl:sequence select="normalize-space(string((
+            (if (doc-available($lookup)) then doc($lookup)//*:li[@id = $id][1]/@val else ()),
+            (if (matches($id, '^letter_\d{4}$') and doc-available($file)) then doc($file)//titleStmt/title[1] else ()),
+            $id)[normalize-space()][1]))"/>
+    </xsl:function>
+
     <!-- formatDateAttributes: @when | @notBefore/@notAfter (letters) | @from/@to (smallforms);
          conjectural dates in brackets -->
     <xsl:function name="dseas:formatDateAttributes" as="xs:string">
