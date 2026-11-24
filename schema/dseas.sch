@@ -329,6 +329,20 @@
         
     </pattern>
 
+    <!-- letter correspondents: one correspAction per type, holding one or more persName/orgName -->
+    <pattern id="letter-correspondents">
+
+        <rule context="tei:TEI[@type='dseas-letter']//tei:correspAction">
+            <let name="keys" value="(tei:persName | tei:orgName)/@key[matches(., '^(person|organisation)_')]"/>
+            <assert test="@type = ('sent', 'received')">A &lt;<name/>&gt; must have @type 'sent' or 'received'.</assert>
+            <report test="@type = preceding-sibling::tei:correspAction/@type">Only one &lt;<name/>&gt; of type '<value-of select="@type"/>' per letter. Add further persons as additional &lt;persName&gt; inside the existing &lt;<name/>&gt;.</report>
+            <assert test="(tei:persName | tei:orgName)[normalize-space()]" role="warning"><value-of select="if (@type = 'sent') then 'Sender' else 'Recipient'"/> is missing (&lt;persName&gt; or &lt;orgName&gt;).</assert>
+            <report test="count($keys) ne count(distinct-values($keys))">The same person or organisation is listed more than once (<value-of select="distinct-values(for $k in $keys return $k[count($keys[. = $k]) gt 1])"/>).</report>
+            <report test="(tei:date | tei:placeName)/following-sibling::*[self::tei:persName or self::tei:orgName]" role="warning">Persons and organisations should come before &lt;date&gt; and &lt;placeName&gt;.</report>
+        </rule>
+
+    </pattern>
+
     <!-- letter dates: exact (@when) or uncertain range (@notBefore/@notAfter, W3C precision yyyy, yyyy-mm, yyyy-mm-dd) -->
     <pattern id="letter-dates">
 

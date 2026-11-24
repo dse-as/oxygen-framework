@@ -366,6 +366,22 @@
         <val lang="de_DE">Verknüpft das Element mit einem Eintrag aus dem Personenregister</val>
         <val lang="en_US">Links the element to an entry in the person register</val>
     </key>
+    <key value="persName_add">
+        <val lang="de_DE">Weitere Person hinzufügen</val>
+        <val lang="en_US">Add further person</val>
+    </key>
+    <key value="persName_add_description">
+        <val lang="de_DE">Fügt eine weitere Person aus dem Personenregister hinzu</val>
+        <val lang="en_US">Adds a further person from the person register</val>
+    </key>
+    <key value="persName_remove">
+        <val lang="de_DE">Person entfernen</val>
+        <val lang="en_US">Remove person</val>
+    </key>
+    <key value="persName_remove_description">
+        <val lang="de_DE">Entfernt diese Person (die letzte verbleibende Person kann nicht entfernt werden)</val>
+        <val lang="en_US">Removes this person (the last remaining person cannot be removed)</val>
+    </key>
 
     <key value="placeName_reg">
         <val lang="de_DE">Ortseintrag referenzieren</val>
@@ -622,6 +638,10 @@
     <key value="sender_label">
         <val lang="de_DE">Absender/in</val>
         <val lang="en_US">Sender</val>
+    </key>
+    <key value="further-person_label">
+        <val lang="de_DE">und</val>
+        <val lang="en_US">and</val>
     </key>
     <key value="recipient_label">
         <val lang="de_DE">Empfänger/in</val>

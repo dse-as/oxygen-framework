@@ -1037,15 +1037,31 @@ correspAction[type='received'] persName:before {
     ; 
 }
 
+/* several senders/recipients: further persName after the first are labelled "und" */
+correspAction[type] persName ~ persName:before {
+    content:
+        oxy_label(
+            text, "${i18n(further-person_label)}: "
+            styles, "@import 'labels.css';"
+        )
+    ;
+}
+
 correspAction persName:after {
-    -oxy-append-content: 
+    -oxy-append-content:
         " "
         oxy_buttonGroup(
             label, '▼',
-            actions, 
+            actions,
               oxy_action_list(
-                  oxy_action( 
+                  oxy_action(
                         id, 'persName_reg'
+                  )
+                  oxy_action(
+                        id, 'persName_add'
+                  )
+                  oxy_action(
+                        id, 'persName_remove'
                   )
               )
          );
