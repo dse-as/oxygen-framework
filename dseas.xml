@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="dseas">
         <xt:location href="dseas.zip"/>
-        <xt:version>0.9.1</xt:version>
+        <xt:version>0.9.2</xt:version>
         <xt:oxy_version>21.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>cforney</xt:author>
@@ -13,6 +13,19 @@
             <h1>DSE-AS Oxygen Framework</h1>
             <div class="body">
                 <h2>Changelog</h2>
+                <h3>Version 0.9.2</h3>
+                <p>Release date: 25/11/2026</p>
+                <p>Neu:</p>
+                <ul>
+                    <li>Mehrspaltige Register-Dialoge</li>
+                    <li>Briefe, unsichere Datierung (Zeitraum)</li>
+                    <li>Briefe, mehrere Absender:innen/Empfänger:innen</li>
+                    <li>Briefe, Reihenfolge (vorheriger/nächster Brief)</li>
+                </ul>
+                <p>Update:</p>
+                <ul>
+                    <li>Schematron, Prüfung von Datierung, Personen und Reihenfolge</li>
+                </ul>
                 <h3>Version 0.9.1</h3>
                 <p>Release date: 16/06/2026</p>
                 <p>Neu:</p>
