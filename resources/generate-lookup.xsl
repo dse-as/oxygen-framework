@@ -58,6 +58,11 @@
                 <xsl:with-param name="sheetID" select="'1KgZmtgZUEKx6o48KXTAYxWHhsOVrIxyOElFAUUOIc98'"/>
                 <xsl:with-param name="sheet" select="'Briefe'"/>
                 <xsl:with-param name="output-file" select="'lookup-letter.xml'"/>
+                <!-- Extra columns of the register dialog:
+                column L ("Verfasser_in") li/@sender,
+                column M ("Adressat_in") li/@recipient,
+                column O ("Datierung_normiert") li/@date -->
+                <xsl:with-param name="extra-columns" select="'sender=L', 'recipient=M', 'date=O'"/>
             </xsl:call-template>
         </xsl:if>
         
@@ -66,6 +71,12 @@
                 <xsl:with-param name="sheetID" select="'1S2Qun726gyqUKr2Yb5vW9RaGPlo8vZ43qbTV-xryyEo'"/>
                 <xsl:with-param name="sheet" select="'Kleine+Formen'"/>
                 <xsl:with-param name="output-file" select="'lookup-smallform.xml'"/>
+                <!-- Extra columns of the register dialog:
+                column E ("Datum Publikation/[Entstehungszeitraum]") li/@date,
+                column F ("Titel") li/@title,
+                column H ("Dokumenttyp") li/@type,
+                column I ("Publikationsort/Archivort") li/@place -->
+                <xsl:with-param name="extra-columns" select="'date=E', 'title=F', 'type=H', 'place=I'"/>
             </xsl:call-template>
         </xsl:if>
 
@@ -90,19 +101,22 @@
         <!-- Optional additional sheet columns, as 'attribute=column' (e.g. 'type=L'),
              or 'attribute=column-column' to join several columns with an en dash
              (e.g. 'dates=J-K' gives "1911–1977", "1911–" or "–1977").
-             Each becomes an attribute of li (omitted when all its cells are empty). -->
+             Each becomes an attribute of li (omitted when all its cells are empty).
+             An attribute named 'date' is normalized to a sortable key (see local:date-key);
+             if its cell has no date, the date at the end of the label is used. -->
         <xsl:param name="extra-columns" as="xs:string*" select="()"/>
         <xsl:variable name="extra-names" select="$extra-columns ! substring-before(., '=')"/>
         <xsl:variable name="extra-sources" select="$extra-columns ! substring-after(., '=')"/>
         <xsl:variable name="columns" select="string-join(('A', 'B', $extra-sources ! tokenize(., '-')), '%2C%20')"/>
         <xsl:variable name="url" select="'https://docs.google.com/a/google.com/spreadsheets/d/'||$sheetID||'/gviz/tq?tq=select%20'||$columns||'%20where%20A%20matches%20''%5Ba-z%5D*_%5Cd%2B''%20and%20B%20is%20not%20null%20order%20by%20B&amp;tqx=out:csv&amp;sheet='||$sheet"/>
         <xsl:try>
-            <xsl:variable name="result" select="unparsed-text-lines($url)"/>
+            <!-- records, not lines: cells may contain line breaks (gviz quotes every cell) -->
+            <xsl:variable name="result" select="tokenize(unparsed-text($url), '&quot;\r?\n&quot;')"/>
             <xsl:variable name="list">
                 <ul type="{lower-case($sheet)}">
                     <xsl:for-each select="$result[position() gt 1]">
                         <!-- "a","b ""quoted""","c" → a | b "quoted" | c -->
-                        <xsl:variable name="cells" select="tokenize(replace(., '^&quot;|&quot;$', ''), '&quot;,&quot;') ! replace(., '&quot;&quot;', '&quot;')"/>
+                        <xsl:variable name="cells" select="tokenize(replace(., '^&quot;|&quot;\s*$', ''), '&quot;,&quot;') ! replace(., '&quot;&quot;', '&quot;')"/>
                         <li id="{$cells[1]}" val="{$cells[2]}">
                             <xsl:for-each select="1 to count($extra-names)">
                                 <xsl:variable name="i" select="."/>
@@ -111,8 +125,11 @@
                                 <!-- spreadsheet error values such as #ERROR! or #N/A count as empty -->
                                 <xsl:variable name="parts" select="subsequence($cells, $first, count(tokenize($extra-sources[$i], '-')))
                                     ! (if (matches(., '^#(ERROR!|N/A|REF!|VALUE!|NAME\?|DIV/0!|NUM!|NULL!)$')) then '' else .)"/>
-                                <xsl:if test="some $part in $parts satisfies $part ne ''">
-                                    <xsl:attribute name="{$extra-names[$i]}" select="string-join($parts, '–')"/>
+                                <xsl:variable name="value" select="if ($extra-names[$i] = 'date')
+                                    then (local:date-key(string-join($parts, ' ')), local:date-key(replace($cells[2], '^.*,', '')))[1]
+                                    else if (some $part in $parts satisfies $part ne '') then string-join($parts, '–') else ()"/>
+                                <xsl:if test="exists($value)">
+                                    <xsl:attribute name="{$extra-names[$i]}" select="normalize-space($value)"/>
                                 </xsl:if>
                             </xsl:for-each>
                         </li>
@@ -132,6 +149,25 @@
         </xsl:try>
     </xsl:template>
     
+    <!-- Sortable date key: all dates in $s as yyyy[-mm[-dd]], joined with "/" (start/end of a range).
+         "1.6.1925" → "1925-06-01", "[1938.01 (ca.)]" → "1938-01", "1931-05-1931-06" → "1931-05/1931-06";
+         empty if $s contains no four-digit year. -->
+    <xsl:function name="local:date-key" as="xs:string?">
+        <xsl:param name="s" as="xs:string?"/>
+        <!-- d.m.yyyy to yyyy-mm-dd -->
+        <xsl:variable name="iso" as="xs:string">
+            <xsl:value-of>
+                <xsl:analyze-string select="string($s)" regex="(\d{{1,2}})\.(\d{{1,2}})\.(\d{{4}})">
+                    <xsl:matching-substring>{regex-group(3)}-{format-number(xs:integer(regex-group(2)), '00')}-{format-number(xs:integer(regex-group(1)), '00')}</xsl:matching-substring>
+                    <xsl:non-matching-substring>{.}</xsl:non-matching-substring>
+                </xsl:analyze-string>
+            </xsl:value-of>
+        </xsl:variable>
+        <!-- separate a following year ("1931-05-1931-06"), so that it is not read as a day -->
+        <xsl:variable name="dates" select="analyze-string(replace($iso, '(\d)[.\-/](\d{4})', '$1 $2'), '\d{4}([.\-]\d\d){0,2}')//*:match ! translate(., '.', '-')"/>
+        <xsl:sequence select="if (exists($dates)) then string-join(distinct-values($dates), '/') else ()"/>
+    </xsl:function>
+
     <!-- Zotero -->
     <xsl:template name="fetch-zotero-items">
         <xsl:param name="start" select="0"/>
