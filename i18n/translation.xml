@@ -708,12 +708,12 @@
         <val lang="en_US">exact</val>
     </key>
     <key value="date-notBefore_label">
-        <val lang="de_DE">oder frühestens</val>
-        <val lang="en_US">or not before</val>
+        <val lang="de_DE">oder zwischen</val>
+        <val lang="en_US">or between</val>
     </key>
     <key value="date-notAfter_label">
-        <val lang="de_DE">spätestens</val>
-        <val lang="en_US">not after</val>
+        <val lang="de_DE">und</val>
+        <val lang="en_US">and</val>
     </key>
     <key value="date-of-receipt_label">
         <val lang="de_DE">Empfangsdatum</val>
