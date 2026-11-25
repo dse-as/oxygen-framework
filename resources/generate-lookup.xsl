@@ -13,6 +13,8 @@
     <xsl:param name="gsheet-sheetID" select="'1pzY0f-4SyWGZEd3-kF2E-djY54qsr9HrRIljVDG5gkc'"/>
     <xsl:param name="zotero-project" select="'5746334'"/>
     <xsl:param name="zotero-batch-size" select="100"/>
+    <!-- ID column shared by the register dialogs -->
+    <xsl:variable name="id-column" select="'ID[width:100; type:number; align:right]=$XPATH{@id}'"/>
     <xsl:variable name="result-path" select="document-uri(.) => replace('generate-lookup.xsl','')"/>
     
     <xsl:template match="/">
@@ -26,6 +28,8 @@
                 sheet columns J-K (birth and death date) become li/@dates ("1911–1977"),
                 column L ("Typ") li/@type -->
                 <xsl:with-param name="extra-columns" select="'alt_n=F', 'dates=J-K', 'type=L'"/>
+                <!-- column definitions of the register dialog (written to ul/@columns) -->
+                <xsl:with-param name="dialog-columns" select="string-join(('Name[width:290; sort:asc]=$XPATH{@val}', 'Alt. Name[width:100]=$XPATH{@alt_n}', 'Lebensdaten[width:100; type:date]=$XPATH{@dates}', 'Typ[width:200]=$XPATH{@type}', $id-column), '|')"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'place' or $type = 'all'">
@@ -39,6 +43,8 @@
                 column M ("Land) li/@country,
                  -->
                 <xsl:with-param name="extra-columns" select="'alt_n=E', 'type=K', 'country=M'"/>
+                <!-- column definitions of the register dialog (written to ul/@columns) -->
+                <xsl:with-param name="dialog-columns" select="string-join(('Name[width:290; sort:asc]=$XPATH{@val}', 'Alt. Name[width:150]=$XPATH{@alt_n}', 'Typ[width:150]=$XPATH{@type}', 'Land[width:50]=$XPATH{@country}', $id-column), '|')"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="$type = 'org' or $type = 'all'">
@@ -50,6 +56,8 @@
                 column E ("Alternative Namen") li/@alt_n,
                 column G ("Type") li/@type -->
                 <xsl:with-param name="extra-columns" select="'alt_n=E', 'type=G'"/>
+                <!-- column definitions of the register dialog (written to ul/@columns) -->
+                <xsl:with-param name="dialog-columns" select="string-join(('Name[width:290; sort:asc]=$XPATH{@val}', 'Alt. Name[width:150]=$XPATH{@alt_n}', 'Typ[width:150]=$XPATH{@type}', $id-column), '|')"/>
             </xsl:call-template>
         </xsl:if>
         
@@ -63,6 +71,8 @@
                 column M ("Adressat_in") li/@recipient,
                 column O ("Datierung_normiert") li/@date -->
                 <xsl:with-param name="extra-columns" select="'sender=L', 'recipient=M', 'date=O'"/>
+                <!-- column definitions of the register dialog (written to ul/@columns) -->
+                <xsl:with-param name="dialog-columns" select="string-join(('Datum[width:120; type:date; sort:asc]=$XPATH{@date}', 'Absender:in[width:200]=$XPATH{@sender}', 'Empfänger:in[width:200]=$XPATH{@recipient}', $id-column, 'Bezeichnung[hidden; search]=$XPATH{@val}'), '|')"/>
             </xsl:call-template>
         </xsl:if>
         
@@ -77,6 +87,8 @@
                 column H ("Dokumenttyp") li/@type,
                 column I ("Publikationsort/Archivort") li/@place -->
                 <xsl:with-param name="extra-columns" select="'date=E', 'title=F', 'type=H', 'place=I'"/>
+                <!-- column definitions of the register dialog (written to ul/@columns) -->
+                <xsl:with-param name="dialog-columns" select="string-join(('Datum[width:120; type:date; sort:asc]=$XPATH{@date}', 'Titel[width:300]=$XPATH{@title}', 'Typ[width:130]=$XPATH{@type}', 'Ort[width:130]=$XPATH{@place}', $id-column), '|')"/>
             </xsl:call-template>
         </xsl:if>
 
@@ -85,6 +97,8 @@
                 <xsl:with-param name="sheetID" select="'13Sf1h6-bufC8q6N91gPxFrAh-di1PDpXXX5TQUHCMMo'"/>
                 <xsl:with-param name="sheet" select="'Fotografien'"/>
                 <xsl:with-param name="output-file" select="'lookup-image.xml'"/>
+                <!-- column definitions of the register dialog (written to ul/@columns) -->
+                <xsl:with-param name="dialog-columns" select="string-join(('Bezeichnung[width:500]=$XPATH{@val}', $id-column), '|')"/>
             </xsl:call-template>
         </xsl:if>
         
@@ -105,6 +119,8 @@
              An attribute named 'date' is normalized to a sortable key (see local:date-key);
              if its cell has no date, the date at the end of the label is used. -->
         <xsl:param name="extra-columns" as="xs:string*" select="()"/>
+        <!-- Column definitions of the register dialog, written to ul/@columns (used by actions without their own) -->
+        <xsl:param name="dialog-columns" as="xs:string?" select="()"/>
         <xsl:variable name="extra-names" select="$extra-columns ! substring-before(., '=')"/>
         <xsl:variable name="extra-sources" select="$extra-columns ! substring-after(., '=')"/>
         <xsl:variable name="columns" select="string-join(('A', 'B', $extra-sources ! tokenize(., '-')), '%2C%20')"/>
@@ -114,6 +130,9 @@
             <xsl:variable name="result" select="tokenize(unparsed-text($url), '&quot;\r?\n&quot;')"/>
             <xsl:variable name="list">
                 <ul type="{lower-case($sheet)}">
+                    <xsl:if test="$dialog-columns">
+                        <xsl:attribute name="columns" select="$dialog-columns"/>
+                    </xsl:if>
                     <xsl:for-each select="$result[position() gt 1]">
                         <!-- "a","b ""quoted""","c" → a | b "quoted" | c -->
                         <xsl:variable name="cells" select="tokenize(replace(., '^&quot;|&quot;\s*$', ''), '&quot;,&quot;') ! replace(., '&quot;&quot;', '&quot;')"/>
@@ -239,6 +258,8 @@
         <xsl:variable name="flat-items" select="array:flatten($all-items)"/>
         <xsl:variable name="list">
             <ul type="bibl">
+                <!-- column definitions of the register dialog -->
+                <xsl:attribute name="columns" select="string-join(('Autor:in[width:170; sort:asc]=$XPATH{@author}', 'Jahr[width:60; type:date; align:right]=$XPATH{@year}', 'Titel[width:300]=$XPATH{@title}', 'Typ[width:120]=$XPATH{@type}', 'ID[width:100]=$XPATH{@id}'), '|')"/>
                 <xsl:for-each select="$flat-items[not(matches(?('itemType'), 'annotation|attachment|note'))]">
                     <xsl:sort select="?('creators')[1]?*?('lastName')[1]"/>
                     <xsl:sort select="?('date')"/>

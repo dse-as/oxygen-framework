@@ -607,10 +607,6 @@
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
 															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:100]=$XPATH{@alt_n}|Lebensdaten[width:100; type:date]=$XPATH{@dates}|Typ[width:200]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
-															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -703,7 +699,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -824,10 +820,6 @@
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
 															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:100]=$XPATH{@alt_n}|Lebensdaten[width:100; type:date]=$XPATH{@dates}|Typ[width:200]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
-															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -913,7 +905,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -930,10 +922,6 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Titel[width:300]=$XPATH{@title}|Typ[width:130]=$XPATH{@type}|Ort[width:130]=$XPATH{@place}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1019,7 +1007,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -1036,10 +1024,6 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:150]=$XPATH{@alt_n}|Typ[width:150]=$XPATH{@type}|Land[width:50]=$XPATH{@country}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1125,7 +1109,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -1142,10 +1126,6 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:150]=$XPATH{@alt_n}|Typ[width:150]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1218,10 +1198,6 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Autor:in[width:170; sort:asc]=$XPATH{@author}|Jahr[width:60; type:date; align:right]=$XPATH{@year}|Titel[width:300]=$XPATH{@title}|Typ[width:120]=$XPATH{@type}|ID[width:100]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1321,10 +1297,6 @@
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
 															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:150]=$XPATH{@alt_n}|Typ[width:150]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
-															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -1405,7 +1377,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -1422,10 +1394,6 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Absender:in[width:200]=$XPATH{@sender}|Empfänger:in[width:200]=$XPATH{@recipient}|ID[width:100; type:number; align:right]=$XPATH{@id}|Bezeichnung[hidden; search]=$XPATH{@val}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -1507,7 +1475,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -1524,10 +1492,6 @@
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Titel[width:300]=$XPATH{@title}|Typ[width:130]=$XPATH{@type}|Ort[width:130]=$XPATH{@place}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -3322,10 +3286,6 @@
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
 															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:150]=$XPATH{@alt_n}|Typ[width:150]=$XPATH{@type}|Land[width:50]=$XPATH{@country}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
-															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -3424,10 +3384,6 @@
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
 															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Autor:in[width:170; sort:asc]=$XPATH{@author}|Jahr[width:60; type:date; align:right]=$XPATH{@year}|Titel[width:300]=$XPATH{@title}|Typ[width:120]=$XPATH{@type}|ID[width:100]=$XPATH{@id}</String>
-															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -3508,7 +3464,7 @@
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -3676,10 +3632,6 @@ delete_preceding-sibling</String>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
 															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Name[width:290; sort:asc]=$XPATH{@val}|Alt. Name[width:100]=$XPATH{@alt_n}|Lebensdaten[width:100; type:date]=$XPATH{@dates}|Typ[width:200]=$XPATH{@type}|ID[width:100; type:number; align:right]=$XPATH{@id}</String>
-															</entry>
 														</serializableOrderedMap>
 													</field>
 													<field name="operationID">
@@ -3810,7 +3762,7 @@ delete_preceding-sibling</String>
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -3827,10 +3779,6 @@ delete_preceding-sibling</String>
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Absender:in[width:200]=$XPATH{@sender}|Empfänger:in[width:200]=$XPATH{@recipient}|ID[width:100; type:number; align:right]=$XPATH{@id}|Bezeichnung[hidden; search]=$XPATH{@val}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -3886,7 +3834,7 @@ delete_preceding-sibling</String>
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -3903,10 +3851,6 @@ delete_preceding-sibling</String>
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Absender:in[width:200]=$XPATH{@sender}|Empfänger:in[width:200]=$XPATH{@recipient}|ID[width:100; type:number; align:right]=$XPATH{@id}|Bezeichnung[hidden; search]=$XPATH{@val}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -3992,7 +3936,7 @@ delete_preceding-sibling</String>
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -4009,10 +3953,6 @@ delete_preceding-sibling</String>
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Absender:in[width:200]=$XPATH{@sender}|Empfänger:in[width:200]=$XPATH{@recipient}|ID[width:100; type:number; align:right]=$XPATH{@id}|Bezeichnung[hidden; search]=$XPATH{@val}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -4068,7 +4008,7 @@ delete_preceding-sibling</String>
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -4085,10 +4025,6 @@ delete_preceding-sibling</String>
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Absender:in[width:200]=$XPATH{@sender}|Empfänger:in[width:200]=$XPATH{@recipient}|ID[width:100; type:number; align:right]=$XPATH{@id}|Bezeichnung[hidden; search]=$XPATH{@val}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
@@ -4236,7 +4172,7 @@ delete_preceding-sibling</String>
 															</entry>
 															<entry>
 																<String>show IDs</String>
-																<String>true</String>
+																<String>false</String>
 															</entry>
 															<entry>
 																<String>font size</String>
@@ -4253,10 +4189,6 @@ delete_preceding-sibling</String>
 															<entry>
 																<String>id rendering</String>
 																<String>$XPATH{@id}</String>
-															</entry>
-															<entry>
-																<String>column definitions</String>
-																<String>Datum[width:120; type:date; sort:asc]=$XPATH{@date}|Absender:in[width:200]=$XPATH{@sender}|Empfänger:in[width:200]=$XPATH{@recipient}|ID[width:100; type:number; align:right]=$XPATH{@id}|Bezeichnung[hidden; search]=$XPATH{@val}</String>
 															</entry>
 														</serializableOrderedMap>
 													</field>
