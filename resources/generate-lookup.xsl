@@ -27,7 +27,7 @@
                 column L ("Typ") li/@type -->
                 <xsl:with-param name="extra-columns" select="'alt_n=F', 'dates=J-K', 'type=L'"/>
             </xsl:call-template>
-        </xsl:if>)
+        </xsl:if>
         <xsl:if test="$type = 'place' or $type = 'all'">
             <xsl:call-template name="fetch-and-process-gsheet-items">
                 <xsl:with-param name="sheetID" select="$gsheet-sheetID"/>
